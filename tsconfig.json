@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "incremental": false,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "target": "esnext",
+    "types": ["jest", "node"],
+    "lib": ["es2017", "dom"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "storybook-static",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
+    "**/*.js",
+    "**.config.js"
+  ]
+}
