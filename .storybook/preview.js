@@ -10,6 +10,17 @@ export const decorators = [
   ),
 ];
 
+
+
 export const parameters = {
   controls: { expanded: true },
+  backgrounds: {
+    default: 'zero-dark',
+    values: [
+      {
+        name: 'zero-dark',
+        value: '#0a0a0a',
+      },
+    ],
+  },
 };
