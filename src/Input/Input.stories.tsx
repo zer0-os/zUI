@@ -1,17 +1,13 @@
 import React from "react";
-import Button from "./";
+import Input from "./";
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Button",
-  component: Button,
-} as ComponentMeta<typeof Button>;
+  title: "Input",
+  component: Input,
+} as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args}>Hello</Button>;
+const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = { kind: "primary" };
-
-export const Secondary = Template.bind({});
-Secondary.args = { kind: "secondary" };
