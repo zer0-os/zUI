@@ -1,0 +1,25 @@
+@use "styles/variables/colors";
+
+.Container {
+  padding: 0 1.5rem 0.375rem 1.5rem;
+
+  border: 1px solid #{colors.$anakiwa-lighter};
+  background: #{colors.$ocean-10};
+
+  // arbitrary large number for fully rounded border
+  border-radius: 100rem;
+
+  label {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    color: #{colors.$grey-lighter-3};
+  }
+
+  input {
+    width: 100%;
+    background: none;
+    color: #{colors.$text-primary};
+    padding: 0;
+    line-height: 1.5rem;
+  }
+}

@@ -1,0 +1,12 @@
+/**
+ * Overwriting default Skeleton styling
+ * to match our colors.
+ * @TODO: handle theme
+ */
+
+@use 'styles/variables/colors';
+
+.react-loading-skeleton {
+  --base-color: #{colors.$purple-darkest};
+  --highlight-color: #{colors.$purple-lighter};
+}

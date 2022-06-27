@@ -1,6 +1,17 @@
 module.exports = {
-  stories: ["../src/**/*.stories.tsx"],
-  addons: ["@storybook/addon-essentials"],
+  stories: ["../src/components/**/*.stories.tsx"],
+  addons: [
+    "@storybook/addon-essentials",
+    "storybook-addon-sass-postcss",
+    // {
+    //   name: "storybook-addon-sass-postcss",
+    //   options: {
+    //     sassLoaderOptions: {
+    //       implementation: require("sass"),
+    //     },
+    //   },
+    // },
+  ],
   typescript: {
     check: false,
     checkOptions: {},

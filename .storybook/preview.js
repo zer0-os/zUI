@@ -1,12 +1,12 @@
 import React from "react";
 
-import { ZeroUIProvider } from "../src/providers/ZeroUIProvider";
+import ZUIProvider from "../src/ZUIProvider";
 
 export const decorators = [
   (Story) => (
-    <ZeroUIProvider>
+    <ZUIProvider>
       <Story />
-    </ZeroUIProvider>
+    </ZUIProvider>
   ),
 ];
 
