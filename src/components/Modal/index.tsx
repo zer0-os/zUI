@@ -1,7 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { styled } from "@stitches/react";
+
+import Button from "../Button";
+import { Trigger } from "@radix-ui/react-tabs";
 
 // @TODO: use color variables
 
@@ -28,13 +31,17 @@ const Content = styled(Dialog.Content, {
 
 interface ModalProps extends Dialog.DialogProps {
   className?: string;
-  triggerText: string;
+  trigger?: string | ReactNode;
 }
 
-const Modal: FC<ModalProps> = ({ className, children, triggerText, ...rest }) => {
+const Modal: FC<ModalProps> = ({ className, children, trigger, ...rest }) => {
   return (
     <Dialog.Root {...rest}>
-      <Dialog.Trigger>{triggerText}</Dialog.Trigger>
+      {trigger && (
+        <Dialog.Trigger asChild={true}>
+          {typeof trigger === "string" ? <Button>{trigger}</Button> : trigger}
+        </Dialog.Trigger>
+      )}
       <Dialog.Portal>
         <Overlay>
           <Content className={className}>{children}</Content>

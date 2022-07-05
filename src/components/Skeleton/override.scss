@@ -4,9 +4,11 @@
  * @TODO: handle theme
  */
 
-@use 'styles/variables/colors';
+@use '../../styles/colors';
 
 .react-loading-skeleton {
   --base-color: #{colors.$purple-darkest};
   --highlight-color: #{colors.$purple-lighter};
+  //--base-color: red;
+  //--highlight-color: yellow;
 }

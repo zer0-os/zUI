@@ -28,8 +28,6 @@
     "@testing-library/react": "^12.1.2",
     "@types/babel__core": "^7.1.18",
     "@types/jest": "^27.4.0",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "babel-loader": "^8.2.2",
@@ -55,7 +53,9 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
+    "@radix-ui/react-aspect-ratio": "^0.1.4",
     "@radix-ui/react-dialog": "^0.1.7",
+    "@radix-ui/react-dropdown-menu": "^0.1.6",
     "@radix-ui/react-switch": "^0.1.5",
     "@radix-ui/react-tabs": "^0.1.5",
     "@react-aria/button": "^3.5.0",

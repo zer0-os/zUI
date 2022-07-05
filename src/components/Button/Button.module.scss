@@ -1,7 +1,7 @@
-@use 'styles/variables/borders';
-@use 'styles/variables/animations';
-@use 'styles/variables/colors';
-@use 'styles/variables/typography';
+@use '../../styles/borders';
+@use '../../styles/animations';
+@use '../../styles/colors';
+@use '../../styles/typography';
 
 // NOTE: these styles were directly imported
 // from zNS-dapp, and were for a button with different
@@ -24,6 +24,7 @@
   text-overflow: ellipsis;
   max-width: 100%;
 
+
   // Commented out styles below define "disabled" state
 
   &[aria-disabled="true"] {
@@ -32,6 +33,7 @@
     --bg: none !important;
     --border-color: #{colors.$grey};
     --color: #{colors.$grey};
+    pointer-events: none;
   }
 }
 
@@ -74,7 +76,9 @@
 
   cursor: pointer;
   text-transform: uppercase;
-  transition: opacity #{animations.$time-short} ease-in-out;
+
+  // @TODO: don't transition all
+  transition: all #{animations.$time-short} ease-in-out;
 
   .Content {
     margin: 0 8px;

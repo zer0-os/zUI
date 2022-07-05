@@ -1,8 +1,8 @@
 import classNames from "classnames/bind";
 
-import LoadingIndicator from "../LoadingIndicator";
-
 import styles from "./AsyncTable.module.scss";
+import React, { ReactNode } from "react";
+import Skeleton from "react-loading-skeleton";
 
 const cx = classNames.bind(styles);
 
@@ -40,17 +40,19 @@ interface SearchKey<T> {
 
 interface AsyncTableProps<T> {
   // Data
-  data: T[];
+  data?: T[];
   itemKey: keyof T;
   columns: Column[];
 
   // Display
   isGridView?: boolean;
   isLoading?: boolean;
+  numLoadingRows?: number;
+  rowHeight?: number;
   loadingText?: string;
   // @TODO: pick a better name for "options"
-  rowComponent: (data: T, options?: any) => React.ReactNode;
-  gridComponent: (data: T, options?: any) => React.ReactNode;
+  rowComponent: (data: T, options?: any) => ReactNode;
+  gridComponent: (data: T, options?: any) => ReactNode;
 
   // Search
   searchKey: SearchKey<T>;
@@ -58,15 +60,19 @@ interface AsyncTableProps<T> {
 
 const AsyncTable = <T extends unknown>({
   data,
-  itemKey,
+  // itemKey,
   columns,
   isGridView,
   isLoading,
+  numLoadingRows = 3,
+  rowHeight = 40,
   loadingText,
   rowComponent,
-  gridComponent,
-  searchKey,
-}: AsyncTableProps<T>) => {
+}: // gridComponent,
+// searchKey,
+AsyncTableProps<T>) => {
+  // @TODO: handle loading
+
   if (isGridView) {
     return <div>Grid View</div>;
   }
@@ -84,12 +90,26 @@ const AsyncTable = <T extends unknown>({
               })}
               key={c.id}
             >
-              {c.header}
+              {isLoading ? <Skeleton /> : c.header}
             </th>
           ))}
         </tr>
       </thead>
-      <tbody>{data.map((d) => rowComponent(d))}</tbody>
+      <tbody>
+        {isLoading
+          ? Array(numLoadingRows)
+              .fill(0)
+              .map((_) => (
+                <tr>
+                  {columns.map((__) => (
+                    <td>
+                      <Skeleton width={"100%"} height={rowHeight} />
+                    </td>
+                  ))}
+                </tr>
+              ))
+          : data?.map((d) => rowComponent(d))}
+      </tbody>
     </table>
   );
 };

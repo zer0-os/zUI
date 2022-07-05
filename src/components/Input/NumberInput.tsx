@@ -28,7 +28,7 @@ const NumberInput: FC<NumberInputProps> = (props) => {
         </div>
       )}
       {props.errorMessage && (
-        <div className={styles.Error} {...errorMessageProps} style={{ color: "red", fontSize: 12 }}>
+        <div className={styles.Error} {...errorMessageProps} style={{ color: "red", fontSize: "0.75rem" }}>
           {props.errorMessage}
         </div>
       )}

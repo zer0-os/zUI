@@ -11,16 +11,26 @@ interface Text {
 
 interface CardProps {
   title: string;
-  value: Text;
-  bottomText?: Text;
+  value: Text | string | number;
+  bottomText?: Text | string | number;
 }
 
 const Card: FC<CardProps> = ({ title, value, bottomText }) => {
   return (
     <div className={styles.Container}>
       <label>{title}</label>
-      <span className={styles.Value}>{value.isLoading ? <Skeleton /> : value.text ?? "ERR"}</span>
-      {bottomText && <span>{bottomText.isLoading ? <Skeleton width={100} /> : bottomText.text ?? "ERR"}</span>}
+      <span className={styles.Value}>
+        {typeof value === "object" ? <>{value.isLoading ? <Skeleton width={"50%"} /> : value.text ?? "ERR"}</> : value}
+      </span>
+      {bottomText && (
+        <>
+          {typeof bottomText === "object" ? (
+            <>{bottomText.isLoading ? <Skeleton width={"50%"} /> : bottomText.text ?? "ERR"}</>
+          ) : (
+            bottomText
+          )}
+        </>
+      )}
     </div>
   );
 };

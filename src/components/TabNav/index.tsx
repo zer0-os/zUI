@@ -25,7 +25,7 @@ const TabNav: FC<TabNavProps> = ({ defaultValue, tabs }) => {
     <Tabs.Root defaultValue={defaultValue || tabs[0].text}>
       <Tabs.List className={styles.List}>
         {tabs.map((t) => (
-          <Tabs.Trigger value={t.text} asChild>
+          <Tabs.Trigger key={t.text} value={t.text} asChild>
             <Link className={cx({ Selected: defaultValue === t.text })} to={t.to} replace>
               {t.text}
             </Link>
@@ -34,7 +34,9 @@ const TabNav: FC<TabNavProps> = ({ defaultValue, tabs }) => {
       </Tabs.List>
       <div>
         {tabs.map((t) => (
-          <Tabs.Content value={t.text}>{t.content}</Tabs.Content>
+          <Tabs.Content key={t.text} value={t.text}>
+            {t.content}
+          </Tabs.Content>
         ))}
       </div>
     </Tabs.Root>

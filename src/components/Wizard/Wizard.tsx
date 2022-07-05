@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 // Style Imports
 import classNames from "classnames/bind";
@@ -10,36 +10,35 @@ import Loading from "./Presets/Loading";
 import NFTDetails from "./Presets/NFTDetails";
 import styles from "./Wizard.module.scss";
 
-type WizardProps = {
+interface HeaderProps {
   header?: string;
   headerClassName?: string;
   subHeader?: string;
+  sectionDivider?: boolean;
+}
+
+interface WizardProps extends HeaderProps {
   children: React.ReactNode;
   className?: string;
-  sectionDivider?: boolean;
-};
+}
 
-const Wizard = ({ header, headerClassName, subHeader, children, className, sectionDivider = true }: WizardProps) => (
+const Header: FC<HeaderProps> = ({ headerClassName, header, subHeader, sectionDivider }) => (
+  <div className={classNames(styles.Header, headerClassName)}>
+    <h1>{header}</h1>
+    {subHeader && <h2>{subHeader}</h2>}
+
+    {sectionDivider && <hr className="glow" />}
+  </div>
+);
+
+const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => (
   <div className={classNames(styles.Container, className, "border-rounded border-primary background-primary")}>
     {/* Header */}
-    {header && (
-      <div className={classNames(styles.Header, headerClassName)}>
-        <h1 className="glow-text-white">{header}</h1>
-        {subHeader && <h2>{subHeader}</h2>}
-
-        {sectionDivider && <hr className="glow" />}
-      </div>
-    )}
+    {headerProps.header && <Header {...headerProps} />}
 
     {/* Wizard Body */}
     {children}
   </div>
 );
 
-// Include sub-components in export
-Wizard.Loading = Loading;
-Wizard.Buttons = Buttons;
-Wizard.Confirmation = Confirmation;
-Wizard.NFTDetails = NFTDetails;
-
-export default Wizard;
+export default { Container, Loading, Buttons, Confirmation, NFTDetails, Header };

@@ -21,27 +21,35 @@ $gutter: 16px;
 		max-width: unset !important;
 	}
 
-	.Header {
-		width: 100%;
+
+
+
+}
+
+.Header {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 40px;
+
+	* {
 		text-align: center;
-		margin-bottom: 40px;
-
-		h1 {
-			font-size: #{typography.$size-large};
-			font-weight: #{typography.$font-weight-bold};
-		}
-
-		h2 {
-			margin-top: 12px;
-		}
-
-		hr {
-			margin-top: 24px;
-		}
 	}
 
-	.Buttons {
-		width: 100%;
-		display: flex;
+	h1 {
+		font-size: #{typography.$size-large};
+		font-weight: #{typography.$font-weight-bold};
 	}
+
+	h2 {
+		margin-top: 12px;
+	}
+
+	hr {
+		margin-top: 24px;
+	}
+}
+
+.Buttons {
+	width: 100%;
+	display: flex;
 }
