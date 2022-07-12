@@ -22,12 +22,12 @@ interface WizardProps extends HeaderProps {
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ headerClassName, header, subHeader, sectionDivider }) => (
+const Header: FC<HeaderProps> = ({ headerClassName, header, subHeader, sectionDivider = true }) => (
   <div className={classNames(styles.Header, headerClassName)}>
     <h1>{header}</h1>
     {subHeader && <h2>{subHeader}</h2>}
 
-    {sectionDivider && <hr className="glow" />}
+    {sectionDivider && <hr />}
   </div>
 );
 

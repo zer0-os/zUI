@@ -1,37 +1,52 @@
-import React, { FC, RefObject, useRef } from "react";
+import React, { FC, ReactNode, RefObject, useRef } from "react";
 
 import { useLocale } from "@react-aria/i18n";
 import { useNumberField } from "@react-aria/numberfield";
 import { useNumberFieldState } from "@react-stately/numberfield";
 import { AriaNumberFieldProps } from "@react-types/numberfield";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 
 import styles from "./Input.module.scss";
 
+const cx = classNames.bind(styles);
+
 interface NumberInputProps extends AriaNumberFieldProps {
   className?: string;
+  error?: boolean;
+  success?: boolean;
+  helperText?: string;
+  endEnhancer?: ReactNode;
 }
 
-const NumberInput: FC<NumberInputProps> = (props) => {
+const NumberInput: FC<NumberInputProps> = ({
+  maxValue,
+  endEnhancer,
+  formatOptions = { maximumFractionDigits: 18 },
+  ...props
+}) => {
   const { locale } = useLocale();
-  const state = useNumberFieldState({ ...props, locale });
+  const state = useNumberFieldState({ ...{ ...props, ...formatOptions }, locale });
   const inputRef = useRef() as RefObject<HTMLInputElement>;
-  const { labelProps, inputProps, descriptionProps, errorMessageProps } = useNumberField(props, state, inputRef);
+  const { labelProps, inputProps } = useNumberField(props, state, inputRef);
 
   return (
-    <div className={classNames(props.className, styles.Container)}>
-      <label {...labelProps}>{props.label}</label>
-      <input {...inputProps} ref={inputRef} />
-      {props.description && (
-        <div {...descriptionProps} className={styles.Description}>
-          {props.description}
+    <div
+      data-disabled={inputProps.disabled}
+      className={cx(props.className, styles.Container, { Error: props.error, Success: props.success })}
+    >
+      <div className={styles.Wrapper}>
+        <div className={styles.Input}>
+          {props.label && state.inputValue && <label {...labelProps}>{props.label}</label>}
+          <input {...inputProps} ref={inputRef} />
         </div>
-      )}
-      {props.errorMessage && (
-        <div className={styles.Error} {...errorMessageProps} style={{ color: "red", fontSize: "0.75rem" }}>
-          {props.errorMessage}
-        </div>
-      )}
+        {endEnhancer && <div className={styles.EndEnhancer}>{endEnhancer}</div>}
+      </div>
+      {/*{props.description && (*/}
+      {/*  <div {...descriptionProps} className={styles.Description}>*/}
+      {/*    {props.description}*/}
+      {/*  </div>*/}
+      {/*)}*/}
+      {props.helperText && <p className={styles.Helper}>{props.helperText}</p>}
     </div>
   );
 };

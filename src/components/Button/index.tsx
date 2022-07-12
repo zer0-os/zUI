@@ -7,13 +7,14 @@
  */
 
 import React from "react";
-import { FC, useRef, createElement, ReactElement } from "react";
+import {FC, useRef, createElement, ReactElement} from "react";
 
-import { useButton } from "@react-aria/button";
+import {useButton} from "@react-aria/button";
 import classNames from "classnames";
 
 import LoadingIndicator from "../LoadingIndicator/index";
-import styles from "./Button.module.scss";
+import "./Button.scss";
+import 'focus-visible';
 
 type ButtonProps = {
   className?: string;
@@ -31,19 +32,22 @@ type ButtonProps = {
 /**
  * An accessible styled button component
  */
-const Button: FC<ButtonProps> = ({ children, className, elementType, isLoading, isDisabled, ...rest }) => {
+const Button: FC<ButtonProps> = ({children, className, elementType, isLoading, isDisabled, ...rest}) => {
   const ref = useRef(null);
-  const { buttonProps } = useButton({ ...rest, elementType }, ref ?? null);
+  const {buttonProps} = useButton({...rest, elementType}, ref ?? null);
 
   return createElement(
-    elementType ?? "button",
-    {
-      className: classNames(className, styles.Container),
-      ref,
-      "aria-disabled": isDisabled === true,
-      ...buttonProps,
-    },
-    isLoading ? <LoadingIndicator /> : children
+      elementType ?? "button",
+      {
+        className: classNames(className, 'zui-button'),
+        ref,
+        "aria-disabled": isDisabled || isLoading,
+        ...buttonProps,
+      },
+      <>
+        <div className='zui-button-content'>{children}</div>
+        <div className='zui-button-wash'></div>
+      </>
   );
 };
 
