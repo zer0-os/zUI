@@ -1,16 +1,21 @@
 import React from "react";
-
+import { MemoryRouter } from "react-router-dom";
 import ZUIProvider from "../src/ZUIProvider";
 
 export const decorators = [
-  (Story) => (
-    <ZUIProvider>
-      <Story />
-    </ZUIProvider>
-  ),
+  Story => {
+    return (
+      <MemoryRouter initialEntries={['/']}>
+        <ZUIProvider>
+          <Story />
+        </ZUIProvider>
+      </MemoryRouter>
+    );
+  }
 ];
 
 export const parameters = {
+<<<<<<< HEAD
   backgrounds: {
     default: "dark",
     values: [
@@ -21,4 +26,16 @@ export const parameters = {
     ],
   },
   controls: { expanded: true },
+=======
+  previewTabs: {
+    canvas: {
+      title: 'Story',
+      hidden: false
+    }
+  },
+  controls: {
+    disable: true
+  },
+  actions: { argTypesRegex: '^on[A-Z].*' }
+>>>>>>> 7785aae (update storybook configuration)
 };
