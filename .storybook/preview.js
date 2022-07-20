@@ -15,18 +15,6 @@ export const decorators = [
 ];
 
 export const parameters = {
-<<<<<<< HEAD
-  backgrounds: {
-    default: "dark",
-    values: [
-      {
-        name: "dark",
-        value: "#0a0a0a",
-      },
-    ],
-  },
-  controls: { expanded: true },
-=======
   previewTabs: {
     canvas: {
       title: 'Story',
@@ -37,5 +25,4 @@ export const parameters = {
     disable: true
   },
   actions: { argTypesRegex: '^on[A-Z].*' }
->>>>>>> 7785aae (update storybook configuration)
 };
