@@ -2,144 +2,165 @@
  * @TODO: :active styling broken in Firefox
  */
 
-@use '../../styles/borders';
-@use '../../styles/animations';
-@use '../../styles/colors';
-@use '../../styles/typography';
+@use "../../styles/borders";
+@use "../../styles/animations";
+@use "../../styles/colors";
+@use "../../styles/typography";
 
 // Set up variables
 .zui-button {
-    --zui-button-bg: linear-gradient(90deg, rgba(82, 87, 255, 0.25) 0%, rgba(82, 203, 255, 0.25) 100%);
-    --zui-button-border-color: #{colors.$dodger-blue-lighter};
-    --zui-button-border-color-hover: #{colors.$text-primary};
-    --zui-button-box-shadow-heavy: rgba(0, 209, 255, 0.5);
-    --zui-button-box-shadow-light: rgba(0, 209, 255, 0.2);
-    --zui-button-box-shadow: rgba(0, 209, 255, 0.2);
-    --zui-button-color: #{colors.$text-primary};
+  --zui-button-bg: linear-gradient(90deg, rgba(82, 87, 255, 0.25) 0%, rgba(82, 203, 255, 0.25) 100%);
+  --zui-button-border-color: #{colors.$dodger-blue-lighter};
+  --zui-button-border-color-hover: #{colors.$text-primary};
+  --zui-button-box-shadow-heavy: rgba(0, 209, 255, 0.5);
+  --zui-button-box-shadow-light: rgba(0, 209, 255, 0.2);
+  --zui-button-box-shadow: rgba(0, 209, 255, 0.2);
+  --zui-button-color: #{colors.$text-primary};
+  --zui-button-padding-sides: 1.563rem;
 
-    &[aria-disabled="true"] {
-        --zui-button-bg: none;
-        --zui-button-border-color: #{colors.$grey};
-        --zui-button-box-shadow-heavy: none;
-        --zui-button-box-shadow-light: none;
-        --zui-button-box-shadow: none;
-        --zui-button-color: #{colors.$grey};
-    }
+  &[aria-disabled="true"] {
+    --zui-button-bg: none;
+    --zui-button-border-color: #{colors.$grey};
+    --zui-button-box-shadow-heavy: none;
+    --zui-button-box-shadow-light: none;
+    --zui-button-box-shadow: none;
+    --zui-button-color: #{colors.$grey};
+  }
 
-    // Add other variants here
+  &.zui-button-secondary {
+    --zui-button-box-shadow-heavy: none;
+  }
+
+  &.zui-button-negative {
+    //background: red;
+    --zui-button-border-color: #{colors.$red-500};
+    --zui-button-bg: #{rgba(colors.$red-500, 0.5)};
+    --zui-button-box-shadow-heavy: rgba(112, 0, 255, 0.5);
+    --zui-button-box-shadow-light: rgba(112, 0, 255, 0.5);
+    --zui-button-box-shadow: rgba(247, 99, 176, 0.5);
+  }
+
+  &.zui-button-text {
+    background: none;
+    --zui-button-border-color: none;
+    --zui-button-box-shadow: none;
+    --zui-button-box-shadow-heavy: none;
+    --zui-button-box-shadow-light: none;
+    --zui-button-padding-sides: 0;
+  }
+
+  // Add other variants here
 }
 
-
 .zui-button {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    height: 32px;
-    margin: 0;
-    padding: 0 25px;
-    border-width: 0;
-    border-radius: 1000px;
+  height: 32px;
+  margin: 0;
+  padding: 0 var(--zui-button-padding-sides);
+  border-width: 0;
+  border-radius: 1000px;
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 
-    font-weight: bold;
+  font-weight: bold;
 
-    background: var(--zui-button-bg);
+  background: var(--zui-button-bg);
 
-    box-shadow: 0 0 15px 4px var(--zui-button-box-shadow-light);
+  box-shadow: 0 0 15px 4px var(--zui-button-box-shadow-light);
 
-    cursor: pointer;
-    text-transform: uppercase;
+  cursor: pointer;
+  text-transform: uppercase;
 
-    // @TODO: don't transition all
-    transition: all #{animations.$time-short} ease-in-out;
+  // @TODO: don't transition all
+  transition: all #{animations.$time-short} ease-in-out;
+
+  .zui-button-content {
+    margin: 0 8px;
+
+    color: var(--zui-button-color);
+    text-align: center;
+    font-size: #{typography.$size-small};
+    font-weight: #{typography.$font-weight-bold};
+    //text-shadow: #{colors.$text-glow-white};
+    z-index: 2;
+    transition: color #{animations.$time-short} ease-in-out, text-shadow #{animations.$time-short} ease-in-out;
+  }
+
+  .zui-button-wash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--zui-button-box-shadow);
+    transition: opacity #{animations.$time-short} ease-in-out;
+    opacity: 0;
+    z-index: 0;
+  }
+
+  // Pseudo-element for borders
+  &:after {
+    content: " ";
+    width: calc(100% - 4px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-radius: inherit;
+    border-left: 2px solid var(--zui-button-border-color);
+    border-right: 2px solid var(--zui-button-border-color);
+    transition: border-color #{animations.$time-short} ease-in-out;
+  }
+
+  // Pseudo-element for middle glow
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    box-shadow: 0px 0px 25px 9px var(--zui-button-box-shadow-heavy);
+  }
+
+  // Disabled button
+  &[aria-disabled="true"] {
+    opacity: 0.8;
+    pointer-events: none;
 
     .zui-button-content {
-        margin: 0 8px;
-
-        color: var(--zui-button-color);
-        text-align: center;
-        font-size: #{typography.$size-small};
-        font-weight: #{typography.$font-weight-bold};
-        text-shadow: #{colors.$text-glow-white};
-        z-index: 2;
-        transition: color #{animations.$time-short} ease-in-out, text-shadow #{animations.$time-short} ease-in-out;
+      text-shadow: none;
     }
+  }
 
-    .zui-button-wash {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: var(--zui-button-box-shadow);
-        transition: opacity #{animations.$time-short} ease-in-out;
-        opacity: 0;
-        z-index: 0;
-    }
+  &:not([aria-disabled="true"]) {
+    &:hover {
+      .zui-button-wash {
+        opacity: 1;
+      }
 
-    // Pseudo-element for borders
-    &:after {
-        content: " ";
-        width: calc(100% - 4px);
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+      &:after {
+        border-color: var(--zui-button-border-color-hover);
+      }
 
-        border-radius: inherit;
-        border-left: 2px solid var(--zui-button-border-color);
-        border-right: 2px solid var(--zui-button-border-color);
-        transition: border-color #{animations.$time-short} ease-in-out;
-    }
-
-    // Pseudo-element for middle glow
-    &:before {
-        content: " ";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 0;
-        box-shadow: 0px 0px 25px 9px var(--zui-button-box-shadow-heavy);
-    }
-
-    // Disabled button
-    &[aria-disabled="true"] {
-        opacity: 0.8;
-        pointer-events: none;
-
-        .zui-button-content {
-            text-shadow: none;
+      &:active {
+        .zui-button-wash {
+          opacity: 0;
         }
+      }
     }
+  }
 
-    &:not([aria-disabled="true"]) {
-        &:hover {
-            .zui-button-wash {
-                opacity: 1;
-            }
-
-            &:after {
-                border-color: var(--zui-button-border-color-hover)
-            }
-
-            &:active {
-                .zui-button-wash {
-                    opacity: 0;
-                }
-            }
-        }
-
-    }
-
-    // Need this to retain focus ring on keyboard navigation for accessibility
-    &:not(.focus-visible) {
-        outline: none;
-    }
+  // Need this to retain focus ring on keyboard navigation for accessibility
+  &:not(.focus-visible) {
+    outline: none;
+  }
 }

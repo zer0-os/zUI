@@ -10,13 +10,28 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => (
   <Button {...args} onPress={() => alert("You clicked the button")}>
-    Click me!
+    zUI Button
   </Button>
 );
 
 export const Primary = Template.bind({});
 
-export const Text = Template.bind({});
-Text.args = {
-  elementType: "span",
+export const Secondary = Template.bind({});
+Secondary.args = {
+  variant: "secondary",
+};
+
+export const Negative = Template.bind({});
+Negative.args = {
+  variant: "negative",
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  isDisabled: true,
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  isLoading: true,
 };

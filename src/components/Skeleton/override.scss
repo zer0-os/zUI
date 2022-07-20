@@ -4,7 +4,7 @@
  * @TODO: handle theme
  */
 
-@use '../../styles/colors';
+@use "../../styles/colors";
 
 .react-loading-skeleton {
   --base-color: #{colors.$purple-darkest};

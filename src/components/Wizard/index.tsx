@@ -8,11 +8,10 @@ import Buttons from "./Presets/Buttons";
 import Confirmation from "./Presets/Confirmation";
 import Loading from "./Presets/Loading";
 import NFTDetails from "./Presets/NFTDetails";
-import styles from "./Wizard.module.scss";
+import "./Wizard.scss";
 
 interface HeaderProps {
   header?: string;
-  headerClassName?: string;
   subHeader?: string;
   sectionDivider?: boolean;
 }
@@ -22,8 +21,8 @@ interface WizardProps extends HeaderProps {
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ headerClassName, header, subHeader, sectionDivider = true }) => (
-  <div className={classNames(styles.Header, headerClassName)}>
+const Header: FC<HeaderProps> = ({ header, subHeader, sectionDivider = true }) => (
+  <div className={classNames("zui-wizard-header")}>
     <h1>{header}</h1>
     {subHeader && <h2>{subHeader}</h2>}
 
@@ -32,7 +31,7 @@ const Header: FC<HeaderProps> = ({ headerClassName, header, subHeader, sectionDi
 );
 
 const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => (
-  <div className={classNames(styles.Container, className, "border-rounded border-primary background-primary")}>
+  <div className={classNames("zui-wizard", className, "border-rounded border-primary background-primary")}>
     {/* Header */}
     {headerProps.header && <Header {...headerProps} />}
 

@@ -32,7 +32,7 @@ $red-500: #f763b0;
 $purple-5: #120d16;
 $purple-10: #1a1022;
 $purple-15: #23142f;
-$purple-25: #472E5B;
+$purple-25: #472e5b;
 $purple-50: #6a3991;
 $purple-100: #b14eff;
 $purple-dark: #1d0c4a;
@@ -74,41 +74,20 @@ $background-50: transparentize($background-primary, 0.5);
 // Text
 $text-primary: $white;
 $text-glow-white: 0px 0px 10px rgba(255, 255, 255, 0.7);
-$text-glow-primary: 0px 0px 24px transparentize($purple-100, 0.6),
-	0px 0px 12px transparentize($purple-100, 0.6),
-	0px 0px 6px transparentize($purple-100, 0.6);
+$text-glow-primary: 0px 0px 24px transparentize($purple-100, 0.6), 0px 0px 12px transparentize($purple-100, 0.6),
+  0px 0px 6px transparentize($purple-100, 0.6);
 
 // Gradient Colours
 $azure: linear-gradient(90deg, $dodger-blue 0%, $blue 100%);
-$azure-25: linear-gradient(
-	90deg,
-	rgba(82, 87, 255, 0.25) 0%,
-	rgba($blue, 0.25) 100%
-);
-$azure-50: linear-gradient(
-	90deg,
-	rgba(82, 87, 255, 0.5) 0%,
-	rgba($blue, 0.5) 100%
-);
+$azure-25: linear-gradient(90deg, rgba(82, 87, 255, 0.25) 0%, rgba($blue, 0.25) 100%);
+$azure-50: linear-gradient(90deg, rgba(82, 87, 255, 0.5) 0%, rgba($blue, 0.5) 100%);
 $coral: linear-gradient(90deg, #f46b47 0%, $red-500, 100%);
 $cosmic: linear-gradient(90deg, #8930ee 0%, #af72f3 100%);
-$cosmic-25: linear-gradient(
-	90deg,
-	rgba(137, 48, 238, 0.25) 0%,
-	rgba(175, 114, 243, 0.25) 100%
-);
+$cosmic-25: linear-gradient(90deg, rgba(137, 48, 238, 0.25) 0%, rgba(175, 114, 243, 0.25) 100%);
 $horizon: linear-gradient(270deg, $blue-200 0%, #8930ee 100%);
 $miami: linear-gradient(90deg, $red-400 0%, $blue 100%);
 $ocean: linear-gradient(90deg, $blue-200 0%, $blue 100%);
-$ocean-10: linear-gradient(
-	90deg,
-	rgba($blue-200, 0.1) 0%,
-	rgba($blue, 0.1) 100%
-);
+$ocean-10: linear-gradient(90deg, rgba($blue-200, 0.1) 0%, rgba($blue, 0.1) 100%);
 $purpink: linear-gradient(90deg, $red-500 0%, #7614e7 100%);
 $sunset: linear-gradient(270deg, $red-300 0%, $red-100 100%);
-$text-input-background-gradient: linear-gradient(
-	94.23deg,
-	rgba($dodger-blue-lighter, 0.2) 0%,
-	$blumine-darker 100%
-);
+$text-input-background-gradient: linear-gradient(94.23deg, rgba($dodger-blue-lighter, 0.2) 0%, $blumine-darker 100%);

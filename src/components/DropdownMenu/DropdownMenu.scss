@@ -1,0 +1,27 @@
+@use "../../styles/colors";
+
+.zui-dropdown-trigger {
+  background: none;
+  color: #{colors.$text-primary};
+  border: none;
+  cursor: pointer;
+}
+
+.zui-dropdown-menu {
+  padding: 1rem;
+
+  background: #{colors.$purple-10};
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #{colors.$purple-25};
+
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+
+  .zui-dropdown-item {
+    user-select: none;
+    cursor: pointer;
+    color: #{colors.$text-primary};
+  }
+}

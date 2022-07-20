@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import classNames from "classnames/bind";
 
 import Buttons, { ButtonsProps } from "./Buttons";
-import styles from "./Confirmation.module.scss";
+import "./Confirmation.scss";
 
 interface ConfirmationProps extends ButtonsProps {
   error?: string;
@@ -16,9 +16,9 @@ const Confirmation = ({ className, message, error, ...rest }: ConfirmationProps)
   }, [message]);
 
   return (
-    <div className={classNames(styles.Container, className)}>
+    <div className={classNames("zui-wizard-confirmation", className)}>
       {isMessageString ? <p>{message}</p> : message}
-      {error !== undefined && <p className="error-text text-center">{error}</p>}
+      {error !== undefined && <p className="error-text">{error}</p>}
       <Buttons {...rest} />
     </div>
   );

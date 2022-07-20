@@ -1,7 +1,7 @@
 import React, { forwardRef, ReactNode } from "react";
 import * as RadixDropdownMenu from "@radix-ui/react-dropdown-menu";
 
-import styles from "./DropdownMenu.module.scss";
+import "./DropdownMenu.scss";
 
 import classNames from "classnames";
 
@@ -26,34 +26,16 @@ interface DropdownMenuProps extends RadixDropdownMenu.DropdownMenuProps {
 }
 
 const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
-  (
-    {
-      className,
-      alignMenu = "center",
-      menuClassName,
-      items,
-      trigger = "triple-dot",
-      side = "bottom",
-      ...dropdownMenuProps
-    },
-    ref
-  ) => {
-    // @TODO: is attaching ref to content the best api?
-
+  ({ className, alignMenu = "center", items, trigger = "triple-dot", side = "bottom", ...dropdownMenuProps }, ref) => {
     return (
       <RadixDropdownMenu.Root {...dropdownMenuProps}>
-        <RadixDropdownMenu.Trigger className={classNames(className, styles.Trigger)}>
+        <RadixDropdownMenu.Trigger className={classNames(className, "zui-dropdown-trigger")}>
           {trigger === "triple-dot" ? "..." : trigger}
         </RadixDropdownMenu.Trigger>
-        <RadixDropdownMenu.Content
-          className={classNames(styles.Menu, menuClassName)}
-          align={alignMenu}
-          side={side}
-          ref={ref}
-        >
+        <RadixDropdownMenu.Content className={"zui-dropdown-menu"} align={alignMenu} side={side} ref={ref}>
           {items.map((i) => (
             <RadixDropdownMenu.Item
-              className={classNames(styles.Item, i.className)}
+              className={classNames("zui-dropdown-item", i.className)}
               key={i.id}
               onSelect={(event: Event) => i.onSelect(event)}
             >

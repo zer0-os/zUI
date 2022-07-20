@@ -11,14 +11,14 @@ export const decorators = [
 ];
 
 export const parameters = {
-    backgrounds: {
-        default: 'dark',
-        values: [
-            {
-                name: 'dark',
-                value: '#0a0a0a',
-            },
-        ],
-    },
+  backgrounds: {
+    default: "dark",
+    values: [
+      {
+        name: "dark",
+        value: "#0a0a0a",
+      },
+    ],
+  },
   controls: { expanded: true },
 };

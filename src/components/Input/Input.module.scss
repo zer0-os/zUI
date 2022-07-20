@@ -1,89 +1,98 @@
 @use "../../styles/colors";
 
-.Container {
+.zui-input-container {
+  --zui-input-border: 1px solid #{colors.$anakiwa-lighter};
+  --zui-input-label-color: #{colors.$grey-lighter-3};
+  --zui-input-helper-color: #{colors.$grey-lighter-3};
+  --zui-input-padding-left: 1.5rem;
+
+  &.zui-input-error {
+    --zui-input-border: 1px solid #{colors.$red-200};
+    --zui-input-label-color: #{colors.$red-200};
+    --zui-input-helper-color: #{colors.$red-200};
+  }
+
+  &.zui-input-success {
+    --zui-input-label-color: #{colors.$success-green};
+    --zui-input-helper-color: #{colors.$success-green};
     --zui-input-border: 1px solid #{colors.$anakiwa-lighter};
-    --zui-input-label-color: #{colors.$grey-lighter-3};
-    --zui-input-helper-color: #{colors.$grey-lighter-3};
+  }
 
-    &.Error {
-        --zui-input-border: 1px solid #{colors.$red-200};
-        --zui-input-label-color: #{colors.$red-200};
-        --zui-input-helper-color: #{colors.$red-200};
-    }
-
-    &.Success {
-        --zui-input-label-color: #{colors.$success-green};
-        --zui-input-helper-color: #{colors.$success-green};
-    }
-
-    &[data-disabled='true'] {
-        --zui-input-border: 1px solid #{colors.$grey};
-    }
+  &[data-disabled="true"] {
+    --zui-input-border: 1px solid #{colors.$grey};
+  }
 }
 
-.Container {
-    box-sizing: border-box;
+.zui-input-container {
+  box-sizing: border-box;
 
-    .Wrapper {
-        display: flex;
-        gap: 1rem;
+  .zui-input-wrapper {
+    display: flex;
+    gap: 1rem;
 
-        position: relative;
+    position: relative;
 
+    width: 100%;
+
+    border: var(--zui-input-border);
+
+    //height: calc(3rem - 2px);
+    justify-content: space-between;
+    align-items: center;
+
+    // arbitrary large number for fully rounded border
+    border-radius: 100rem;
+
+    .zui-input-input {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      label {
+        position: absolute;
+        top: 6px;
+        left: var(--zui-input-padding-left);
+        font-size: 0.625rem;
+        color: var(--zui-input-label-color);
+      }
+
+      input {
         width: 100%;
+        background: none;
+        color: #{colors.$text-primary};
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        border: none;
+        flex: 1;
+        border-radius: 100rem;
+        box-sizing: border-box;
 
-        border: var(--zui-input-border);
         background: #{colors.$ocean-10};
 
-        height: calc(3rem - 2px);
-        justify-content: space-between;
-        align-items: center;
-
-        // arbitrary large number for fully rounded border
-        border-radius: 100rem;
-
-        > *:last-child {
-            margin-right: 1.5rem;
+        &:not(.zui-input-input-empty) {
+          padding-top: 18px;
+          padding-bottom: 6px;
         }
 
-        > *:first-child {
-            margin-left: 1.5rem;
+        &.zui-input-input-empty:not(:focus) {
+          background: none;
         }
-
-        .Input {
-            flex: 1;
-
-            label {
-                font-size: 0.625rem;
-                color: var(--zui-input-label-color);
-            }
-
-            input {
-                width: 100%;
-                background: none;
-                color: #{colors.$text-primary};
-                padding: 0;
-                font-size: 1rem;
-                line-height: 1.5rem;
-                border: none;
-                flex: 1;
-            }
-        }
-
-
+      }
     }
+  }
 
-    &[data-disabled='true'] {
-        opacity: 0.7;
-        background: none;
-    }
+  &[data-disabled="true"] {
+    opacity: 0.7;
+    background: none;
+  }
 
-    .Helper {
-        padding: 0;
-        margin: 0.125rem 0 0 1.5rem;
-        font-size: 0.75rem;
-        color: var(--zui-input-helper-color)
-    }
-
+  .zui-input-helper {
+    padding: 0;
+    margin: 0.125rem 0 0 1.5rem;
+    font-size: 0.75rem;
+    line-height: 0.938rem;
+    color: var(--zui-input-helper-color);
+  }
 }
-

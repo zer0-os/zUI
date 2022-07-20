@@ -1,20 +1,11 @@
-/**
- * @TODO: improve accessibility of disabled click
- * Currently, screen readers will still focus on a disabled button,
- * which is a bad pattern.
- *
- * @TODO: disable pointer cursor on hover of disabled button
- */
-
 import React from "react";
-import {FC, useRef, createElement, ReactElement} from "react";
+import { FC, useRef, createElement, ReactElement } from "react";
 
-import {useButton} from "@react-aria/button";
+import { useButton } from "@react-aria/button";
 import classNames from "classnames";
 
-import LoadingIndicator from "../LoadingIndicator/index";
 import "./Button.scss";
-import 'focus-visible';
+import "focus-visible";
 
 type ButtonProps = {
   className?: string;
@@ -22,32 +13,28 @@ type ButtonProps = {
   onPress?: () => void;
   onPressStart?: () => void;
   onPressEnd?: () => void;
-  href?: string;
 
-  elementType?: "span" | "p";
+  variant?: "primary" | "secondary" | "negative" | "text";
   isLoading?: boolean;
   isDisabled?: boolean;
 };
 
-/**
- * An accessible styled button component
- */
-const Button: FC<ButtonProps> = ({children, className, elementType, isLoading, isDisabled, ...rest}) => {
+const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, variant = "primary", ...rest }) => {
   const ref = useRef(null);
-  const {buttonProps} = useButton({...rest, elementType}, ref ?? null);
+  const { buttonProps } = useButton({ ...rest }, ref ?? null);
 
   return createElement(
-      elementType ?? "button",
-      {
-        className: classNames(className, 'zui-button'),
-        ref,
-        "aria-disabled": isDisabled || isLoading,
-        ...buttonProps,
-      },
-      <>
-        <div className='zui-button-content'>{children}</div>
-        <div className='zui-button-wash'></div>
-      </>
+    "button",
+    {
+      className: classNames(className, "zui-button", "zui-button-" + variant),
+      ref,
+      "aria-disabled": isDisabled || isLoading,
+      ...buttonProps,
+    },
+    <>
+      <div className="zui-button-content">{children}</div>
+      <div className="zui-button-wash"></div>
+    </>
   );
 };
 

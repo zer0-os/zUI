@@ -1,72 +1,72 @@
-@use 'styles/variables/dimensions';
-@use 'styles/variables/colors';
-@use 'styles/variables/typography';
+@use "styles/variables/dimensions";
+@use "styles/variables/colors";
+@use "styles/variables/typography";
 
 $width: 640px;
 $gutter: 16px;
 
 .Container {
-	display: flex;
-	word-break: break-word;
+  display: flex;
+  word-break: break-word;
 
-	gap: 24px;
+  gap: 24px;
 
-	@media only screen and (max-width: #{$width + $gutter + $gutter}) {
-		flex-direction: column;
-	}
+  @media only screen and (max-width: #{$width + $gutter + $gutter}) {
+    flex-direction: column;
+  }
 
-	.Image {
-		height: 260px;
-		width: 260px;
-		flex-shrink: 0;
+  .Image {
+    height: 260px;
+    width: 260px;
+    flex-shrink: 0;
 
-		@media only screen and (max-width: #{$width + $gutter + $gutter}) {
-			margin: 0 auto;
-		}
-	}
+    @media only screen and (max-width: #{$width + $gutter + $gutter}) {
+      margin: 0 auto;
+    }
+  }
 
-	.Details {
-		padding: 0;
+  .Details {
+    padding: 0;
 
-		h1 {
-			font-size: #{typography.$size-large};
-			font-weight: #{typography.$font-weight-bold};
-		}
+    h1 {
+      font-size: #{typography.$size-large};
+      font-weight: #{typography.$font-weight-bold};
+    }
 
-		h2 {
-			color: #{colors.$blue};
-			margin-top: 4px;
-		}
+    h2 {
+      color: #{colors.$blue};
+      margin-top: 4px;
+    }
 
-		> *:not(:first-child) {
-			margin-top: 16px;
-		}
+    > *:not(:first-child) {
+      margin-top: 16px;
+    }
 
-		// Tablet Breakpoint
-		@media only screen and (min-width: #{dimensions.$breakpoint-tablet-xs}) {
-			> * {
-				margin-top: 16px;
-			}
-		}
-	}
+    // Tablet Breakpoint
+    @media only screen and (min-width: #{dimensions.$breakpoint-tablet-xs}) {
+      > * {
+        margin-top: 16px;
+      }
+    }
+  }
 
-	.ViewAll {
-		display: flex;
-		padding: 4px 0 0 0;
-	}
+  .ViewAll {
+    display: flex;
+    padding: 4px 0 0 0;
+  }
 
-	.DetailComponent {
-		span {
-			color: #{colors.$grey-lighter-2};
-		}
+  .DetailComponent {
+    span {
+      color: #{colors.$grey-lighter-2};
+    }
 
-		.Bid {
-			color: unset;
-		}
-	}
+    .Bid {
+      color: unset;
+    }
+  }
 
-	.MemberLabel {
-		font-size: #{typography.$size-tiny};
-		color: #{colors.$grey-lighter-2};
-	}
+  .MemberLabel {
+    font-size: #{typography.$size-tiny};
+    color: #{colors.$grey-lighter-2};
+  }
 }

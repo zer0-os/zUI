@@ -1,11 +1,9 @@
 import React from "react";
 
+import Button from "../../Button";
+
 import classNames from "classnames";
-
-import Button from "../../Button/index";
-import styles from "./Buttons.module.scss";
-
-const cx = classNames.bind(styles);
+import "./Buttons.scss";
 
 export interface ButtonsProps {
   className?: string;
@@ -26,9 +24,9 @@ const Buttons = ({
   primaryButtonText = "Continue",
   secondaryButtonText = "Cancel",
 }: ButtonsProps) => (
-  <div className={cx(styles.Container, className)}>
+  <div className={classNames("zui-wizard-buttons", className)}>
     {onClickSecondaryButton && (
-      <Button isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
+      <Button variant="negative" isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
         {secondaryButtonText}
       </Button>
     )}
