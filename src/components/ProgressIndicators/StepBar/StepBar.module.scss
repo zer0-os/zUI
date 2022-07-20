@@ -24,6 +24,11 @@
 	opacity: 0;
 	z-index: 2;
 	transition: opacity #{animations.$time-long} ease-in-out;
+
+	> a {
+		color: #{colors.$blue};
+		transition: text-shadow .1s ease-in-out;
+	}
 }
 
 .Show {

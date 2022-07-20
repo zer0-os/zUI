@@ -19,7 +19,7 @@ export const StepBar: React.FC<StepBarProps> = ({ step, steps, stepFormatter, on
   const left = (i: number) => `${(i / steps.length) * 100}%`;
 
   const goToStep = (i: number) => () => {
-    if (step - 1 >= i) onNavigate?.(i);
+    if (step > i) onNavigate?.(i);
   };
 
   const text = (stepName: string, i: number) => {
@@ -30,7 +30,7 @@ export const StepBar: React.FC<StepBarProps> = ({ step, steps, stepFormatter, on
         .replace(/CURRENT_STEP_NAME/g, stepName);
     }
 
-    return `Step ${i + 1} of ${steps.length}: ${stepName}`;
+    return `Step ${i} of ${steps.length}: ${stepName}`;
   };
 
   return (
@@ -42,7 +42,7 @@ export const StepBar: React.FC<StepBarProps> = ({ step, steps, stepFormatter, on
           <div
             key={i + s}
             className={`${styles.Placeholder} ${isVisible ? styles.Show : ""}`}
-            onClick={goToStep(i)}
+            onClick={goToStep(i + 1)}
             style={{
               position: "absolute",
               left: left(i),
@@ -51,7 +51,7 @@ export const StepBar: React.FC<StepBarProps> = ({ step, steps, stepFormatter, on
             }}
           >
             <ArrowLink style={{ cursor }} back>
-              {text(s, i)}
+              {text(s, i + 1)}
             </ArrowLink>
           </div>
         );
