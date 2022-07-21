@@ -3,7 +3,6 @@ import React, { forwardRef, ReactNode } from "react";
 import { AriaTextFieldProps } from "@react-types/textfield";
 
 import classNames from "classnames";
-import "./Input.module.scss";
 
 export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange"> {
   className?: string;
