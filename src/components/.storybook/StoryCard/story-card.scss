@@ -1,6 +1,6 @@
 @import '../../../styles/colors';
 
-.card {
+.story_card {
   position: relative;
 
   &:not(:first-of-type) {
@@ -30,6 +30,12 @@
     &--is-wrap-disabled {
       flex-direction: column;
       flex-wrap: unset;
+    }
+
+    &--is-content-full {
+      > * {
+        flex: 1;
+      }
     }
   }
 }
