@@ -1,0 +1,46 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &--alignment-left {
+    align-items: flex-start;
+  }
+
+  &--alignment-center {
+    align-items: center;
+  }
+
+  &--alignment-right{
+    align-items: flex-end;
+  }
+
+  &__caption {
+    font-size: $size-default;
+    margin-bottom:1rem;
+
+    &--is-bold {
+      font-weight: bold;
+    }
+
+    &--is-contrast {
+      color: $white;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &--full-width {
+    width: 100%;
+    align-items: flex-start;
+  }
+}
