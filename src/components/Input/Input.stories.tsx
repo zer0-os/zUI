@@ -18,7 +18,11 @@ export const Text = Template.bind({});
 Text.args = { label: "NFT Name", placeholder: "NFT Name" };
 
 export const Number = Template.bind({});
-Number.args = { type: "number", label: "Bid Amount (ETH)", placeholder: "Bid Amount (ETH)" };
+Number.args = {
+  type: "number",
+  label: "Bid Amount (ETH)",
+  placeholder: "Bid Amount (ETH)",
+};
 
 export const Error = Template.bind({});
 Error.args = {

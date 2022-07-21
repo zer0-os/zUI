@@ -29,9 +29,10 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
           {label && value && <label>{label}</label>}
           <input
             className={classNames({ "zui-input-input-empty": !value?.length })}
-            onChange={(event: any) => onChange(event.target.value)}
+            onChange={(event: any) => {
+              onChange(event.target.value);
+            }}
             value={value}
-            type={type}
             {...rest}
           />
         </div>
