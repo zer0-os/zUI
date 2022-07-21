@@ -1,29 +1,48 @@
 import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import DropdownMenu from "./";
+import { StoryCard } from "../.storybook";
 
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+const DROPDOWN_MENU_ITEMS = [
+  {
+    id: "dropdown_nemu_1",
+    label: "Dropdown Menu Item 1",
+    onSelect: () => {}
+  },
+  {
+    id: "dropdown_nemu_2",
+    label: "Dropdown Menu Item 2",
+    onSelect: () => {}
+  },
+  {
+    id: "dropdown_nemu_3",
+    label: "Dropdown Menu Item 3",
+    onSelect: () => {}
+  }
+];
 
 export default {
-  title: "Dropdown Menu",
-  component: DropdownMenu,
+  title: "Data Display/DropdownMenu",
+  component: DropdownMenu
 } as ComponentMeta<typeof DropdownMenu>;
 
-const Template: ComponentStory<typeof DropdownMenu> = (args) => (
-  <DropdownMenu
-    trigger={"Open"}
-    items={[
-      {
-        id: "1",
-        label: "Option 1",
-        onSelect: () => alert("selected Option 2"),
-      },
-      {
-        id: "2",
-        label: "Option 2",
-        onSelect: () => alert("selected Option 2"),
-      },
-    ]}
-  />
-);
+const Template: ComponentStory<typeof DropdownMenu> = (args) => {
+  return (
+    <StoryCard isContrast>
+      <DropdownMenu {...args} />
+    </StoryCard>
+  );
+};
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
+Default.args = {
+  items: DROPDOWN_MENU_ITEMS
+};
+
+export const Custom = Template.bind({});
+Custom.args = {
+  items: DROPDOWN_MENU_ITEMS,
+  trigger: "Dropdown Menu Item",
+  side: "top",
+  alignMenu: "end"
+};
