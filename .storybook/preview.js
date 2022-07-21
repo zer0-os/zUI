@@ -22,7 +22,7 @@ export const parameters = {
     }
   },
   controls: {
-    disable: true
+    expanded: true
   },
   actions: { argTypesRegex: '^on[A-Z].*' }
 };
