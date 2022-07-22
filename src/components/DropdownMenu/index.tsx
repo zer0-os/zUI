@@ -39,7 +39,7 @@ const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
               key={i.id}
               onSelect={(event: Event) => i.onSelect(event)}
             >
-              {typeof i.label === "string" ? i.label : <>{i.label}</>}
+              {i.label}
             </RadixDropdownMenu.Item>
           ))}
         </RadixDropdownMenu.Content>
