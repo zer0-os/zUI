@@ -28,7 +28,7 @@
     "node_modules",
     "dist",
     "build",
-    "storybook-static",
+    "dist-storybook",
     "src/**/*.stories.tsx",
     "src/**/*.test.tsx",
     "**/*.js",
