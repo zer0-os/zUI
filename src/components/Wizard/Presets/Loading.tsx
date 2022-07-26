@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import LoadingIndicator from "../../LoadingIndicator";
+import LoadingIndicator from '../../LoadingIndicator';
 
 type LoadingProps = {
   message: React.ReactNode | string;

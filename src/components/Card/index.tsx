@@ -1,8 +1,7 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react';
 
-import Skeleton from "../Skeleton";
-
-import styles from "./Card.module.scss";
+import Skeleton from '../Skeleton';
+import styles from './Card.module.scss';
 
 interface Text {
   text?: string | ReactNode;
@@ -16,21 +15,21 @@ export interface CardProps {
 }
 
 const TEST_ID = {
-  title: "zui-card-title",
-  value: "zui-card-value",
-  bottomText: "zui-card-bottom-text",
+  title: 'zui-card-title',
+  value: 'zui-card-value',
+  bottomText: 'zui-card-bottom-text'
 };
 
 const Card: FC<CardProps> = ({ title, value, bottomText }) => (
   <div className={styles.Container}>
     <label data-id={TEST_ID.title}>{title}</label>
     <span className={styles.Value}>
-      {typeof value === "object" ? <>{value.isLoading ? <Skeleton width={"50%"} /> : value.text ?? "ERR"}</> : value}
+      {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
     </span>
     {bottomText && (
       <>
-        {typeof bottomText === "object" ? (
-          <>{bottomText.isLoading ? <Skeleton width={"50%"} /> : <span>bottomText.text</span> ?? "ERR"}</>
+        {typeof bottomText === 'object' ? (
+          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : <span>bottomText.text</span> ?? 'ERR'}</>
         ) : (
           bottomText
         )}

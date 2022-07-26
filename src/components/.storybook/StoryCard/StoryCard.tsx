@@ -1,6 +1,6 @@
-import React, { ReactElement, ReactNode } from "react";
-import classnames from "classnames";
-import "./story-card.scss";
+import React, { ReactElement, ReactNode } from 'react';
+import classnames from 'classnames';
+import './story-card.scss';
 
 export type StoryCardProps = {
   title?: string;
@@ -22,13 +22,13 @@ export const StoryCard = ({
   children
 }: StoryCardProps): ReactElement => {
   return (
-    <div className={classnames("story_card", containerClassName)}>
+    <div className={classnames('story_card', containerClassName)}>
       <h3 className="story_card__title">{title}</h3>
       <div
-        className={classnames("story_card__content", className, {
-          "story_card__content--is-contrast": isContrast,
-          "story_card__content--is-content-full": isContentFull,
-          "story_card__content--is-wrap-disabled": isWrapDisabled
+        className={classnames('story_card__content', className, {
+          'story_card__content--is-contrast': isContrast,
+          'story_card__content--is-content-full': isContentFull,
+          'story_card__content--is-wrap-disabled': isWrapDisabled
         })}
       >
         {children}

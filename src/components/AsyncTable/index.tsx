@@ -1,8 +1,9 @@
-import classNames from "classnames/bind";
+import React, { ReactNode } from 'react';
 
-import styles from "./AsyncTable.module.scss";
-import React, { ReactNode } from "react";
-import Skeleton from "react-loading-skeleton";
+import classNames from 'classnames/bind';
+import Skeleton from 'react-loading-skeleton';
+
+import styles from './AsyncTable.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +30,7 @@ const cx = classNames.bind(styles);
 export interface Column {
   id: string; // ID is required because header is optional
   header?: string;
-  alignment: "left" | "right" | "center";
+  alignment: 'left' | 'right' | 'center';
   className?: string;
 }
 
@@ -51,8 +52,8 @@ interface AsyncTableProps<T> {
   rowHeight?: number;
   loadingText?: string;
   // @TODO: pick a better name for "options"
-  rowComponent: (data: T, options?: any) => ReactNode;
-  gridComponent: (data: T, options?: any) => ReactNode;
+  rowComponent: (data: T, options?: unknown) => ReactNode;
+  gridComponent: (data: T, options?: unknown) => ReactNode;
 
   // Search
   searchKey: SearchKey<T>;
@@ -66,8 +67,7 @@ const AsyncTable = <T extends unknown>({
   isLoading,
   numLoadingRows = 3,
   rowHeight = 40,
-  loadingText,
-  rowComponent,
+  rowComponent
 }: // gridComponent,
 // searchKey,
 AsyncTableProps<T>) => {
@@ -84,11 +84,11 @@ AsyncTableProps<T>) => {
           {columns.map((c: Column) => (
             <th
               className={cx(c.className, {
-                Left: c.alignment === "left",
-                Center: c.alignment === "center",
-                Right: c.alignment === "right",
+                Left: c.alignment === 'left',
+                Center: c.alignment === 'center',
+                Right: c.alignment === 'right'
               })}
-              key={c.id}
+              key={`async-table-th-${c.id}`}
             >
               {isLoading ? <Skeleton /> : c.header}
             </th>
@@ -99,16 +99,16 @@ AsyncTableProps<T>) => {
         {isLoading
           ? Array(numLoadingRows)
               .fill(0)
-              .map((_) => (
-                <tr>
-                  {columns.map((__) => (
-                    <td>
-                      <Skeleton width={"100%"} height={rowHeight} />
+              .map(num => (
+                <tr key={`async-table-tr-${num}`}>
+                  {columns.map((c: Column) => (
+                    <td key={`async-table-tr-${num}-td-${c.id}`}>
+                      <Skeleton width={'100%'} height={rowHeight} />
                     </td>
                   ))}
                 </tr>
               ))
-          : data?.map((d) => rowComponent(d))}
+          : data?.map(d => rowComponent(d))}
       </tbody>
     </table>
   );

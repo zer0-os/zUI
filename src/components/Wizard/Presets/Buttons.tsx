@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import Button from "../../Button";
+import classNames from 'classnames';
 
-import classNames from "classnames";
-import "./Buttons.scss";
+import Button from '../../Button';
+
+import './Buttons.scss';
 
 export interface ButtonsProps {
   className?: string;
@@ -21,10 +22,10 @@ const Buttons = ({
   isSecondaryButtonActive = false,
   onClickPrimaryButton,
   onClickSecondaryButton,
-  primaryButtonText = "Continue",
-  secondaryButtonText = "Cancel",
+  primaryButtonText = 'Continue',
+  secondaryButtonText = 'Cancel'
 }: ButtonsProps) => (
-  <div className={classNames("zui-wizard-buttons", className)}>
+  <div className={classNames('zui-wizard-buttons', className)}>
     {onClickSecondaryButton && (
       <Button variant="negative" isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
         {secondaryButtonText}

@@ -1,6 +1,6 @@
-import React from "react";
-import { MemoryRouter } from "react-router-dom";
-import ZUIProvider from "../src/ZUIProvider";
+import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
+import ZUIProvider from '../src/ZUIProvider';
 
 export const decorators = [
   Story => {

@@ -1,30 +1,31 @@
-@use "../../styles/colors";
-@use '../../styles/animations';
+@import "../../styles/colors";
+@import '../../styles/animations';
 
 .zui-input-container {
-    --zui-input-border: 1px solid #{colors.$anakiwa-lighter};
-    --zui-input-label-color: #{colors.$grey-lighter-3};
-    --zui-input-helper-color: #{colors.$grey-lighter-3};
+    --zui-input-border: 1px solid #{$anakiwa-lighter};
+    --zui-input-label-color: #{$grey-lighter-3};
+    --zui-input-helper-color: #{$grey-lighter-3};
     --zui-input-padding-left: 1.5rem;
-    --zui-input-background: #{colors.$ocean-10};
+    --zui-input-background: #{$ocean-10};
 
     &.zui-input-error {
-        --zui-input-border: 1px solid #{colors.$red-200};
-        --zui-input-label-color: #{colors.$red-200};
-        --zui-input-helper-color: #{colors.$red-200};
+        --zui-input-border: 1px solid #{$red-200};
+        --zui-input-label-color: #{$red-200};
+        --zui-input-helper-color: #{$red-200};
     }
 
     &.zui-input-success {
-        --zui-input-label-color: #{colors.$success-green};
-        --zui-input-helper-color: #{colors.$success-green};
-        --zui-input-border: 1px solid #{colors.$anakiwa-lighter};
+        --zui-input-label-color: #{$success-green};
+        --zui-input-helper-color: #{$success-green};
+        --zui-input-border: 1px solid #{$anakiwa-lighter};
     }
 
     &[data-disabled="true"] {
-        --zui-input-border: 1px solid #{colors.$grey};
+        --zui-input-border: 1px solid #{$grey};
     }
 }
 
+/* stylelint-disable no-duplicate-selectors */
 .zui-input-container {
     box-sizing: border-box;
 
@@ -93,7 +94,7 @@
             input {
                 width: 100%;
                 background: none;
-                color: #{colors.$text-primary};
+                color: #{$text-primary};
                 padding: 0.75rem 1.5rem;
                 font-size: 1rem;
                 line-height: 1.5rem;
@@ -141,6 +142,7 @@
     }
 
     .zui-input-enhancer-default {
-        color: #{colors.$grey}
+        color: #{$grey}
     }
 }
+/* stylelint-enable no-duplicate-selectors */

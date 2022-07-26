@@ -1,14 +1,14 @@
 /**
  * Overwriting default Skeleton styling
- * to match our colors.
+ * to match our 
  * @TODO: handle theme
  */
 
-@use "../../styles/colors";
+@import '../../styles/colors';
 
 .react-loading-skeleton {
-  --base-color: #{colors.$purple-darkest};
-  --highlight-color: #{colors.$purple-lighter};
+  --base-color: #{$purple-darkest};
+  --highlight-color: #{$purple-lighter};
   //--base-color: red;
   //--highlight-color: yellow;
 }

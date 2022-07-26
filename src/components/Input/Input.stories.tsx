@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Input from "./";
-import { StoryCard } from "../.storybook";
+import React, { useState } from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import Input from './';
+import { StoryCard } from '../.storybook';
 
 export default {
-  title: "Inputs/Input",
+  title: 'Inputs/Input',
   component: Input
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = (args) => {
-  const [value, setValue] = useState<string>("");
+const Template: ComponentStory<typeof Input> = args => {
+  const [value, setValue] = useState<string>('');
 
   return (
     <StoryCard isContrast isContentFull>
@@ -19,34 +19,34 @@ const Template: ComponentStory<typeof Input> = (args) => {
 };
 
 export const Text = Template.bind({});
-Text.args = { label: "NFT Name", placeholder: "NFT Name" };
+Text.args = { label: 'NFT Name', placeholder: 'NFT Name' };
 
 export const Number = Template.bind({});
-Number.args = { type: "number", label: "Bid Amount (ETH)", placeholder: "Bid Amount (ETH)" };
+Number.args = { type: 'number', label: 'Bid Amount (ETH)', placeholder: 'Bid Amount (ETH)' };
 
 export const Error = Template.bind({});
 Error.args = {
-  value: "zero.Domain",
-  label: "Domain zNA",
-  placeholder: "Domain zNA",
+  value: 'zero.Domain',
+  label: 'Domain zNA',
+  placeholder: 'Domain zNA',
   error: true,
-  helperText: "Domain zNAs must be lowercase."
+  helperText: 'Domain zNAs must be lowercase.'
 };
 
 export const Success = Template.bind({});
 Success.args = {
-  value: "zero.domain",
-  label: "Domain zNA",
-  placeholder: "Domain zNA",
+  value: 'zero.domain',
+  label: 'Domain zNA',
+  placeholder: 'Domain zNA',
   success: true,
-  helperText: "Domain zNA is available!"
+  helperText: 'Domain zNA is available!'
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  value: "zero.Domain",
-  label: "Domain zNA",
-  placeholder: "Domain zNA",
+  value: 'zero.Domain',
+  label: 'Domain zNA',
+  placeholder: 'Domain zNA',
   isDisabled: true
 };
 

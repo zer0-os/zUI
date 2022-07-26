@@ -4,8 +4,9 @@
 
 import React, { forwardRef, useEffect, useState } from "react";
 
-import { formatUnits, parseUnits } from "ethers/lib/utils";
-import Input, { InputProps } from "./Input";
+import { formatUnits, parseUnits } from 'ethers/lib/utils';
+
+import Input, { InputProps } from './Input';
 
 export interface NumberInputProps extends InputProps {
   decimals?: number;
@@ -25,7 +26,7 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
      */
     useEffect(() => {
       if (!value) {
-        setInputValue("");
+        setInputValue('');
       } else {
         try {
           if (isBigNumber) {
@@ -38,10 +39,11 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
             setInputValue(value);
           }
         } catch (e) {
-          setInputValue("");
-          onChange("");
+          setInputValue('');
+          onChange('');
         }
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
     /**

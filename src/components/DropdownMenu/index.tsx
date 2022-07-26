@@ -1,9 +1,16 @@
-import React, { forwardRef, ReactNode } from "react";
-import * as RadixDropdownMenu from "@radix-ui/react-dropdown-menu";
+import React, { forwardRef, ReactNode } from 'react';
 
-import "./DropdownMenu.scss";
+import {
+  DropdownMenuProps as RadixUIDropdownMenuProps,
+  Root as RadixUIDropdownMenuRoot,
+  Trigger as RadixUIDropdownMenuTrigger,
+  Content as RadixUIDropdownMenuContent,
+  Item as RadixUIDropdownMenuItem
+} from '@radix-ui/react-dropdown-menu';
 
-import classNames from "classnames";
+import './DropdownMenu.scss';
+
+import classNames from 'classnames';
 
 export interface DropdownItem {
   id: string;
@@ -13,37 +20,37 @@ export interface DropdownItem {
   icon?: string | ReactNode;
 }
 
-export interface DropdownMenuProps extends RadixDropdownMenu.DropdownMenuProps {
+interface DropdownMenuProps extends RadixUIDropdownMenuProps {
   items: DropdownItem[];
-  trigger?: string | ReactNode | "triple-dot";
+  trigger?: string | ReactNode | 'triple-dot';
 
   // from RadixDropdownMenu.DropdownMenuContentProps
-  side?: "top" | "right" | "bottom" | "left";
-  alignMenu?: "start" | "center" | "end";
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  alignMenu?: 'start' | 'center' | 'end';
 
   className?: string;
   menuClassName?: string;
 }
 
 const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
-  ({ className, alignMenu = "center", items, trigger = "triple-dot", side = "bottom", ...dropdownMenuProps }, ref) => {
+  ({ className, alignMenu = 'center', items, trigger = 'triple-dot', side = 'bottom', ...dropdownMenuProps }, ref) => {
     return (
-      <RadixDropdownMenu.Root {...dropdownMenuProps}>
-        <RadixDropdownMenu.Trigger className={classNames(className, "zui-dropdown-trigger")}>
-          {trigger === "triple-dot" ? "..." : trigger}
-        </RadixDropdownMenu.Trigger>
-        <RadixDropdownMenu.Content className={"zui-dropdown-menu"} align={alignMenu} side={side} ref={ref}>
-          {items.map((i) => (
-            <RadixDropdownMenu.Item
-              className={classNames("zui-dropdown-item", i.className)}
+      <RadixUIDropdownMenuRoot {...dropdownMenuProps}>
+        <RadixUIDropdownMenuTrigger className={classNames(className, 'zui-dropdown-trigger')}>
+          {trigger === 'triple-dot' ? '...' : trigger}
+        </RadixUIDropdownMenuTrigger>
+        <RadixUIDropdownMenuContent className={'zui-dropdown-menu'} align={alignMenu} side={side} ref={ref}>
+          {items.map(i => (
+            <RadixUIDropdownMenuItem
+              className={classNames('zui-dropdown-item', i.className)}
               key={i.id}
               onSelect={(event: Event) => i.onSelect(event)}
             >
               {i.label}
-            </RadixDropdownMenu.Item>
+            </RadixUIDropdownMenuItem>
           ))}
-        </RadixDropdownMenu.Content>
-      </RadixDropdownMenu.Root>
+        </RadixUIDropdownMenuContent>
+      </RadixUIDropdownMenuRoot>
     );
   }
 );

@@ -1,4 +1,6 @@
 node_modules
-out
-next.config.js
-tailwind.config.js
+dist
+jest.config.js
+jest.setup.ts
+babel.config.js
+lint-staged.config.js

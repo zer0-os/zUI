@@ -32,7 +32,7 @@
     }
 
     &-text {
-        font-size: #{typography.$size-default};
+        font-size: #{$size-default};
         padding: 0;
         text-align: center;
     }

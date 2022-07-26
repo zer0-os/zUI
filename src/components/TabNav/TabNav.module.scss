@@ -10,11 +10,11 @@
 
     color: grey;
 
-    &[data-state="active"] {
+    &[data-state='active'] {
       color: white;
     }
 
-    &[data-state="inactive"] {
+    &[data-state='inactive'] {
       &:hover {
         color: rgb(154, 154, 154);
       }
