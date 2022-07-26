@@ -3,8 +3,8 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [ "style-loader" , "css-loader" ],
-      },
-    ],
-  },
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 };

@@ -1,10 +1,9 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { forwardRef, ReactNode } from 'react';
+// eslint-disable-next-line import/no-unresolved
+import { AriaTextFieldProps } from '@react-types/textfield';
+import classNames from 'classnames';
 
-import { AriaTextFieldProps } from "@react-types/textfield";
-
-import classNames from "classnames";
-
-export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange"> {
+export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
   className?: string;
   error?: boolean;
   success?: boolean;
@@ -18,27 +17,25 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
   ({ isDisabled, className, endEnhancer, error, success, value, label, onChange, helperText, type, ...rest }, ref) => (
     <div
       data-disabled={isDisabled}
-      className={classNames(className, "zui-input-container", {
-        "zui-input-error": error,
-        "zui-input-success": success,
+      className={classNames(className, 'zui-input-container', {
+        'zui-input-error': error,
+        'zui-input-success': success
       })}
       ref={ref}
     >
-      <div className={"zui-input-wrapper"}>
-        <div className={"zui-input-input"}>
+      <div className={'zui-input-wrapper'}>
+        <div className={'zui-input-input'}>
           {label && value && <label>{label}</label>}
           <input
-            className={classNames({ "zui-input-input-empty": !value?.length })}
-            onChange={(event: any) => {
-              onChange(event.target.value);
-            }}
+            className={classNames({ 'zui-input-input-empty': !value?.length })}
+            onChange={event => onChange(event.target.value)}
             value={value}
             {...rest}
           />
         </div>
-        {endEnhancer && <div className={"zui-input-enhancer-end"}>{endEnhancer}</div>}
+        {endEnhancer && <div className={'zui-input-enhancer-end'}>{endEnhancer}</div>}
       </div>
-      {helperText && <p className={"zui-input-helper"}>{helperText}</p>}
+      {helperText && <p className={'zui-input-helper'}>{helperText}</p>}
     </div>
   )
 );

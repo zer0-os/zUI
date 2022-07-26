@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import * as SwitchRadix from "@radix-ui/react-switch";
+import * as SwitchRadix from '@radix-ui/react-switch';
 
 type SwitchProps = {
   className?: string;

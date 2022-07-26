@@ -1,35 +1,40 @@
-import React from "react";
-import { FC, useRef, createElement, ReactElement } from "react";
+import React, { useRef, createElement } from 'react';
 
-import { useButton } from "@react-aria/button";
-import classNames from "classnames";
+import { useButton } from '@react-aria/button';
+import classNames from 'classnames';
 
-import "./Button.scss";
-import "focus-visible";
+import './Button.scss';
+import 'focus-visible';
 
 type ButtonProps = {
   className?: string;
-  children: ReactElement<any, any> | string;
   onPress?: () => void;
   onPressStart?: () => void;
   onPressEnd?: () => void;
 
-  variant?: "primary" | "secondary" | "negative" | "text";
+  variant?: 'primary' | 'secondary' | 'negative' | 'text';
   isLoading?: boolean;
   isDisabled?: boolean;
 };
 
-const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, variant = "primary", ...rest }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  className,
+  isLoading,
+  isDisabled,
+  variant = 'primary',
+  ...rest
+}) => {
   const ref = useRef(null);
   const { buttonProps } = useButton({ ...rest }, ref ?? null);
 
   return createElement(
-    "button",
+    'button',
     {
-      className: classNames(className, "zui-button", "zui-button-" + variant),
+      className: classNames(className, 'zui-button', `zui-button-${variant}`),
       ref,
-      "aria-disabled": isDisabled || isLoading,
-      ...buttonProps,
+      'aria-disabled': isDisabled || isLoading,
+      ...buttonProps
     },
     <>
       <div className="zui-button-content">{children}</div>

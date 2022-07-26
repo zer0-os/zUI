@@ -1,11 +1,10 @@
-import { FC } from "react";
+import React from 'react';
 
-import * as Tabs from "@radix-ui/react-tabs";
+import * as Tabs from '@radix-ui/react-tabs';
+import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
-import styles from "./TabNav.module.scss";
-import classNames from "classnames/bind";
-
-import { Link } from "react-router-dom";
+import styles from './TabNav.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -20,11 +19,11 @@ type TabNavProps = {
   defaultValue?: string;
 };
 
-const TabNav: FC<TabNavProps> = ({ defaultValue, tabs }) => {
+const TabNav: React.FC<TabNavProps> = ({ defaultValue, tabs }) => {
   return (
     <Tabs.Root defaultValue={defaultValue || tabs[0].text}>
       <Tabs.List className={styles.List}>
-        {tabs.map((t) => (
+        {tabs.map(t => (
           <Tabs.Trigger key={t.text} value={t.text} asChild>
             <Link className={cx({ Selected: defaultValue === t.text })} to={t.to}>
               {t.text}
@@ -33,7 +32,7 @@ const TabNav: FC<TabNavProps> = ({ defaultValue, tabs }) => {
         ))}
       </Tabs.List>
       <div>
-        {tabs.map((t) => (
+        {tabs.map(t => (
           <Tabs.Content key={t.text} value={t.text}>
             {t.content}
           </Tabs.Content>

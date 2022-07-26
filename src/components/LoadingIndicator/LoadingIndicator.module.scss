@@ -1,4 +1,4 @@
-@use "../../styles/typography";
+@import '../../styles/typography';
 
 .Container {
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 
   .TextContainer {
-    font-size: #{typography.$size-default};
+    font-size: #{$size-default};
     padding: 0;
     margin-bottom: 40px;
     text-align: center;

@@ -1,4 +1,4 @@
-@use "../../styles/colors";
+@import '../../styles/colors';
 
 .Container {
   display: flex;
@@ -8,7 +8,7 @@
   padding: 0 1rem;
   height: 5.75rem;
 
-  background: #{colors.$purple-10};
+  background: #{$purple-10};
   border-radius: 1rem;
 
   font-size: 0.75rem;

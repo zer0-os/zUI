@@ -1,14 +1,14 @@
-import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Button from "./";
-import { StoryCard } from "../.storybook";
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import Button from './';
+import { StoryCard } from '../.storybook';
 
 export default {
-  title: "Inputs/Button",
+  title: 'Inputs/Button',
   component: Button
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => (
+const Template: ComponentStory<typeof Button> = args => (
   <StoryCard isContrast>
     <Button {...args}>Button</Button>
   </StoryCard>
@@ -16,17 +16,17 @@ const Template: ComponentStory<typeof Button> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: "primary"
+  variant: 'primary'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: "secondary"
+  variant: 'secondary'
 };
 
 export const Negative = Template.bind({});
 Negative.args = {
-  variant: "negative"
+  variant: 'negative'
 };
 
 export const Disabled = Template.bind({});

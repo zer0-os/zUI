@@ -1,9 +1,9 @@
-import Spinner from "./Spinner";
+import React, { ReactNode } from 'react';
 
-import styles from "./LoadingIndicator.module.scss";
-import classNames from "classnames/bind";
-import { ReactNode } from "react";
-import React from "react";
+import classNames from 'classnames/bind';
+
+import styles from './LoadingIndicator.module.scss';
+import Spinner from './Spinner';
 
 const cx = classNames.bind(styles);
 
@@ -12,21 +12,21 @@ type LoadingIndicatorProps = {
   text: string | ReactNode;
   subtext?: string | ReactNode;
   style?: React.CSSProperties;
-  spinnerPosition?: "bottom" | "left";
+  spinnerPosition?: 'bottom' | 'left';
 };
 
-const LoadingIndicator = ({ className, style, text, subtext, spinnerPosition = "bottom" }: LoadingIndicatorProps) => {
+const LoadingIndicator = ({ className, style, text, subtext, spinnerPosition = 'bottom' }: LoadingIndicatorProps) => {
   return (
     <div
       style={style}
       className={cx(styles.Container, className, {
-        Left: spinnerPosition === "left",
+        Left: spinnerPosition === 'left'
       })}
     >
-      {spinnerPosition === "left" && <Spinner />}
+      {spinnerPosition === 'left' && <Spinner />}
       <div className={styles.TextContainer}>{text}</div>
       {subtext && <div className={styles.SubtextContainer}>{subtext}</div>}
-      {spinnerPosition !== "left" && <Spinner />}
+      {spinnerPosition !== 'left' && <Spinner />}
     </div>
   );
 };

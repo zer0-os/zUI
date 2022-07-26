@@ -1,13 +1,9 @@
-import "./styles/main.scss";
+import './styles/main.scss';
 
-import { FC, ReactElement } from "react";
+import React from 'react';
 
-type ZUIProviderProps = {
-  children: ReactElement<any, any>;
-};
-
-const ZUIProvider: FC<ZUIProviderProps> = ({ children }) => {
-  return children;
+const ZUIProvider: React.FC = ({ children }) => {
+  return <>{children}</>;
 };
 
 export default ZUIProvider;
