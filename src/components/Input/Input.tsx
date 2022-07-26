@@ -14,7 +14,7 @@ export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange
 }
 
 const Input = forwardRef<HTMLDivElement, InputProps>(
-  ({ isDisabled, className, endEnhancer, error, success, value, label, onChange, helperText, type, ...rest }, ref) => (
+  ({ isDisabled, className, endEnhancer, error, success, value, label, onChange, helperText, ...rest }, ref) => (
     <div
       data-disabled={isDisabled}
       className={classNames(className, 'zui-input-container', {
