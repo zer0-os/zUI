@@ -21,12 +21,14 @@ type ButtonProps = {
 
 const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, variant = "primary", ...rest }) => {
   const ref = useRef(null);
-  const { buttonProps } = useButton({ ...rest }, ref ?? null);
+  const { buttonProps, isPressed } = useButton({ ...rest }, ref ?? null);
 
   return createElement(
     "button",
     {
-      className: classNames(className, "zui-button", "zui-button-" + variant),
+      className: classNames(className, "zui-button", "zui-button-" + variant, {
+        "zui-button-active": isPressed,
+      }),
       ref,
       "aria-disabled": isDisabled || isLoading,
       ...buttonProps,
@@ -34,7 +36,7 @@ const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, v
     <>
       <div className="zui-button-content">{children}</div>
       <div className="zui-button-wash"></div>
-    </>
+    </>,
   );
 };
 

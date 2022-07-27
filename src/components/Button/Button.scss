@@ -151,7 +151,7 @@
         border-color: var(--zui-button-border-color-hover);
       }
 
-      &:active {
+      &.zui-button-active {
         .zui-button-wash {
           opacity: 0;
         }
