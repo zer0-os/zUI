@@ -14,7 +14,7 @@
     "lint:styles": "stylelint -q \"./**/*.{css,scss}\" --max-warnings 1",
     "prettify": "prettier -w ./",
     "publish:components": "yarn build && cp package.json ./dist && npm pack ./dist",
-    "publish:storybook": "set NODE_ENV=storybook-production && build-storybook -o dist-storybook",
+    "publish:storybook": "NODE_ENV=storybook-production build-storybook -o dist-storybook",
     "storybook": "start-storybook -p 6007",
     "test": "jest",
     "test:watch": "jest --watch"

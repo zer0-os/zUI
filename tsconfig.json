@@ -27,8 +27,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "build",
     "dist-storybook",
+    "build",
     "src/**/*.stories.tsx",
     "src/**/*.test.tsx",
     "**/*.js",
