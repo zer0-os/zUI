@@ -1,10 +1,13 @@
 // - React Imports
 import React from "react";
 
+import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 
 // - Style Imports
 import styles from "./ArrowLink.module.scss";
+
+const cx = classNames.bind(styles);
 
 type ArrowLinkProps = {
   children: React.ReactNode;
@@ -37,14 +40,19 @@ export const ArrowLink: React.FC<ArrowLinkProps> = ({
   const content = (
     <>
       {children}{" "}
-      <div className={`${styles.ArrowContainer} ${back ? styles.Back : ""}`} data-testid={TEST_ID.ARROW.CONTAINER}>
+      <div
+        className={cx(styles.ArrowContainer, {
+          Back: back,
+        })}
+        data-testid={TEST_ID.ARROW.CONTAINER}
+      >
         <div className={styles.Arrow} data-testid={TEST_ID.ARROW.ARROW}></div>
       </div>
     </>
   );
 
   const sharedProps = {
-    className: `${className} ${styles.Link}`,
+    className: `${className} ${styles.ArrowLink}`,
     style,
     target: !replace ? "_blank" : undefined,
     rel: "noreferrer",

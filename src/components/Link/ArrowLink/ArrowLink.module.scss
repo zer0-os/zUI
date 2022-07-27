@@ -1,78 +1,76 @@
 @use '../../../styles/animations';
 @use '../../../styles/colors';
 
-.Link {
+.ArrowLink {
   position: relative;
-}
 
-.Link:hover .ArrowContainer {
-  margin-left: 3px;
-}
+  .ArrowContainer {
+    position: absolute;
+    left: calc(100% + 0.25rem);
+    top: 0;
+    height: 100%;
+    width: 0.75rem;
+    transition: margin-left #{animations.$time-medium} ease-in-out;
 
-.Link:hover .Back {
-  margin-left: -3px;
-}
+    .Arrow {
+      height: 1px;
+      width: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      background: #{colors.$blue};
 
-.Link:hover .ArrowContainer::after {
-  box-shadow: 0px 0px 10px 3px #{colors.$blue};
-}
+      &::after,
+      &::before {
+        content: " ";
+        position: absolute;
+        right: -1px;
+        height: 1px;
+        width: 0.35rem;
+        background: inherit;
+      }
 
-.ArrowContainer {
-  position: absolute;
-  left: calc(100% + 5px);
-  top: 0;
-  height: 100%;
-  width: 12px;
+      &::after {
+        transform: translateY(-200%) rotate(45deg);
+      }
 
-  transition: margin-left #{animations.$time-medium} ease-in-out;
-}
+      &::before {
+        transform: translateY(200%) rotate(-45deg);
+      }
+    }
 
-.ArrowContainer::after {
-  content: " ";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 0px;
-  width: 0px;
-  background: #{colors.$black};
+    &.Back {
+      left: calc(100% + 0.5rem);
 
-  transform: translate(-60%, -50%);
+      .Arrow {
+        transform: rotate(180deg);
+      }
+    }
 
-  transition: box-shadow #{animations.$time-short} ease-in-out;
-}
+    &::after {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 0;
+      width: 0;
+      background: #{colors.$black};
+      transform: translate(-60%, -50%);
+      transition: box-shadow #{animations.$time-short} ease-in-out;
+    }
+  }
 
-.Arrow {
-  height: 1px;
-  width: 8px;
-  position: absolute;
-  left: 0;
-  top: 50%;
+  &:hover {
+    .ArrowContainer {
+      margin-left: 0.25rem;
 
-  background: #{colors.$blue};
-}
+      &::after {
+        box-shadow: 0px 0px 10px 3px #{colors.$blue};
+      }
+    }
 
-.Arrow::after,
-.Arrow::before {
-  content: " ";
-  position: absolute;
-  right: -1px;
-  height: 1px;
-  width: 6px;
-  background: inherit;
-}
-
-.Arrow::after {
-  transform: translateY(-200%) rotate(45deg);
-}
-
-.Arrow::before {
-  transform: translateY(200%) rotate(-45deg);
-}
-
-.Back {
-  left: calc(100% + 8px);
-}
-
-.Back .Arrow {
-  transform: rotate(180deg);
+    .Back {
+      margin-left: -0.25rem;
+    }
+  }
 }

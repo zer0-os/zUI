@@ -4,9 +4,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { styled } from "@stitches/react";
 
 import Button from "../Button";
-import { IconClose } from "../Icons";
-
-import styles from "./Modal.module.scss";
 
 // @TODO: use color variables
 
@@ -34,10 +31,9 @@ const Content = styled(Dialog.Content, {
 interface ModalProps extends Dialog.DialogProps {
   className?: string;
   trigger?: string | ReactNode;
-  onClose?: () => void;
 }
 
-const Modal: FC<ModalProps> = ({ className, children, trigger, onClose, ...rest }) => {
+const Modal: FC<ModalProps> = ({ className, trigger, children, ...rest }) => {
   return (
     <Dialog.Root {...rest}>
       {trigger && (
@@ -47,11 +43,6 @@ const Modal: FC<ModalProps> = ({ className, children, trigger, onClose, ...rest 
       )}
       <Dialog.Portal>
         <Overlay>
-          {onClose && (
-            <Dialog.Close className={styles.CloseButton} onClick={onClose}>
-              <IconClose />
-            </Dialog.Close>
-          )}
           <Content className={className}>{children}</Content>
         </Overlay>
       </Dialog.Portal>

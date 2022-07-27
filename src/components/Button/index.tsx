@@ -7,7 +7,7 @@ import classNames from "classnames";
 import "./Button.scss";
 import "focus-visible";
 
-type ButtonProps = {
+type ButtonProps  = {
   className?: string;
   children: ReactElement<any, any> | string;
   onPress?: () => void;
