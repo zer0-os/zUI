@@ -1,6 +1,6 @@
 {
-  "name": "zero-ui-test",
-  "version": "0.1.11",
+  "name": "zero-ui",
+  "version": "0.1.0",
   "description": "Zero UI Component Library",
   "scripts": {
     "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn build:styles && yarn build:scripts",
