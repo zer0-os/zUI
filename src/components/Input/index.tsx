@@ -1,5 +1,5 @@
-import React from "react";
-import { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
+
 import { AriaTextFieldProps } from "@react-types/textfield";
 
 import TextInput from "./Input";
@@ -15,15 +15,11 @@ export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange
   endEnhancer?: ReactNode;
   value: string;
   onChange: (value: string) => void;
-  label: string;
+  label?: string;
 }
 
 const Input: FC<InputProps> = (props) => {
-  if (props.type === "number") {
-    return <NumberInput {...props} />;
-  } else {
-    return <TextInput {...props} />;
-  }
+  return props.type === "number" ? <NumberInput {...props} /> : <TextInput {...props} />;
 };
 
 export default Input;

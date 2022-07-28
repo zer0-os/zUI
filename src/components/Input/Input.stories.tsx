@@ -1,8 +1,8 @@
 import InputComponent from "./";
 
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { useState } from "react";
-import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import React, { useState } from "react";
+import Button from "../Button";
 
 export default {
   title: "Input",
@@ -48,4 +48,14 @@ Disabled.args = {
   label: "Domain zNA",
   placeholder: "Domain zNA",
   isDisabled: true,
+};
+
+export const StartEnhancer = Template.bind({});
+StartEnhancer.args = { placeholder: "zNA", startEnhancer: "0://" };
+
+export const EndEnhancer = Template.bind({});
+EndEnhancer.args = {
+  placeholder: "Token Address",
+  endEnhancer: <Button onPress={() => alert("Pressed button!")}>Check</Button>,
+  label: "Token Address",
 };

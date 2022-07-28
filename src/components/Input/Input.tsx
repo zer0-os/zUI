@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { FC, forwardRef, ReactNode, useCallback, useRef } from "react";
 
 import { AriaTextFieldProps } from "@react-types/textfield";
 
@@ -9,38 +9,90 @@ export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange
   error?: boolean;
   success?: boolean;
   helperText?: string;
-  endEnhancer?: ReactNode;
+  startEnhancer?: ReactNode | string;
+  endEnhancer?: ReactNode | string;
   value: string;
   onChange: (value: string) => void;
 }
 
-const Input = forwardRef<HTMLDivElement, InputProps>(
-  ({ isDisabled, className, endEnhancer, error, success, value, label, onChange, helperText, type, ...rest }, ref) => (
-    <div
-      data-disabled={isDisabled}
-      className={classNames(className, "zui-input-container", {
-        "zui-input-error": error,
-        "zui-input-success": success,
-      })}
-      ref={ref}
-    >
-      <div className={"zui-input-wrapper"}>
-        <div className={"zui-input-input"}>
-          {label && value && <label>{label}</label>}
-          <input
-            className={classNames({ "zui-input-input-empty": !value?.length })}
-            onChange={(event: any) => {
-              onChange(event.target.value);
-            }}
-            value={value}
-            {...rest}
-          />
-        </div>
-        {endEnhancer && <div className={"zui-input-enhancer-end"}>{endEnhancer}</div>}
+type EnhancerProps = {
+  value: ReactNode | string;
+  className: string;
+};
+
+const Enhancer: FC<EnhancerProps> = ({ value, className }) => {
+  if (typeof value === "object") {
+    return <div className={classNames("zui-input-enhancer", className)}>{value}</div>;
+  } else {
+    return (
+      <div className={classNames("zui-input-enhancer", className)}>
+        <span className={"zui-input-enhancer-default"}>{value}</span>
       </div>
-      {helperText && <p className={"zui-input-helper"}>{helperText}</p>}
-    </div>
-  )
+    );
+  }
+};
+
+const Input = forwardRef<HTMLDivElement, InputProps>(
+  (
+    {
+      isDisabled,
+      className,
+      endEnhancer,
+      startEnhancer,
+      error,
+      success,
+      value,
+      label,
+      onChange,
+      helperText,
+      type, // note: intentionally pulling type out for now
+      ...rest
+    },
+    ref
+  ) => {
+    const inputRef = useRef<HTMLInputElement>();
+
+    const clickWrapper = useCallback(() => {
+      inputRef.current.focus();
+    }, [inputRef]);
+
+    return (
+      <div
+        data-disabled={isDisabled}
+        className={classNames(className, "zui-input-container", {
+          "zui-input-error": error,
+          "zui-input-success": success,
+        })}
+        ref={ref}
+      >
+        <div onClick={clickWrapper} className={classNames("zui-input-wrapper", { "zui-input-empty": !value?.length })}>
+          {startEnhancer && <Enhancer value={startEnhancer} className={"zui-input-enhancer-start"} />}
+          <div
+            className={classNames("zui-input-input", {
+              "zui-input-enhanced-end": endEnhancer !== undefined,
+              "zui-input-enhanced-start": startEnhancer !== undefined,
+            })}
+          >
+            {label && value && <label>{label}</label>}
+            <input
+              className={classNames({
+                "zui-input-no-label": label === undefined,
+                "zui-input-input-empty": value === undefined || !value.length,
+              })}
+              onChange={(event: any) => {
+                onChange(event.target.value);
+              }}
+              ref={inputRef}
+              value={value}
+              {...rest}
+            />
+          </div>
+          {endEnhancer && <Enhancer value={endEnhancer} className={"zui-input-enhancer-end"} />}
+        </div>
+        {helperText && <p className={"zui-input-helper"}>{helperText}</p>}
+      </div>
+    );
+  }
 );
 
 export default Input;
