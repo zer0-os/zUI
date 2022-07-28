@@ -1,5 +1,4 @@
-import React from "react";
-import { FC, useRef, createElement, ReactElement } from "react";
+import React, { FC, useRef, createElement, ReactElement } from "react";
 
 import { useButton } from "@react-aria/button";
 import classNames from "classnames";
@@ -7,7 +6,7 @@ import classNames from "classnames";
 import "./Button.scss";
 import "focus-visible";
 
-type ButtonProps  = {
+type ButtonProps = {
   className?: string;
   children: ReactElement<any, any> | string;
   onPress?: () => void;
@@ -26,7 +25,7 @@ const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, v
   return createElement(
     "button",
     {
-      className: classNames(className, "zui-button", "zui-button-" + variant, {
+      className: classNames(className, "zui-button", `zui-button-${variant}`, {
         "zui-button-active": isPressed,
       }),
       ref,
@@ -36,7 +35,7 @@ const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, v
     <>
       <div className="zui-button-content">{children}</div>
       <div className="zui-button-wash"></div>
-    </>,
+    </>
   );
 };
 
