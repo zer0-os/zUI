@@ -12,6 +12,7 @@ export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange
   error?: boolean;
   success?: boolean;
   helperText?: string;
+  startEnhancer?: ReactNode;
   endEnhancer?: ReactNode;
   value: string;
   onChange: (value: string) => void;

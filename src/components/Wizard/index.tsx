@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 
 // Style Imports
 import classNames from "classnames/bind";
@@ -11,7 +11,7 @@ import NFTDetails from "./Presets/NFTDetails";
 import "./Wizard.scss";
 
 interface HeaderProps {
-  header?: string;
+  header?: ReactNode;
   subHeader?: string;
   sectionDivider?: boolean;
 }

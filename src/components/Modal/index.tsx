@@ -4,7 +4,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { styled } from "@stitches/react";
 
 import Button from "../Button";
-import { Trigger } from "@radix-ui/react-tabs";
 
 // @TODO: use color variables
 
@@ -34,7 +33,7 @@ interface ModalProps extends Dialog.DialogProps {
   trigger?: string | ReactNode;
 }
 
-const Modal: FC<ModalProps> = ({ className, children, trigger, ...rest }) => {
+const Modal: FC<ModalProps> = ({ className, trigger, children, ...rest }) => {
   return (
     <Dialog.Root {...rest}>
       {trigger && (
