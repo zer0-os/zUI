@@ -11,7 +11,18 @@ export default {
 const Template: ComponentStory<typeof DropdownMenu> = (args) => (
   <DropdownMenu
     trigger={"Open"}
-    items={[{ id: 1, label: "Option 1", onSelect: () => console.log("selected Option 1") }]}
+    items={[
+      {
+        id: "1",
+        label: "Option 1",
+        onSelect: () => alert("selected Option 2"),
+      },
+      {
+        id: "2",
+        label: "Option 2",
+        onSelect: () => alert("selected Option 2"),
+      },
+    ]}
   />
 );
 

@@ -30,7 +30,7 @@ const Content = styled(Dialog.Content, {
 
 interface ModalProps extends Dialog.DialogProps {
   className?: string;
-  trigger?: string | ReactNode;
+  trigger?: ReactNode;
 }
 
 const Modal: FC<ModalProps> = ({ className, trigger, children, ...rest }) => {

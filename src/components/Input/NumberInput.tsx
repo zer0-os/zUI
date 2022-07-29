@@ -7,7 +7,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { formatUnits, parseUnits } from "ethers/lib/utils";
 import Input, { InputProps } from "./Input";
 
-interface NumberInputProps extends InputProps {
+export interface NumberInputProps extends InputProps {
   decimals?: number;
   isBigNumber?: boolean;
 }

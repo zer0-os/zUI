@@ -5,7 +5,7 @@ import "./DropdownMenu.scss";
 
 import classNames from "classnames";
 
-interface DropdownItem {
+export interface DropdownItem {
   id: string;
   label: string | ReactNode;
   onSelect: (event?: Event) => void;
@@ -13,7 +13,7 @@ interface DropdownItem {
   icon?: string | ReactNode;
 }
 
-interface DropdownMenuProps extends RadixDropdownMenu.DropdownMenuProps {
+export interface DropdownMenuProps extends RadixDropdownMenu.DropdownMenuProps {
   items: DropdownItem[];
   trigger?: string | ReactNode | "triple-dot";
 

@@ -1,29 +1,39 @@
 @use "../../styles/typography";
 
-.Container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.zui-loading-indicator {
+    display: flex;
 
-  .TextContainer {
-    font-size: #{typography.$size-default};
-    padding: 0;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-
-  .SubtextContainer {
-    margin-bottom: 42px;
-  }
-
-  &.Left {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    .TextContainer {
-      margin-bottom: 0;
-      margin-left: 24px;
+    &-bottom, &-top {
+        gap: 2.5rem;
+        align-items: center;
     }
-  }
+
+    &-left, &-right {
+        gap: 1rem;
+        align-content: flex-start;
+        align-items: center;
+    }
+
+    &-bottom {
+        flex-direction: column-reverse;
+    }
+
+    &-top {
+        flex-direction: column;
+    }
+
+    &-left {
+        flex-direction: row;
+    }
+
+    &-right {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    &-text {
+        font-size: #{typography.$size-default};
+        padding: 0;
+        text-align: center;
+    }
 }

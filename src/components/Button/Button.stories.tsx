@@ -26,6 +26,11 @@ Negative.args = {
   variant: "negative",
 };
 
+export const Text = Template.bind({});
+Text.args = {
+  variant: "text",
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   isDisabled: true,

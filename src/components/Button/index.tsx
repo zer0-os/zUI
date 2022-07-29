@@ -1,14 +1,15 @@
-import React, { FC, useRef, createElement, ReactElement } from "react";
+import React, { createElement, FC, useRef } from "react";
 
 import { useButton } from "@react-aria/button";
 import classNames from "classnames";
 
 import "./Button.scss";
 import "focus-visible";
+import { Spinner } from "../LoadingIndicator";
 
-type ButtonProps = {
+export interface ButtonProps {
   className?: string;
-  children: ReactElement<any, any> | string;
+  children: string;
   onPress?: () => void;
   onPressStart?: () => void;
   onPressEnd?: () => void;
@@ -16,11 +17,21 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "negative" | "text";
   isLoading?: boolean;
   isDisabled?: boolean;
-};
+}
 
 const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, variant = "primary", ...rest }) => {
   const ref = useRef(null);
-  const { buttonProps, isPressed } = useButton({ ...rest }, ref ?? null);
+  const disabled = isDisabled || isLoading;
+
+  const { buttonProps, isPressed } = useButton(
+    {
+      ...rest,
+      onPress: () => {
+        if (!disabled) rest.onPress();
+      },
+    },
+    ref ?? null
+  );
 
   return createElement(
     "button",
@@ -29,11 +40,11 @@ const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, v
         "zui-button-active": isPressed,
       }),
       ref,
-      "aria-disabled": isDisabled || isLoading,
+      "aria-disabled": disabled,
       ...buttonProps,
     },
     <>
-      <div className="zui-button-content">{children}</div>
+      <div className="zui-button-content">{isLoading ? <Spinner className="zui-button-spinner" /> : children}</div>
       <div className="zui-button-wash"></div>
     </>
   );

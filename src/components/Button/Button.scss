@@ -27,11 +27,11 @@
     --zui-button-color: #{colors.$grey};
   }
 
-  &.zui-button-secondary {
+  &-secondary {
     --zui-button-box-shadow-heavy: none;
   }
 
-  &.zui-button-negative {
+  &-negative {
     //background: red;
     --zui-button-border-color: #{colors.$red-500};
     --zui-button-bg: #{rgba(colors.$red-500, 0.5)};
@@ -40,8 +40,8 @@
     --zui-button-box-shadow: rgba(247, 99, 176, 0.5);
   }
 
-  &.zui-button-text {
-    background: none;
+  &-text {
+    --zui-button-bg: none;
     --zui-button-border-color: none;
     --zui-button-box-shadow: none;
     --zui-button-box-shadow-heavy: none;
@@ -81,7 +81,7 @@
   // @TODO: don't transition all
   transition: all #{animations.$time-short} ease-in-out;
 
-  .zui-button-content {
+  &-content {
     margin: 0 8px;
 
     color: var(--zui-button-color);
@@ -93,7 +93,7 @@
     transition: color #{animations.$time-short} ease-in-out, text-shadow #{animations.$time-short} ease-in-out;
   }
 
-  .zui-button-wash {
+  &-wash {
     position: absolute;
     top: 0;
     left: 0;
@@ -162,5 +162,9 @@
   // Need this to retain focus ring on keyboard navigation for accessibility
   &:not(.focus-visible) {
     outline: none;
+  }
+
+  &-spinner {
+    border-color: var(--zui-button-border-color) !important;
   }
 }

@@ -1,11 +1,10 @@
-// @TODO: make a nicer spinner
-
-import styles from "./Spinner.module.scss";
-import classNames from "classnames";
 import React from "react";
 
+import "./Spinner.scss";
+import classNames from "classnames";
+
 const Spinner = ({ className, ...props }: any) => (
-  <div className={classNames(styles.Spinner, className)} {...props}></div>
+  <div className={classNames("zui-spinner", className)} {...props}></div>
 );
 
 export default Spinner;

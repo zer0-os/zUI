@@ -8,6 +8,6 @@ export default {
   component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => <Modal triggerText="Click me!">Hello! This is a modal</Modal>;
+const Template: ComponentStory<typeof Modal> = (args) => <Modal trigger="Click me!">Hello! This is a modal</Modal>;
 
 export const Primary = Template.bind({});
