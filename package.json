@@ -3,21 +3,26 @@
   "version": "0.1.0",
   "description": "Zero UI Component Library",
   "scripts": {
-    "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn build:styles && yarn build:scripts",
+    "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn build:styles && yarn export:styles && yarn build:scripts",
     "build:only": "yarn build-styles && yarn build:scripts",
     "build:scripts": "NODE_ENV=production babel --extensions \".ts,.tsx,.js,.jsx\" ./src --out-dir ./dist",
     "build:styles": "node-sass ./src -o dist/ --importer ./node_modules/node-sass-import",
     "build:typecheck": "tsc --project ./tsconfig.json",
+    "export:styles": "node .scripts/exportStyles.js",
     "generate": "node ./util/create-component",
     "lint": "yarn lint:scripts && yarn lint:styles && yarn prettify",
     "lint:scripts": "eslint --ext .ts,.tsx,.js,.jsx ./ --fix --max-warnings 1",
     "lint:styles": "stylelint -q \"./**/*.{css,scss}\" --max-warnings 1",
     "prettify": "prettier -w ./",
-    "publish:components": "yarn build && cp package.json ./dist && npm pack ./dist",
+    "publish:components": "yarn build && cp package.json ./dist && cp .npmrc ./dist && cd ./dist && npm publish",
     "publish:storybook": "NODE_ENV=storybook-production build-storybook -o dist-storybook",
     "storybook": "start-storybook -p 6007",
     "test": "jest",
     "test:watch": "jest --watch"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
