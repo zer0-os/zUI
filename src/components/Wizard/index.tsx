@@ -1,14 +1,14 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react';
 
 // Style Imports
-import classNames from "classnames/bind";
+import classNames from 'classnames/bind';
 
 // Preset Screens
-import Buttons from "./Presets/Buttons";
-import Confirmation from "./Presets/Confirmation";
-import Loading from "./Presets/Loading";
-import NFTDetails from "./Presets/NFTDetails";
-import "./Wizard.scss";
+import Buttons from './Presets/Buttons';
+import Confirmation from './Presets/Confirmation';
+import Loading from './Presets/Loading';
+import NFTDetails from './Presets/NFTDetails';
+import './Wizard.scss';
 
 interface HeaderProps {
   header?: ReactNode;
@@ -22,7 +22,7 @@ interface WizardProps extends HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ header, subHeader, sectionDivider = true }) => (
-  <div className={classNames("zui-wizard-header")}>
+  <div className={classNames('zui-wizard-header')}>
     <h1>{header}</h1>
     {subHeader && <h2>{subHeader}</h2>}
 
@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = ({ header, subHeader, sectionDivider = true }) =
 );
 
 const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => (
-  <div className={classNames("zui-wizard", className, "border-rounded border-primary background-primary")}>
+  <div className={classNames('zui-wizard', className, 'border-rounded border-primary background-primary')}>
     {/* Header */}
     {headerProps.header && <Header {...headerProps} />}
 

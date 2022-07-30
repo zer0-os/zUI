@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Input from './';
+import Button from '../Button';
 import { StoryCard } from '../.storybook';
 
 export default {
@@ -51,11 +52,11 @@ Disabled.args = {
 };
 
 export const StartEnhancer = Template.bind({});
-StartEnhancer.args = { placeholder: "zNA", startEnhancer: "0://" };
+StartEnhancer.args = { placeholder: 'zNA', startEnhancer: '0://' };
 
 export const EndEnhancer = Template.bind({});
 EndEnhancer.args = {
-  placeholder: "Token Address",
-  endEnhancer: <Button onPress={() => alert("Pressed button!")}>Check</Button>,
-  label: "Token Address",
+  placeholder: 'Token Address',
+  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
+  label: 'Token Address'
 };

@@ -1,5 +1,5 @@
-@use '../../../styles/animations';
-@use '../../../styles/colors';
+@import '../../../styles/animations';
+@import '../../../styles/colors';
 
 .ArrowLink {
   position: relative;
@@ -10,7 +10,7 @@
     top: 0;
     height: 100%;
     width: 0.75rem;
-    transition: margin-left #{animations.$time-medium} ease-in-out;
+    transition: margin-left #{$time-medium} ease-in-out;
 
     .Arrow {
       height: 1px;
@@ -18,11 +18,11 @@
       position: absolute;
       left: 0;
       top: 50%;
-      background: #{colors.$blue};
+      background: #{$blue};
 
       &::after,
       &::before {
-        content: " ";
+        content: ' ';
         position: absolute;
         right: -1px;
         height: 1px;
@@ -48,15 +48,15 @@
     }
 
     &::after {
-      content: " ";
+      content: ' ';
       position: absolute;
       top: 50%;
       left: 50%;
       height: 0;
       width: 0;
-      background: #{colors.$black};
+      background: #{$black};
       transform: translate(-60%, -50%);
-      transition: box-shadow #{animations.$time-short} ease-in-out;
+      transition: box-shadow #{$time-short} ease-in-out;
     }
   }
 
@@ -65,7 +65,7 @@
       margin-left: 0.25rem;
 
       &::after {
-        box-shadow: 0px 0px 10px 3px #{colors.$blue};
+        box-shadow: 0px 0px 10px 3px #{$blue};
       }
     }
 

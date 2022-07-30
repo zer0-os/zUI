@@ -165,11 +165,6 @@
     }
   }
 
-  // Need this to retain focus ring on keyboard navigation for accessibility
-  &:not(.focus-visible) {
-    outline: none;
-  }
-
   &-spinner {
     border-color: var(--zui-button-border-color) !important;
   }

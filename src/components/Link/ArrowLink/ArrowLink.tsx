@@ -1,11 +1,11 @@
 // - React Imports
-import React from "react";
+import React from 'react';
 
-import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 // - Style Imports
-import styles from "./ArrowLink.module.scss";
+import styles from './ArrowLink.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -21,11 +21,11 @@ type ArrowLinkProps = {
 };
 
 export const TEST_ID = {
-  CONTAINER: "arrow-link-container",
+  CONTAINER: 'arrow-link-container',
   ARROW: {
-    CONTAINER: "arrow-link-arrow-container",
-    ARROW: "arrow-link-arrow",
-  },
+    CONTAINER: 'arrow-link-arrow-container',
+    ARROW: 'arrow-link-arrow'
+  }
 };
 
 export const ArrowLink: React.FC<ArrowLinkProps> = ({
@@ -35,14 +35,14 @@ export const ArrowLink: React.FC<ArrowLinkProps> = ({
   replace,
   style,
   back,
-  isLinkToExternalUrl,
+  isLinkToExternalUrl
 }) => {
   const content = (
     <>
-      {children}{" "}
+      {children}{' '}
       <div
         className={cx(styles.ArrowContainer, {
-          Back: back,
+          Back: back
         })}
         data-testid={TEST_ID.ARROW.CONTAINER}
       >
@@ -54,9 +54,9 @@ export const ArrowLink: React.FC<ArrowLinkProps> = ({
   const sharedProps = {
     className: `${className} ${styles.ArrowLink}`,
     style,
-    target: !replace ? "_blank" : undefined,
-    rel: "noreferrer",
-    "data-testid": TEST_ID.CONTAINER,
+    target: !replace ? '_blank' : undefined,
+    rel: 'noreferrer',
+    'data-testid': TEST_ID.CONTAINER
   };
 
   /**

@@ -1,10 +1,11 @@
-import React, { FC, forwardRef, ReactNode, useCallback, useRef } from "react";
+import React, { FC, forwardRef, ReactNode, useCallback, useRef } from 'react';
 
-import { AriaTextFieldProps } from "@react-types/textfield";
+// eslint-disable-next-line import/no-unresolved
+import { AriaTextFieldProps } from '@react-types/textfield';
 
-import classNames from "classnames";
+import classNames from 'classnames';
 
-export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange"> {
+export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
   className?: string;
   error?: boolean;
   success?: boolean;
@@ -21,12 +22,12 @@ type EnhancerProps = {
 };
 
 const Enhancer: FC<EnhancerProps> = ({ value, className }) => {
-  if (typeof value === "object") {
-    return <div className={classNames("zui-input-enhancer", className)}>{value}</div>;
+  if (typeof value === 'object') {
+    return <div className={classNames('zui-input-enhancer', className)}>{value}</div>;
   } else {
     return (
-      <div className={classNames("zui-input-enhancer", className)}>
-        <span className={"zui-input-enhancer-default"}>{value}</span>
+      <div className={classNames('zui-input-enhancer', className)}>
+        <span className={'zui-input-enhancer-default'}>{value}</span>
       </div>
     );
   }
@@ -45,6 +46,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
       label,
       onChange,
       helperText,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       type, // note: intentionally pulling type out for now
       ...rest
     },
@@ -59,27 +61,27 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
     return (
       <div
         data-disabled={isDisabled}
-        className={classNames(className, "zui-input-container", {
-          "zui-input-error": error,
-          "zui-input-success": success,
+        className={classNames(className, 'zui-input-container', {
+          'zui-input-error': error,
+          'zui-input-success': success
         })}
         ref={ref}
       >
-        <div onClick={clickWrapper} className={classNames("zui-input-wrapper", { "zui-input-empty": !value?.length })}>
-          {startEnhancer && <Enhancer value={startEnhancer} className={"zui-input-enhancer-start"} />}
+        <div onClick={clickWrapper} className={classNames('zui-input-wrapper', { 'zui-input-empty': !value?.length })}>
+          {startEnhancer && <Enhancer value={startEnhancer} className={'zui-input-enhancer-start'} />}
           <div
-            className={classNames("zui-input-input", {
-              "zui-input-enhanced-end": endEnhancer !== undefined,
-              "zui-input-enhanced-start": startEnhancer !== undefined,
+            className={classNames('zui-input-input', {
+              'zui-input-enhanced-end': endEnhancer !== undefined,
+              'zui-input-enhanced-start': startEnhancer !== undefined
             })}
           >
             {label && value && <label>{label}</label>}
             <input
               className={classNames({
-                "zui-input-no-label": label === undefined,
-                "zui-input-input-empty": value === undefined || !value.length,
+                'zui-input-no-label': label === undefined,
+                'zui-input-input-empty': value === undefined || !value.length
               })}
-              onChange={(event: any) => {
+              onChange={event => {
                 onChange(event.target.value);
               }}
               ref={inputRef}
@@ -87,9 +89,9 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
               {...rest}
             />
           </div>
-          {endEnhancer && <Enhancer value={endEnhancer} className={"zui-input-enhancer-end"} />}
+          {endEnhancer && <Enhancer value={endEnhancer} className={'zui-input-enhancer-end'} />}
         </div>
-        {helperText && <p className={"zui-input-helper"}>{helperText}</p>}
+        {helperText && <p className={'zui-input-helper'}>{helperText}</p>}
       </div>
     );
   }

@@ -19,8 +19,8 @@ export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange
   label?: string;
 }
 
-const Input: FC<InputProps> = (props) => {
-  return props.type === "number" ? <NumberInput {...props} /> : <TextInput {...props} />;
+const Input: FC<InputProps> = props => {
+  return props.type === 'number' ? <NumberInput {...props} /> : <TextInput {...props} />;
 };
 
 export default Input;
