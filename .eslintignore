@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-storybook
+jest.config.js
+jest.setup.ts
+babel.config.js
+lint-staged.config.js

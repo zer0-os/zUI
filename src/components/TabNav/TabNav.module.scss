@@ -1,0 +1,23 @@
+.List {
+  display: flex;
+  gap: 48px;
+
+  a {
+    font-size: 24px;
+    font-weight: bold;
+
+    transition: color 200ms ease;
+
+    color: grey;
+
+    &[data-state='active'] {
+      color: white;
+    }
+
+    &[data-state='inactive'] {
+      &:hover {
+        color: rgb(154, 154, 154);
+      }
+    }
+  }
+}
