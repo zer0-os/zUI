@@ -1,7 +1,0 @@
-node_modules/
-build/
-dist-storybook/
-dist/
-idea/
-.npmrc
-*.tgz
