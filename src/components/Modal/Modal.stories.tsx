@@ -1,13 +1,22 @@
-import React from "react";
-import Modal from "./";
-
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Modal from './';
+import { StoryCard } from '../.storybook';
 
 export default {
-  title: "Modal",
-  component: Modal,
+  title: 'Data Display/Modal',
+  component: Modal
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => <Modal trigger="Click me!">Hello! This is a modal</Modal>;
+const Template: ComponentStory<typeof Modal> = args => {
+  return (
+    <StoryCard isContrast>
+      <Modal {...args}>Hello! This is a modal</Modal>
+    </StoryCard>
+  );
+};
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
+Default.args = {
+  trigger: 'Click me!'
+};

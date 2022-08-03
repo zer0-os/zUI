@@ -2,10 +2,11 @@
  * @TODO: handle type="number" for auto numpad on mobile/screen readers
  */
 
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from 'react';
 
-import { formatUnits, parseUnits } from "ethers/lib/utils";
-import Input, { InputProps } from "./Input";
+import { formatUnits, parseUnits } from 'ethers/lib/utils';
+
+import Input, { InputProps } from './Input';
 
 export interface NumberInputProps extends InputProps {
   decimals?: number;
@@ -17,7 +18,7 @@ export interface NumberInputProps extends InputProps {
  */
 const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
   ({ decimals = 18, value, isBigNumber, onChange, ...props }, ref) => {
-    const [inputValue, setInputValue] = useState<string>("");
+    const [inputValue, setInputValue] = useState<string>('');
 
     /**
      * Handle direct changes to the value prop which
@@ -25,7 +26,7 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
      */
     useEffect(() => {
       if (!value) {
-        setInputValue("");
+        setInputValue('');
       } else {
         try {
           if (isBigNumber) {
@@ -33,15 +34,16 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
             setInputValue(formatted);
           } else {
             if (isNaN(Number(value))) {
-              throw Error("Not a number.");
+              throw Error('Not a number.');
             }
             setInputValue(value);
           }
         } catch (e) {
-          setInputValue("");
-          onChange("");
+          setInputValue('');
+          onChange('');
         }
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
     /**
@@ -49,9 +51,9 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
      * @param value new input value
      */
     const onInputChange = (value: string) => {
-      if (value === "") {
-        onChange("");
-        setInputValue("");
+      if (value === '') {
+        onChange('');
+        setInputValue('');
       } else {
         try {
           if (isBigNumber) {

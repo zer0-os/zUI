@@ -1,42 +1,40 @@
-import React from "react";
-import Button from "./";
-
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import Button from './';
+import { StoryCard } from '../.storybook';
 
 export default {
-  title: "Button",
-  component: Button,
+  title: 'Inputs/Button',
+  component: Button
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => (
-  <Button {...args} onPress={() => alert("You clicked the button")}>
-    zUI Button
-  </Button>
+const Template: ComponentStory<typeof Button> = args => (
+  <StoryCard isContrast>
+    <Button {...args}>Button</Button>
+  </StoryCard>
 );
 
 export const Primary = Template.bind({});
+Primary.args = {
+  variant: 'primary'
+};
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  variant: "secondary",
+  variant: 'secondary'
 };
 
 export const Negative = Template.bind({});
 Negative.args = {
-  variant: "negative",
-};
-
-export const Text = Template.bind({});
-Text.args = {
-  variant: "text",
+  variant: 'negative'
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  isDisabled: true,
+  isDisabled: true
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  isLoading: true,
+  isLoading: true
 };

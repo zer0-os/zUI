@@ -1,39 +1,41 @@
-@use "../../styles/typography";
+@import '../../styles/typography';
 
 .zui-loading-indicator {
-    display: flex;
+  display: flex;
 
-    &-bottom, &-top {
-        gap: 2.5rem;
-        align-items: center;
-    }
+  &-bottom,
+  &-top {
+    gap: 2.5rem;
+    align-items: center;
+  }
 
-    &-left, &-right {
-        gap: 1rem;
-        align-content: flex-start;
-        align-items: center;
-    }
+  &-left,
+  &-right {
+    gap: 1rem;
+    align-content: flex-start;
+    align-items: center;
+  }
 
-    &-bottom {
-        flex-direction: column-reverse;
-    }
+  &-bottom {
+    flex-direction: column-reverse;
+  }
 
-    &-top {
-        flex-direction: column;
-    }
+  &-top {
+    flex-direction: column;
+  }
 
-    &-left {
-        flex-direction: row;
-    }
+  &-left {
+    flex-direction: row;
+  }
 
-    &-right {
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-    }
+  &-right {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
 
-    &-text {
-        font-size: #{typography.$size-default};
-        padding: 0;
-        text-align: center;
-    }
+  &-text {
+    font-size: #{$size-default};
+    padding: 0;
+    text-align: center;
+  }
 }

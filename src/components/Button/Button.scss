@@ -2,29 +2,29 @@
  * @TODO: :active styling broken in Firefox
  */
 
-@use "../../styles/borders";
-@use "../../styles/animations";
-@use "../../styles/colors";
-@use "../../styles/typography";
+@import '../../styles/borders';
+@import '../../styles/animations';
+@import '../../styles/colors';
+@import '../../styles/typography';
 
 // Set up variables
 .zui-button {
   --zui-button-bg: linear-gradient(90deg, rgba(82, 87, 255, 0.25) 0%, rgba(82, 203, 255, 0.25) 100%);
-  --zui-button-border-color: #{colors.$dodger-blue-lighter};
-  --zui-button-border-color-hover: #{colors.$text-primary};
+  --zui-button-border-color: #{$dodger-blue-lighter};
+  --zui-button-border-color-hover: #{$text-primary};
   --zui-button-box-shadow-heavy: rgba(0, 209, 255, 0.5);
   --zui-button-box-shadow-light: rgba(0, 209, 255, 0.2);
   --zui-button-box-shadow: rgba(0, 209, 255, 0.2);
-  --zui-button-color: #{colors.$text-primary};
+  --zui-button-color: #{$text-primary};
   --zui-button-padding-sides: 1.563rem;
 
-  &[aria-disabled="true"] {
+  &[aria-disabled='true'] {
     --zui-button-bg: none;
-    --zui-button-border-color: #{colors.$grey};
+    --zui-button-border-color: #{$grey};
     --zui-button-box-shadow-heavy: none;
     --zui-button-box-shadow-light: none;
     --zui-button-box-shadow: none;
-    --zui-button-color: #{colors.$grey};
+    --zui-button-color: #{$grey};
   }
 
   &-secondary {
@@ -33,8 +33,8 @@
 
   &-negative {
     //background: red;
-    --zui-button-border-color: #{colors.$red-500};
-    --zui-button-bg: #{rgba(colors.$red-500, 0.5)};
+    --zui-button-border-color: #{$red-500};
+    --zui-button-bg: #{rgba($red-500, 0.5)};
     --zui-button-box-shadow-heavy: rgba(112, 0, 255, 0.5);
     --zui-button-box-shadow-light: rgba(112, 0, 255, 0.5);
     --zui-button-box-shadow: rgba(247, 99, 176, 0.5);
@@ -52,6 +52,7 @@
   // Add other variants here
 }
 
+/* stylelint-disable no-duplicate-selectors */
 .zui-button {
   position: relative;
   display: flex;
@@ -79,18 +80,18 @@
   text-transform: uppercase;
 
   // @TODO: don't transition all
-  transition: all #{animations.$time-short} ease-in-out;
+  transition: all #{$time-short} ease-in-out;
 
   &-content {
     margin: 0 8px;
 
     color: var(--zui-button-color);
     text-align: center;
-    font-size: #{typography.$size-small};
-    font-weight: #{typography.$font-weight-bold};
-    //text-shadow: #{colors.$text-glow-white};
+    font-size: #{$size-small};
+    font-weight: #{$font-weight-bold};
+    //text-shadow: #{$text-glow-white};
     z-index: 2;
-    transition: color #{animations.$time-short} ease-in-out, text-shadow #{animations.$time-short} ease-in-out;
+    transition: color #{$time-short} ease-in-out, text-shadow #{$time-short} ease-in-out;
   }
 
   &-wash {
@@ -100,14 +101,14 @@
     height: 100%;
     width: 100%;
     background: var(--zui-button-box-shadow);
-    transition: opacity #{animations.$time-short} ease-in-out;
+    transition: opacity #{$time-short} ease-in-out;
     opacity: 0;
     z-index: 0;
   }
 
   // Pseudo-element for borders
   &:after {
-    content: " ";
+    content: ' ';
     width: calc(100% - 4px);
     height: 100%;
     position: absolute;
@@ -117,12 +118,12 @@
     border-radius: inherit;
     border-left: 2px solid var(--zui-button-border-color);
     border-right: 2px solid var(--zui-button-border-color);
-    transition: border-color #{animations.$time-short} ease-in-out;
+    transition: border-color #{$time-short} ease-in-out;
   }
 
   // Pseudo-element for middle glow
   &:before {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: 50%;
     left: 0;
@@ -132,7 +133,7 @@
   }
 
   // Disabled button
-  &[aria-disabled="true"] {
+  &[aria-disabled='true'] {
     opacity: 0.8;
     pointer-events: none;
 
@@ -141,7 +142,12 @@
     }
   }
 
-  &:not([aria-disabled="true"]) {
+  // Need this to retain focus ring on keyboard navigation for accessibility
+  &:not(.focus-visible) {
+    outline: none;
+  }
+
+  &:not([aria-disabled='true']) {
     &:hover {
       .zui-button-wash {
         opacity: 1;
@@ -159,12 +165,8 @@
     }
   }
 
-  // Need this to retain focus ring on keyboard navigation for accessibility
-  &:not(.focus-visible) {
-    outline: none;
-  }
-
   &-spinner {
     border-color: var(--zui-button-border-color) !important;
   }
 }
+/* stylelint-enable no-duplicate-selectors */

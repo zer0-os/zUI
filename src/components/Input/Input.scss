@@ -1,146 +1,146 @@
-@use "../../styles/colors";
-@use '../../styles/animations';
+@import '../../styles/colors';
+@import '../../styles/animations';
 
 .zui-input-container {
-    --zui-input-border: 1px solid #{colors.$anakiwa-lighter};
-    --zui-input-label-color: #{colors.$grey-lighter-3};
-    --zui-input-helper-color: #{colors.$grey-lighter-3};
-    --zui-input-padding-left: 1.5rem;
-    --zui-input-background: #{colors.$ocean-10};
+  --zui-input-border: 1px solid #{$anakiwa-lighter};
+  --zui-input-label-color: #{$grey-lighter-3};
+  --zui-input-helper-color: #{$grey-lighter-3};
+  --zui-input-padding-left: 1.5rem;
+  --zui-input-background: #{$ocean-10};
 
-    &.zui-input-error {
-        --zui-input-border: 1px solid #{colors.$red-200};
-        --zui-input-label-color: #{colors.$red-200};
-        --zui-input-helper-color: #{colors.$red-200};
-    }
+  &.zui-input-error {
+    --zui-input-border: 1px solid #{$red-200};
+    --zui-input-label-color: #{$red-200};
+    --zui-input-helper-color: #{$red-200};
+  }
 
-    &.zui-input-success {
-        --zui-input-label-color: #{colors.$success-green};
-        --zui-input-helper-color: #{colors.$success-green};
-        --zui-input-border: 1px solid #{colors.$anakiwa-lighter};
-    }
+  &.zui-input-success {
+    --zui-input-label-color: #{$success-green};
+    --zui-input-helper-color: #{$success-green};
+    --zui-input-border: 1px solid #{$anakiwa-lighter};
+  }
 
-    &[data-disabled="true"] {
-        --zui-input-border: 1px solid #{colors.$grey};
-    }
+  &[data-disabled='true'] {
+    --zui-input-border: 1px solid #{$grey};
+  }
 }
 
+/* stylelint-disable no-duplicate-selectors */
 .zui-input-container {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
+  .zui-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
 
-    .zui-input-wrapper {
-        display: flex;
-        gap: 0.5rem;
+    position: relative;
 
-        position: relative;
+    width: 100%;
 
+    border: var(--zui-input-border);
+    background: var(--zui-input-background);
+    transition: background 2s ease;
+
+    cursor: text;
+
+    //height: calc(3rem - 2px);
+    justify-content: space-between;
+    align-items: center;
+
+    // arbitrary large number for fully rounded border
+    border-radius: 100rem;
+
+    .zui-input-input {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      label {
+        position: absolute;
+        top: 6px;
+        left: var(--zui-input-padding-left);
+        font-size: 0.625rem;
+        color: var(--zui-input-label-color);
+      }
+
+      input {
         width: 100%;
-
-        border: var(--zui-input-border);
-        background: var(--zui-input-background);
-        transition: background 2s ease;
-
-        cursor: text;
-
-        &.zui-input-empty:not(:focus) {
-            background: none;
-        }
-
-        //height: calc(3rem - 2px);
-        justify-content: space-between;
-        align-items: center;
-
-        // arbitrary large number for fully rounded border
-        border-radius: 100rem;
-
-        &.zui-input-empty {
-            .zui-input-input input {
-                padding: 0.75rem 1.5rem;
-            }
-        }
-
-        .zui-input-input {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-
-            label {
-                position: absolute;
-                top: 6px;
-                left: var(--zui-input-padding-left);
-                font-size: 0.625rem;
-                color: var(--zui-input-label-color);
-            }
-
-            &.zui-input-enhanced-end {
-                input {
-                    padding-right: 0;
-                }
-            }
-
-            &.zui-input-enhanced-start {
-                label {
-                    left: 0;
-                }
-
-                input {
-                    padding-left: 0;
-                }
-            }
-
-            input {
-                width: 100%;
-                background: none;
-                color: #{colors.$text-primary};
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-                line-height: 1.5rem;
-                border: none;
-                flex: 1;
-                border-radius: 100rem;
-                box-sizing: border-box;
-
-                // NOTE: DANGEROUS FOR ACCESSIBILITY
-                outline: none;
-
-
-                &:not(.zui-input-input-empty, .zui-input-no-label) {
-                    padding-top: 1.125rem;
-                    padding-bottom: 0.375rem;
-                }
-
-            }
-        }
-    }
-
-    &[data-disabled="true"] {
-        opacity: 0.7;
         background: none;
+        color: #{$text-primary};
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        border: none;
+        flex: 1;
+        border-radius: 100rem;
+        box-sizing: border-box;
+
+        // NOTE: DANGEROUS FOR ACCESSIBILITY
+        outline: none;
+
+        &:not(.zui-input-input-empty, .zui-input-no-label) {
+          padding-top: 1.125rem;
+          padding-bottom: 0.375rem;
+        }
+      }
+
+      &.zui-input-enhanced-end {
+        input {
+          padding-right: 0;
+        }
+      }
+
+      &.zui-input-enhanced-start {
+        label {
+          left: 0;
+        }
+
+        input {
+          padding-left: 0;
+        }
+      }
     }
 
-    .zui-input-helper {
-        padding: 0;
-        margin: 0.125rem 0 0 1.5rem;
-        font-size: 0.75rem;
-        line-height: 0.938rem;
-        color: var(--zui-input-helper-color);
+    &.zui-input-empty {
+      .zui-input-input input {
+        padding: 0.75rem 1.5rem;
+      }
     }
 
-    .zui-input-enhancer-start, .zui-input-enhancer-end {
-        padding: 0 1.5rem;
+    &.zui-input-empty:not(:focus) {
+      background: none;
     }
+  }
 
-    .zui-input-enhancer-start {
-        padding-right: 0;
-    }
+  &[data-disabled='true'] {
+    opacity: 0.7;
+    background: none;
+  }
 
-    .zui-input-enhancer-end {
-        padding-left: 0;
-    }
+  .zui-input-helper {
+    padding: 0;
+    margin: 0.125rem 0 0 1.5rem;
+    font-size: 0.75rem;
+    line-height: 0.938rem;
+    color: var(--zui-input-helper-color);
+  }
 
-    .zui-input-enhancer-default {
-        color: #{colors.$grey}
-    }
+  .zui-input-enhancer-start,
+  .zui-input-enhancer-end {
+    padding: 0 1.5rem;
+  }
+
+  .zui-input-enhancer-start {
+    padding-right: 0;
+  }
+
+  .zui-input-enhancer-end {
+    padding-left: 0;
+  }
+
+  .zui-input-enhancer-default {
+    color: #{$grey};
+  }
 }
+/* stylelint-enable no-duplicate-selectors */

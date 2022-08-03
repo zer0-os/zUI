@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react';
+// eslint-disable-next-line import/no-unresolved
+import { AriaTextFieldProps } from '@react-types/textfield';
 
-import { AriaTextFieldProps } from "@react-types/textfield";
+import TextInput from './Input';
+import NumberInput from './NumberInput';
 
-import TextInput from "./Input";
-import NumberInput from "./NumberInput";
+import './Input.scss';
 
-import "./Input.scss";
-
-export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange"> {
+export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
   className?: string;
   error?: boolean;
   success?: boolean;
@@ -19,8 +19,8 @@ export interface InputProps extends Omit<AriaTextFieldProps, "value" | "onChange
   label?: string;
 }
 
-const Input: FC<InputProps> = (props) => {
-  return props.type === "number" ? <NumberInput {...props} /> : <TextInput {...props} />;
+const Input: FC<InputProps> = props => {
+  return props.type === 'number' ? <NumberInput {...props} /> : <TextInput {...props} />;
 };
 
 export default Input;

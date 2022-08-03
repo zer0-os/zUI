@@ -4,7 +4,7 @@ export type Step = {
 };
 
 export type StepBarProps = {
-  currentStepId: Step["id"];
+  currentStepId: Step['id'];
   steps: Step[];
   onChangeStep?: (step: Step) => void;
   className?: string;

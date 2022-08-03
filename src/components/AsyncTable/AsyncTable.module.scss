@@ -1,4 +1,4 @@
-@use "../../styles/colors";
+@import '../../styles/colors';
 
 .Container {
   width: 100%;
@@ -6,16 +6,8 @@
   th {
     font-size: 0.75rem;
     font-weight: bold;
-    color: #{colors.$grey-lighter-2};
+    color: #{$grey-lighter-2};
     padding: 1rem;
-
-    &:first-of-type {
-      padding-left: 0;
-    }
-
-    &:last-of-type {
-      padding-right: 0;
-    }
   }
 
   th,

@@ -1,6 +1,6 @@
 // // - Styles Imports
 
-import React from "react";
+import React from 'react';
 
 // // - Library Imports
 // import { LABELS } from "constants/labels";
@@ -105,7 +105,7 @@ import React from "react";
 // export default NFTDetails;
 
 const NFTDetails = () => {
-  throw new Error("NFTDetails component not implemented yet");
+  throw new Error('NFTDetails component not implemented yet');
   return <>NFT DETAILS COMPONENT NOT IMPLEMENTED YET</>;
 };
 

@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import classNames from "classnames/bind";
+import classNames from 'classnames/bind';
 
-import { ArrowLink } from "../Link";
-import styles from "./StepBar.module.scss";
-import type { Step, StepBarProps } from "./StepBar.types";
+import { ArrowLink } from '../Link';
+import styles from './StepBar.module.scss';
+import type { Step, StepBarProps } from './StepBar.types';
 
 const cx = classNames.bind(styles);
 
 export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChangeStep, className }) => {
-  const currentStepIndex = steps.findIndex((s) => s.id === currentStepId);
+  const currentStepIndex = steps.findIndex(s => s.id === currentStepId);
 
   const stepStyle = {
     translate: Math.min(steps.length - 1, currentStepIndex) * 100,
-    width: 100 / steps.length,
+    width: 100 / steps.length
   };
 
   return (
@@ -26,9 +26,9 @@ export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChange
               className={styles.Step}
               onClick={() => onChangeStep(s)}
               style={{
-                position: "absolute",
+                position: 'absolute',
                 left: `${i * stepStyle.width}%`,
-                width: `${stepStyle.width}%`,
+                width: `${stepStyle.width}%`
               }}
             >
               <ArrowLink back>{s.title}</ArrowLink>
@@ -40,10 +40,10 @@ export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChange
       <div
         style={{
           width: `${stepStyle.width}%`,
-          transform: `translateX(${stepStyle.translate}%)`,
+          transform: `translateX(${stepStyle.translate}%)`
         }}
         className={cx(styles.Bar, {
-          Hide: currentStepIndex > steps.length,
+          Hide: currentStepIndex > steps.length
         })}
       >
         {steps[Math.min(steps.length - 1, currentStepIndex)].title}
