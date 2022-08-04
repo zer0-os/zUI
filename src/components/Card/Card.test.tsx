@@ -10,8 +10,8 @@ const DEFAULT_PROPS: CardProps = {
 };
 
 jest.mock('../Skeleton', () => {
-  return function MockSkeleton(props) {
-    return <span {...props}>Skeleton</span>;
+  return function MockSkeleton() {
+    return <span>Skeleton</span>;
   };
 });
 
