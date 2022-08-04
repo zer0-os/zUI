@@ -1,0 +1,55 @@
+@import '../../../styles/colors';
+
+.color_swatch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+
+  &__details {
+    margin-top: 0.25rem;
+    flex: 0 0 30%;
+
+    &-title {
+      margin: unset;
+      font-weight: 600;
+      line-height: 1.25rem;
+      color: rgb(51, 51, 51);
+    }
+
+    &-variable {
+      margin: unset;
+      font-weight: 400;
+      line-height: 1.25rem;
+      color: rgba(51, 51, 51, 0.86);
+    }
+  }
+
+  &__color {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: row;
+
+    &_info {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0%;
+      margin-bottom: 2rem;
+
+      &-box {
+        display: block;
+        width: 100%;
+        height: 3rem;        
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0.25rem;
+      }
+
+      &-hex {
+        margin: 0;
+        line-height: 1.25rem;
+        text-align: center;
+        color: rgba(51, 51, 51, 0.6);
+      }
+    }
+  }
+}

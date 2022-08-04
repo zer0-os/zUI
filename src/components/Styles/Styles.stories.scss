@@ -1,0 +1,15 @@
+.colors-story-card {
+  max-width: 50rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  .story_card__content {
+    align-items: unset;
+    box-shadow: unset;
+
+    > * {      
+      margin: unset;
+    }
+  }
+}
