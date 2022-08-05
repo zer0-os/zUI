@@ -1,0 +1,44 @@
+@import '../../styles/borders';
+@import '../../styles/colors';
+
+.ZUI-tooltip {
+  &__trigger {
+    display: inline-block;
+    margin: unset;
+  }
+
+  &__content {
+    padding: 1.5rem;
+    max-width: 22rem;
+    background-color: $purple-15;
+    border-radius: $radius-primary;
+
+    &[data-side='right'][data-align='end'] {
+      border-bottom-left-radius: unset;
+    }
+    &[data-side='right'][data-align='start'] {
+      border-top-left-radius: unset;
+    }
+    &[data-side='left'][data-align='end'] {
+      border-bottom-right-radius: unset;
+    }
+    &[data-side='left'][data-align='start'] {
+      border-top-right-radius: unset;
+    }
+  }
+
+  &__arrow {
+    fill: $purple-15;
+  }
+
+  &__storycard {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > * {
+      margin: unset;
+    }
+  }
+}

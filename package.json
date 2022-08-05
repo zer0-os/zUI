@@ -91,6 +91,7 @@
     "@radix-ui/react-dropdown-menu": "^0.1.6",
     "@radix-ui/react-switch": "^0.1.5",
     "@radix-ui/react-tabs": "^0.1.5",
+    "@radix-ui/react-tooltip": "^1.0.0",
     "@react-aria/button": "^3.5.0",
     "@react-aria/i18n": "^3.4.1",
     "@react-aria/numberfield": "^3.2.1",
