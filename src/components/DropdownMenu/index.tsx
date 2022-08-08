@@ -20,9 +20,9 @@ export interface DropdownItem {
   icon?: string | ReactNode;
 }
 
-interface DropdownMenuProps extends RadixUIDropdownMenuProps {
+export interface DropdownMenuProps extends RadixUIDropdownMenuProps {
   items: DropdownItem[];
-  trigger?: string | ReactNode | 'triple-dot';
+  trigger?: ReactNode | 'triple-dot';
 
   // from RadixDropdownMenu.DropdownMenuContentProps
   side?: 'top' | 'right' | 'bottom' | 'left';
