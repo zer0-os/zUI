@@ -8,7 +8,7 @@ export default {
   component: LoadingIndicator
 } as ComponentMeta<typeof LoadingIndicator>;
 
-const Template: ComponentStory<typeof LoadingIndicator> = args =>  {
+const Template: ComponentStory<typeof LoadingIndicator> = args => {
   return (
     <StoryCard isContrast>
       <LoadingIndicator {...args} />

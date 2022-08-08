@@ -34,7 +34,7 @@ test('should render spinner', () => {
 });
 
 test('should render text', () => {
-  const { getByTestId } = renderComponent({text: mockText});
+  const { getByTestId } = renderComponent({ text: mockText });
   const text = getByTestId(TEST_ID.TEXT);
   expect(text).toBeInTheDocument();
   expect(text).toHaveClass('zui-loading-indicator-text');
@@ -42,7 +42,7 @@ test('should render text', () => {
 });
 
 test('should render text with custom postiion', () => {
-  const { getByTestId } = renderComponent({text: mockText, spinnerPosition: 'left' });
+  const { getByTestId } = renderComponent({ text: mockText, spinnerPosition: 'left' });
   const text = getByTestId(TEST_ID.TEXT);
   expect(text).toHaveClass('zui-loading-indicator-text-left');
 });
