@@ -35,7 +35,7 @@ const Content = styled(DialogContent, {
   border: '1px solid #3b3b3b'
 });
 
-interface ModalProps extends DialogProps {
+export interface ModalProps extends DialogProps {
   className?: string;
   trigger?: ReactNode;
 }
