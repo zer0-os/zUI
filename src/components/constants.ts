@@ -1,1 +1,1 @@
-export const CSS_PREFIX = 'ZUI';
+export const CSS_PREFIX = 'zui';
