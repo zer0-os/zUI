@@ -11,8 +11,8 @@ export type TooltipProps = {
   open?: TooltipPrimitive.TooltipProps['open'];
   defaultOpen?: TooltipPrimitive.TooltipProps['defaultOpen'];
   onOpenChange?: TooltipPrimitive.TooltipProps['onOpenChange'];
-  side: TooltipPrimitive.TooltipContentProps['side'];
-  align: TooltipPrimitive.TooltipContentProps['align'];
+  side?: TooltipPrimitive.TooltipContentProps['side'];
+  align?: TooltipPrimitive.TooltipContentProps['align'];
   content?: ReactNode;
 };
 
