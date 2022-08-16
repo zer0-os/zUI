@@ -1,35 +1,38 @@
-import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Step, StepBar } from '.';
+import React, { FC, useState } from 'react';
+import StepBar from './StepBar';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoryCard } from '../.storybook';
-
-const STEPS: Step[] = [
-  { id: 'step_1', title: 'Step 1' },
-  { id: 'step_2', title: 'Step 2' },
-  { id: 'step_3', title: 'Step 3' },
-  { id: 'step_4', title: 'Step 4' }
-];
+import { Step } from './StepBar.types';
 
 export default {
-  title: 'Data Display/StepBar',
+  title: 'StepBar',
   component: StepBar
 } as ComponentMeta<typeof StepBar>;
 
-const Template: ComponentStory<typeof StepBar> = args => {
-  const [currentStepId, setCurrentStepId] = useState<Step['id']>(STEPS[STEPS.length - 1].id);
-
-  const onChangeStep = (step: Step) => {
-    setCurrentStepId(step.id);
-  };
+export const Default: ComponentStory<typeof StepBar> = ({ currentStepId, steps }) => {
+  const [step, setStep] = useState(steps.find((x) => x.id === currentStepId));
 
   return (
     <StoryCard isContrast>
-      <StepBar {...args} currentStepId={currentStepId} onChangeStep={onChangeStep} />
+      <StepBar currentStepId={step?.id ?? ""} steps={steps} onChangeStep={(step: Step) => setStep(step)} />
     </StoryCard>
   );
-};
+}
 
-export const Default = Template.bind({});
 Default.args = {
-  steps: STEPS
+    currentStepId: "summary",
+    steps: [
+        {
+            id: "details",
+            title: "Details"
+        },
+        {
+            id: "test",
+            title: "Test"
+        },
+        {
+            id: "summary",
+            title: "Summary"
+        }
+    ]
 };

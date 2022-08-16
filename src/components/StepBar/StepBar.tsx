@@ -46,7 +46,7 @@ export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChange
           Hide: currentStepIndex > steps.length
         })}
       >
-        {steps[Math.min(steps.length - 1, currentStepIndex)].title}
+        {steps[Math.min(steps.length - 1, currentStepIndex)]?.title}
       </div>
     </div>
   );

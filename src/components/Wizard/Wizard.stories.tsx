@@ -20,33 +20,40 @@ export const Container: ComponentStory<typeof Wizard.Container> = args => (
 
 export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
   <StoryCard isContrast>
-    <Wizard.Loading {...args}>
-      <p style={{ textAlign: 'center' }}>
-        You can put any content in this container, and it will apply Wizard styling!
-      </p>
-    </Wizard.Loading>
+    <Wizard.Loading {...args} />
   </StoryCard>
 );
+
+Loading.args = {
+  message: "Loading..."
+};
 
 export const Header: ComponentStory<typeof Wizard.Header> = args => (
   <StoryCard isContrast>
     <Wizard.Container>
-      <Wizard.Header {...args} header={'Wizard Header Goes Here'} subHeader={'Some additional info as a subheader'} />
+      <Wizard.Header {...args} />
     </Wizard.Container>
   </StoryCard>
 );
 
+Header.args = {
+  header: "Wizard Header Goes Here",
+  subHeader: "Some additional info as a subheader",
+  sectionDivider: true
+};
+
 export const Confirmation: ComponentStory<typeof Wizard.Confirmation> = args => (
   <StoryCard isContrast>
     <Wizard.Container>
-      <Wizard.Confirmation
-        {...args}
-        message={'Some confirmation text'}
-        isPrimaryButtonActive
-        isSecondaryButtonActive
-        onClickPrimaryButton={() => alert('Clicked confirm')}
-        onClickSecondaryButton={() => alert('Clicked cancel')}
-      />
+      <Wizard.Confirmation {...args} />
     </Wizard.Container>
   </StoryCard>
 );
+
+Confirmation.args = {
+  message: 'Some confirmation text',
+  isPrimaryButtonActive: true,
+  isSecondaryButtonActive: true,
+  onClickPrimaryButton: () => alert('Clicked confirm'),
+  onClickSecondaryButton: () => alert('Clicked cancel')
+};

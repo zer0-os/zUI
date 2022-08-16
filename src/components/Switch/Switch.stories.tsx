@@ -1,6 +1,6 @@
 import React from 'react';
 import SwitchRadix from './';
-
+import { StoryCard } from '../.storybook/StoryCard';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 export default {
@@ -8,9 +8,14 @@ export default {
   component: SwitchRadix
 } as ComponentMeta<typeof SwitchRadix>;
 
-const Template: ComponentStory<typeof SwitchRadix> = args => <SwitchRadix {...args} />;
+const Template: ComponentStory<typeof SwitchRadix> = args => (
+  <StoryCard isContrast>
+    <SwitchRadix {...args} />
+  </StoryCard>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
-  id: 'hello'
+  id: "hello",
+  defaultChecked: true
 };
