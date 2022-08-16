@@ -7,6 +7,7 @@
   --zui-input-helper-color: #{$grey-lighter-3};
   --zui-input-padding-left: 1.5rem;
   --zui-input-background: #{$ocean-10};
+  --zui-input-box-shadow: 0px 0px 16px rgba(82, 203, 255, 0.25);
 
   &.zui-input-error {
     --zui-input-border: 1px solid #{$red-200};
@@ -39,6 +40,7 @@
 
     border: var(--zui-input-border);
     background: var(--zui-input-background);
+    box-shadow: var(--zui-input-box-shadow);
     transition: background 2s ease;
 
     cursor: text;
@@ -108,7 +110,7 @@
       }
     }
 
-    &.zui-input-empty:not(:focus) {
+    &.zui-input-empty:not(:hover) {
       background: none;
     }
   }
