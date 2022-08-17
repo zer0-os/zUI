@@ -8,17 +8,14 @@ export default {
   component: LoadingIndicator
 } as ComponentMeta<typeof LoadingIndicator>;
 
-const Template: ComponentStory<typeof LoadingIndicator> = args => {
-  return (
-    <StoryCard isContrast>
-      <LoadingIndicator {...args} />
-    </StoryCard>
-  );
-};
+const Template: ComponentStory<typeof LoadingIndicator> = args => (
+  <StoryCard isContrast>
+    <LoadingIndicator {...args} />
+  </StoryCard>
+);
 
 export const Default = Template.bind({});
 Default.args = {
   text: 'Howdy something really really long',
-  spinnerPosition: 'right',
-  subtext: 'Hello'
+  spinnerPosition: 'right'
 };
