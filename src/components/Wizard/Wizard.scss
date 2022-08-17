@@ -1,0 +1,48 @@
+@use "../../styles/dimensions";
+@use "../../styles/typography";
+@use "../../styles/colors";
+
+$gutter: 16px;
+
+.zui-wizard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+
+  gap: 2.5rem;
+
+  .zui-wizard-header {
+    width: 100%;
+    text-align: center;
+
+    * {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: #{typography.$size-large};
+      font-weight: #{typography.$font-weight-bold};
+    }
+
+    h2 {
+      margin-top: 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    hr {
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+      height: 1px;
+      background-color: #{colors.$grey};
+      border: none;
+    }
+  }
+
+  .zui-wizard-loading {
+    > p:first-of-type {
+      margin-top: 0;
+    }
+  }
+}

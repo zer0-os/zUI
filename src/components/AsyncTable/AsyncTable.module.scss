@@ -1,0 +1,41 @@
+@import '../../styles/colors';
+
+.Container {
+  width: 100%;
+
+  th {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #{$grey-lighter-2};
+    padding: 1rem;
+  }
+
+  th,
+  td {
+    padding: 1rem;
+    vertical-align: middle;
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+
+  .Right {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .Center {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .Left {
+    margin-right: auto;
+    text-align: left;
+  }
+}

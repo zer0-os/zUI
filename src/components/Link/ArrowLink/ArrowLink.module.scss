@@ -1,0 +1,76 @@
+@import '../../../styles/animations';
+@import '../../../styles/colors';
+
+.ArrowLink {
+  position: relative;
+
+  .ArrowContainer {
+    position: absolute;
+    left: calc(100% + 0.25rem);
+    top: 0;
+    height: 100%;
+    width: 0.75rem;
+    transition: margin-left #{$time-medium} ease-in-out;
+
+    .Arrow {
+      height: 1px;
+      width: 0.5rem;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      background: #{$blue};
+
+      &::after,
+      &::before {
+        content: ' ';
+        position: absolute;
+        right: -1px;
+        height: 1px;
+        width: 0.35rem;
+        background: inherit;
+      }
+
+      &::after {
+        transform: translateY(-200%) rotate(45deg);
+      }
+
+      &::before {
+        transform: translateY(200%) rotate(-45deg);
+      }
+    }
+
+    &.Back {
+      left: calc(100% + 0.5rem);
+
+      .Arrow {
+        transform: rotate(180deg);
+      }
+    }
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 0;
+      width: 0;
+      background: #{$black};
+      transform: translate(-60%, -50%);
+      transition: box-shadow #{$time-short} ease-in-out;
+    }
+  }
+
+  &:hover {
+    .ArrowContainer {
+      margin-left: 0.25rem;
+
+      &::after {
+        box-shadow: 0px 0px 10px 3px #{$blue};
+      }
+    }
+
+    .Back {
+      margin-left: -0.25rem;
+    }
+  }
+}

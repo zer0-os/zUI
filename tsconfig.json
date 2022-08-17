@@ -1,18 +1,23 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "outDir": "./dist",
+    "baseUrl": "src",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./dist",
     "incremental": false,
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "esnext",
-    "types": ["jest", "node"],
+    "types": ["jest", "node", "@testing-library/jest-dom"],
     "lib": ["es2017", "dom"],
     "paths": {
       "@/*": ["./src/*"]
@@ -21,8 +26,9 @@
   "include": ["src/**/*"],
   "exclude": [
     "node_modules",
+    "dist",
+    "dist-storybook",
     "build",
-    "storybook-static",
     "src/**/*.stories.tsx",
     "src/**/*.test.tsx",
     "**/*.js",
