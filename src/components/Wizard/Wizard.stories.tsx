@@ -14,14 +14,6 @@ export const Container: ComponentStory<typeof Wizard.Container> = args => (
       <p style={{ textAlign: 'center' }}>
         You can put any content in this container, and it will apply Wizard styling!
       </p>
-      {/*<Wizard.Loading message={"Loading"} />*/}
-      {/*<Wizard.Confirmation*/}
-      {/*  message={"Some confirmation text"}*/}
-      {/*  isPrimaryButtonActive*/}
-      {/*  isSecondaryButtonActive*/}
-      {/*  onClickPrimaryButton={() => alert("Clicked confirm")}*/}
-      {/*  onClickSecondaryButton={() => alert("Clicked cancel")}*/}
-      {/*/>*/}
     </Wizard.Container>
   </StoryCard>
 );
@@ -32,14 +24,6 @@ export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
       <p style={{ textAlign: 'center' }}>
         You can put any content in this container, and it will apply Wizard styling!
       </p>
-      {/*<Wizard.Loading message={"Loading"} />*/}
-      {/*<Wizard.Confirmation*/}
-      {/*  message={"Some confirmation text"}*/}
-      {/*  isPrimaryButtonActive*/}
-      {/*  isSecondaryButtonActive*/}
-      {/*  onClickPrimaryButton={() => alert("Clicked confirm")}*/}
-      {/*  onClickSecondaryButton={() => alert("Clicked cancel")}*/}
-      {/*/>*/}
     </Wizard.Loading>
   </StoryCard>
 );
@@ -48,14 +32,6 @@ export const Header: ComponentStory<typeof Wizard.Header> = args => (
   <StoryCard isContrast>
     <Wizard.Container>
       <Wizard.Header {...args} header={'Wizard Header Goes Here'} subHeader={'Some additional info as a subheader'} />
-      {/*<Wizard.Loading message={"Loading"} />*/}
-      {/*<Wizard.Confirmation*/}
-      {/*  message={"Some confirmation text"}*/}
-      {/*  isPrimaryButtonActive*/}
-      {/*  isSecondaryButtonActive*/}
-      {/*  onClickPrimaryButton={() => alert("Clicked confirm")}*/}
-      {/*  onClickSecondaryButton={() => alert("Clicked cancel")}*/}
-      {/*/>*/}
     </Wizard.Container>
   </StoryCard>
 );
