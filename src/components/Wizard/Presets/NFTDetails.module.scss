@@ -1,0 +1,72 @@
+@import '../../../styles/dimensions';
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+$width: 640px;
+$gutter: 16px;
+
+.Container {
+  display: flex;
+  word-break: break-word;
+
+  gap: 24px;
+
+  @media only screen and (max-width: #{$width + $gutter + $gutter}) {
+    flex-direction: column;
+  }
+
+  .Image {
+    height: 260px;
+    width: 260px;
+    flex-shrink: 0;
+
+    @media only screen and (max-width: #{$width + $gutter + $gutter}) {
+      margin: 0 auto;
+    }
+  }
+
+  .Details {
+    padding: 0;
+
+    h1 {
+      font-size: #{$size-large};
+      font-weight: #{$font-weight-bold};
+    }
+
+    h2 {
+      color: #{$blue};
+      margin-top: 4px;
+    }
+
+    > *:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    // Tablet Breakpoint
+    @media only screen and (min-width: #{$breakpoint-tablet-xs}) {
+      > * {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .ViewAll {
+    display: flex;
+    padding: 4px 0 0 0;
+  }
+
+  .DetailComponent {
+    span {
+      color: #{$grey-lighter-2};
+    }
+
+    .Bid {
+      color: unset;
+    }
+  }
+
+  .MemberLabel {
+    font-size: #{$size-tiny};
+    color: #{$grey-lighter-2};
+  }
+}

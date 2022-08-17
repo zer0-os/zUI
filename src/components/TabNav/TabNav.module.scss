@@ -1,0 +1,29 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .List {
+    display: flex;
+    gap: 3rem;
+
+    a {
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      transition: color 200ms ease;
+
+      color: grey;
+
+      &[data-state='active'] {
+        color: white;
+      }
+
+      &[data-state='inactive'] {
+        &:hover {
+          color: rgb(154, 154, 154);
+        }
+      }
+    }
+  }
+}

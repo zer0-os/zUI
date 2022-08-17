@@ -1,0 +1,48 @@
+@import '../../styles/typography';
+@import '../../styles/animations';
+@import '../../styles/colors';
+
+.StepBar {
+  position: relative;
+  width: 100%;
+  font-size: #{$size-tiny};
+  font-weight: #{$font-weight-bold};
+  text-align: center;
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #{$mine-shaft};
+  }
+
+  .Step {
+    cursor: pointer;
+    transition: opacity #{$time-long} ease-in-out;
+    z-index: 2;
+
+    > a {
+      color: #{$blue};
+      transition: text-shadow 0.1s ease-in-out;
+    }
+  }
+
+  .Bar {
+    padding-bottom: 4px;
+    color: #{$blue};
+    border-bottom: 1px solid #{$blue};
+    transition: all #{$time-long} ease-in-out;
+
+    &::after {
+      content: attr(data-text);
+    }
+
+    &.Hide {
+      border-bottom: 1px solid #{$black};
+      color: #{$black};
+      z-index: -1;
+    }
+  }
+}
