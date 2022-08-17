@@ -1,22 +1,21 @@
 import React, { FC, ReactNode } from 'react';
 
 // Style Imports
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 
 // Preset Screens
 import Buttons from './Presets/Buttons';
 import Confirmation from './Presets/Confirmation';
 import Loading from './Presets/Loading';
-import NFTDetails from './Presets/NFTDetails';
 import './Wizard.scss';
 
-interface HeaderProps {
+export interface HeaderProps {
   header?: ReactNode;
   subHeader?: string;
   sectionDivider?: boolean;
 }
 
-interface WizardProps extends HeaderProps {
+export interface WizardProps extends HeaderProps {
   children: React.ReactNode;
   className?: string;
 }
@@ -31,7 +30,7 @@ const Header: FC<HeaderProps> = ({ header, subHeader, sectionDivider = true }) =
 );
 
 const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => (
-  <div className={classNames('zui-wizard', className, 'border-rounded border-primary background-primary')}>
+  <div className={classNames('zui-wizard', className)}>
     {/* Header */}
     {headerProps.header && <Header {...headerProps} />}
 
@@ -40,4 +39,4 @@ const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => 
   </div>
 );
 
-export default { Container, Loading, Buttons, Confirmation, NFTDetails, Header };
+export default { Container, Loading, Buttons, Confirmation, Header };

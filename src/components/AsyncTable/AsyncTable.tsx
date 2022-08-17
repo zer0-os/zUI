@@ -34,12 +34,12 @@ export interface Column {
   className?: string;
 }
 
-interface SearchKey<T> {
+export interface SearchKey<T> {
   key: keyof T;
   name: string;
 }
 
-interface AsyncTableProps<T> {
+export interface AsyncTableProps<T> {
   // Data
   data?: T[];
   itemKey: keyof T;

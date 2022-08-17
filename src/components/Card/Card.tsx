@@ -3,15 +3,15 @@ import React, { FC, ReactNode } from 'react';
 import Skeleton from '../Skeleton';
 import styles from './Card.module.scss';
 
-interface Text {
+export interface AsyncText {
   text?: string | ReactNode;
   isLoading?: boolean;
 }
 
 export interface CardProps {
   title: string;
-  value: Text | string | number;
-  bottomText?: Text | string | number;
+  value: AsyncText | string | number;
+  bottomText?: AsyncText | string | number;
 }
 
 const TEST_ID = {

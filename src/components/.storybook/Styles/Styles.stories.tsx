@@ -1,7 +1,7 @@
 import React from 'react';
 import { capitalize } from 'lodash';
-import { StoryCard, ColorSwatch } from '../.storybook';
-import { colorsByGroup, ColorGroups } from './styles.helpers';
+import { StoryCard, ColorSwatch } from '../index';
+import { colorsByGroup, ColorGroups } from './Styles.helpers';
 import './Styles.stories.scss';
 
 export default {

@@ -1,5 +1,5 @@
 import { capitalize } from 'lodash';
-import colors from './colors.module.scss';
+import colors from './Styles.module.scss';
 
 export const ColorGroups = [...new Set(Object.keys(colors).map(colorKey => colorKey.split('-')[0]))];
 

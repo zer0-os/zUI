@@ -1,6 +1,6 @@
-@import '../../styles/dimensions';
-@import '../../styles/typography';
-@import '../../styles/colors';
+@use "../../styles/dimensions";
+@use "../../styles/typography";
+@use "../../styles/colors";
 
 $gutter: 16px;
 
@@ -8,7 +8,6 @@ $gutter: 16px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 3rem;
   box-sizing: border-box;
 
   gap: 2.5rem;
@@ -22,8 +21,8 @@ $gutter: 16px;
     }
 
     h1 {
-      font-size: #{$size-large};
-      font-weight: #{$font-weight-bold};
+      font-size: #{typography.$size-large};
+      font-weight: #{typography.$font-weight-bold};
     }
 
     h2 {
@@ -34,9 +33,16 @@ $gutter: 16px;
 
     hr {
       margin-top: 1.5rem;
+      margin-bottom: 0;
       height: 1px;
-      background-color: #{$grey};
+      background-color: #{colors.$grey};
       border: none;
+    }
+  }
+
+  .zui-wizard-loading {
+    > p:first-of-type {
+      margin-top: 0;
     }
   }
 }

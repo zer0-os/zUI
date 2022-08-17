@@ -26,9 +26,11 @@ const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, v
   const { buttonProps, isPressed } = useButton(
     {
       ...rest,
-      onPress: () => {
-        if (!disabled) rest.onPress();
-      }
+      onPress: rest.onPress
+        ? () => {
+            if (!disabled) rest.onPress();
+          }
+        : undefined
     },
     ref ?? null
   );

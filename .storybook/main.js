@@ -1,7 +1,8 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').default;
+const componentsFolder = '../src/components/';
 
 module.exports = {
-  stories: ['../src/components/**/*.stories.tsx'],
+  stories: [componentsFolder + '**/*.stories.tsx', componentsFolder + '.storybook/**/*.stories.tsx'],
   addons: ['@storybook/addon-essentials'],
   core: {
     builder: 'webpack5'

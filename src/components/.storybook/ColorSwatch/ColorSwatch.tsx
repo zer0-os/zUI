@@ -2,12 +2,12 @@ import React, { ReactElement } from 'react';
 import classnames from 'classnames';
 import './color-swatch.scss';
 
-export type ColorSwatchProps = {
+export interface ColorSwatchProps {
   title: string;
   variable: string;
   color: string;
   className?: string;
-};
+}
 
 export const ColorSwatch = ({ title, variable, color, className }: ColorSwatchProps): ReactElement => {
   return (

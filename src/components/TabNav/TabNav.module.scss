@@ -1,22 +1,28 @@
-.List {
+.Container {
   display: flex;
-  gap: 48px;
+  flex-direction: column;
+  gap: 1rem;
 
-  a {
-    font-size: 24px;
-    font-weight: bold;
+  .List {
+    display: flex;
+    gap: 3rem;
 
-    transition: color 200ms ease;
+    a {
+      font-size: 1.5rem;
+      font-weight: bold;
 
-    color: grey;
+      transition: color 200ms ease;
 
-    &[data-state='active'] {
-      color: white;
-    }
+      color: grey;
 
-    &[data-state='inactive'] {
-      &:hover {
-        color: rgb(154, 154, 154);
+      &[data-state='active'] {
+        color: white;
+      }
+
+      &[data-state='inactive'] {
+        &:hover {
+          color: rgb(154, 154, 154);
+        }
       }
     }
   }

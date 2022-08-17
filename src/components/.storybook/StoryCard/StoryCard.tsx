@@ -2,7 +2,7 @@ import React, { ReactElement, ReactNode } from 'react';
 import classnames from 'classnames';
 import './story-card.scss';
 
-export type StoryCardProps = {
+export interface StoryCardProps {
   title?: string;
   isContrast?: boolean;
   isWrapDisabled?: boolean;
@@ -10,7 +10,7 @@ export type StoryCardProps = {
   className?: string;
   containerClassName?: string;
   children: ReactNode;
-};
+}
 
 export const StoryCard = ({
   title,

@@ -2,10 +2,10 @@ import React from 'react';
 
 import LoadingIndicator from '../../LoadingIndicator';
 
-type LoadingProps = {
+export interface LoadingProps {
   message: React.ReactNode | string;
-};
+}
 
-const Loading = ({ message }: LoadingProps) => <LoadingIndicator text={message} />;
+const Loading = ({ message }: LoadingProps) => <LoadingIndicator className={'zui-wizard-loading'} text={message} />;
 
 export default Loading;

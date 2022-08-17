@@ -13,6 +13,8 @@ export interface NumberInputProps extends InputProps {
   isBigNumber?: boolean;
 }
 
+import './Input.scss';
+
 /**
  * Number input, with optional BigNumber parsing.
  */
@@ -25,6 +27,9 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
      * weren't the result of typing.
      */
     useEffect(() => {
+      if (props.isDisabled) {
+        return;
+      }
       if (!value) {
         setInputValue('');
       } else {
@@ -51,6 +56,9 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
      * @param value new input value
      */
     const onInputChange = (value: string) => {
+      if (props.isDisabled) {
+        return;
+      }
       if (value === '') {
         onChange('');
         setInputValue('');

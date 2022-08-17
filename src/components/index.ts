@@ -7,7 +7,6 @@ export { default as Input } from './Input';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as Modal } from './Modal';
 export { default as Skeleton } from './Skeleton';
-export { default as Switch } from './Switch';
 export { default as TabNav } from './TabNav';
 export * from './Tooltip';
 export { default as Wizard } from './Wizard';

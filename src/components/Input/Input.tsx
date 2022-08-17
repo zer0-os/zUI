@@ -5,6 +5,8 @@ import { AriaTextFieldProps } from '@react-types/textfield';
 
 import classNames from 'classnames';
 
+import './Input.scss';
+
 export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
   className?: string;
   error?: boolean;

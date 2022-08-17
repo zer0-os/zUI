@@ -10,29 +10,29 @@ export default {
 } as ComponentMeta<typeof StepBar>;
 
 export const Default: ComponentStory<typeof StepBar> = ({ currentStepId, steps }) => {
-  const [step, setStep] = useState(steps.find((x) => x.id === currentStepId));
+  const [step, setStep] = useState(steps.find(x => x.id === currentStepId));
 
   return (
     <StoryCard isContrast>
-      <StepBar currentStepId={step?.id ?? ""} steps={steps} onChangeStep={(step: Step) => setStep(step)} />
+      <StepBar currentStepId={step?.id ?? ''} steps={steps} onChangeStep={(step: Step) => setStep(step)} />
     </StoryCard>
   );
-}
+};
 
 Default.args = {
-    currentStepId: "summary",
-    steps: [
-        {
-            id: "details",
-            title: "Details"
-        },
-        {
-            id: "test",
-            title: "Test"
-        },
-        {
-            id: "summary",
-            title: "Summary"
-        }
-    ]
+  currentStepId: 'summary',
+  steps: [
+    {
+      id: 'details',
+      title: 'Details'
+    },
+    {
+      id: 'test',
+      title: 'Test'
+    },
+    {
+      id: 'summary',
+      title: 'Summary'
+    }
+  ]
 };

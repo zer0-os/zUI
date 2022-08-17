@@ -25,7 +25,7 @@ export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
 );
 
 Loading.args = {
-  message: "Loading..."
+  message: 'Loading...'
 };
 
 export const Header: ComponentStory<typeof Wizard.Header> = args => (
@@ -37,8 +37,8 @@ export const Header: ComponentStory<typeof Wizard.Header> = args => (
 );
 
 Header.args = {
-  header: "Wizard Header Goes Here",
-  subHeader: "Some additional info as a subheader",
+  header: 'Wizard Header Goes Here',
+  subHeader: 'Some additional info as a subheader',
   sectionDivider: true
 };
 
