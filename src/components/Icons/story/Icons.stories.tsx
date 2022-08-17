@@ -2,7 +2,7 @@ import React from 'react';
 import { chunk } from 'lodash';
 import { StoryCard } from '../../.storybook';
 import { HEADER_CELLS, ICONS, ICONS_CHUNK_SIZE } from './Icons.stories.constants';
-import './icons-story.scss';
+import './Icons.story.scss';
 
 export default {
   title: 'Style Guide/Icons',
