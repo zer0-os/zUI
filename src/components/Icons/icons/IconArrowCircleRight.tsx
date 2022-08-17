@@ -1,9 +1,9 @@
 import type { FC } from 'react';
-import type { IconProps } from '../Icoons.types';
+import type { IconProps } from '../Icons.types';
 
 import React from 'react';
 import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
-import { DEFAULT_LABEL, DEFAULT_COLOR, DEFAULT_SIZE } from '../Icoons.constants';
+import { DEFAULT_LABEL, DEFAULT_COLOR, DEFAULT_SIZE } from '../Icons.constants';
 
 export const IconArrowCircleRight: FC<IconProps> = ({
   label = DEFAULT_LABEL,
