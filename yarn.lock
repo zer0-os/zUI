@@ -2041,6 +2041,14 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+"@radix-ui/react-accessible-icon@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-accessible-icon/-/react-accessible-icon-1.0.0.tgz#98a9198523f507bdfb5c10d2038d8cbc62148891"
+  integrity sha512-uaaiQ1bhRpXeHNbOfAuviOUbxkxL8lV1tcIbIjMDOyB9TgR6t2BNt843D7d9mBiqKarUevmEogdUEMtymGY1kQ==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-visually-hidden" "1.0.0"
+
 "@radix-ui/react-arrow@0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-arrow/-/react-arrow-0.1.4.tgz#a871448a418cd3507d83840fdd47558cb961672b"

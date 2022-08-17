@@ -14,7 +14,7 @@ export type Tab = {
   content: React.ReactNode | string;
 };
 
-type TabNavProps = {
+export type TabNavProps = {
   tabs: Tab[];
   defaultValue?: string;
 };

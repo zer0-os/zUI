@@ -1,14 +1,20 @@
 import React from 'react';
-
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import LoadingIndicator from './';
+import { StoryCard } from '../.storybook';
 
 export default {
-  title: 'Loading Indicator',
+  title: 'Data Display/Loader/Loading Indicator',
   component: LoadingIndicator
 } as ComponentMeta<typeof LoadingIndicator>;
 
-const Template: ComponentStory<typeof LoadingIndicator> = args => <LoadingIndicator {...args} />;
+const Template: ComponentStory<typeof LoadingIndicator> = args => {
+  return (
+    <StoryCard isContrast>
+      <LoadingIndicator {...args} />
+    </StoryCard>
+  );
+};
 
 export const Default = Template.bind({});
 Default.args = {

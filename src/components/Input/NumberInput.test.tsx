@@ -1,12 +1,12 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
-import NumberInput from './NumberInput';
+import NumberInput, { NumberInputProps } from './NumberInput';
 import { parseEther } from 'ethers/lib/utils';
 
 const mockOnChange = jest.fn();
 
-const renderComponent = props => render(<NumberInput {...props} />);
+const renderComponent = (props: NumberInputProps) => render(<NumberInput {...props} />);
 
 test('should only allow number inputs', async () => {
   const { getByDisplayValue } = renderComponent({ value: 'test', onChange: mockOnChange });
@@ -26,7 +26,11 @@ test('should only allow number inputs', async () => {
 });
 
 test('should handle BigNumber', async () => {
-  const { getByDisplayValue } = renderComponent({ value: parseEther('20'), isBigNumber: true, onChange: mockOnChange });
+  const { getByDisplayValue } = renderComponent({
+    value: String(parseEther('20')),
+    isBigNumber: true,
+    onChange: mockOnChange
+  });
   const input = getByDisplayValue('20.0') as HTMLInputElement;
   fireEvent.change(input, { target: { value: '2000' } });
   expect(mockOnChange).toBeCalledWith(parseEther('2000').toString());
