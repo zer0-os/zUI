@@ -1,7 +1,7 @@
 {
-  "name": "zero-ui",
+  "name": "@zero-tech/zui",
   "version": "0.1.0",
-  "description": "Zero UI Component Library",
+  "description": "Zero UI React Component Library",
   "scripts": {
     "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn test && yarn build:styles && yarn export:styles && yarn build:scripts",
     "build:only": "yarn build-styles && yarn build:scripts",
@@ -90,7 +90,6 @@
     "@radix-ui/react-aspect-ratio": "^0.1.4",
     "@radix-ui/react-dialog": "^0.1.7",
     "@radix-ui/react-dropdown-menu": "^0.1.6",
-    "@radix-ui/react-switch": "^0.1.5",
     "@radix-ui/react-tabs": "^0.1.5",
     "@radix-ui/react-tooltip": "^1.0.0",
     "@react-aria/button": "^3.5.0",
