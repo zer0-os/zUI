@@ -34,12 +34,12 @@ export interface Column {
   className?: string;
 }
 
-export interface SearchKey<T> {
+interface SearchKey<T> {
   key: keyof T;
   name: string;
 }
 
-export interface AsyncTableProps<T> {
+interface AsyncTableProps<T> {
   // Data
   data?: T[];
   itemKey: keyof T;
@@ -63,18 +63,18 @@ const AsyncTable = <T extends unknown>({
   data,
   // itemKey,
   columns,
+  gridComponent,
   isGridView,
   isLoading,
   numLoadingRows = 3,
   rowHeight = 40,
   rowComponent
-}: // gridComponent,
-// searchKey,
+}: // searchKey,
 AsyncTableProps<T>) => {
   // @TODO: handle loading
 
   if (isGridView) {
-    return <div>Grid View</div>;
+    return <div className={styles.Grid}>{data?.map(d => gridComponent(d))}</div>;
   }
 
   return (

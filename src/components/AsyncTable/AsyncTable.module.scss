@@ -39,3 +39,12 @@
     text-align: left;
   }
 }
+
+.Grid {
+  display: grid;
+  margin-top: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(32%, 0.5fr));
+  grid-row-start: 1;
+  list-style: none;
+  grid-gap: 14px 12px;
+}
