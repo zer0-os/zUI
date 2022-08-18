@@ -83,6 +83,10 @@ export const ICONS = [
     Component: IconArrowBendUpLeft
   },
   {
+    name: 'IconArrowBendUpRight',
+    Component: IconArrowBendUpRight
+  },
+  {
     name: 'IconArrowCircleDown',
     Component: IconArrowCircleDown
   },
