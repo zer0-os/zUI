@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import StepBar from './StepBar';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoryCard } from '../.storybook';
