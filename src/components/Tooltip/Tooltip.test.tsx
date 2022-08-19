@@ -1,107 +1,82 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import ZUIProvider from '../../ZUIProvider';
+
 import { Tooltip, TooltipProps } from './Tooltip';
 
-const TOOLTIP_INNER_DIV_ID = 'tooltip-inner';
-const TOOLTIP_CONTENT = 'tooltip-content';
-
+// Prop mocks
+const TOOLTIP_TEXT = 'Mock content';
+const TRIGGER_TEXT = 'Mock trigger';
 const mockOnOpenChange = jest.fn();
 
-const mockDefaultProps: TooltipProps = {
+// Radix mocks
+const mockRadixRoot = jest.fn();
+const mockRadixTrigger = jest.fn();
+const mockRadixContent = jest.fn();
+const mockRadixArrow = jest.fn();
+
+jest.mock('@radix-ui/react-tooltip', () => ({
+  Root: (props: any) => {
+    mockRadixRoot(props);
+    return <div data-testid="root">{props.children}</div>;
+  },
+  Trigger: (props: any) => {
+    mockRadixTrigger(props);
+    return <div data-testid="trigger">{props.children}</div>;
+  },
+  Content: (props: any) => {
+    mockRadixContent(props);
+    return <div data-testid="content">{props.children}</div>;
+  },
+  Arrow: (props: any) => {
+    mockRadixArrow(props);
+    return <div data-testid="arrow">{props.children}</div>;
+  }
+}));
+
+const DEFAULT_PROPS: TooltipProps = {
   open: undefined,
   defaultOpen: undefined,
   onOpenChange: mockOnOpenChange,
   side: 'top',
   align: 'center',
-  content: TOOLTIP_CONTENT
+  content: TOOLTIP_TEXT
 };
 
 const renderComponent = (customProps: Partial<TooltipProps> = {}) => {
   return render(
-    <ZUIProvider>
-      <Tooltip {...mockDefaultProps} {...customProps}>
-        <div data-testid={TOOLTIP_INNER_DIV_ID}>Test</div>
-      </Tooltip>
-    </ZUIProvider>
+    <Tooltip {...DEFAULT_PROPS} {...customProps}>
+      {TRIGGER_TEXT}
+    </Tooltip>
   );
 };
-
-beforeAll(() => {
-  window.ResizeObserver =
-    window.ResizeObserver ||
-    jest.fn().mockImplementation(() => ({
-      disconnect: jest.fn(),
-      observe: jest.fn(),
-      unobserve: jest.fn()
-    }));
-});
 
 afterEach(() => {
   cleanup();
   jest.clearAllMocks();
 });
 
-test('should correctly render the trigger attribute', () => {
+test('should pass props to Radix Root', () => {
+  renderComponent({ open: true, defaultOpen: true });
+  expect(mockRadixRoot).toHaveBeenCalledWith(expect.objectContaining({ open: true, defaultOpen: true }));
+});
+
+test('should pass props to Radix Trigger', () => {
   const { getByTestId } = renderComponent();
-
-  expect(getByTestId(TOOLTIP_INNER_DIV_ID)).toBeTruthy();
+  expect(mockRadixTrigger).toHaveBeenCalledWith(expect.objectContaining({ asChild: true }));
+  const trigger = getByTestId('trigger');
+  expect(trigger).toHaveTextContent(TRIGGER_TEXT);
 });
 
-test('applies defaultOpen prop to Radix tooltip root', () => {
-  const { queryAllByText } = renderComponent({
-    defaultOpen: true
-  });
-
-  expect(queryAllByText(TOOLTIP_CONTENT)).toBeTruthy();
+test('should pass props to Radix Content', () => {
+  const { getByTestId } = renderComponent({ side: 'top', align: 'center' });
+  expect(mockRadixContent).toHaveBeenCalledWith(expect.objectContaining({ side: 'top', align: 'center' }));
+  const content = getByTestId('content');
+  expect(content).toHaveTextContent(TOOLTIP_TEXT);
 });
 
-test('applies open prop to Radix tooltip root', () => {
-  const { queryAllByText } = renderComponent({
-    open: true
-  });
-
-  expect(queryAllByText(TOOLTIP_CONTENT)).toBeTruthy();
-});
-
-test('applies onOpenChange prop to Radix tooltip root', async () => {
-  const { getByTestId } = renderComponent({
-    defaultOpen: true
-  });
-
-  const trigger = getByTestId(TOOLTIP_INNER_DIV_ID);
-
-  fireEvent.click(trigger);
-
-  await waitFor(() => {
-    expect(mockOnOpenChange).toBeCalledTimes(1);
-    expect(mockOnOpenChange).toBeCalledWith(false);
-  });
-});
-
-test('applies side prop to Radix tooltip content', () => {
-  const mockSide: TooltipProps['side'] = 'bottom';
-
-  const { queryAllByText } = renderComponent({
-    open: true,
-    side: mockSide
-  });
-
-  const content = queryAllByText(TOOLTIP_CONTENT).at(0);
-
-  expect(content).toHaveAttribute('data-side', mockSide);
-});
-
-test('applies align prop to Radix tooltip content', () => {
-  const mockAlign: TooltipProps['align'] = 'start';
-
-  const { queryAllByText } = renderComponent({
-    open: true,
-    align: mockAlign
-  });
-
-  const content = queryAllByText(TOOLTIP_CONTENT).at(0);
-
-  expect(content).toHaveAttribute('data-align', mockAlign);
+test('should pass props to Radix Arrow', () => {
+  renderComponent();
+  expect(mockRadixArrow).toHaveBeenCalledWith(expect.objectContaining({ width: 32, height: 16 }));
 });

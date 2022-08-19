@@ -1,6 +1,6 @@
 {
   "name": "@zero-tech/zui",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Zero UI React Component Library",
   "scripts": {
     "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn test && yarn build:styles && yarn export:styles && yarn build:scripts",
@@ -14,7 +14,7 @@
     "lint:scripts": "eslint --ext .ts,.tsx,.js,.jsx ./ --fix --max-warnings 1",
     "lint:styles": "stylelint -q \"./**/*.{css,scss}\" --max-warnings 1",
     "prettify": "prettier -w ./",
-    "publish:components": "yarn build && cp package.json ./dist && cp .npmrc ./dist && cd ./dist && npm publish",
+    "publish:components": "cd ./dist && npm publish",
     "publish:storybook": "NODE_ENV=storybook-production build-storybook -o dist-storybook",
     "storybook": "start-storybook -p 6007",
     "test": "jest",
