@@ -27,37 +27,11 @@ jobs:
       - run:
           name: Publish to NPM
           command: yarn publish:components --access public --non-interactive
-  lint:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          command: yarn lint
-  test:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          command: yarn test
 workflows:
   version: 2
   build:
     jobs:
       - build:
-          filters:
-            branches:
-              ignore: master
-      - lint:
-          requires:
-            - build
-          filters:
-            branches:
-              ignore: master
-      - test:
-          requires:
-            - build
           filters:
             branches:
               ignore: master
@@ -69,16 +43,6 @@ workflows:
               ignore: /.*/
             tags:
               only: /^v.*/
-      - lint:
-          requires:
-            - build
-          filters:
-            <<: *filters-production # this is calling the previously set yaml anchor
-      - test:
-          requires:
-            - build
-          filters:
-            <<: *filters-production # this is calling the previously set yaml anchor
       - publish:
           context: NPM_Publish
           requires:
