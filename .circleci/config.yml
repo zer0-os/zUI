@@ -1,0 +1,87 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7.0
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:14.17.5
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  publish:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Publish to NPM
+          command: yarn publish:components --access public --non-interactive
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          command: yarn lint
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          command: yarn test
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: master
+      - lint:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              ignore: master
+  production:
+    jobs:
+      - build:
+          filters: &filters-production # this yaml anchor is setting these values to "filters-production"
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - lint:
+          requires:
+            - build
+          filters:
+            <<: *filters-production # this is calling the previously set yaml anchor
+      - test:
+          requires:
+            - build
+          filters:
+            <<: *filters-production # this is calling the previously set yaml anchor
+      - publish:
+          context: NPM_Publish
+          requires:
+            - lint
+          filters:
+            <<: *filters-production # this is calling the previously set yaml anchor
