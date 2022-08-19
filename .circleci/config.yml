@@ -46,6 +46,6 @@ workflows:
       - publish:
           context: NPM_Publish
           requires:
-            - lint
+            - build
           filters:
             <<: *filters-production # this is calling the previously set yaml anchor
