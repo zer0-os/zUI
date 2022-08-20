@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "Zero UI React Component Library",
   "scripts": {
-    "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn test && yarn build:styles && yarn export:styles && yarn build:scripts",
+    "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn test && yarn build:styles && yarn export:styles && yarn build:scripts && cp package.json dist/package.json",
     "build:only": "yarn build-styles && yarn build:scripts",
     "build:scripts": "NODE_ENV=production babel --extensions \".ts,.tsx,.js,.jsx\" ./src --out-dir ./dist",
     "build:styles": "node-sass ./src -o dist/ --importer ./node_modules/node-sass-import",
