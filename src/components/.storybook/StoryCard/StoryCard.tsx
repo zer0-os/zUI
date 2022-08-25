@@ -1,8 +1,8 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, HtmlHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import './story-card.scss';
 
-export interface StoryCardProps {
+export interface StoryCardProps extends HtmlHTMLAttributes<HTMLDivElement> {
   title?: string;
   isContrast?: boolean;
   isWrapDisabled?: boolean;
@@ -19,10 +19,11 @@ export const StoryCard = ({
   isContentFull,
   className,
   containerClassName,
-  children
+  children,
+  ...restProps
 }: StoryCardProps): ReactElement => {
   return (
-    <div className={classnames('story_card', containerClassName)}>
+    <div className={classnames('story_card', containerClassName)} {...restProps}>
       <h3 className="story_card__title">{title}</h3>
       <div
         className={classnames('story_card__content', className, {
