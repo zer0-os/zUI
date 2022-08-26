@@ -11,7 +11,7 @@ export default {
 const Template: ComponentStory<typeof TextDetail> = args => {
   return (
     <StoryCard isContrast>
-      <TextDetail primaryText={'Hello'} secondaryText={'Howdy'} label={'Hey'} />
+      <TextDetail {...args} primaryText={'Hello'} secondaryText={'Howdy'} label={'Hey'} />
     </StoryCard>
   );
 };

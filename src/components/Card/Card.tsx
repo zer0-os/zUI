@@ -1,6 +1,4 @@
-import React, { FC, ReactNode } from 'react';
-
-import { AsyncText } from '../../lib/types';
+import React, { FC } from 'react';
 
 import { TextDetail, TextDetailProps } from '../TextDetail';
 
