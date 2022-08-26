@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
-import Skeleton from '../Skeleton';
+import { Skeleton } from '../Skeleton';
 import styles from './Card.module.scss';
 
 export interface AsyncText {
@@ -20,22 +20,20 @@ const TEST_ID = {
   bottomText: 'zui-card-bottom-text'
 };
 
-const Card: FC<CardProps> = ({ title, value, bottomText }) => (
+export const Card: FC<CardProps> = ({ title, value, bottomText }) => (
   <div className={styles.Container}>
     <label data-id={TEST_ID.title}>{title}</label>
     <span className={styles.Value}>
       {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
     </span>
     {bottomText && (
-      <>
+      <span>
         {typeof bottomText === 'object' ? (
-          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : <span>bottomText.text</span> ?? 'ERR'}</>
+          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : bottomText.text ?? 'ERR'}</>
         ) : (
           bottomText
         )}
-      </>
+      </span>
     )}
   </div>
 );
-
-export default Card;

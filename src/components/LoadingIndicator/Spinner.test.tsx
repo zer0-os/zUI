@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Spinner, { SpinnerProps } from './Spinner';
+import { Spinner, SpinnerProps } from './Spinner';
 
 const renderComponent = (props: SpinnerProps) => render(<Spinner {...props} />);
 

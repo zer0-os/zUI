@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import Button from '../../Button';
+import { Button } from '../../Button';
 
 import './Buttons.scss';
 
@@ -16,7 +16,7 @@ export interface ButtonsProps {
   secondaryButtonText?: string;
 }
 
-const Buttons = ({
+export const Buttons = ({
   className,
   isPrimaryButtonActive = false,
   isSecondaryButtonActive = false,
@@ -36,5 +36,3 @@ const Buttons = ({
     </Button>
   </div>
 );
-
-export default Buttons;

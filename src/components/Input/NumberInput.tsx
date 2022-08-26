@@ -6,7 +6,7 @@ import React, { forwardRef, useEffect, useState } from 'react';
 
 import { formatUnits, parseUnits } from 'ethers/lib/utils';
 
-import Input, { InputProps } from './Input';
+import { Input, InputProps } from './Input';
 
 export interface NumberInputProps extends InputProps {
   decimals?: number;
@@ -18,7 +18,7 @@ import './Input.scss';
 /**
  * Number input, with optional BigNumber parsing.
  */
-const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
+export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
   ({ decimals = 18, value, isBigNumber, onChange, ...props }, ref) => {
     const [inputValue, setInputValue] = useState<string>('');
 
@@ -84,5 +84,3 @@ const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
     return <Input type="number" ref={ref} value={inputValue} onChange={onInputChange} {...props} />;
   }
 );
-
-export default NumberInput;

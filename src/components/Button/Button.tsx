@@ -19,7 +19,14 @@ export interface ButtonProps {
   isDisabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, variant = 'primary', ...rest }) => {
+export const Button: FC<ButtonProps> = ({
+  children,
+  className,
+  isLoading,
+  isDisabled,
+  variant = 'primary',
+  ...rest
+}) => {
   const ref = useRef(null);
   const disabled = isDisabled || isLoading;
 
@@ -51,5 +58,3 @@ const Button: FC<ButtonProps> = ({ children, className, isLoading, isDisabled, v
     </>
   );
 };
-
-export default Button;

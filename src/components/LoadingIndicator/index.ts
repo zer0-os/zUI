@@ -1,5 +1,5 @@
-import LoadingIndicator, { LoadingIndicatorProps } from './LoadingIndicator';
+export { Spinner } from './Spinner';
+export type { SpinnerProps } from './Spinner';
 
-export { default as Spinner } from './Spinner';
-export type { LoadingIndicatorProps };
-export default LoadingIndicator;
+export { LoadingIndicator } from './LoadingIndicator';
+export type { LoadingIndicatorProps } from './LoadingIndicator';

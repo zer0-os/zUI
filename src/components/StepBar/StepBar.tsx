@@ -4,9 +4,16 @@ import classNames from 'classnames/bind';
 
 import { ArrowLink } from '../Link';
 import styles from './StepBar.module.scss';
-import type { Step, StepBarProps } from './StepBar.types';
+import type { Step } from './StepBar.types';
 
 const cx = classNames.bind(styles);
+
+export type StepBarProps = {
+  currentStepId: Step['id'];
+  steps: Step[];
+  onChangeStep?: (step: Step) => void;
+  className?: string;
+};
 
 export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChangeStep, className }) => {
   const currentStepIndex = steps.findIndex(s => s.id === currentStepId);
@@ -51,5 +58,3 @@ export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChange
     </div>
   );
 };
-
-export default StepBar;

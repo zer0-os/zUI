@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import Spinner from './Spinner';
+import { Spinner } from './Spinner';
 
 import './LoadingIndicator.scss';
 import classNames from 'classnames';
@@ -17,7 +17,7 @@ export const TEST_ID = {
   TEXT: 'loading-indicator-text'
 };
 
-const LoadingIndicator = ({ className, text, spinnerPosition = 'bottom' }: LoadingIndicatorProps) => {
+export const LoadingIndicator = ({ className, text, spinnerPosition = 'bottom' }: LoadingIndicatorProps) => {
   return (
     <div
       className={classNames('zui-loading-indicator', `zui-loading-indicator-${spinnerPosition}`, className)}
@@ -35,5 +35,3 @@ const LoadingIndicator = ({ className, text, spinnerPosition = 'bottom' }: Loadi
     </div>
   );
 };
-
-export default LoadingIndicator;

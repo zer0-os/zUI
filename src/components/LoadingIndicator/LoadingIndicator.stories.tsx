@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import LoadingIndicator from './';
+import { LoadingIndicator } from './';
 import { StoryCard } from '../.storybook';
 
 export default {
