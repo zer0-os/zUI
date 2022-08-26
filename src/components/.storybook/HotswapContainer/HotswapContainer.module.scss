@@ -1,0 +1,15 @@
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 1rem;
+
+    border: 1px dashed yellow;
+
+    box-sizing: border-box;
+
+    height: 100%;
+    width: 100%;
+}
