@@ -14,26 +14,20 @@ export interface CardProps {
   bottomText?: AsyncText | string | number;
 }
 
-const TEST_ID = {
-  title: 'zui-card-title',
-  value: 'zui-card-value',
-  bottomText: 'zui-card-bottom-text'
-};
-
 const Card: FC<CardProps> = ({ title, value, bottomText }) => (
   <div className={styles.Container}>
-    <label data-id={TEST_ID.title}>{title}</label>
+    <label>{title}</label>
     <span className={styles.Value}>
       {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
     </span>
     {bottomText && (
-      <>
+      <span>
         {typeof bottomText === 'object' ? (
-          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : <span>bottomText.text</span> ?? 'ERR'}</>
+          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : bottomText.text ?? 'ERR'}</>
         ) : (
           bottomText
         )}
-      </>
+      </span>
     )}
   </div>
 );
