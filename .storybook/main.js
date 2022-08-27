@@ -30,7 +30,7 @@ module.exports = {
       new TsconfigPathsPlugin(),
       new webpack.ProvidePlugin({
         Buffer: ['buffer', 'Buffer']
-      }),
+      })
     ];
 
     return config;

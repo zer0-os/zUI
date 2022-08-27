@@ -13,7 +13,7 @@ const MediaInput: FC<MediaInputProps> = ({ mediaType, previewUrl, hasError, onCh
 
   const openUploadDialog = () => (inputFile.current ? inputFile.current.click() : null);
 
-  const onImageChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const type = event.target.files[0].type;
       if (!type.includes('image') && !type.includes('video')) return;
@@ -29,30 +29,37 @@ const MediaInput: FC<MediaInputProps> = ({ mediaType, previewUrl, hasError, onCh
     }
   };
 
+  const getPreview = (): JSX.Element => {
+    if (!previewUrl) {
+      return <span className="preview-text">Choose Media</span>;
+    }
+
+    if (mediaType === 'image') {
+      return <img alt="NFT Preview" src={previewUrl as string} />;
+    }
+
+    return <video autoPlay controls loop src={previewUrl as string} />;
+  };
+
   return (
-    <>
+    <div className="zui-media-input">
       <div
+        data-testid="preview"
+        className={`preview ${previewUrl && 'uploaded'} ${hasError && 'has-error'}`}
         onClick={openUploadDialog}
-        className={`zui-media-input-preview ${previewUrl && 'uploaded'}`}
-        style={{
-          borderColor: hasError ? '#d379ff' : ''
-        }}
       >
-        {!previewUrl && <span className="preview-text">Choose Media</span>}
-        {previewUrl && mediaType === 'image' && <img alt="NFT Preview" src={previewUrl as string} />}
-        {previewUrl && mediaType === 'video' && <video autoPlay controls loop src={previewUrl as string} />}
+        {getPreview()}
       </div>
       <input
-        data-testid="media-input"
-        style={{ display: 'none' }}
+        data-testid="input"
+        ref={inputFile}
+        name="media"
+        type="file"
         accept="image/*,video/*,video/quicktime"
         multiple={false}
-        name={'media'}
-        type="file"
-        onChange={onImageChanged}
-        ref={inputFile}
+        onChange={onImageChange}
       />
-    </>
+    </div>
   );
 };
 
