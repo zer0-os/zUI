@@ -70,11 +70,11 @@ test('should call onChange on successful file upload', async () => {
   });
 
   const file = new File([new Blob(['test'])], 'test.png', {
-    type: "image/png"
+    type: 'image/png'
   });
 
   const input = getByTestId('input');
   user.upload(input, file);
 
-  await waitFor(() => expect(mockOnChange).toHaveBeenCalled()); 
+  await waitFor(() => expect(mockOnChange).toHaveBeenCalled());
 });
