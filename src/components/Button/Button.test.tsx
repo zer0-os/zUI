@@ -1,7 +1,7 @@
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import React from 'react';
 
-import Button, { ButtonProps } from './';
+import { Button, ButtonProps } from './';
 
 const TEST_BUTTON_TEXT = 'test button';
 const TEST_CLASS_NAME = 'test-class-name';

@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
-import NumberInput, { NumberInputProps } from './NumberInput';
+import { NumberInput, NumberInputProps } from './NumberInput';
 import { parseEther } from 'ethers/lib/utils';
 
 const mockOnChange = jest.fn();

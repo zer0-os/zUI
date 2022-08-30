@@ -32,7 +32,7 @@ export interface DropdownMenuProps extends RadixUIDropdownMenuProps {
   menuClassName?: string;
 }
 
-const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
+export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   ({ className, alignMenu = 'center', items, trigger = 'triple-dot', side = 'bottom', ...dropdownMenuProps }, ref) => {
     return (
       <RadixUIDropdownMenuRoot {...dropdownMenuProps}>
@@ -54,5 +54,3 @@ const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
     );
   }
 );
-
-export default DropdownMenu;

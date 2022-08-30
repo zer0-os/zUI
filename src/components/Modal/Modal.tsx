@@ -10,7 +10,7 @@ import {
 } from '@radix-ui/react-dialog';
 import { styled } from '@stitches/react';
 
-import Button from '../Button';
+import { Button } from '../Button';
 
 // @TODO: use color variables
 
@@ -40,7 +40,7 @@ export interface ModalProps extends DialogProps {
   trigger?: ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...rest }) => {
+export const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...rest }) => {
   return (
     <DialogRoot {...rest}>
       {trigger && (
@@ -56,5 +56,3 @@ const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...rest }) 
     </DialogRoot>
   );
 };
-
-export default Modal;

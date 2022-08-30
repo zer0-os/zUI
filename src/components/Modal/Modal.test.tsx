@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Modal, { ModalProps } from '.';
+import { Modal, ModalProps } from '.';
 
 const mockTrigger = 'Mock Trigger';
 

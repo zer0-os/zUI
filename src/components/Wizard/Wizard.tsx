@@ -4,9 +4,9 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
 // Preset Screens
-import Buttons from './Presets/Buttons';
-import Confirmation from './Presets/Confirmation';
-import Loading from './Presets/Loading';
+import { Buttons } from './Presets/Buttons';
+import { Confirmation } from './Presets/Confirmation';
+import { Loading } from './Presets/Loading';
 import './Wizard.scss';
 
 export interface HeaderProps {
@@ -39,4 +39,4 @@ const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => 
   </div>
 );
 
-export default { Container, Loading, Buttons, Confirmation, Header };
+export const Wizard = { Container, Loading, Buttons, Confirmation, Header };

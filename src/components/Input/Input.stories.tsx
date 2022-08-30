@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Input from './';
-import Button from '../Button';
+import { Input } from './';
+import { Button } from '../Button';
 import { StoryCard } from '../.storybook';
 
 export default {

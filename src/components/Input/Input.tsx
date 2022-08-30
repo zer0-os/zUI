@@ -35,7 +35,7 @@ const Enhancer: FC<EnhancerProps> = ({ value, className }) => {
   }
 };
 
-const Input = forwardRef<HTMLDivElement, InputProps>(
+export const Input = forwardRef<HTMLDivElement, InputProps>(
   (
     {
       isDisabled,
@@ -98,5 +98,3 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
     );
   }
 );
-
-export default Input;

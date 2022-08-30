@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import TabNav from '.';
+import { TabNav } from '.';
 import { StoryCard } from '../.storybook';
 
 export default {

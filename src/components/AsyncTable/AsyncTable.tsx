@@ -59,7 +59,7 @@ export interface AsyncTableProps<T> {
   searchKey: SearchKey<T>;
 }
 
-const AsyncTable = <T extends unknown>({
+export const AsyncTable = <T extends unknown>({
   data,
   // itemKey,
   columns,
@@ -113,5 +113,3 @@ AsyncTableProps<T>) => {
     </table>
   );
 };
-
-export default AsyncTable;

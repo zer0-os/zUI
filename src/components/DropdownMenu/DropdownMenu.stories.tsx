@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import DropdownMenu from './';
+import { DropdownMenu } from './';
 import { StoryCard } from '../.storybook';
 
 const DROPDOWN_MENU_ITEMS = [

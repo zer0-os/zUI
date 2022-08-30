@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import classNames from 'classnames/bind';
 
-import Buttons, { ButtonsProps } from './Buttons';
+import { Buttons, ButtonsProps } from './Buttons';
 import './Confirmation.scss';
 
 export interface ConfirmationProps extends ButtonsProps {
@@ -10,7 +10,7 @@ export interface ConfirmationProps extends ButtonsProps {
   message: React.ReactNode | string;
 }
 
-const Confirmation = ({ className, message, error, ...rest }: ConfirmationProps) => {
+export const Confirmation = ({ className, message, error, ...rest }: ConfirmationProps) => {
   const isMessageString = useMemo(() => {
     return ['string', 'number'].includes(typeof message);
   }, [message]);
@@ -23,5 +23,3 @@ const Confirmation = ({ className, message, error, ...rest }: ConfirmationProps)
     </div>
   );
 };
-
-export default Confirmation;

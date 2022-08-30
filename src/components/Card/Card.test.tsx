@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 
-import Card, { CardProps } from './';
+import { Card, CardProps } from './';
 
 const DEFAULT_PROPS: CardProps = {
   title: 'Title Text',
@@ -9,11 +9,9 @@ const DEFAULT_PROPS: CardProps = {
   bottomText: 'Bottom Text'
 };
 
-jest.mock('../Skeleton', () => {
-  return function MockSkeleton() {
-    return <span>Skeleton</span>;
-  };
-});
+jest.mock('../Skeleton', () => ({
+  Skeleton: () => <span>Skeleton</span>
+}));
 
 const renderComponent = (props?: CardProps) => render(<Card {...props} />);
 

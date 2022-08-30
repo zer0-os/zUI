@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import React from 'react';
 
-import DropdownMenu, { DropdownItem, DropdownMenuProps } from '.';
+import { DropdownMenu, DropdownItem, DropdownMenuProps } from '.';
 
 const mockOnSelect = jest.fn();
 const mockTrigger = 'Mock Trigger';

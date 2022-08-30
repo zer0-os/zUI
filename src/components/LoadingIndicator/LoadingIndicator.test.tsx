@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import LoadingIndicator, { LoadingIndicatorProps, TEST_ID } from './LoadingIndicator';
+import { LoadingIndicator, LoadingIndicatorProps, TEST_ID } from './LoadingIndicator';
 
 const renderComponent = (props: LoadingIndicatorProps) => render(<LoadingIndicator {...props} />);
 
