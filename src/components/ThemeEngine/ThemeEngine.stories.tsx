@@ -22,7 +22,7 @@ export const ThemeEngine = () => {
 
   return (
     <>
-      <StoryCard isContrast>
+      <StoryCard>
         <Button onPress={toggleTheme}>Switch Theme</Button>
       </StoryCard>
 

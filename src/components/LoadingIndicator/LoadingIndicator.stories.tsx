@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof LoadingIndicator>;
 
 const Template: ComponentStory<typeof LoadingIndicator> = args => (
-  <StoryCard isContrast>
+  <StoryCard>
     <LoadingIndicator {...args} />
   </StoryCard>
 );

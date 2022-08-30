@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = args => (
-  <StoryCard isContrast className={`${BASE_CLASSNAME}__storycard`}>
+  <StoryCard className={`${BASE_CLASSNAME}__storycard`}>
     <Tooltip {...args}>
       <Button>Click or Hover</Button>
     </Tooltip>

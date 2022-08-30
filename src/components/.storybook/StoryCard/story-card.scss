@@ -1,7 +1,6 @@
-@import '../../../styles/colors';
-
 .story_card {
   position: relative;
+  background-color: var(--zui-gray-1);
 
   &:not(:first-of-type) {
     margin-top: 1.5rem;
@@ -9,7 +8,7 @@
 
   &__title {
     margin: 0 0 0.5rem 0;
-    color: $almost-black;
+    color: var(--zui-black);
   }
 
   &__content {
@@ -21,10 +20,6 @@
 
     & > * {
       margin: 1rem;
-    }
-
-    &--is-contrast {
-      background-color: $almost-black;
     }
 
     &--is-wrap-disabled {

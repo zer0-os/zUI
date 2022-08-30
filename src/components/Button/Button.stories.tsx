@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = args => (
-  <StoryCard isContrast>
+  <StoryCard>
     <Button {...args}>Button</Button>
   </StoryCard>
 );

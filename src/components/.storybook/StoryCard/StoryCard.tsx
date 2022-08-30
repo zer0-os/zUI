@@ -4,7 +4,6 @@ import './story-card.scss';
 
 export interface StoryCardProps extends HtmlHTMLAttributes<HTMLDivElement> {
   title?: string;
-  isContrast?: boolean;
   isWrapDisabled?: boolean;
   isContentFull?: boolean;
   className?: string;
@@ -14,7 +13,6 @@ export interface StoryCardProps extends HtmlHTMLAttributes<HTMLDivElement> {
 
 export const StoryCard = ({
   title,
-  isContrast,
   isWrapDisabled,
   isContentFull,
   className,
@@ -27,7 +25,6 @@ export const StoryCard = ({
       <h3 className="story_card__title">{title}</h3>
       <div
         className={classnames('story_card__content', className, {
-          'story_card__content--is-contrast': isContrast,
           'story_card__content--is-content-full': isContentFull,
           'story_card__content--is-wrap-disabled': isWrapDisabled
         })}
@@ -40,7 +37,6 @@ export const StoryCard = ({
 
 StoryCard.defaultProps = {
   title: undefined,
-  isContrast: false,
   isWrapDisabled: false,
   className: undefined,
   containerClassName: undefined

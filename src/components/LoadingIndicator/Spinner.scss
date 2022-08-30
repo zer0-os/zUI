@@ -1,12 +1,10 @@
-@import '../../styles/colors';
-
 .zui-spinner {
   width: 1.25rem;
   min-width: 1.25rem;
   height: 1.25rem;
   min-height: 1.25rem;
   border-radius: 50%;
-  border-top: 0.125rem solid #{$blue};
+  border-top: 0.125rem solid var(--zui-alpha-primary-10);
   animation: spin 1s linear infinite;
 }
 

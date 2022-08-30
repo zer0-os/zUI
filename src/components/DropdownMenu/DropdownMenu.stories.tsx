@@ -31,7 +31,7 @@ export default {
 
 const Template: ComponentStory<typeof DropdownMenu> = args => {
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <DropdownMenu {...args} />
     </StoryCard>
   );

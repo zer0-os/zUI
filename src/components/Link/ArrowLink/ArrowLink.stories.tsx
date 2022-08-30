@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof ArrowLink> = args => {
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <ArrowLink {...args} />
     </StoryCard>
   );

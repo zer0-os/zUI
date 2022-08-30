@@ -13,8 +13,8 @@ const Template: ComponentStory<typeof Input> = args => {
   const [value, setValue] = useState<string>('');
 
   return (
-    <StoryCard isContrast isContentFull>
-      <Input value={value} onChange={setValue} {...args} />
+    <StoryCard isContentFull>
+      <Input {...args} value={value}  onChange={setValue} />
     </StoryCard>
   );
 };

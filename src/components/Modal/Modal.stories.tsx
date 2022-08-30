@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Modal> = args => {
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <Modal {...args}>Hello! This is a modal</Modal>
     </StoryCard>
   );

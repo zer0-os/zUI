@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Spinner> = args => {
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <Spinner {...args} />
     </StoryCard>
   );

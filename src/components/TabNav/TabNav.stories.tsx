@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof TabNav> = args => {
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <TabNav {...args} />
     </StoryCard>
   );

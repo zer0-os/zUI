@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Wizard.Container>;
 
 export const Container: ComponentStory<typeof Wizard.Container> = args => (
-  <StoryCard isContrast>
+  <StoryCard>
     <Wizard.Container {...args}>
       <p style={{ textAlign: 'center' }}>
         You can put any content in this container, and it will apply Wizard styling!
@@ -19,7 +19,7 @@ export const Container: ComponentStory<typeof Wizard.Container> = args => (
 );
 
 export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
-  <StoryCard isContrast>
+  <StoryCard>
     <Wizard.Loading {...args} />
   </StoryCard>
 );
@@ -29,7 +29,7 @@ Loading.args = {
 };
 
 export const Header: ComponentStory<typeof Wizard.Header> = args => (
-  <StoryCard isContrast>
+  <StoryCard>
     <Wizard.Container>
       <Wizard.Header {...args} />
     </Wizard.Container>
@@ -43,7 +43,7 @@ Header.args = {
 };
 
 export const Confirmation: ComponentStory<typeof Wizard.Confirmation> = args => (
-  <StoryCard isContrast>
+  <StoryCard>
     <Wizard.Container>
       <Wizard.Confirmation {...args} />
     </Wizard.Container>

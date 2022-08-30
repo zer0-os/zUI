@@ -5,7 +5,7 @@ import { StoryCard } from '../.storybook';
 import { Step } from './StepBar.types';
 
 export default {
-  title: 'StepBar',
+  title: 'Data Display/StepBar',
   component: StepBar
 } as ComponentMeta<typeof StepBar>;
 
@@ -13,7 +13,7 @@ export const Default: ComponentStory<typeof StepBar> = ({ currentStepId, steps }
   const [step, setStep] = useState(steps.find(x => x.id === currentStepId));
 
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <StepBar currentStepId={step?.id ?? ''} steps={steps} onChangeStep={(step: Step) => setStep(step)} />
     </StoryCard>
   );

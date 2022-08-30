@@ -34,7 +34,7 @@
   &__storycard {
     min-height: 500px;
     display: flex;
-    align-items: center;
+    align-items: center !important;
     justify-content: center;
 
     > * {
