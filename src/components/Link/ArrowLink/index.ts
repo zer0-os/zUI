@@ -1,2 +1,1 @@
-export { ArrowLink } from './ArrowLink';
-export type { ArrowLinkProps } from './ArrowLink';
+export * from './ArrowLink';
