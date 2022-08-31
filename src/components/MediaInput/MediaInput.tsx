@@ -1,17 +1,28 @@
+//- React Imports
 import React, { FC, useRef } from 'react';
+import classNames from 'classnames/bind';
+
+//- Style Imports
 import './MediaInput.scss';
 
+//- Component Imports
+import Preview from './Preview';
+
+//- Type Imports
+import { MediaType } from './MediaInput.types';
+
 export type MediaInputProps = {
-  mediaType: string | undefined;
+  className?: string;
+  mediaType: MediaType | undefined;
   previewUrl: string;
   hasError: boolean;
-  onChange: (mediaType: string, previewImage: string, image: Buffer) => void;
+  onChange: (mediaType: MediaType, previewImage: string, image: Buffer) => void;
 };
 
-const MediaInput: FC<MediaInputProps> = ({ mediaType, previewUrl, hasError, onChange }) => {
+const MediaInput: FC<MediaInputProps> = ({ className = '', mediaType, previewUrl, hasError, onChange }) => {
   const inputFile = useRef<HTMLInputElement>(null);
 
-  const openUploadDialog = () => (inputFile.current ? inputFile.current.click() : null);
+  const openUploadDialog = () => inputFile.current?.click();
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -29,26 +40,21 @@ const MediaInput: FC<MediaInputProps> = ({ mediaType, previewUrl, hasError, onCh
     }
   };
 
-  const getPreview = (): JSX.Element => {
-    if (!previewUrl) {
-      return <span className="preview-text">Choose Media</span>;
-    }
-
-    if (mediaType === 'image') {
-      return <img alt="NFT Preview" src={previewUrl as string} />;
-    }
-
-    return <video autoPlay controls loop src={previewUrl as string} />;
-  };
-
   return (
     <div className="zui-media-input">
       <div
-        data-testid="preview"
-        className={`preview ${previewUrl && 'uploaded'} ${hasError && 'has-error'}`}
+        data-testid="preview-container"
+        className={classNames('zui-media-input-preview', className, {
+          'zui-media-input-uploaded': previewUrl,
+          'zui-media-input-error': hasError
+        })}
         onClick={openUploadDialog}
       >
-        {getPreview()}
+        {mediaType && previewUrl ? (
+          <Preview data-testid="preview" mediaType={mediaType} previewUrl={previewUrl} />
+        ) : (
+          <span className="zui-media-input-preview-text">Choose Media</span>
+        )}
       </div>
       <input
         data-testid="input"

@@ -6,58 +6,94 @@ import MediaInput, { MediaInputProps } from './MediaInput';
 const renderComponent = (props: MediaInputProps) => render(<MediaInput {...props} />);
 
 const initialProps: MediaInputProps = {
-  mediaType: '',
+  mediaType: undefined,
   previewUrl: '',
   hasError: false,
   onChange: jest.fn()
 };
 
-test('should not render input element', () => {
-  const { getByText } = renderComponent(initialProps);
+test('should render choose media text and not render preview component when previewUrl empty', () => {
+  const { container, getByText } = renderComponent(initialProps);
   const input = getByText('Choose Media') as HTMLInputElement;
   expect(input).toBeVisible();
-});
-
-test('should render choose media text when previewUrl empty', () => {
-  const { getByText } = renderComponent(initialProps);
-  const input = getByText('Choose Media') as HTMLInputElement;
-  expect(input).toBeVisible();
+  expect(container.querySelector(`[data-testid="preview"]`)).toBeNull();
 });
 
 test('should render preview image when previewUrl valid and mediaType equals image', () => {
+  const previewUrl = 'http://localhost/testing.png';
   const { container } = renderComponent({
     ...initialProps,
     mediaType: 'image',
-    previewUrl: 'testing.png'
+    previewUrl: previewUrl
   });
 
-  expect(container.querySelector('img')).toBeVisible();
+  const imageElement = container.querySelector('img');
+  expect(imageElement).toBeVisible();
+  expect(imageElement?.src).toEqual(previewUrl);
 });
 
 test('should render preview video when previewUrl valid and mediaType equals video', () => {
+  const previewUrl = 'http://localhost/testing.mp3';
   const { container } = renderComponent({
     ...initialProps,
     mediaType: 'video',
-    previewUrl: 'testing.mp3'
+    previewUrl: previewUrl
   });
 
-  expect(container.querySelector('video')).toBeVisible();
+  const videoElement = container.querySelector('video');
+  expect(videoElement).toBeVisible();
+  expect(videoElement?.src).toEqual(previewUrl);
 });
 
-test('should render custom border color on preview when hasError is true', () => {
+test('should apply className to preview container', () => {
+  const className = 'testing';
+  const { getByTestId } = renderComponent({
+    ...initialProps,
+    className: className
+  });
+
+  const element = getByTestId('preview-container') as HTMLInputElement;
+  expect(element).toHaveClass(className);
+});
+
+test('should apply error className on error', () => {
   const { getByTestId } = renderComponent({
     ...initialProps,
     hasError: true
   });
 
-  const previewElement = getByTestId('preview') as HTMLInputElement;
-  expect(previewElement).toHaveClass('has-error');
+  const previewElement = getByTestId('preview-container') as HTMLInputElement;
+  expect(previewElement).toHaveClass('zui-media-input-error');
 });
 
-test('should not render custom border color on preview when hasError is false', () => {
-  const { getByTestId } = renderComponent(initialProps);
-  const previewElement = getByTestId('preview') as HTMLInputElement;
-  expect(previewElement).not.toHaveClass('has-error');
+test('should not apply error className when no error', () => {
+  const { getByTestId } = renderComponent({
+    ...initialProps,
+    hasError: false
+  });
+
+  const previewElement = getByTestId('preview-container') as HTMLInputElement;
+  expect(previewElement).not.toHaveClass('zui-media-input-error');
+});
+
+test('should apply uploaded className when previewUrl valid', () => {
+  const { getByTestId } = renderComponent({
+    ...initialProps,
+    previewUrl: 'http://localhost/testing.png'
+  });
+
+  const previewElement = getByTestId('preview-container') as HTMLInputElement;
+  expect(previewElement).toHaveClass('zui-media-input-uploaded');
+});
+
+test('should not apply uploaded className when empty previewUrl', () => {
+  const { getByTestId } = renderComponent({
+    ...initialProps,
+    previewUrl: ''
+  });
+
+  const previewElement = getByTestId('preview-container') as HTMLInputElement;
+  expect(previewElement).not.toHaveClass('zui-media-input-uploaded');
 });
 
 test('should call onChange on successful file upload', async () => {

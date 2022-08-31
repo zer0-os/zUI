@@ -1,31 +1,20 @@
 @import '../../styles/animations';
 @import '../../styles/colors';
 
-$width: 640px;
-$gutter: 16px;
-
 .zui-media-input {
-  .preview {
+  .zui-media-input-preview {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 224px;
-    width: 224px;
-    min-width: 224px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #88d7ff;
+    border: 1px solid #{$anakiwa-darker};
     border-radius: 16px;
     border-collapse: separate;
     overflow: hidden;
     cursor: pointer;
     transition: transform #{$time-medium} ease-in-out, border-color #{$time-medium} ease-in-out;
-
-    @media only screen and (max-width: #{$width + $gutter + $gutter}) {
-      width: auto;
-      max-width: 224px;
-    }
 
     > img {
       height: 100%;
@@ -39,12 +28,12 @@ $gutter: 16px;
       transition: transform #{$time-medium} ease-in-out;
     }
 
-    .preview-text {
+    .zui-media-input-preview-text {
       color: #{$text-glow-white};
     }
   }
 
-  .uploaded {
+  .zui-media-input-uploaded {
     background: rgba($black, 0.3);
     border: none;
     overflow: visible;
@@ -58,8 +47,8 @@ $gutter: 16px;
     }
   }
 
-  .has-error {
-    border-color: #d379ff;
+  .zui-media-input-error {
+    border-color: #{$helitrope};
   }
 
   input {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import MediaInput from './MediaInput';
 import { StoryCard } from '../.storybook';
+import { MediaType } from './MediaInput.types';
 
 export default {
   title: 'Inputs/MediaInput',
@@ -12,10 +13,9 @@ const Template: ComponentStory<typeof MediaInput> = args => {
   const [mediaType, setMediaType] = useState(args.mediaType);
   const [previewUrl, setPreviewUrl] = useState(args.previewUrl);
 
-  const handleChange = (mediaType: string, previewUrl: string, image: Buffer): void => {
+  const handleChange = (mediaType: MediaType, previewUrl: string, image: Buffer): void => {
     setMediaType(mediaType);
     setPreviewUrl(previewUrl);
-    console.log(image, 'image');
   };
 
   return (
@@ -28,5 +28,6 @@ const Template: ComponentStory<typeof MediaInput> = args => {
 export const Default = Template.bind({});
 
 Default.args = {
+  className: 'media-input',
   hasError: false
 };
