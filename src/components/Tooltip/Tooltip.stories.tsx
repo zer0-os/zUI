@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Tooltip, BASE_CLASSNAME } from './Tooltip';
 import { Button } from '../Button';
 import { StoryCard } from '../.storybook';
-import './Tooltip.scss';
+import './Tooltip.stories.scss';
 
 export default {
   title: 'Data Display/Tooltip',

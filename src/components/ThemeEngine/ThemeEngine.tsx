@@ -1,8 +1,6 @@
-import type { FC } from 'react';
-
 import { useEffect } from 'react';
 import { kebabCase } from 'lodash';
-import { Theme, DEFAULT_THEME } from './ThemeEngine.constants';
+import { Theme, DEFAULT_THEME, ThemeColorKeys } from './ThemeEngine.constants';
 import { CSS_PREFIX } from '../constants';
 import { ThemeColors } from './ThemeColors';
 
@@ -11,14 +9,14 @@ type ThemeEngineProps = {
   element?: HTMLElement;
 };
 
-export const ThemeEngine: FC<ThemeEngineProps> = ({ theme = DEFAULT_THEME, element = document.documentElement }) => {
+export const ThemeEngine = ({ theme = DEFAULT_THEME, element = document.documentElement }: ThemeEngineProps) => {
   const setThemeVars = () => {
-    Object.keys(ThemeColors[theme]).forEach(prop => {
+    Object.values(ThemeColorKeys).forEach(prop => {
       element.style.setProperty(`--${CSS_PREFIX}-${kebabCase(prop)}`, ThemeColors[theme][prop]);
     });
   };
 
   useEffect(setThemeVars, [theme, element]);
 
-  return null;
+  return <></>;
 };
