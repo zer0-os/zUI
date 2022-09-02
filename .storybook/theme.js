@@ -3,5 +3,5 @@ import pkg from "../package.json";
 
 export const theme = create({
   base: 'light',
-  brandTitle: `ZUI Storybook v.${pkg.version}`
+  brandTitle: `zUI v.${pkg.version}`
 });
