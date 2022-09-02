@@ -37,6 +37,11 @@ $gutter: 16px;
       background-color: #{$grey};
       border: none;
     }
+
+    .zui-wizard-header-container {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .zui-wizard-loading {

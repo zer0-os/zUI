@@ -38,6 +38,7 @@ export const Header: ComponentStory<typeof Wizard.Header> = args => (
 
 Header.args = {
   header: 'Wizard Header Goes Here',
+  headerInfo: 'Create a token currency for a domain or DAO. The standard is the ERC-20 token standard.',
   subHeader: 'Some additional info as a subheader',
   sectionDivider: true
 };
