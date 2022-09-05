@@ -12,12 +12,10 @@ type PreviewProps = {
   previewUrl: string;
 };
 
-const Preview: FC<PreviewProps> = ({ mediaType, previewUrl }) => {
+export const Preview: FC<PreviewProps> = ({ mediaType, previewUrl }) => {
   if (mediaType === 'video') {
     return <video autoPlay controls loop src={previewUrl} />;
   }
 
   return <img alt="NFT Preview" src={previewUrl} />;
 };
-
-export default Preview;

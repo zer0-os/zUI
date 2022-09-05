@@ -6,7 +6,7 @@ import classNames from 'classnames/bind';
 import './MediaInput.scss';
 
 //- Component Imports
-import Preview from './Preview';
+import { Preview } from './Preview';
 
 //- Type Imports
 import { MediaType } from './MediaInput.types';
@@ -19,7 +19,7 @@ export type MediaInputProps = {
   onChange: (mediaType: MediaType, previewImage: string, image: Buffer) => void;
 };
 
-const MediaInput: FC<MediaInputProps> = ({ className = '', mediaType, previewUrl, hasError, onChange }) => {
+export const MediaInput: FC<MediaInputProps> = ({ className = '', mediaType, previewUrl, hasError, onChange }) => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const openUploadDialog = () => inputFile.current?.click();
@@ -68,5 +68,3 @@ const MediaInput: FC<MediaInputProps> = ({ className = '', mediaType, previewUrl
     </div>
   );
 };
-
-export default MediaInput;

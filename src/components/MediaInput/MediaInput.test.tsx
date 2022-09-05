@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import MediaInput, { MediaInputProps } from './MediaInput';
+import { MediaInput, MediaInputProps } from './MediaInput';
 
 const renderComponent = (props: MediaInputProps) => render(<MediaInput {...props} />);
 
