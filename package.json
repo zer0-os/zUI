@@ -1,6 +1,6 @@
 {
   "name": "@zero-tech/zui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Zero UI React Component Library",
   "scripts": {
     "build": "rm -rf dist && yarn build:typecheck && yarn lint && yarn test && yarn build:styles && yarn export:styles && yarn build:scripts && cp package.json dist/package.json",
