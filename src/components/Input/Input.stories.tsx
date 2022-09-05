@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Input> = args => {
 
   return (
     <StoryCard isContentFull>
-      <Input {...args} value={value}  onChange={setValue} />
+      <Input {...args} value={value} onChange={setValue} />
     </StoryCard>
   );
 };

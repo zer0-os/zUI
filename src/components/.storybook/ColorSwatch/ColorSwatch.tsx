@@ -18,7 +18,7 @@ export const ColorSwatch = ({ title, variable, color, className }: ColorSwatchPr
       </div>
       <div className="color_swatch__color">
         <div className="color_swatch__color_info">
-          <div className="color_swatch__color_info-box" style={{ backgroundColor: color }}></div>
+          <div className="color_swatch__color_info-box" style={{ background: color }}></div>
           <p className="color_swatch__color_info-hex">{color}</p>
         </div>
       </div>

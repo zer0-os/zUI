@@ -12,28 +12,24 @@
 
   &__table-row {
     &:first-child {
-      border-top: 1px solid $grey-lighter-3;
+      border-top: 1px solid var(--zui-gray-6);
     }
   }
 
   &__table-cell {
-    border-left: 1px solid $grey-lighter-3;
-    border-bottom: 1px solid $grey-lighter-3;
+    border-left: 1px solid var(--zui-gray-6);
+    border-bottom: 1px solid var(--zui-gray-6);
     padding: 0.5rem 1rem;
-
-    &:not(:last-child) {
-      color: $grey;
-    }
+    color: var(--zui-gray-12);
 
     &:last-child {
-      border-right: 1px solid $grey-lighter-3;
+      border-right: 1px solid var(--zui-gray-6);
     }
   }
 
   &__table-cell--is-header {
     @extend .icons-story__table-cell;
 
-    color: $almost-black !important;
-    background-color: $grey;
+    background-color: var(--zui-gray-6);
   }
 }

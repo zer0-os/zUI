@@ -1,8 +1,8 @@
 import React from 'react';
 import { capitalize } from 'lodash';
-import { StoryCard, ColorSwatch } from '../index';
-import { colorsByGroup, ColorGroups } from './Styles.helpers';
-import './Styles.stories.scss';
+import { StoryCard, ColorSwatch } from '../../index';
+import { colorsByGroup, ColorGroups } from './ColorsLegacy.helpers';
+import '../Styles.stories.scss';
 
 export default {
   title: 'Style Guide/Colors',
@@ -14,7 +14,7 @@ export default {
   }
 };
 
-export const Colors = () => {
+export const ColorsLegacy = () => {
   return (
     <>
       {ColorGroups.map(colorGroup => (

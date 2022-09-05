@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { kebabCase } from 'lodash';
 import { Theme, DEFAULT_THEME, ThemeColorKeys } from './ThemeEngine.constants';
 import { CSS_PREFIX } from '../constants';

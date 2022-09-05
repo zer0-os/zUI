@@ -29,12 +29,12 @@ export const globalTypes = {
       // Array of options
       items: [
         { value: Theme.Light, icon: 'circlehollow', title: Theme.Light },
-        { value: Theme.Dark, icon: 'circle', title: Theme.Dark },
+        { value: Theme.Dark, icon: 'circle', title: Theme.Dark }
       ],
       // Property that specifies if the name of the item will be displayed
-      showName: true,
-    },
-  },
+      showName: true
+    }
+  }
 };
 
 export const parameters = {
