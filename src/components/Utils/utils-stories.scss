@@ -1,0 +1,18 @@
+@import '../../styles/typography';
+@import '../../styles/colors';
+
+.utils-stories {
+  &__card {
+    font-size: #{$size-small};
+  }
+
+  &__list-item {
+    list-style-type: none;
+    font-weight: #{$font-weight-medium};
+    color: $grey;
+
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+}
