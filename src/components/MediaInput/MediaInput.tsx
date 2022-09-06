@@ -13,13 +13,15 @@ import { MediaType } from './MediaInput.types';
 
 export type MediaInputProps = {
   className?: string;
+  title?: string;
+  subtitle?: string;
   mediaType: MediaType | undefined;
   previewUrl: string;
   hasError: boolean;
   onChange: (mediaType: MediaType, previewImage: string, image: Buffer) => void;
 };
 
-export const MediaInput: FC<MediaInputProps> = ({ className = '', mediaType, previewUrl, hasError, onChange }) => {
+export const MediaInput: FC<MediaInputProps> = ({ className = '', title = "Choose Media", subtitle = "", mediaType, previewUrl, hasError, onChange }) => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const openUploadDialog = () => inputFile.current?.click();
@@ -53,7 +55,10 @@ export const MediaInput: FC<MediaInputProps> = ({ className = '', mediaType, pre
         {mediaType && previewUrl ? (
           <Preview data-testid="preview" mediaType={mediaType} previewUrl={previewUrl} />
         ) : (
-          <span className="zui-media-input-preview-text">Choose Media</span>
+          <div className="zui-media-input-preview-text">
+            <span className="zui-media-input-preview-text-title">{title}</span>
+            {subtitle && <span className="zui-media-input-preview-text-subtitle">{subtitle}</span>}
+          </div>
         )}
       </div>
       <input

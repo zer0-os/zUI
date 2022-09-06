@@ -29,7 +29,19 @@
     }
 
     .zui-media-input-preview-text {
-      color: #{$text-glow-white};
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      .zui-media-input-preview-text-title {
+        font-size: 16px;
+        color: #{$text-glow-white};
+      }
+  
+      .zui-media-input-preview-text-subtitle {
+        font-size: 14px;
+        color: #{$grey-lighter-2};
+      }
     }
   }
 
