@@ -29,7 +29,7 @@ export const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...r
       )}
       <DialogPortal>
         <DialogOverlay className={styles.Overlay}>
-          <DialogContent className={classNames(className, styles.Content, 'content')}>{children}</DialogContent>
+          <DialogContent className={classNames(className, styles.Content)}>{children}</DialogContent>
         </DialogOverlay>
       </DialogPortal>
     </DialogRoot>
