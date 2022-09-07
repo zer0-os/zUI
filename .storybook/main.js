@@ -1,4 +1,5 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin').default;
+const webpack = require('webpack');
 const componentsFolder = '../src/components/';
 
 module.exports = {
@@ -24,7 +25,13 @@ module.exports = {
       use: ['style-loader', 'css-loader']
     });
 
-    config.plugins = [...(config.plugins || []), new TsconfigPathsPlugin()];
+    config.plugins = [
+      ...(config.plugins || []),
+      new TsconfigPathsPlugin(),
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer']
+      })
+    ];
 
     return config;
   }

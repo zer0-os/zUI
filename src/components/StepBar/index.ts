@@ -1,2 +1,2 @@
 export * from './StepBar';
-export * from './StepBar.types';
+export type { Step } from './StepBar.types';

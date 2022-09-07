@@ -4,9 +4,9 @@ import React, { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
 // Preset Screens
-import Buttons from './Presets/Buttons';
-import Confirmation from './Presets/Confirmation';
-import Loading from './Presets/Loading';
+import { Buttons } from './Presets/Buttons';
+import { Confirmation } from './Presets/Confirmation';
+import { Loading } from './Presets/Loading';
 import './Wizard.scss';
 
 export interface HeaderProps {
@@ -20,11 +20,11 @@ export interface WizardProps extends HeaderProps {
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ header, subHeader, sectionDivider = true }) => (
+const Header: FC<HeaderProps> = ({ children, header, subHeader, sectionDivider = true }) => (
   <div className={classNames('zui-wizard-header')}>
     <h1>{header}</h1>
     {subHeader && <h2>{subHeader}</h2>}
-
+    {children}
     {sectionDivider && <hr />}
   </div>
 );
@@ -39,4 +39,4 @@ const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => 
   </div>
 );
 
-export default { Container, Loading, Buttons, Confirmation, Header };
+export const Wizard = { Container, Loading, Buttons, Confirmation, Header };

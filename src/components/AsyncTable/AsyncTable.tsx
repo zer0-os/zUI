@@ -59,7 +59,7 @@ export interface AsyncTableProps<T> {
   searchKey: SearchKey<T>;
 }
 
-const AsyncTable = <T extends unknown>({
+export const AsyncTable = <T extends unknown>({
   data,
   // itemKey,
   columns,
@@ -99,10 +99,10 @@ AsyncTableProps<T>) => {
         {isLoading
           ? Array(numLoadingRows)
               .fill(0)
-              .map(num => (
-                <tr key={`async-table-tr-${num}`}>
+              .map((_, numIndex) => (
+                <tr key={`async-table-tr-${numIndex}`}>
                   {columns.map((c: Column) => (
-                    <td key={`async-table-tr-${num}-td-${c.id}`}>
+                    <td key={`async-table-tr-${numIndex}-td-${c.id}`}>
                       <Skeleton width={'100%'} height={rowHeight} />
                     </td>
                   ))}
@@ -113,5 +113,3 @@ AsyncTableProps<T>) => {
     </table>
   );
 };
-
-export default AsyncTable;

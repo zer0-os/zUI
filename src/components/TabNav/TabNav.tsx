@@ -19,7 +19,7 @@ export interface TabNavProps {
   defaultValue?: string;
 }
 
-const TabNav: React.FC<TabNavProps> = ({ defaultValue, tabs }) => {
+export const TabNav: React.FC<TabNavProps> = ({ defaultValue, tabs }) => {
   return (
     <Tabs.Root className={styles.Container} defaultValue={defaultValue || tabs[0].text}>
       <Tabs.List className={styles.List}>
@@ -41,5 +41,3 @@ const TabNav: React.FC<TabNavProps> = ({ defaultValue, tabs }) => {
     </Tabs.Root>
   );
 };
-
-export default TabNav;

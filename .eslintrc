@@ -77,6 +77,7 @@
         "no-console": 0,
         "no-empty-pattern": 0,
         "import/no-named-as-default": 0,
+        "import/no-default-export": "error",
         "class-methods-use-this": 0,
         "react/no-danger": 0,
         "jsx-a11y/no-noninteractive-element-interactions": 0,
@@ -102,6 +103,13 @@
         "prefer-destructuring": 0,
         "react/destructuring-assignment": 0,
         "prefer-const": 0
+      }
+    },
+    // Storybook files
+    {
+      "files": ["*.stories.tsx"],
+      "rules": {
+        "import/no-default-export": "off"
       }
     }
   ]

@@ -9,7 +9,7 @@ import styles from './ArrowLink.module.scss';
 
 const cx = classNames.bind(styles);
 
-type ArrowLinkProps = {
+export interface ArrowLinkProps {
   children: React.ReactNode;
   href?: string;
   style?: React.CSSProperties;
@@ -18,7 +18,7 @@ type ArrowLinkProps = {
   className?: string;
   back?: boolean;
   isLinkToExternalUrl?: boolean;
-};
+}
 
 export const TEST_ID = {
   CONTAINER: 'arrow-link-container',
@@ -73,5 +73,3 @@ export const ArrowLink: React.FC<ArrowLinkProps> = ({
     <a {...sharedProps}>{content}</a>
   );
 };
-
-export default ArrowLink;

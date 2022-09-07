@@ -1,8 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 
+import { Skeleton } from '../Skeleton';
 import { TEST_ID } from './Card.constants';
 
-import Skeleton from '../Skeleton';
 import styles from './Card.module.scss';
 
 export interface AsyncText {
@@ -16,7 +16,7 @@ export interface CardProps {
   bottomText?: AsyncText | string | number;
 }
 
-const Card: FC<CardProps> = ({ title, value, bottomText }) => (
+export const Card: FC<CardProps> = ({ title, value, bottomText }) => (
   <div data-testid={TEST_ID.container} className={styles.Container}>
     <label>{title}</label>
     <span className={styles.Value}>
@@ -33,5 +33,3 @@ const Card: FC<CardProps> = ({ title, value, bottomText }) => (
     )}
   </div>
 );
-
-export default Card;
