@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 
+import { TEST_ID } from './Card.constants';
+
 import Skeleton from '../Skeleton';
 import styles from './Card.module.scss';
 
@@ -15,7 +17,7 @@ export interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ title, value, bottomText }) => (
-  <div className={styles.Container}>
+  <div data-testid={TEST_ID.container} className={styles.Container}>
     <label>{title}</label>
     <span className={styles.Value}>
       {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
