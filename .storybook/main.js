@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const componentsFolder = '../src/components/';
 
 module.exports = {
-  stories: [componentsFolder + '**/*.stories.tsx', componentsFolder + '.storybook/**/*.stories.tsx'],
-  addons: ['@storybook/addon-essentials'],
+  stories: [componentsFolder + '**/*.stories.@(tsx|mdx)', componentsFolder + '.storybook/**/*.stories.tsx'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-docs'],
   core: {
     builder: 'webpack5'
   },

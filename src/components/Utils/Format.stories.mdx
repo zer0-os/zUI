@@ -1,0 +1,93 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta
+  title="Utils/Format"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true }
+    }
+  }}
+/>
+
+## 1. formatWei
+
+Formats BigNumber or string wei into string
+
+```js
+  formatWei(wei: BigNumber | string, decimalPlaces?: number)
+```
+
+#### - **parameters**
+
+- **wei** `{BigNumber | string}` - wei to format
+- **decimalPlaces** `{number | undefined}` - decimal places
+
+#### - **return**
+
+`{string}` - formatted string value
+
+## 2. formatBigNumberString
+
+Formats BigNumber into string
+
+```js
+  formatBigNumberString(str: string, decimalPlaces?: number)
+```
+
+#### - **parameters**
+
+- **str** `{string}` - big number string to format
+- **decimalPlaces** `{number | undefined}` - decimal places
+
+#### - **return**
+
+`{string}` - formatted string value
+
+## 3. formatFiat
+
+Formats number or string value into fiat value
+
+```js
+  formatFiat(amount: number | string)
+```
+
+#### - **parameters**
+
+- **amount** `{number | string}` - amount to format
+
+#### - **return**
+
+`{number}` - formatted fiat value
+
+## 4. formatPercentage
+
+Formats number or string value into percentage value
+
+```js
+  formatPercentage(percentage: number | string)
+```
+
+#### - **parameters**
+
+- **percentage** `{number | string}` - percentage to format
+
+#### - **return**
+
+`{string}` - formatted percentage value
+
+## 5. formatTimestamp
+
+Formats string value into timestamp value
+
+```js
+  formatTimestamp (timestamp: string)
+```
+
+#### - **parameters**
+
+- **timestamp** `{string}` - value to format
+
+#### - **return**
+
+`{string}` - formatted timestamp value
