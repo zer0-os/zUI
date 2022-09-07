@@ -45,7 +45,7 @@ afterEach(() => {
 const renderComponent = (props?: ModalProps) => render(<Modal {...DEFAULT_PROPS} {...props} />);
 
 test('should render string trigger as a button', () => {
-  const { getByText, getByTestId } = renderComponent();
+  const { getByTestId } = renderComponent();
   const trigger = getByTestId('trigger');
   expect(mockRadixTrigger).toBeCalledWith(expect.objectContaining({ asChild: true }));
   expect(trigger.textContent).toBe(MOCK_TRIGGER);
