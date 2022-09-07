@@ -1,0 +1,23 @@
+.Overlay {
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    place-items: center;
+    overflow-y: auto;
+    z-index: 10000;
+
+    background: rgba(0 0 0 / 0.9);
+}
+
+.Content {
+    min-width: 300px;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #3b3b3b;
+
+    background: #0a0a0a;
+}
