@@ -22,17 +22,19 @@ export interface TabsNavProps {
  */
 export const TabsNav = ({ tabs, location }: TabsNavProps) => {
   return (
-    <ul className={styles.List}>
-      {tabs.map(t => (
-        <Link
-          key={t.text + t.to}
-          className={cx(styles.Tab, { Selected: location === t.to })}
-          to={t.to}
-          replace={t.replace}
-        >
-          {t.text}
-        </Link>
-      ))}
-    </ul>
+    <div className={styles.Container}>
+      <div className={styles.List} role="tablist" dir="ltr">
+        {tabs.map(t => (
+          <Link
+            key={t.text + t.to}
+            className={cx(styles.Tab, { Selected: location === t.to })}
+            to={t.to}
+            replace={t.replace}
+          >
+            {t.text}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };
