@@ -1,17 +1,17 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { TabNav } from '.';
+import { Tabs } from '.';
 import { StoryCard } from '../.storybook';
 
 export default {
-  title: 'Data Display/TabNav',
-  component: TabNav
-} as ComponentMeta<typeof TabNav>;
+  title: 'Data Display/Tabs',
+  component: Tabs
+} as ComponentMeta<typeof Tabs>;
 
-const Template: ComponentStory<typeof TabNav> = args => {
+const Template: ComponentStory<typeof Tabs> = args => {
   return (
     <StoryCard isContrast>
-      <TabNav {...args} />
+      <Tabs {...args} />
     </StoryCard>
   );
 };
