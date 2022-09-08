@@ -16,9 +16,9 @@
 }
 
 .Content {
-  min-width: 300px;
-  padding: 30px;
-  border-radius: 16px;
+  min-width: 18.75rem; // 300px
+  padding: 1.875rem; // 30px
+  border-radius: 1rem;
   border: 1px solid #{$grey-dark};
 
   background: #{$almost-black};
