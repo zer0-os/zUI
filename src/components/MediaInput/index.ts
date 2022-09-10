@@ -1,2 +1,2 @@
 export * from './MediaInput';
-export * from "./MediaInput.types";
+export * from './MediaInput.types';

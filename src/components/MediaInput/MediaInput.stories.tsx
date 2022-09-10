@@ -29,7 +29,7 @@ export const Default = Template.bind({});
 
 Default.args = {
   className: 'media-input',
-  title: "Select files...",
-  subtitle: "(Optional)",
+  title: 'Select files...',
+  subtitle: '(Optional)',
   hasError: false
 };

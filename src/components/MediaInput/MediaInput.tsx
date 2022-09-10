@@ -21,7 +21,15 @@ export type MediaInputProps = {
   onChange: (mediaType: MediaType, previewImage: string, image: Buffer) => void;
 };
 
-export const MediaInput: FC<MediaInputProps> = ({ className = '', title = "Choose Media", subtitle = "", mediaType, previewUrl, hasError, onChange }) => {
+export const MediaInput: FC<MediaInputProps> = ({
+  className = '',
+  title = 'Choose Media',
+  subtitle = '',
+  mediaType,
+  previewUrl,
+  hasError,
+  onChange
+}) => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const openUploadDialog = () => inputFile.current?.click();
