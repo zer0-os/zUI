@@ -1,0 +1,25 @@
+@import '../../styles/colors';
+
+.Overlay {
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  place-items: center;
+  overflow-y: auto;
+  z-index: 10000;
+
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.Content {
+  min-width: 18.75rem; // 300px
+  padding: 1.875rem; // 30px
+  border-radius: 1rem;
+  border: 1px solid #{$grey-dark};
+
+  background: #{$almost-black};
+}
