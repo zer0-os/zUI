@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { ZUIProvider } from '../src/ZUIProvider';
-import { ThemeEngine, Theme, DEFAULT_THEME } from '../src/components';
+import { ThemeEngine, ThemeVariant, DEFAULT_THEME_VARIANT } from '../src/components';
 
 export const decorators = [
   (Story, context) => {
@@ -22,14 +22,14 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for ZUI components',
-    defaultValue: DEFAULT_THEME,
+    defaultValue: DEFAULT_THEME_VARIANT,
     toolbar: {
       // The icon for the toolbar item
       icon: 'circlehollow',
       // Array of options
       items: [
-        { value: Theme.Light, icon: 'circlehollow', title: Theme.Light },
-        { value: Theme.Dark, icon: 'circle', title: Theme.Dark }
+        { value: ThemeVariant.Light, icon: 'circlehollow', title: ThemeVariant.Light },
+        { value: ThemeVariant.Dark, icon: 'circle', title: ThemeVariant.Dark }
       ],
       // Property that specifies if the name of the item will be displayed
       showName: true
