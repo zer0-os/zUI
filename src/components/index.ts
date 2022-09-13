@@ -9,4 +9,5 @@ export { Skeleton } from './Skeleton';
 export * from './StepBar';
 export * from './Tabs';
 export * from './Tooltip';
+export * from './ThemeEngine';
 export { Wizard } from './Wizard';
