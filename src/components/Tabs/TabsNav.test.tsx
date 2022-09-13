@@ -1,3 +1,5 @@
+import type { HtmlHTMLAttributes } from 'react';
+
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { TabsNav, TabNav, TabsNavProps } from '.';
@@ -12,7 +14,7 @@ const DEFAULT_PROPS = { tabs: MOCK_TABS, location: MOCK_TABS[0].to };
 const mockLink = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  Link: (props: any) => {
+  Link: (props: HtmlHTMLAttributes<HTMLDivElement>) => {
     mockLink(props);
     return (
       <div data-testid="link" {...props}>

@@ -5,9 +5,7 @@ import { DEFAULT_THEME_VARIANT, Theme, ThemeEngine, themes, ThemeVariant, toCssV
 const compareTheme = (theme: Theme, properties: CSSStyleDeclaration) => {
   for (const color in theme) {
     const value = properties.getPropertyValue(toCssVariableName(color));
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const expected = theme[color as any];
+    const expected = theme[color as keyof Theme];
     expect(value).toEqual(expected);
   }
 };
