@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { kebabCase } from 'lodash';
 import { CSS_PREFIX } from '../constants';
 import { ThemeVariant, DEFAULT_THEME_VARIANT } from './ThemeEngine.constants';
-import { ThemeColors } from './ThemeColors';
+import { themes } from './themes';
 
 type ThemeEngineProps = {
   theme?: ThemeVariant;
@@ -16,8 +16,8 @@ export const ThemeEngine = ({
   element = document.documentElement
 }: ThemeEngineProps) => {
   const setThemeVars = () => {
-    Object.keys(ThemeColors[theme]).forEach((prop: keyof Theme) => {
-      element.style.setProperty(`--${CSS_PREFIX}-${kebabCase(prop)}`, ThemeColors[theme][prop]);
+    Object.keys(themes[theme]).forEach((prop: keyof Theme) => {
+      element.style.setProperty(`--${CSS_PREFIX}-${kebabCase(prop)}`, themes[theme][prop]);
     });
   };
 

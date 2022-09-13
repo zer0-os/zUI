@@ -2,7 +2,7 @@ import type { Theme } from './ThemeEngine.types';
 
 import { ThemeVariant } from './ThemeEngine.constants';
 
-export const ThemeColors: Record<ThemeVariant, Theme> = {
+export const themes: Record<ThemeVariant, Theme> = {
   [ThemeVariant.Dark]: {
     // Greyscale
     gray1: '#09090a',
