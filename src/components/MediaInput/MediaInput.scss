@@ -1,0 +1,57 @@
+@import '../../styles/animations';
+@import '../../styles/colors';
+
+.zui-media-input {
+  .zui-media-input-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #{$anakiwa-darker};
+    border-radius: 16px;
+    border-collapse: separate;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform #{$time-medium} ease-in-out, border-color #{$time-medium} ease-in-out;
+
+    > img {
+      height: 100%;
+    }
+
+    > img,
+    > video {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform #{$time-medium} ease-in-out;
+    }
+
+    .zui-media-input-preview-text {
+      color: #{$text-glow-white};
+    }
+  }
+
+  .zui-media-input-uploaded {
+    background: rgba($black, 0.3);
+    border: none;
+    overflow: visible;
+    border-radius: 0;
+
+    &:hover {
+      > img,
+      > video {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .zui-media-input-error {
+    border-color: #{$helitrope};
+  }
+
+  input {
+    display: none;
+  }
+}

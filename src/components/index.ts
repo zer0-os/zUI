@@ -7,7 +7,6 @@ export { LoadingIndicator } from './LoadingIndicator';
 export { Modal } from './Modal';
 export { Skeleton } from './Skeleton';
 export * from './StepBar';
-export { TabNav } from './TabNav';
-export * from './ThemeEngine';
+export * from './Tabs';
 export * from './Tooltip';
 export { Wizard } from './Wizard';

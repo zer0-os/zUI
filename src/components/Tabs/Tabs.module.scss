@@ -7,9 +7,14 @@
     display: flex;
     gap: 3rem;
 
-    a {
+    .Tab {
       font-size: 1.5rem;
       font-weight: bold;
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
 
       transition: color 200ms ease;
 

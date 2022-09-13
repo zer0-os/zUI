@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import { TabNav, Tab, TabNavProps } from '.';
+import { Tabs, Tab, TabsProps } from '.';
 
 const mockTabs: Tab[] = [
-  { text: 'Tab 1', to: '#', content: 'This is Tab 1 content' },
-  { text: 'Tab 2', to: '#', content: 'This is Tab 2 content' },
-  { text: 'Tab 3', to: '#', content: 'This is Tab 3 content' }
+  { text: 'Tab 1', content: 'This is Tab 1 content' },
+  { text: 'Tab 2', content: 'This is Tab 2 content' },
+  { text: 'Tab 3', content: 'This is Tab 3 content' }
 ];
 
-const renderComponent = (props: TabNavProps) =>
+const renderComponent = (props: TabsProps) =>
   render(
     <Router>
-      <TabNav {...props} />
+      <Tabs {...props} />
     </Router>
   );
 

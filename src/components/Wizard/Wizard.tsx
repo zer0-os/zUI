@@ -20,11 +20,11 @@ export interface WizardProps extends HeaderProps {
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ header, subHeader, sectionDivider = true }) => (
+const Header: FC<HeaderProps> = ({ children, header, subHeader, sectionDivider = true }) => (
   <div className={classNames('zui-wizard-header')}>
     <h1>{header}</h1>
     {subHeader && <h2>{subHeader}</h2>}
-
+    {children}
     {sectionDivider && <hr />}
   </div>
 );
