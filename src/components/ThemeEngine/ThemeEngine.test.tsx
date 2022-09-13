@@ -2,14 +2,6 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { DEFAULT_THEME_VARIANT, Theme, ThemeEngine, themes, ThemeVariant, toCssVariableName } from '.';
 
-describe('toCssVariableName', () => {
-  it('should correctly format CSS variable names', () => {
-    expect(toCssVariableName('primary1')).toEqual('--zui-primary-1');
-    expect(toCssVariableName('primary')).toEqual('--zui-primary');
-    expect(toCssVariableName('shouldBeKebabCase')).toEqual('--zui-should-be-kebab-case');
-  });
-});
-
 const compareTheme = (theme: Theme, properties: CSSStyleDeclaration) => {
   for (const color in theme) {
     const value = properties.getPropertyValue(toCssVariableName(color));
@@ -34,4 +26,12 @@ test('should use default theme from ThemeEngine.constants.ts', () => {
   render(<ThemeEngine />);
 
   compareTheme(themes[DEFAULT_THEME_VARIANT], getComputedStyle(document.documentElement));
+});
+
+describe('toCssVariableName', () => {
+  it('should correctly format CSS variable names', () => {
+    expect(toCssVariableName('primary1')).toEqual('--zui-primary-1');
+    expect(toCssVariableName('primary')).toEqual('--zui-primary');
+    expect(toCssVariableName('shouldBeKebabCase')).toEqual('--zui-should-be-kebab-case');
+  });
 });
