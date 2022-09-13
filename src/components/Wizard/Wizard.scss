@@ -25,7 +25,7 @@ $gutter: 16px;
     }
 
     h2 {
-      margin-top: 0.75rem;
+      margin-top: 0;
       font-size: 1rem;
       font-weight: 400;
     }
@@ -36,6 +36,11 @@ $gutter: 16px;
       height: 1px;
       background-color: #{$grey};
       border: none;
+    }
+
+    .zui-wizard-header-container {
+      display: flex;
+      justify-content: center;
     }
   }
 
