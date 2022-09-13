@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 
-type CSSColor = CSSProperties['color'];
+export type CSSColor = CSSProperties['color'];
 
 export type Theme = {
   // Greyscale
