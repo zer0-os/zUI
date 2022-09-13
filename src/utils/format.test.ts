@@ -92,31 +92,31 @@ describe('format', () => {
     });
 
     it('should correctly format the timestamp for US locale', () => {
-      const timestamp = '1661385600000';
+      const timestamp = '1663056440000';
       mockDateAndLocale(timestamp, 'en-US');
 
-      expect(formatTimestamp(timestamp)).toEqual('8/24/2022');
+      expect(formatTimestamp(timestamp)).toEqual('9/13/2022');
     });
 
     it('should correctly format the timestamp for UK locale', () => {
-      const timestamp = '1661385600000';
+      const timestamp = '1663056440000';
       mockDateAndLocale(timestamp, 'en-GB');
 
-      expect(formatTimestamp(timestamp)).toEqual('24/08/2022');
+      expect(formatTimestamp(timestamp)).toEqual('13/09/2022');
     });
 
     it('should correctly format the timestamp for Italy locale', () => {
-      const timestamp = '1661385600000';
+      const timestamp = '1663056440000';
       mockDateAndLocale(timestamp, 'it-IT');
 
-      expect(formatTimestamp(timestamp)).toEqual('24/8/2022');
+      expect(formatTimestamp(timestamp)).toEqual('13/9/2022');
     });
 
     it('should correctly format the timestamp for Portugal locale', () => {
-      const timestamp = '1661385600000';
+      const timestamp = '1663056440000';
       mockDateAndLocale(timestamp, 'pt-PT');
 
-      expect(formatTimestamp(timestamp)).toEqual('24/08/2022');
+      expect(formatTimestamp(timestamp)).toEqual('13/09/2022');
     });
   });
 });
