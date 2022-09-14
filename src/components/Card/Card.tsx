@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
 import { Skeleton } from '../Skeleton';
-import { TEST_ID } from './Card.constants';
 
 import styles from './Card.module.scss';
 
@@ -17,13 +16,13 @@ export interface CardProps {
 }
 
 export const Card: FC<CardProps> = ({ title, value, bottomText }) => (
-  <div data-testid={TEST_ID.container} className={styles.Container}>
-    <label>{title}</label>
-    <span className={styles.Value}>
+  <div className={styles.Container}>
+    <label className={styles.Title}>{title}</label>
+    <b className={styles.Value}>
       {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
-    </span>
+    </b>
     {bottomText && (
-      <span>
+      <span className={styles.BottomText}>
         {typeof bottomText === 'object' ? (
           <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : bottomText.text ?? 'ERR'}</>
         ) : (

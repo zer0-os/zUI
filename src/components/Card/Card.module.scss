@@ -11,11 +11,20 @@
   background: #{$purple-10};
   border-radius: 1rem;
 
-  font-size: 0.75rem;
+  .Title {
+    padding: 0;
+    margin: 0;
+    font-weight: inherit;
+    font-size: 0.75rem;
+  }
 
   .Value {
     font-size: 1.125rem;
     font-weight: bold;
+  }
+
+  .BottomText {
+    font-size: 0.75rem;
   }
 
   > * {
