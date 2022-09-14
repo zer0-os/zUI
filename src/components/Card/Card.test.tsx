@@ -1,5 +1,5 @@
 import React from 'react';
-import { queryByText, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { Card, CardProps } from './';
 import styles from './Card.module.scss';
