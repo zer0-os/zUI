@@ -30,6 +30,7 @@
     "dist-storybook",
     "build",
     "**/*.js",
+    "**/*.stories.tsx",
     "**.config.js"
   ]
 }
