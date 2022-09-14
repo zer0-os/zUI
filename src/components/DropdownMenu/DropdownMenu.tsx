@@ -34,8 +34,6 @@ export interface DropdownMenuProps extends RadixUIDropdownMenuProps {
 
   /** Class to apply to the trigger */
   className?: string;
-  /** Class to apply to the dropdown menu */
-  menuClassName?: string;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
