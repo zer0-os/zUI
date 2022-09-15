@@ -26,21 +26,27 @@ test('should put title in a <label>', () => {
 });
 
 test('should apply Title class to title element', () => {
-  const { getByText } = renderComponent();
+  const { container } = renderComponent();
 
-  expect(getByText(DEFAULT_PROPS.title)).toHaveClass(styles.Title);
+  const title = container.getElementsByClassName(styles.Title);
+  expect(title.length).toBe(1);
+  expect(title[0].textContent).toBe(DEFAULT_PROPS.title);
 });
 
 test('should apply Value class to value element', () => {
-  const { getByText } = renderComponent();
+  const { container } = renderComponent();
 
-  expect(getByText(DEFAULT_PROPS.value)).toHaveClass(styles.Value);
+  const value = container.getElementsByClassName(styles.Value);
+  expect(value.length).toBe(1);
+  expect(value[0].textContent).toBe(DEFAULT_PROPS.value);
 });
 
 test('should apply BottomText class to bottom text element', () => {
-  const { getByText } = renderComponent();
+  const { container } = renderComponent();
 
-  expect(getByText(DEFAULT_PROPS.bottomText)).toHaveClass(styles.BottomText);
+  const bottomText = container.getElementsByClassName(styles.BottomText);
+  expect(bottomText.length).toBe(1);
+  expect(bottomText[0].textContent).toBe(DEFAULT_PROPS.bottomText);
 });
 
 test('should show skeleton when loading asynchronous value', () => {
