@@ -19,23 +19,6 @@ jest.mock('../Skeleton', () => ({
 
 const renderComponent = (props?: Partial<CardProps>) => render(<Card {...DEFAULT_PROPS} {...props} />);
 
-test('should render correct nodes in the correct order', () => {
-  const { container } = renderComponent(DEFAULT_PROPS);
-
-  // Extract text and nodes
-  const children = container.firstChild.childNodes;
-  const asText = Array.from(children).map(c => c.textContent);
-  const asNodes = Array.from(children).map(c => c.nodeName);
-
-  // Assert correct nodes and correct order
-  const expectedNodes = ['label', 'b', 'span'];
-  const expectedText = [DEFAULT_PROPS.title, DEFAULT_PROPS.value, DEFAULT_PROPS.bottomText];
-  expect(
-    asText.toString() === expectedText.toString() &&
-      asNodes.map(n => n.toLowerCase()).toString() === expectedNodes.map(n => n.toLowerCase()).toString()
-  );
-});
-
 test('should apply class module names to correct elements', () => {
   const { getByText } = renderComponent();
 
