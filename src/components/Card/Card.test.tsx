@@ -25,11 +25,21 @@ test('should put title in a <label>', () => {
   expect(getByText(DEFAULT_PROPS.title).nodeName).toBe('LABEL');
 });
 
-test('should apply class module names to correct elements', () => {
+test('should apply Title class to title element', () => {
   const { getByText } = renderComponent();
 
   expect(getByText(DEFAULT_PROPS.title)).toHaveClass(styles.Title);
+});
+
+test('should apply Value class to value element', () => {
+  const { getByText } = renderComponent();
+
   expect(getByText(DEFAULT_PROPS.value)).toHaveClass(styles.Value);
+});
+
+test('should apply BottomText class to bottom text element', () => {
+  const { getByText } = renderComponent();
+
   expect(getByText(DEFAULT_PROPS.bottomText)).toHaveClass(styles.BottomText);
 });
 
@@ -59,13 +69,13 @@ test('should show skeleton when loading asynchronous bottomText', () => {
 
 test('should show asynchronous value when data has loaded', () => {
   const { getByText, queryByText } = renderComponent({
-    value: { isLoading: false, text: DEFAULT_PROPS.value }
+    value: { isLoading: false, text: 'mock-value-text' }
   });
 
   // All text should be in DOM
   expect(getByText(DEFAULT_PROPS.title)).toBeTruthy();
   expect(getByText(DEFAULT_PROPS.bottomText)).toBeTruthy();
-  expect(getByText(DEFAULT_PROPS.value)).toBeTruthy();
+  expect(getByText('mock-value-text')).toBeTruthy();
 
   // Skeleton shouldn't be in DOM
   expect(queryByText(MOCK_SKELETON)).toBeFalsy();
@@ -73,12 +83,12 @@ test('should show asynchronous value when data has loaded', () => {
 
 test('should show asynchronous bottomText when data has loaded', () => {
   const { getByText, queryByText } = renderComponent({
-    bottomText: { isLoading: false, text: DEFAULT_PROPS.bottomText }
+    bottomText: { isLoading: false, text: 'mock-bottom-text' }
   });
 
   // All text should be in DOM
   expect(getByText(DEFAULT_PROPS.title)).toBeTruthy();
-  expect(getByText(DEFAULT_PROPS.bottomText)).toBeTruthy();
+  expect(getByText('mock-bottom-text')).toBeTruthy();
   expect(getByText(DEFAULT_PROPS.value)).toBeTruthy();
 
   // Skeleton shouldn't be in DOM
