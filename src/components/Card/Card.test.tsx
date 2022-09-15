@@ -19,6 +19,12 @@ jest.mock('../Skeleton', () => ({
 
 const renderComponent = (props?: Partial<CardProps>) => render(<Card {...DEFAULT_PROPS} {...props} />);
 
+test('should put title in a <label>', () => {
+  const { getByText } = renderComponent();
+
+  expect(getByText(DEFAULT_PROPS.title).nodeName).toBe('LABEL');
+});
+
 test('should apply class module names to correct elements', () => {
   const { getByText } = renderComponent();
 
