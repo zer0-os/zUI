@@ -28,6 +28,12 @@ export const TEST_ID = {
   }
 };
 
+/**
+ * @deprecated
+ * Warning: This was removed from the Zero Design System, and replaced with
+ * a more generic Link component.
+ * This component will be removed - you should use Link or Button.
+ */
 export const ArrowLink: React.FC<ArrowLinkProps> = ({
   className,
   href,
