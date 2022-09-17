@@ -1,0 +1,37 @@
+.Container {
+    &.Reset {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        background: none;
+
+        display: inline-block;
+        width: fit-content;
+
+        // @TODO: update with theme engine variable
+        color: white !important;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    &.Primary {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &.Secondary {
+        text-decoration: underline;
+    }
+
+    &.Disabled {
+        // @TODO: update with theme engine variable
+        opacity: 0.5;
+        text-decoration: none;
+        cursor: default;
+    }
+}
