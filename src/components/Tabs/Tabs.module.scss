@@ -20,11 +20,11 @@
 
       color: grey;
 
-      &[data-state='active'] {
+      &[data-state='active'], &.Selected {
         color: white;
       }
 
-      &[data-state='inactive'] {
+      &[data-state='inactive'], &:not(.Selected) {
         &:hover {
           color: rgb(154, 154, 154);
         }
