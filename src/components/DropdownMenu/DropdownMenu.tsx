@@ -2,6 +2,7 @@ import React, { forwardRef, ReactNode } from 'react';
 
 import {
   DropdownMenuProps as RadixUIDropdownMenuProps,
+  DropdownMenuContentProps as RadixUIDropdownMenuContentProps,
   Root as RadixUIDropdownMenuRoot,
   Trigger as RadixUIDropdownMenuTrigger,
   Content as RadixUIDropdownMenuContent,
@@ -22,26 +23,31 @@ export interface DropdownItem {
   className?: string;
 }
 
-export interface DropdownMenuProps extends RadixUIDropdownMenuProps {
+export interface DropdownMenuProps {
   /** List of items to render in the dropdown menu */
   items: DropdownItem[];
   /** Clicking this will make the dropdown menu appear */
   trigger?: ReactNode;
 
+  // from RadixDropdownMenu.DropdownMenuProps
+  open?: RadixUIDropdownMenuProps['open'];
+  defaultOpen?: RadixUIDropdownMenuProps['defaultOpen'];
+  onOpenChange?: RadixUIDropdownMenuProps['onOpenChange'];
+
   // from RadixDropdownMenu.DropdownMenuContentProps
-  side?: 'top' | 'right' | 'bottom' | 'left';
-  alignMenu?: 'start' | 'center' | 'end';
+  side?: RadixUIDropdownMenuContentProps['side'];
+  alignMenu?: RadixUIDropdownMenuContentProps['align'];
 
   /** Class to apply to the trigger */
   className?: string;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
-  ({ className, alignMenu = 'center', items, trigger, side = 'bottom', ...dropdownMenuProps }, ref) => {
+  ({ className, alignMenu = 'center', items, trigger, side = 'bottom', open, defaultOpen, onOpenChange }, ref) => {
     const triggerElement = !trigger ? <span>...</span> : typeof trigger === 'string' ? <span>{trigger}</span> : trigger;
 
     return (
-      <RadixUIDropdownMenuRoot {...dropdownMenuProps}>
+      <RadixUIDropdownMenuRoot open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
         <RadixUIDropdownMenuTrigger className={classNames(className, 'zui-dropdown-trigger')}>
           {triggerElement}
         </RadixUIDropdownMenuTrigger>
