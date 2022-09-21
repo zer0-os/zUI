@@ -2,6 +2,12 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
 import { DropdownMenu, DropdownItem, DropdownMenuProps } from '.';
+import {
+  DropdownMenuRootContentProps,
+  DropdownMenuTriggerProps,
+  DropdownMenuContentProps,
+  DropdownMenuItemProps
+} from '@radix-ui/react-dropdown-menu';
 
 const mockOnSelect = jest.fn();
 const MOCK_ITEMS: DropdownItem[] = [
@@ -20,11 +26,11 @@ const mockRadixContent = jest.fn();
 const mockRadixItem = jest.fn();
 
 jest.mock('@radix-ui/react-dropdown-menu', () => ({
-  Root: (props: any) => {
+  Root: (props: DropdownMenuRootContentProps) => {
     mockRadixRoot(props);
     return <div data-testid="root">{props.children}</div>;
   },
-  Trigger: (props: any) => {
+  Trigger: (props: DropdownMenuTriggerProps) => {
     mockRadixTrigger(props);
     return (
       <div className={props.className} data-testid="trigger">
@@ -32,7 +38,7 @@ jest.mock('@radix-ui/react-dropdown-menu', () => ({
       </div>
     );
   },
-  Content: (props: any) => {
+  Content: (props: DropdownMenuContentProps) => {
     mockRadixContent(props);
     return (
       <div className={props.className} data-testid="content">
@@ -40,7 +46,7 @@ jest.mock('@radix-ui/react-dropdown-menu', () => ({
       </div>
     );
   },
-  Item: (props: any) => {
+  Item: (props: DropdownMenuItemProps) => {
     mockRadixItem(props);
     return <div className={'mock-item ' + props.className}>{props.children}</div>;
   }
@@ -127,7 +133,7 @@ test('should apply content props to content', () => {
 });
 
 test('should apply props from RadixUIDropdownMenuProps to root', () => {
-  renderComponent({ open: true, defaultOpen: true, modal: true });
+  renderComponent({ open: true, defaultOpen: true });
 
-  expect(mockRadixRoot).toBeCalledWith(expect.objectContaining({ open: true, defaultOpen: true, modal: true }));
+  expect(mockRadixRoot).toBeCalledWith(expect.objectContaining({ open: true, defaultOpen: true }));
 });
