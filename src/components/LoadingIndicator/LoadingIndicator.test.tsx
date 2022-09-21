@@ -43,10 +43,10 @@ describe('LoadingIndicator', () => {
     const textContainer = container.getElementsByClassName('zui-loading-indicator-text');
 
     expect(textContainer.length).toBe(1);
-    expect(textContainer[0].textContent).toBe(MOCK_DEFAULT_PROPS.text);
+    expect(textContainer[0].textContent).toEqual(MOCK_DEFAULT_PROPS.text);
   });
 
-  test('should render spinner container', () => {
+  test('should render spinner component', () => {
     const { getByText } = renderComponent();
 
     expect(getByText(MOCK_SPINNER)).toBeTruthy();
