@@ -67,7 +67,6 @@ describe('LoadingIndicator', () => {
       expect(loadingIndicatorContainer[0]).toHaveClass(`zui-loading-indicator-${MOCK_DEFAULT_PROPS.spinnerPosition}`);
     });
 
-    // what should we change name of text too, as Joel suggested?
     test('should append spinnerPosition type to text container className attribute', () => {
       const { container } = renderComponent();
       const textContainer = container.getElementsByClassName('zui-loading-indicator-text');
