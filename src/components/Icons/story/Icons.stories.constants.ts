@@ -30,7 +30,9 @@ import {
   IconArrowElbowLeftDown,
   IconArrowElbowLeftUp,
   IconArrowElbowRight,
-  IconArrowElbowRightDown
+  IconArrowElbowRightDown,
+  IconCross,
+  IconQuestionMark
 } from '../index';
 
 export const ICONS_CHUNK_SIZE = 20;
@@ -165,5 +167,13 @@ export const ICONS = [
   {
     name: 'IconArrowElbowRightDown',
     Component: IconArrowElbowRightDown
+  },
+  {
+    name: 'IconCross',
+    Component: IconCross
+  },
+  {
+    name: 'IconQuestionMark',
+    Component: IconQuestionMark
   }
 ];
