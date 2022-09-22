@@ -91,6 +91,7 @@
     "@radix-ui/react-aspect-ratio": "^0.1.4",
     "@radix-ui/react-dialog": "^0.1.7",
     "@radix-ui/react-dropdown-menu": "^0.1.6",
+    "@radix-ui/react-portal": "^1.0.0",
     "@radix-ui/react-tabs": "^0.1.5",
     "@radix-ui/react-tooltip": "^1.0.0",
     "@react-aria/button": "^3.5.0",

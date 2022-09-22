@@ -1,32 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { kebabCase } from 'lodash';
-import type { Theme } from './ThemeEngine.types';
-import { CSS_PREFIX } from '../constants';
 import { DEFAULT_THEME_VARIANT, ThemeVariant } from './ThemeEngine.constants';
 import { themes } from './themes';
 
+import { StyleEngine } from './StyleEngine';
+
 export interface ThemeEngineProps {
-  theme?: ThemeVariant;
+  variant?: ThemeVariant;
 }
 
 /**
- * Converts a string to a zUI CSS variable name
- * e.g. toCssVariableName('primary1') -> 'zui-primary-1'
- * @param name
+ * ThemeEngine is responsible for sending the correct theme to StyleEngine.
+ * @param variant The theme variant to use
+ * @constructor
  */
-export const toCssVariableName = (name: string) => {
-  return `--${CSS_PREFIX}-${kebabCase(name)}`;
-};
-
-export const ThemeEngine = ({ theme = DEFAULT_THEME_VARIANT }: ThemeEngineProps) => {
-  const setThemeVars = () => {
-    Object.keys(themes[theme]).forEach((color: keyof Theme) => {
-      document.documentElement.style.setProperty(toCssVariableName(color), themes[theme][color]);
-    });
-  };
-
-  useEffect(setThemeVars, [theme]);
-
-  return <></>;
+export const ThemeEngine = ({ variant = DEFAULT_THEME_VARIANT }: ThemeEngineProps) => {
+  return <StyleEngine styles={themes[variant]} />;
 };

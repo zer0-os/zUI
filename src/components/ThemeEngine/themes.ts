@@ -94,10 +94,8 @@ export const themes: Record<ThemeVariant, Theme> = {
 
     // Gradients
     gradientPurple1: 'linear-gradient(223deg, #421349 14.62%, #0D0416 36.73%, #0B060E 59.58%, #2B0659 85.38%)',
-    gradientPurple2:
-      'radial-gradient(66.52% 66.52% at 0% 0%, #26072D 0%, rgba(38, 7, 45, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(93.63% 93.63% at 100% 0%, #9D0097 0%, rgba(157, 0, 151, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(91.27% 91.27% at 112.3% 83.55%, #52A9FF 0%, rgba(82, 169, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(65.88% 65.88% at -1.79% 99.21%, #4F0895 0%, rgba(79, 8, 149, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #290634',
-    gradientPurple3:
-      'radial-gradient(66.52% 66.52% at 0% 0%, #B900E3 0%, rgba(111, 25, 131, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(93.63% 93.63% at 100% 0%, #DE1CD7 0%, rgba(232, 0, 223, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(99.71% 99.71% at 104.51% 75.11%, #71B8FF 0%, rgba(116, 186, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(65.88% 65.88% at -1.79% 99.21%, #7D12E7 0%, rgba(162, 68, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #290634',
+    gradientPurple2: 'radial-gradient(66.52% 66.52% at 0% 0%, #26072D 0%, rgba(38, 7, 45, 0) 100%)',
+    gradientPurple3: 'radial-gradient(66.52% 66.52% at 0% 0%, #B900E3 0%, rgba(111, 25, 131, 0) 100%)',
     gradientBlue1: 'linear-gradient(90deg, #5257FF 0%, #52CBFF 100%)',
     gradientBlue2: 'linear-gradient(90deg, #5257FF 0%, #52CBFF 100%)',
     gradientBlue3: 'linear-gradient(90deg, #5257FF 0%, #52CBFF 100%)',
@@ -233,10 +231,8 @@ export const themes: Record<ThemeVariant, Theme> = {
 
     // Gradients
     gradientPurple1: 'linear-gradient(219deg, #F5DAFF 14.45%, #F6EFF9 36.67%, #F9EFFF 59.63%, #EDD6FF 85.55%)',
-    gradientPurple2:
-      'radial-gradient(66.52% 66.52% at 0% 0%, #26072D 0%, rgba(38, 7, 45, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(93.63% 93.63% at 100% 0%, #9D0097 0%, rgba(157, 0, 151, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(91.27% 91.27% at 112.3% 83.55%, #52A9FF 0%, rgba(82, 169, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(65.88% 65.88% at -1.79% 99.21%, #4F0895 0%, rgba(79, 8, 149, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #290634',
-    gradientPurple3:
-      'radial-gradient(66.52% 66.52% at 0% 0%, #B900E3 0%, rgba(111, 25, 131, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(93.63% 93.63% at 100% 0%, #DE1CD7 0%, rgba(232, 0, 223, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(99.71% 99.71% at 104.51% 75.11%, #71B8FF 0%, rgba(116, 186, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, radial-gradient(65.88% 65.88% at -1.79% 99.21%, #7D12E7 0%, rgba(162, 68, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #290634',
+    gradientPurple2: 'radial-gradient(66.52% 66.52% at 0% 0%, #26072D 0%, rgba(38, 7, 45, 0) 100%)',
+    gradientPurple3: 'radial-gradient(66.52% 66.52% at 0% 0%, #B900E3 0%, rgba(111, 25, 131, 0) 100%)',
     gradientBlue1: 'linear-gradient(90deg, #5257FF 0%, #52CBFF 100%)',
     gradientBlue2: 'linear-gradient(90deg, #5257FF 0%, #52CBFF 100%)',
     gradientBlue3: 'linear-gradient(90deg, #5257FF 0%, #52CBFF 100%)',

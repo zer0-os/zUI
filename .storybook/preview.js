@@ -10,7 +10,7 @@ export const decorators = [
     return (
       <MemoryRouter initialEntries={['/']}>
         <ZUIProvider>
-          <ThemeEngine theme={theme} />
+          <ThemeEngine variant={theme} />
           <Story />
         </ZUIProvider>
       </MemoryRouter>

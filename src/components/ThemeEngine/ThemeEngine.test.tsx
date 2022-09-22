@@ -1,35 +1,37 @@
 import React from 'react';
+
 import { render } from '@testing-library/react';
-import { DEFAULT_THEME_VARIANT, Theme, ThemeEngine, themes, ThemeVariant, toCssVariableName } from '.';
+import { ThemeEngine } from './ThemeEngine';
+import { ThemeVariant } from './ThemeEngine.constants';
+import { themes } from './themes';
 
-const compareTheme = (theme: Theme, properties: CSSStyleDeclaration) => {
-  for (const color in theme) {
-    const value = properties.getPropertyValue(toCssVariableName(color));
-    const expected = theme[color as keyof Theme];
-    expect(value).toEqual(expected);
+let mockStyleEngine = jest.fn();
+
+jest.mock('./StyleEngine', () => ({
+  StyleEngine: ({ styles }: { styles: string }) => {
+    mockStyleEngine(styles);
+    return <div />;
   }
-};
+}));
 
-test('should set global CSS variables for theme from props', () => {
-  const { rerender } = render(<ThemeEngine theme={ThemeVariant.Light} />);
+describe('<ThemeEngine />', () => {
+  describe('variant', () => {
+    test('should default to dark variant', () => {
+      render(<ThemeEngine />);
+      expect(mockStyleEngine).toHaveBeenCalledWith(themes[ThemeVariant.Dark]);
+    });
 
-  compareTheme(themes[ThemeVariant.Light], getComputedStyle(document.documentElement));
+    // Testing both of the variants currently, as we only have two variants.
+    // As we add more variants, we should make these tests more generic.
 
-  rerender(<ThemeEngine theme={ThemeVariant.Dark} />);
+    test('should render StyleEngine with dark styles when variant is Dark', () => {
+      render(<ThemeEngine variant={ThemeVariant.Dark} />);
+      expect(mockStyleEngine).toHaveBeenCalledWith(themes[ThemeVariant.Dark]);
+    });
 
-  compareTheme(themes[ThemeVariant.Dark], getComputedStyle(document.documentElement));
-});
-
-test('should use default theme from ThemeEngine.constants.ts', () => {
-  render(<ThemeEngine />);
-
-  compareTheme(themes[DEFAULT_THEME_VARIANT], getComputedStyle(document.documentElement));
-});
-
-describe('toCssVariableName', () => {
-  it('should correctly format CSS variable names', () => {
-    expect(toCssVariableName('primary1')).toEqual('--zui-primary-1');
-    expect(toCssVariableName('primary')).toEqual('--zui-primary');
-    expect(toCssVariableName('shouldBeKebabCase')).toEqual('--zui-should-be-kebab-case');
+    test('should render StyleEngine with light styles when variant is Light', () => {
+      render(<ThemeEngine variant={ThemeVariant.Light} />);
+      expect(mockStyleEngine).toHaveBeenCalledWith(themes[ThemeVariant.Light]);
+    });
   });
 });
