@@ -1,102 +1,98 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { Card, CardProps } from './';
+
 import styles from './Card.module.scss';
 
-const DEFAULT_PROPS = {
-  title: 'Mock Text Title',
-  value: 'Mock Text Value',
-  bottomText: 'Mock Text Bottom'
+const DEFAULT_PROPS: CardProps = {
+  title: '',
+  value: '',
+  bottomText: undefined
 };
 
-const MOCK_SKELETON = 'Mock Skeleton';
+const MOCK_SKELETON_ID = 'mock-skeleton';
 
 jest.mock('../Skeleton', () => ({
-  // Note: if you change this from <div>, make sure to update tests below
-  Skeleton: () => <div>{MOCK_SKELETON}</div>
+  Skeleton: () => <div data-testid={MOCK_SKELETON_ID} />
 }));
 
-const renderComponent = (props?: Partial<CardProps>) => render(<Card {...DEFAULT_PROPS} {...props} />);
-
-test('should put title in a <label>', () => {
-  const { getByText } = renderComponent();
-
-  expect(getByText(DEFAULT_PROPS.title).nodeName).toBe('LABEL');
-});
-
-test('should apply Title class to title element', () => {
-  const { container } = renderComponent();
-
-  const title = container.getElementsByClassName(styles.Title);
-  expect(title.length).toBe(1);
-  expect(title[0].textContent).toBe(DEFAULT_PROPS.title);
-});
-
-test('should apply Value class to value element', () => {
-  const { container } = renderComponent();
-
-  const value = container.getElementsByClassName(styles.Value);
-  expect(value.length).toBe(1);
-  expect(value[0].textContent).toBe(DEFAULT_PROPS.value);
-});
-
-test('should apply BottomText class to bottom text element', () => {
-  const { container } = renderComponent();
-
-  const bottomText = container.getElementsByClassName(styles.BottomText);
-  expect(bottomText.length).toBe(1);
-  expect(bottomText[0].textContent).toBe(DEFAULT_PROPS.bottomText);
-});
-
-test('should show skeleton when loading asynchronous value', () => {
-  const { getByText, queryByText } = renderComponent({ ...DEFAULT_PROPS, value: { isLoading: true } });
-
-  // Keeps title and bottom text in DOM
-  expect(getByText(DEFAULT_PROPS.title)).toBeTruthy();
-  expect(getByText(DEFAULT_PROPS.bottomText)).toBeTruthy();
-
-  // Value shouldn't be in DOM
-  expect(queryByText(DEFAULT_PROPS.value)).toBeFalsy();
-  expect(getByText(MOCK_SKELETON)).toBeTruthy();
-});
-
-test('should show skeleton when loading asynchronous bottomText', () => {
-  const { getByText, queryByText } = renderComponent({ ...DEFAULT_PROPS, bottomText: { isLoading: true } });
-
-  // Title and value should be in DOM
-  expect(getByText(DEFAULT_PROPS.title)).toBeTruthy();
-  expect(getByText(DEFAULT_PROPS.value)).toBeTruthy();
-
-  // Bottom text shouldn't be in DOM
-  expect(queryByText(DEFAULT_PROPS.bottomText)).toBeFalsy();
-  expect(getByText(MOCK_SKELETON)).toBeTruthy();
-});
-
-test('should show asynchronous value when data has loaded', () => {
-  const { getByText, queryByText } = renderComponent({
-    value: { isLoading: false, text: 'mock-value-text' }
+describe('<Card />', () => {
+  test('should only render text in the correct order - title, value, bottom text', () => {
+    const { container } = render(<Card {...DEFAULT_PROPS} title={'1,'} value={'2,'} bottomText={'3'} />);
+    expect(container).toHaveTextContent('1,2,3');
   });
 
-  // All text should be in DOM
-  expect(getByText(DEFAULT_PROPS.title)).toBeTruthy();
-  expect(getByText(DEFAULT_PROPS.bottomText)).toBeTruthy();
-  expect(getByText('mock-value-text')).toBeTruthy();
-
-  // Skeleton shouldn't be in DOM
-  expect(queryByText(MOCK_SKELETON)).toBeFalsy();
-});
-
-test('should show asynchronous bottomText when data has loaded', () => {
-  const { getByText, queryByText } = renderComponent({
-    bottomText: { isLoading: false, text: 'mock-bottom-text' }
+  describe('semantic tags', () => {
+    test('should render title as <label>', () => {
+      const { container } = render(<Card {...DEFAULT_PROPS} title={'mock title'} />);
+      const label = container.getElementsByTagName('label');
+      expect(label.length).toBe(1);
+      expect(label[0]).toHaveTextContent('mock title');
+    });
   });
 
-  // All text should be in DOM
-  expect(getByText(DEFAULT_PROPS.title)).toBeTruthy();
-  expect(getByText('mock-bottom-text')).toBeTruthy();
-  expect(getByText(DEFAULT_PROPS.value)).toBeTruthy();
+  describe('class names', () => {
+    test('should apply Title class to only the title element', () => {
+      const { container } = render(<Card {...DEFAULT_PROPS} title={'mock title'} />);
+      const title = container.getElementsByClassName(styles.Title);
+      expect(title.length).toBe(1);
+      expect(title[0]).toHaveTextContent('mock title');
+    });
 
-  // Skeleton shouldn't be in DOM
-  expect(queryByText(MOCK_SKELETON)).toBeFalsy();
+    test('should only apply Value class to only the value element', () => {
+      const { container } = render(<Card {...DEFAULT_PROPS} value={'mock value'} />);
+      const value = container.getElementsByClassName(styles.Value);
+      expect(value.length).toBe(1);
+      expect(value[0]).toHaveTextContent('mock value');
+    });
+
+    test('should only apply BottomText class to the bottom text element', () => {
+      const { container } = render(<Card {...DEFAULT_PROPS} bottomText={'mock bottom text'} />);
+      const bottomText = container.getElementsByClassName(styles.BottomText);
+      expect(bottomText.length).toBe(1);
+      expect(bottomText[0]).toHaveTextContent('mock bottom text');
+    });
+  });
+
+  describe('when text props are synchronous', () => {
+    test('should render title', () => {
+      render(<Card {...DEFAULT_PROPS} title={'mock title'} />);
+      expect(screen.getByText('mock title')).toBeInTheDocument();
+    });
+
+    test('should render value in the correct element (<b>)', () => {
+      render(<Card {...DEFAULT_PROPS} value={'mock value'} />);
+      expect(screen.getByText('mock value')).toBeInTheDocument();
+    });
+
+    test('should render synchronous bottomText', () => {
+      render(<Card {...DEFAULT_PROPS} bottomText={'mock bottom text'} />);
+      expect(screen.getByText('mock bottom text')).toBeInTheDocument();
+    });
+  });
+
+  describe('when bottom text is asynchronous', () => {
+    test('should show loading skeleton when loading bottom text', () => {
+      render(<Card {...DEFAULT_PROPS} bottomText={{ isLoading: true }} />);
+      expect(screen.getByTestId(MOCK_SKELETON_ID)).toBeInTheDocument();
+    });
+
+    test('should show bottom text when loaded bottom text', () => {
+      render(<Card {...DEFAULT_PROPS} bottomText={{ isLoading: false, text: 'mock bottom text' }} />);
+      expect(screen.getByText('mock bottom text')).toBeInTheDocument();
+    });
+  });
+
+  describe('when value is asynchronous', () => {
+    test('should show skeleton when loading value', () => {
+      render(<Card {...DEFAULT_PROPS} value={{ isLoading: true }} />);
+      expect(screen.getByTestId(MOCK_SKELETON_ID)).toBeInTheDocument();
+    });
+
+    test('should show value when loaded value', () => {
+      render(<Card {...DEFAULT_PROPS} value={{ isLoading: false, text: 'mock value' }} />);
+      expect(screen.getByText('mock value')).toBeInTheDocument();
+    });
+  });
 });
