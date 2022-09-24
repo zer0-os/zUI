@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { LoadingIndicator } from './LoadingIndicator';
 
 enum MockSpinnerPositionType {
@@ -21,10 +21,19 @@ jest.mock('./Spinner', () => ({
   Spinner: () => <div>{MOCK_SPINNER}</div>
 }));
 
+// poss not needed
+afterEach(() => {
+  cleanup();
+  jest.clearAllMocks();
+});
+
 describe('LoadingIndicator', () => {
   test('should render loading indicator container', () => {
     const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
     const loadingIndicatorContainer = container.getElementsByClassName('zui-loading-indicator');
+
+    // Imp// feedback testrove this test
+    expect(container.firstElementChild).toBeTruthy();
 
     expect(loadingIndicatorContainer.length).toBe(1);
   });
