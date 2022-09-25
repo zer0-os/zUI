@@ -1,3 +1,4 @@
+import { IconAttachment } from './../icons/IconAttachment';
 import {
   IconArrowArcLeft,
   IconArrowArcRight,
@@ -165,5 +166,9 @@ export const ICONS = [
   {
     name: 'IconArrowElbowRightDown',
     Component: IconArrowElbowRightDown
+  },
+  {
+    name: 'IconAttachment',
+    Component: IconAttachment
   }
 ];
