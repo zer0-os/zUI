@@ -16,6 +16,6 @@ const Template: ComponentStory<typeof LoadingIndicator> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Howdy something really really long',
+  message: 'Howdy something really really long',
   spinnerPosition: 'right'
 };

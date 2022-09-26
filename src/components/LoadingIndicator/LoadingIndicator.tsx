@@ -7,17 +7,19 @@ import classNames from 'classnames';
 
 export type LoadingIndicatorProps = {
   className?: string;
-  text?: string | ReactNode;
+  message?: ReactNode;
   spinnerPosition?: 'bottom' | 'left' | 'right';
 };
 
-export const LoadingIndicator = ({ className, text, spinnerPosition = 'bottom' }: LoadingIndicatorProps) => {
+export const LoadingIndicator = ({ className, message, spinnerPosition = 'bottom' }: LoadingIndicatorProps) => {
   return (
     <div className={classNames('zui-loading-indicator', `zui-loading-indicator-${spinnerPosition}`, className)}>
       <Spinner />
-      {text && (
-        <div className={classNames('zui-loading-indicator-text', `zui-loading-indicator-text-${spinnerPosition}`)}>
-          {text}
+      {message && (
+        <div
+          className={classNames('zui-loading-indicator-message', `zui-loading-indicator-message-${spinnerPosition}`)}
+        >
+          {message}
         </div>
       )}
     </div>

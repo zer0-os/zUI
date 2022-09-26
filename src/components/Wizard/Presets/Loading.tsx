@@ -7,5 +7,5 @@ export interface LoadingProps {
 }
 
 export const Loading = ({ message }: LoadingProps) => (
-  <LoadingIndicator className={'zui-wizard-loading'} text={message} />
+  <LoadingIndicator className={'zui-wizard-loading'} message={message} />
 );
