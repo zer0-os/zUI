@@ -19,8 +19,8 @@ jest.mock('../Skeleton', () => ({
 
 describe('<Card />', () => {
   test('should only render text in the correct order - title, value, bottom text', () => {
-    const { container } = render(<Card {...DEFAULT_PROPS} title={'1,'} value={'2,'} bottomText={'3'} />);
-    expect(container).toHaveTextContent('1,2,3');
+    const { container } = render(<Card title={'title-'} value={'value-'} bottomText={'bottom'} />);
+    expect(container.textContent).toBe('title-value-bottom');
   });
 
   describe('semantic tags', () => {
