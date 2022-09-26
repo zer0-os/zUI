@@ -61,7 +61,7 @@ describe('<Card />', () => {
       expect(screen.getByText('mock title')).toBeInTheDocument();
     });
 
-    test('should render value in the correct element (<b>)', () => {
+    test('should render synchronous value', () => {
       render(<Card {...DEFAULT_PROPS} value={'mock value'} />);
       expect(screen.getByText('mock value')).toBeInTheDocument();
     });
