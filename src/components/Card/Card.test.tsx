@@ -40,14 +40,14 @@ describe('<Card />', () => {
       expect(title[0]).toHaveTextContent('mock title');
     });
 
-    test('should only apply Value class to only the value element', () => {
+    test('should apply Value class to the value element', () => {
       const { container } = render(<Card {...DEFAULT_PROPS} value={'mock value'} />);
       const value = container.getElementsByClassName(styles.Value);
       expect(value.length).toBe(1);
       expect(value[0]).toHaveTextContent('mock value');
     });
 
-    test('should only apply BottomText class to the bottom text element', () => {
+    test('should apply BottomText class to the bottom text element', () => {
       const { container } = render(<Card {...DEFAULT_PROPS} bottomText={'mock bottom text'} />);
       const bottomText = container.getElementsByClassName(styles.BottomText);
       expect(bottomText.length).toBe(1);
