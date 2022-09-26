@@ -81,6 +81,7 @@ describe('<Card />', () => {
     test('should show bottom text when loaded bottom text', () => {
       render(<Card {...DEFAULT_PROPS} bottomText={{ isLoading: false, text: 'mock bottom text' }} />);
       expect(screen.getByText('mock bottom text')).toBeInTheDocument();
+      expect(screen.queryByTestId(MOCK_SKELETON_ID)).toBeFalsy();
     });
   });
 
@@ -93,6 +94,7 @@ describe('<Card />', () => {
     test('should show value when loaded value', () => {
       render(<Card {...DEFAULT_PROPS} value={{ isLoading: false, text: 'mock value' }} />);
       expect(screen.getByText('mock value')).toBeInTheDocument();
+      expect(screen.queryByTestId(MOCK_SKELETON_ID)).toBeFalsy();
     });
   });
 });
