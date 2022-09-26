@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { TabsNav, TabNav } from '.';
 import styles from './Tabs.module.scss';
 
@@ -29,7 +29,7 @@ afterEach(() => {
 });
 
 describe('<TabsNav />', () => {
-  describe('Class Names', () => {
+  describe('class names', () => {
     test('should apply Container class to the container element', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const tabNavContainer = container.getElementsByClassName(styles.Container);
@@ -74,7 +74,7 @@ describe('<TabsNav />', () => {
     });
   });
 
-  describe('<Link />', () => {
+  describe('list', () => {
     test('should render correct number of links', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const tab = container.getElementsByClassName(styles.Tab);
@@ -82,6 +82,21 @@ describe('<TabsNav />', () => {
       expect(tab.length).toEqual(MOCK_TABS.length);
     });
 
+    test('should render links in the correct order', () => {
+      const MOCK_TABS: TabNav[] = [
+        { text: 'Tab 1,', to: '/1' },
+        { text: 'Tab 2,', to: '/2' },
+        { text: 'Tab 3', to: '/3' }
+      ];
+
+      const { container } = render(<TabsNav tabs={MOCK_TABS} location={MOCK_TABS[0].to} />);
+
+      expect(container.lastChild).toHaveTextContent('Tab 1,Tab 2,Tab 3');
+      expect(container.lastChild).not.toHaveTextContent('Tab 3,Tab 2,Tab 1');
+    });
+  });
+
+  describe('link/tab', () => {
     test('should apply replace prop to Link', () => {
       render(<TabsNav {...DEFAULT_PROPS} tabs={[MOCK_TABS[0]]} />);
 
@@ -96,7 +111,7 @@ describe('<TabsNav />', () => {
       expect(mockLink).toHaveBeenCalledWith(expect.objectContaining({ replace: undefined }));
     });
 
-    test('should display tab label text', () => {
+    test('should apply and display tab label text', () => {
       const { container, getByText } = render(<TabsNav {...DEFAULT_PROPS} />);
       const tab = container.getElementsByClassName(styles.Tab);
 
@@ -104,7 +119,7 @@ describe('<TabsNav />', () => {
       expect(getByText(MOCK_TABS[0].text)).toBeInTheDocument();
     });
 
-    test('should contain a path for attribute to', () => {
+    test('should apply a path for attribute to', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const tab = container.getElementsByClassName(styles.Tab);
 
