@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { LoadingIndicator } from './LoadingIndicator';
 
 enum MockSpinnerPositionType {
@@ -22,7 +22,6 @@ jest.mock('./Spinner', () => ({
 }));
 
 describe('<LoadingIndicator />', () => {
-  // defined
   test('should render loading indicator container', () => {
     const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
     expect(container.firstChild).toHaveClass('zui-loading-indicator');
@@ -32,21 +31,20 @@ describe('<LoadingIndicator />', () => {
   });
 
   test('should render spinner component', () => {
-    const { getByText } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
+    render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
 
-    expect(getByText(MOCK_SPINNER)).toBeTruthy();
+    expect(screen.getByText(MOCK_SPINNER)).toBeInTheDocument();
   });
 
   test('should render message container and message value', () => {
-    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
+    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} message={'mock-message'} />);
     const textContainer = container.getElementsByClassName('zui-loading-indicator-message');
 
     expect(textContainer.length).toBe(1);
-    expect(textContainer[0].textContent).toEqual(MOCK_DEFAULT_PROPS.message);
+    expect(textContainer[0].textContent).toEqual('mock-message');
   });
 
-  // undefined
-  test('should not render message container', () => {
+  test('should not render message container if message is undefined', () => {
     const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} message={undefined} />);
     const loadingIndicatorContainer = container.getElementsByClassName('zui-loading-indicator');
     const messageContainer = container.getElementsByClassName('zui-loading-indicator-message');
@@ -57,47 +55,23 @@ describe('<LoadingIndicator />', () => {
 });
 
 describe('class names', () => {
-  // defined
   test('should apply className prop to container class', () => {
-    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
-    const loadingIndicatorContainer = container.getElementsByClassName('zui-loading-indicator');
+    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} className={'mock-class-name'} />);
 
-    expect(loadingIndicatorContainer[0]).toHaveClass(MOCK_DEFAULT_PROPS.className);
+    expect(container.firstElementChild).toHaveClass('mock-class-name');
   });
 
   test('should apply spinnerPosition prop to container class', () => {
-    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
-    const loadingIndicatorContainer = container.getElementsByClassName('zui-loading-indicator');
+    const { container } = render(
+      <LoadingIndicator {...MOCK_DEFAULT_PROPS} spinnerPosition={MockSpinnerPositionType.RIGHT} />
+    );
 
-    expect(loadingIndicatorContainer[0]).toHaveClass(`zui-loading-indicator-${MOCK_DEFAULT_PROPS.spinnerPosition}`);
+    expect(container.firstElementChild).toHaveClass(`zui-loading-indicator-${MockSpinnerPositionType.RIGHT}`);
   });
 
-  test('should apply spinnerPosition prop to message container class', () => {
-    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} />);
-    const messageContainer = container.getElementsByClassName('zui-loading-indicator-message');
-
-    expect(messageContainer[0]).toHaveClass(`zui-loading-indicator-message-${MOCK_DEFAULT_PROPS.spinnerPosition}`);
-  });
-
-  // undefined
-  test('should not apply className prop to container class', () => {
-    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} className={undefined} />);
-    const loadingIndicatorContainer = container.getElementsByClassName('zui-loading-indicator');
-
-    expect(loadingIndicatorContainer[0]).not.toHaveClass(MOCK_DEFAULT_PROPS.className);
-  });
-
-  test('should apply default "bottom" spinnerPosition to container class', () => {
+  test('should apply default spinnerPosition to container class if prop is undefined', () => {
     const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} spinnerPosition={undefined} />);
-    const loadingIndicatorContainer = container.getElementsByClassName('zui-loading-indicator');
 
-    expect(loadingIndicatorContainer[0]).toHaveClass(`zui-loading-indicator-${MockSpinnerPositionType.BOTTOM}`);
-  });
-
-  test('should apply default "bottom" spinnerPosition to message container class', () => {
-    const { container } = render(<LoadingIndicator {...MOCK_DEFAULT_PROPS} spinnerPosition={undefined} />);
-    const messageContainer = container.getElementsByClassName('zui-loading-indicator-message');
-
-    expect(messageContainer[0]).toHaveClass(`zui-loading-indicator-message-${MockSpinnerPositionType.BOTTOM}`);
+    expect(container.firstElementChild).toHaveClass(`zui-loading-indicator-${MockSpinnerPositionType.BOTTOM}`);
   });
 });
