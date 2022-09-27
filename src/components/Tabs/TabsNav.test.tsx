@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { TabsNav, TabNav } from '.';
 import styles from './Tabs.module.scss';
 
@@ -111,11 +111,11 @@ describe('<TabsNav />', () => {
     });
 
     test('should apply and display tab label text', () => {
-      const { container, getByText } = render(<TabsNav {...DEFAULT_PROPS} />);
+      const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const tab = container.getElementsByClassName(styles.Tab);
 
       expect(tab[0]).toHaveTextContent(MOCK_TABS[0].text);
-      expect(getByText(MOCK_TABS[0].text)).toBeInTheDocument();
+      expect(screen.getByText(MOCK_TABS[0].text)).toBeInTheDocument();
     });
 
     test('should apply a path for attribute to', () => {
