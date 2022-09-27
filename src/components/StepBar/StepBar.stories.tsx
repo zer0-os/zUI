@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StepBar from './StepBar';
+import { StepBar } from './StepBar';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoryCard } from '../.storybook';
 import { Step } from './StepBar.types';

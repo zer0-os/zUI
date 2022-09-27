@@ -15,7 +15,7 @@ const renderComponent = (props: StepBarProps) => {
 
 test('should render 1st step', () => {
   const { getByText } = renderComponent({ currentStepId: mockSteps[0].id, steps: mockSteps });
-  const step1 = getByText(mockSteps[0].title).parentNode;
+  const step1 = getByText(mockSteps[0].title);
   expect(step1).toBeInTheDocument();
 });
 
@@ -25,8 +25,8 @@ test('should render 2nd step', () => {
     steps: mockSteps,
     onChangeStep: mockOnChangeStep
   });
-  const step1 = getByText(mockSteps[0].title).parentNode;
-  const step2 = getByText(mockSteps[1].title).parentNode;
+  const step1 = getByText(mockSteps[0].title);
+  const step2 = getByText(mockSteps[1].title);
   expect(step1).toBeInTheDocument();
   expect(step2).toBeInTheDocument();
 
@@ -41,9 +41,9 @@ test('should render 3rd step', () => {
     steps: mockSteps,
     onChangeStep: mockOnChangeStep
   });
-  const step1 = getByText(mockSteps[0].title).parentNode;
-  const step2 = getByText(mockSteps[1].title).parentNode;
-  const step3 = getByText(mockSteps[2].title).parentNode;
+  const step1 = getByText(mockSteps[0].title);
+  const step2 = getByText(mockSteps[1].title);
+  const step3 = getByText(mockSteps[2].title);
   expect(step1).toBeInTheDocument();
   expect(step2).toBeInTheDocument();
   expect(step3).toBeInTheDocument();
