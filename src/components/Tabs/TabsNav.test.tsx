@@ -30,21 +30,21 @@ afterEach(() => {
 
 describe('<TabsNav />', () => {
   describe('class names', () => {
-    test('should apply Container class to the container element', () => {
+    test('should apply Container class only to the container element', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const tabNavContainer = container.getElementsByClassName(styles.Container);
 
       expect(tabNavContainer.length).toBe(1);
     });
 
-    test('should apply List class to the List element', () => {
+    test('should apply List class only to the List element', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const list = container.getElementsByClassName(styles.List);
 
       expect(list.length).toBe(1);
     });
 
-    test('should apply Tab class to the Link elements', () => {
+    test('should apply Tab class only to the Link elements', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const link = container.getElementsByClassName(styles.Tab);
       expect(link.length).toBe(3);
