@@ -91,8 +91,7 @@ describe('<TabsNav />', () => {
 
       const { container } = render(<TabsNav tabs={MOCK_TABS} location={MOCK_TABS[0].to} />);
 
-      expect(container.lastChild).toHaveTextContent('Tab 1,Tab 2,Tab 3');
-      expect(container.lastChild).not.toHaveTextContent('Tab 3,Tab 2,Tab 1');
+      expect(container.textContent).toBe('Tab 1,Tab 2,Tab 3');
     });
   });
 
