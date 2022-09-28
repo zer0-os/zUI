@@ -42,11 +42,11 @@ describe('<StepBar />', () => {
       expect(step.length).toBe(1);
     });
 
-    test('should apply Bar class to only the bar element', () => {
+    test('should apply Bar class to only the current step element', () => {
       const { container } = render(<StepBar {...DEFAULT_PROPS} />);
-      const bar = container.getElementsByClassName(styles.Bar);
+      const currentStep = container.getElementsByClassName(styles.Bar);
 
-      expect(bar.length).toBe(1);
+      expect(currentStep.length).toBe(1);
     });
 
     test('should apply className prop to container class', () => {
@@ -92,23 +92,23 @@ describe('<StepBar />', () => {
     });
   });
 
-  describe('bar', () => {
+  describe('current step', () => {
     test('should apply the current step title', () => {
       const { container } = render(<StepBar {...DEFAULT_PROPS} currentStepId={MOCK_STEPS[2].id} />);
-      const bar = container.getElementsByClassName(styles.Bar);
+      const currentStep = container.getElementsByClassName(styles.Bar);
 
-      expect(bar[0].textContent).toBe(MOCK_STEPS[2].title);
-      expect(bar[0].textContent).not.toBe(MOCK_STEPS[1].title);
-      expect(bar[0].textContent).not.toBe(MOCK_STEPS[0].title);
+      expect(currentStep[0].textContent).toBe(MOCK_STEPS[2].title);
+      expect(currentStep[0].textContent).not.toBe(MOCK_STEPS[1].title);
+      expect(currentStep[0].textContent).not.toBe(MOCK_STEPS[0].title);
     });
 
     test('should contain the current step title', () => {
       const { container } = render(<StepBar {...DEFAULT_PROPS} currentStepId={MOCK_STEPS[2].id} />);
-      const bar = container.getElementsByClassName(styles.Bar);
+      const currentStep = container.getElementsByClassName(styles.Bar);
 
-      expect(bar[0].textContent).toBe(MOCK_STEPS[2].title);
-      expect(bar[0].textContent).not.toBe(MOCK_STEPS[1].title);
-      expect(bar[0].textContent).not.toBe(MOCK_STEPS[0].title);
+      expect(currentStep[0].textContent).toBe(MOCK_STEPS[2].title);
+      expect(currentStep[0].textContent).not.toBe(MOCK_STEPS[1].title);
+      expect(currentStep[0].textContent).not.toBe(MOCK_STEPS[0].title);
     });
 
     test('should apply Hide styles when current step index is greater than number of steps', () => {
