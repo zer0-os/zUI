@@ -1,0 +1,35 @@
+@import '../../../styles/typography';
+@import '../../../styles/colors';
+
+.zui-wizard-header {
+  width: 100%;
+  text-align: center;
+
+  * {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: #{$size-large};
+    font-weight: #{$font-weight-bold};
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  hr {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    height: 1px;
+    background-color: #{$grey};
+    border: none;
+  }
+
+  .zui-wizard-header-container {
+    display: flex;
+    justify-content: center;
+  }
+}

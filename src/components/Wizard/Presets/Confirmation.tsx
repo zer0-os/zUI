@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames/bind';
 
 import { Buttons, ButtonsProps } from './Buttons';
+
 import './Confirmation.scss';
 
 export interface ConfirmationProps extends ButtonsProps {

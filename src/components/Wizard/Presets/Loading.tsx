@@ -2,6 +2,8 @@ import React from 'react';
 
 import { LoadingIndicator } from '../../LoadingIndicator';
 
+import './Loading.scss';
+
 export interface LoadingProps {
   message: React.ReactNode | string;
 }
