@@ -88,13 +88,6 @@ describe('<StepBar />', () => {
 
       expect(mockOnChangeStep).toHaveBeenCalledTimes(2);
     });
-
-    test('should not call onChangeStep when undefined and clicked', () => {
-      render(<StepBar {...DEFAULT_PROPS} onChangeStep={() => undefined} />);
-
-      fireEvent.click(screen.getByText(MOCK_STEPS[1].title));
-      expect(mockOnChangeStep).not.toHaveBeenCalled();
-    });
   });
 
   describe('current step', () => {
