@@ -29,9 +29,8 @@
     "dist",
     "dist-storybook",
     "build",
-    "src/**/*.stories.tsx",
-    "src/**/*.test.tsx",
     "**/*.js",
+    "**/*.stories.tsx",
     "**.config.js"
   ]
 }
