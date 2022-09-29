@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Wizard } from '.';
-import { Confirmation as WizardConfirmation, Loading as WizardLoading } from './Presets';
+import { Confirmation as WizardConfirmation, Loading as WizardLoading, Header as WizardHeader } from './Presets';
 
 const mockContainer = 'Mock Container';
 const mockLoadingMessage = 'Mock Loading Message';
@@ -24,11 +24,11 @@ describe('<Wizard />', () => {
     expect(loading).toBeInTheDocument();
   });
 
-  // test('should render wizard header', () => {
-  //   const { getByText } = render(<Wizard.Header header={mockHeader} />);
-  //   const header = getByText(mockHeader);
-  //   expect(header).toBeInTheDocument();
-  // });
+  test('should render wizard header', () => {
+    const { getByText } = render(<WizardHeader header={mockHeader} />);
+    const header = getByText(mockHeader);
+    expect(header).toBeInTheDocument();
+  });
 
   test('should render wizard confirmation', () => {
     const { getByText } = render(
