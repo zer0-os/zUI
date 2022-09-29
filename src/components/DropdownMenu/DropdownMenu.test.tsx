@@ -1,7 +1,7 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 
-import { DropdownMenu, DropdownItem, DropdownMenuProps } from '.';
+import { DropdownMenu, DropdownItem } from '.';
 import {
   DropdownMenuRootContentProps,
   DropdownMenuTriggerProps,
@@ -57,83 +57,91 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-const renderComponent = (props?: Partial<DropdownMenuProps>) => render(<DropdownMenu {...DEFAULT_PROPS} {...props} />);
+describe('<DropdownMenu />', () => {
+  test('should render Radix primitives with correct nesting', () => {
+    const { container } = render(<DropdownMenu {...DEFAULT_PROPS} />);
 
-test('should render Radix primitives in the correct order', () => {
-  const { container, getByTestId } = renderComponent();
+    const root = container.firstChild;
+    const trigger = screen.getByTestId('trigger');
+    const content = screen.getByTestId('content');
 
-  const root = container.firstChild;
-  const trigger = getByTestId('trigger');
-  const content = getByTestId('content');
+    // Check that trigger and content are children of root
+    expect(root).toBe(screen.getByTestId('root'));
+    expect(trigger.parentElement).toBe(root);
+    expect(content.parentElement).toBe(root);
 
-  // Check that trigger and content are children of root
-  expect(root).toBe(getByTestId('root'));
-  expect(trigger.parentElement).toBe(root);
-  expect(content.parentElement).toBe(root);
+    // Check that items are only rendered in the dropdown content
+    const items = container.getElementsByClassName('mock-item');
+    const parents = Array.from(items).map(item => item.parentElement);
+    parents.forEach(parent => expect(parent).toBe(content));
+  });
 
-  // Check that items are only rendered in the dropdown content
-  const items = container.getElementsByClassName('mock-item');
-  const parents = Array.from(items).map(item => item.parentElement);
-  parents.forEach(parent => expect(parent).toBe(content));
-});
+  describe('class names', () => {
+    test('should apply className to trigger', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} className="mock-class" />);
 
-test('should apply className to trigger', () => {
-  const { getByTestId } = renderComponent({ className: 'mock-class' });
+      expect(screen.getByTestId('trigger')).toHaveClass('mock-class');
+    });
+  });
 
-  expect(getByTestId('trigger')).toHaveClass('mock-class');
-});
+  describe('menu items', () => {
+    test('should apply classNames to menu items', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} className="mock-class" />);
 
-test('should render correct menu item labels', () => {
-  const { container } = renderComponent();
+      MOCK_ITEMS.forEach(item => expect(screen.getByText(item.label as string)).toHaveClass(item.className));
+    });
 
-  const items = container.getElementsByClassName('mock-item');
-  expect(items.length).toBe(MOCK_ITEMS.length);
-  expect(Array.from(items).map(item => item.textContent)).toEqual(MOCK_ITEMS.map(item => item.label));
-});
+    test('should render correct menu item labels', () => {
+      const { container } = render(<DropdownMenu {...DEFAULT_PROPS} />);
 
-test('should apply classNames to menu items', () => {
-  const { getByText } = renderComponent();
+      const items = container.getElementsByClassName('mock-item');
+      expect(items.length).toBe(MOCK_ITEMS.length);
+      expect(Array.from(items).map(item => item.textContent)).toEqual(MOCK_ITEMS.map(item => item.label));
+    });
 
-  MOCK_ITEMS.forEach(item => expect(getByText(item.label as string)).toHaveClass(item.className));
-});
+    test('should make menu items clickable', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} />);
 
-test('should make menu items clickable', () => {
-  renderComponent();
+      mockRadixItem.mock.lastCall[0].onSelect();
+      expect(mockOnSelect).toBeCalledTimes(1);
+    });
+  });
 
-  mockRadixItem.mock.lastCall[0].onSelect();
-  expect(mockOnSelect).toBeCalledTimes(1);
-});
+  describe('dropdown trigger', () => {
+    test('should render `...` as default trigger', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} />);
 
-test('should render `...` as default trigger', () => {
-  const { getByTestId } = renderComponent();
+      expect(screen.getByTestId('trigger').textContent).toBe('...');
+    });
 
-  expect(getByTestId('trigger').textContent).toBe('...');
-});
+    test('should render string trigger', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} trigger="mock-trigger-string" />);
 
-test('should render string trigger', () => {
-  const { getByText, getByTestId } = renderComponent({ trigger: 'mock-trigger-string' });
+      const triggerText = screen.getByText('mock-trigger-string');
+      expect(triggerText.nodeName).toBe('SPAN');
+      expect(triggerText.parentElement).toBe(screen.getByTestId('trigger'));
+    });
 
-  const triggerText = getByText('mock-trigger-string');
-  expect(triggerText.nodeName).toBe('SPAN');
-  expect(triggerText.parentElement).toBe(getByTestId('trigger'));
-});
+    test('should render component trigger', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} trigger={<aside>mock trigger component</aside>} />);
 
-test('should render component trigger', () => {
-  const { getByText, getByTestId } = renderComponent({ trigger: <aside>mock trigger component</aside> });
+      const triggerText = screen.getByText('mock trigger component');
+      expect(triggerText.nodeName).toBe('ASIDE');
+      expect(triggerText.parentElement).toBe(screen.getByTestId('trigger'));
+    });
+  });
 
-  const triggerText = getByText('mock trigger component');
-  expect(triggerText.nodeName).toBe('ASIDE');
-  expect(triggerText.parentElement).toBe(getByTestId('trigger'));
-});
+  describe('@radix-ui prop forwarding', () => {
+    test('should pass content props to Radix Content component', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="start" side="top" />);
 
-test('should apply content props to content', () => {
-  renderComponent({ alignMenu: 'start', side: 'top' });
+      expect(mockRadixContent).toBeCalledWith(expect.objectContaining({ align: 'start', side: 'top' }));
+    });
 
-  expect(mockRadixContent).toBeCalledWith(expect.objectContaining({ align: 'start', side: 'top' }));
-});
+    test('should pass root props to Radix Root component', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} open={true} defaultOpen={true} />);
 
-test('should apply props from RadixUIDropdownMenuProps to root', () => {
-  renderComponent({ open: true, defaultOpen: true });
-
-  expect(mockRadixRoot).toBeCalledWith(expect.objectContaining({ open: true, defaultOpen: true }));
+      expect(mockRadixRoot).toBeCalledWith(expect.objectContaining({ open: true, defaultOpen: true }));
+    });
+  });
 });
