@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import classNames from 'classnames';
 
-import { Header, HeaderProps } from './Presets';
+import { Buttons, Confirmation, Header, HeaderProps, Loading } from './Presets';
 
 import './Wizard.scss';
 
@@ -11,7 +11,7 @@ export interface WizardProps extends HeaderProps {
   className?: string;
 }
 
-export const Wizard: FC<WizardProps> = ({ children, className, header, headerInfo, subHeader, sectionDivider }) => (
+const Container: FC<WizardProps> = ({ children, className, header, headerInfo, subHeader, sectionDivider }) => (
   <div className={classNames('zui-wizard', className)}>
     {/* Header */}
     {header && <Header header={header} headerInfo={headerInfo} subHeader={subHeader} sectionDivider={sectionDivider} />}
@@ -20,3 +20,5 @@ export const Wizard: FC<WizardProps> = ({ children, className, header, headerInf
     {children}
   </div>
 );
+
+export const Wizard = { Buttons, Container, Confirmation, Header, Loading };

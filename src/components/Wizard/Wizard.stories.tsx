@@ -1,27 +1,26 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Wizard } from './';
-import { Loading as WizardLoading, Header as WizardHeader, Confirmation as WizardConfirmation } from './Presets';
 import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Data Display/Wizard',
-  component: Wizard
-} as ComponentMeta<typeof Wizard>;
+  component: Wizard.Container
+} as ComponentMeta<typeof Wizard.Container>;
 
-export const Container: ComponentStory<typeof Wizard> = args => (
+export const Container: ComponentStory<typeof Wizard.Container> = args => (
   <StoryCard isContrast>
-    <Wizard {...args}>
+    <Wizard.Container {...args}>
       <p style={{ textAlign: 'center' }}>
         You can put any content in this container, and it will apply Wizard styling!
       </p>
-    </Wizard>
+    </Wizard.Container>
   </StoryCard>
 );
 
-export const Loading: ComponentStory<typeof WizardLoading> = args => (
+export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
   <StoryCard isContrast>
-    <WizardLoading {...args} />
+    <Wizard.Loading {...args} />
   </StoryCard>
 );
 
@@ -29,9 +28,11 @@ Loading.args = {
   message: 'Loading...'
 };
 
-export const Header: ComponentStory<typeof WizardHeader> = args => (
+export const Header: ComponentStory<typeof Wizard.Header> = args => (
   <StoryCard isContrast>
-    <Wizard {...args}>{''}</Wizard>
+    <Wizard.Container>
+      <Wizard.Header {...args} />
+    </Wizard.Container>
   </StoryCard>
 );
 
@@ -42,11 +43,11 @@ Header.args = {
   sectionDivider: true
 };
 
-export const Confirmation: ComponentStory<typeof WizardConfirmation> = args => (
+export const Confirmation: ComponentStory<typeof Wizard.Confirmation> = args => (
   <StoryCard isContrast>
-    <Wizard>
-      <WizardConfirmation {...args} />
-    </Wizard>
+    <Wizard.Container>
+      <Wizard.Confirmation {...args} />
+    </Wizard.Container>
   </StoryCard>
 );
 
