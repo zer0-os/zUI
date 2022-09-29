@@ -1,6 +1,9 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { StepBar, Step } from '.';
+
+import { ArrowLinkProps } from '../Link';
+
 import styles from './StepBar.module.scss';
 
 const mockOnChangeStep = jest.fn();
@@ -19,7 +22,7 @@ const DEFAULT_PROPS = {
 const mockArrowLink = jest.fn();
 
 jest.mock('../Link', () => ({
-  ArrowLink: (props: any) => {
+  ArrowLink: (props: ArrowLinkProps) => {
     mockArrowLink(props);
     return <div {...props}>{props.children}</div>;
   }
