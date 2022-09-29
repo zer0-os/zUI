@@ -1,34 +1,17 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 
-import { Skeleton } from '../Skeleton';
+import { TextDetail, TextDetailProps } from '../TextDetail';
 
 import styles from './Card.module.scss';
 
-export interface AsyncText {
-  text?: string | ReactNode;
-  isLoading?: boolean;
-}
-
 export interface CardProps {
-  title: string;
-  value: AsyncText | string | number;
-  bottomText?: AsyncText | string | number;
+  title: TextDetailProps['label'];
+  value: TextDetailProps['primaryText'];
+  bottomText?: TextDetailProps['secondaryText'];
 }
 
 export const Card: FC<CardProps> = ({ title, value, bottomText }) => (
   <div className={styles.Container}>
-    <label className={styles.Title}>{title}</label>
-    <b className={styles.Value}>
-      {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
-    </b>
-    {bottomText && (
-      <span className={styles.BottomText}>
-        {typeof bottomText === 'object' ? (
-          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : bottomText.text ?? 'ERR'}</>
-        ) : (
-          bottomText
-        )}
-      </span>
-    )}
+    <TextDetail label={title} primaryText={value} secondaryText={bottomText} />
   </div>
 );
