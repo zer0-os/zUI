@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 
@@ -10,7 +10,7 @@ export interface GridCardProps {
   imageAlt?: string;
 }
 
-export const GridCard: FC<GridCardProps> = ({ aspectRatio, children, imageAlt }) => {
+export const GridCard = ({ aspectRatio, children, imageAlt }: GridCardProps) => {
   return (
     <div className={styles.Container}>
       <AspectRatio.Root ratio={aspectRatio} className={styles.ImageContainer}>

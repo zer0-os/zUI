@@ -4,7 +4,7 @@ import { TextDetail } from './';
 import { StoryCard } from '../.storybook';
 
 export default {
-  title: 'Text Detail',
+  title: 'Typography/Text Detail',
   component: TextDetail
 } as ComponentMeta<typeof TextDetail>;
 

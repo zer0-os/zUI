@@ -3,15 +3,20 @@ import React, { FC } from 'react';
 import { TextDetail, TextDetailProps } from '../TextDetail';
 
 import styles from './Card.module.scss';
+import classNames from 'classnames';
 
 export interface CardProps {
-  title: TextDetailProps['label'];
-  value: TextDetailProps['primaryText'];
-  bottomText?: TextDetailProps['secondaryText'];
+  className?: string;
+  label: TextDetailProps['label'];
+  primaryText: TextDetailProps['primaryText'];
+  secondaryText?: TextDetailProps['secondaryText'];
 }
 
-export const Card: FC<CardProps> = ({ title, value, bottomText }) => (
-  <div className={styles.Container}>
-    <TextDetail label={title} primaryText={value} secondaryText={bottomText} />
-  </div>
+export const Card: FC<CardProps> = ({ className, label, primaryText, secondaryText }) => (
+  <TextDetail
+    className={classNames(styles.Container, className)}
+    label={label}
+    primaryText={primaryText}
+    secondaryText={secondaryText}
+  />
 );

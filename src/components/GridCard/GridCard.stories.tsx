@@ -5,7 +5,7 @@ import { NFT } from './templates/NFT';
 import { StoryCard, HotswapContainer } from '../.storybook';
 
 export default {
-  title: 'Grid Card',
+  title: 'Data Display/Cards/Grid Card',
   component: GridCard
 } as ComponentMeta<typeof GridCard>;
 
