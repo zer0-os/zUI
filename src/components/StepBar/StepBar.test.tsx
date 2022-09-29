@@ -16,15 +16,24 @@ const DEFAULT_PROPS = {
   steps: MOCK_STEPS
 };
 
+const mockArrowLink = jest.fn();
+
+jest.mock('../Link', () => ({
+  ArrowLink: (props: any) => {
+    mockArrowLink(props);
+    return <div {...props}>{props.children}</div>;
+  }
+}));
+
 afterEach(() => {
   jest.clearAllMocks();
 });
 
 describe('<StepBar />', () => {
-  test('should render each step and in the correct order', () => {
+  test('should render each step and in the correct order and apply titles', () => {
     const { container } = render(<StepBar {...DEFAULT_PROPS} currentStepId={MOCK_STEPS[2].id} />);
 
-    expect(container.textContent).toBe(`${MOCK_STEPS[0].title} ${MOCK_STEPS[1].title} ${MOCK_STEPS[2].title}`);
+    expect(container.textContent).toBe(`${MOCK_STEPS[0].title}${MOCK_STEPS[1].title}${MOCK_STEPS[2].title}`);
   });
 
   describe('class names', () => {
@@ -59,17 +68,13 @@ describe('<StepBar />', () => {
   });
 
   describe('step', () => {
-    test('should apply the step title', () => {
+    test('should contain ArrowLink', () => {
       render(<StepBar {...DEFAULT_PROPS} currentStepId={MOCK_STEPS[1].id} />);
 
-      expect(screen.getByText(MOCK_STEPS[0].title)).toBeInTheDocument();
-    });
-
-    test('should contain ArrowLink', () => {
-      const { container } = render(<StepBar {...DEFAULT_PROPS} />);
-      const step = container.getElementsByClassName(styles.Step);
-
-      expect(step[0].firstChild).toHaveClass('ArrowLink');
+      expect(mockArrowLink).toHaveBeenCalledTimes(1);
+      expect(mockArrowLink).toHaveBeenCalledWith(
+        expect.objectContaining({ back: true, children: MOCK_STEPS[0].title })
+      );
     });
 
     test('should call onChangeStep when defined and clicked', () => {
