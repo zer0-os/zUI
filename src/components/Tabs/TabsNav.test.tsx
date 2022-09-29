@@ -32,29 +32,32 @@ describe('<TabsNav />', () => {
   describe('class names', () => {
     test('should apply Container class only to the container element', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
-      const tabNavContainer = container.getElementsByClassName(styles.Container);
 
-      expect(tabNavContainer.length).toBe(1);
+      expect(container.firstChild).toHaveClass(styles.Container);
+      expect(container.getElementsByClassName(styles.Container).length).toBe(1);
     });
 
-    test('should apply List class only to the List element', () => {
-      const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
+    test('should apply List class only to the List element containing tabs', () => {
+      const { container } = render(<TabsNav {...DEFAULT_PROPS} tabs={[MOCK_TABS[0]]} />);
       const list = container.getElementsByClassName(styles.List);
 
       expect(list.length).toBe(1);
+      expect(list[0].textContent).toBe(MOCK_TABS[0].text);
     });
 
     test('should apply Tab class only to the Link elements', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const link = container.getElementsByClassName(styles.Tab);
+
       expect(link.length).toBe(3);
+      expect(link[0].textContent).toBe(MOCK_TABS[0].text);
     });
 
     test('should apply Selected class on default selected link', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
       const selectedLink = container.getElementsByClassName(styles.Selected);
 
-      expect(selectedLink[0]).toHaveTextContent(MOCK_TABS[0].text);
+      expect(selectedLink[0].textContent).toBe(MOCK_TABS[0].text);
     });
 
     test('should apply Selected class only to the selected link', () => {
@@ -62,8 +65,8 @@ describe('<TabsNav />', () => {
       const selectedLink = container.getElementsByClassName(styles.Selected);
 
       expect(selectedLink.length).toBe(1);
-      expect(selectedLink[0]).not.toHaveTextContent(MOCK_TABS[1].text);
-      expect(selectedLink[0]).not.toHaveTextContent(MOCK_TABS[2].text);
+      expect(selectedLink[0].textContent).not.toBe(MOCK_TABS[1].text);
+      expect(selectedLink[0].textContent).not.toBe(MOCK_TABS[2].text);
     });
 
     test('should not apply Selected class on any Link by default', () => {
@@ -95,7 +98,7 @@ describe('<TabsNav />', () => {
     });
   });
 
-  describe('link/tab', () => {
+  describe('react-router-dom links', () => {
     test('should apply replace prop to Link', () => {
       render(<TabsNav {...DEFAULT_PROPS} tabs={[MOCK_TABS[0]]} />);
 
@@ -106,23 +109,13 @@ describe('<TabsNav />', () => {
     test('should not apply replace prop to Link by default', () => {
       render(<TabsNav {...DEFAULT_PROPS} tabs={[MOCK_TABS[1]]} />);
 
-      expect(mockLink).toHaveBeenCalledTimes(1);
       expect(mockLink).toHaveBeenCalledWith(expect.objectContaining({ replace: undefined }));
     });
 
-    test('should apply and display tab label text', () => {
-      const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
-      const tab = container.getElementsByClassName(styles.Tab);
+    test('should be called with to prop value', () => {
+      render(<TabsNav {...DEFAULT_PROPS} tabs={[MOCK_TABS[0]]} />);
 
-      expect(tab[0]).toHaveTextContent(MOCK_TABS[0].text);
-      expect(screen.getByText(MOCK_TABS[0].text)).toBeInTheDocument();
-    });
-
-    test('should apply a path for attribute to', () => {
-      const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
-      const tab = container.getElementsByClassName(styles.Tab);
-
-      expect(tab[0]).toHaveAttribute('to', MOCK_TABS[0].to);
+      expect(mockLink).toHaveBeenCalledWith(expect.objectContaining({ to: MOCK_TABS[0].to }));
     });
   });
 });
