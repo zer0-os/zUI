@@ -33,7 +33,7 @@ export const NFT: FC<NFTProps> = ({
       </div>
       <div className={styles.Action}>
         <TextStack label={label} primaryText={primaryText} secondaryText={secondaryText} />
-        <div>
+        <div className={styles.Button}>
           <Button onPress={onClickButton} isDisabled={isButtonDisabled}>
             {buttonText}
           </Button>
