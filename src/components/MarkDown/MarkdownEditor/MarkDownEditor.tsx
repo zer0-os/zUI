@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import type { MarkDownEditorProps } from './MarkDownEditor.types';
 
+import React from 'react';
 import classNames from 'classnames/bind';
 import MDEditor, { ICommand } from '@uiw/react-md-editor';
 import {

@@ -2,7 +2,7 @@
 @import '../../../styles/typography';
 @import '../../../styles/dimensions';
 
-
+/* stylelint-disable no-descending-specificity */
 .Container {
 	.CustomTextToolbarButton {
 		padding: 0.25rem 0.5rem !important;
@@ -152,6 +152,7 @@
 		}
 	}
 }
+/* stylelint-enable no-descending-specificity */
 
 .ErrorMessage {
 	margin-top: 2px;
