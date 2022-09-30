@@ -21,7 +21,7 @@ export interface WizardProps extends HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ children, header, headerInfo, subHeader, sectionDivider = true }) => (
-  <div className={classNames('zui-wizard-header')}>
+  <div className={'zui-wizard-header'}>
     <div className="zui-wizard-header-container">
       <h1>{header}</h1>
       {headerInfo && <InfoTooltip content={headerInfo} />}
