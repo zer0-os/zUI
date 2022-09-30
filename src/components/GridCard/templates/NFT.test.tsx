@@ -59,17 +59,17 @@ describe('<NFT />', () => {
   });
 
   describe('TextStack', () => {
-    test('should forward primaryText to TextDetail', () => {
+    test('should forward primaryText to TextStack', () => {
       render(<NFT {...DEFAULT_PROPS} primaryText={'mock primary'} />);
       expect(mockTextStack).toHaveBeenCalledWith(expect.objectContaining({ primaryText: 'mock primary' }));
     });
 
-    test('should forward secondaryText to TextDetail', () => {
+    test('should forward secondaryText to TextStack', () => {
       render(<NFT {...DEFAULT_PROPS} secondaryText={'mock secondary'} />);
       expect(mockTextStack).toHaveBeenCalledWith(expect.objectContaining({ secondaryText: 'mock secondary' }));
     });
 
-    test('should forward label to TextDetail', () => {
+    test('should forward label to TextStack', () => {
       render(<NFT {...DEFAULT_PROPS} label={'mock label'} />);
       expect(mockTextStack).toHaveBeenCalledWith(expect.objectContaining({ label: 'mock label' }));
     });
