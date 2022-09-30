@@ -9,7 +9,7 @@ export default {
   component: MarkDownViewer
 } as ComponentMeta<typeof MarkDownViewer>;
 
-const Template: ComponentStory<typeof MarkDownViewer> = args => {  
+const Template: ComponentStory<typeof MarkDownViewer> = args => {
   return (
     <StoryCard isContrast isContentFull>
       <MarkDownViewer {...args} />

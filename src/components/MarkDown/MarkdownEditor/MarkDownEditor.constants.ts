@@ -1,14 +1,14 @@
-export enum MARKDOWN_EDITOR_TYPES {
+export enum MarkdownEditorTypes {
   PRIMARY = 'primary',
   SECONDARY = 'secondary'
 }
 
-export enum MARKDOWN_EDITOR_MODES {
-	EDIT = 'edit',
-	PREVIEW = 'preview',
+export enum MarkdownEditorModes {
+  EDIT = 'edit',
+  PREVIEW = 'preview'
 }
 
 export const MARKDOWN_EDITOR_TOOLBAR_TITLES = {
-	[MARKDOWN_EDITOR_MODES.EDIT]: 'Edit',
-	[MARKDOWN_EDITOR_MODES.PREVIEW]: 'Preview'
+  [MarkdownEditorModes.EDIT]: 'Edit',
+  [MarkdownEditorModes.PREVIEW]: 'Preview'
 };

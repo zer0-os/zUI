@@ -1,4 +1,4 @@
 export type MarkDownViewerProps = {
-	text?: string;
-	className?: string;
+  text?: string;
+  className?: string;
 };
