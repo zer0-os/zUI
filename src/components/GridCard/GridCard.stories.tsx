@@ -12,7 +12,7 @@ export default {
 const Template: ComponentStory<typeof GridCard> = args => {
   return (
     <StoryCard isContrast>
-      <GridCard {...args} />
+      <GridCard {...args} imageSrc={'https://picsum.photos/200/500'} />
     </StoryCard>
   );
 };

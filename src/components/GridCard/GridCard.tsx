@@ -1,21 +1,22 @@
 import React, { ReactNode } from 'react';
 
-import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import { Root as AspectRatioRoot, AspectRatioProps } from '@radix-ui/react-aspect-ratio';
 
 import styles from './GridCard.module.scss';
 
 export interface GridCardProps {
-  aspectRatio: AspectRatio.AspectRatioProps['ratio'];
+  aspectRatio: AspectRatioProps['ratio'];
   children: ReactNode;
+  imageSrc: string;
   imageAlt?: string;
 }
 
-export const GridCard = ({ aspectRatio, children, imageAlt }: GridCardProps) => {
+export const GridCard = ({ aspectRatio, children, imageAlt, imageSrc }: GridCardProps) => {
   return (
     <div className={styles.Container}>
-      <AspectRatio.Root ratio={aspectRatio} className={styles.ImageContainer}>
-        <img src={'https://picsum.photos/200/500'} alt={imageAlt} />
-      </AspectRatio.Root>
+      <AspectRatioRoot ratio={aspectRatio} className={styles.ImageContainer}>
+        <img src={imageSrc} alt={imageAlt} />
+      </AspectRatioRoot>
       <div className={styles.Content}>{children}</div>
     </div>
   );

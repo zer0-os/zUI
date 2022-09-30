@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 
-import { TextDetail, TextDetailProps } from '../TextDetail';
+import { TextStack, TextStackProps } from '../TextStack';
 
 import styles from './Card.module.scss';
 import classNames from 'classnames';
 
 export interface CardProps {
   className?: string;
-  label: TextDetailProps['label'];
-  primaryText: TextDetailProps['primaryText'];
-  secondaryText?: TextDetailProps['secondaryText'];
+  label: TextStackProps['label'];
+  primaryText: TextStackProps['primaryText'];
+  secondaryText?: TextStackProps['secondaryText'];
 }
 
 export const Card: FC<CardProps> = ({ className, label, primaryText, secondaryText }) => (
-  <TextDetail
+  <TextStack
     className={classNames(styles.Container, className)}
     label={label}
     primaryText={primaryText}
