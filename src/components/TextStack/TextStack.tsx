@@ -14,24 +14,27 @@ export interface TextStackProps {
   secondaryText: AsyncText | string;
 }
 
+const SkeletonText = ({ text }: { text: AsyncText | string }) => {
+  let el;
+  if (typeof text === 'object') {
+    // If loading return skeleton, else return text (or ERR if undefined)
+    el = text.isLoading ? <Skeleton /> : text.text ?? 'ERR';
+  } else {
+    el = text;
+  }
+  return <>{el}</>;
+};
+
 export const TextStack: FC<TextStackProps> = ({ className, label, primaryText, secondaryText }) => {
   return (
     <div className={classNames(styles.Container, className)}>
       <label>{label}</label>
       <b className={styles.Primary}>
-        {typeof primaryText === 'object' ? (
-          <>{primaryText.isLoading ? <Skeleton /> : primaryText.text ?? 'ERR'}</>
-        ) : (
-          primaryText
-        )}
+        <SkeletonText text={primaryText} />
       </b>
       {secondaryText && (
         <span>
-          {typeof secondaryText === 'object' ? (
-            <>{secondaryText.isLoading ? <Skeleton /> : secondaryText.text ?? 'ERR'}</>
-          ) : (
-            secondaryText
-          )}
+          <SkeletonText text={secondaryText} />
         </span>
       )}
     </div>
