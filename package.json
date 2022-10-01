@@ -6,7 +6,7 @@
     "about:clean": "echo 'Removes any existing build folders.'",
     "clean": "rimraf dist && npx mkdirp dist",
     "about:build": "echo 'Runs files through different tools to get a useable output package.'",
-    "build": "npm-run-all clean check:* build:* export:package-json",
+    "build": "npm-run-all clean check:* build:* export:*",
     "build:scripts": "NODE_ENV=production babel --extensions \".ts,.tsx,.js,.jsx\" ./src --out-dir ./dist",
     "build:styles": "sass src:dist",
     "about:watch": "echo 'Runs build scripts whenever a file is updated - use this when linking locally.'",
@@ -24,6 +24,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "export:package-json": "cp package.json dist/",
+    "export:styles": "node .scripts/exportStyles.js",
     "link": "bash .scripts/link.sh",
     "prettify": "prettier -w ./",
     "storybook": "start-storybook -p 6007"
