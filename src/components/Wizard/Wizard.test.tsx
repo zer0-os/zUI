@@ -32,7 +32,6 @@ describe('<Wizard />', () => {
     });
   });
 
-  // by ID or byText (speak to brett)
   test('should render children', () => {
     render(
       <Wizard.Container {...DEFAULT_PROPS}>
