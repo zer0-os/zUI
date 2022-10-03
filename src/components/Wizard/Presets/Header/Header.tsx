@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { InfoTooltip } from '../../../InfoTooltip/InfoTooltip';
+import { InfoTooltip } from '../../../InfoTooltip';
 
 import './Header.scss';
 
