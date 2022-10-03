@@ -24,13 +24,5 @@
     }
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "dist-storybook",
-    "build",
-    "**/*.js",
-    "**/*.stories.tsx",
-    "**.config.js"
-  ]
+  "exclude": ["node_modules", "dist", "dist-storybook", "build", "**/*.js", "**/*.stories.tsx", "**.config.js"]
 }
