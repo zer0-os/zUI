@@ -2,18 +2,31 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { Wizard, WizardProps } from '.';
+import { HeaderProps } from './Presets';
 
-const mockContainer = 'Mock Container';
-const mockHeader = 'Mock Header';
-const mockLoadingMessage = 'Mock Loading Message';
-const mockConfirmation = 'Mock Confirmation';
-const mockChildren = 'mock-content';
-const mockOnClickPrimaryButton = jest.fn();
+const mockHeaderText = 'Mock Header';
+const mockHeaderInfo = 'Mock Header Info';
+const mockSubHeader = 'Mock Sub-Header';
+const mockChildren = 'Mock Content';
+const mockClassName = 'Mock Class Name';
 
 const DEFAULT_PROPS: WizardProps = {
   className: '',
   children: <></>
 };
+
+const mockHeader = jest.fn();
+
+jest.mock('./Presets', () => ({
+  Header: (props: HeaderProps) => {
+    mockHeader(props);
+    return <div>{mockHeaderText}</div>;
+  }
+}));
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('<Wizard />', () => {
   describe('class names', () => {
@@ -25,86 +38,55 @@ describe('<Wizard />', () => {
     });
 
     test('should apply className prop to container', () => {
-      const { container } = render(<Wizard.Container {...DEFAULT_PROPS} className={'mock-class'} />);
+      const { container } = render(<Wizard.Container {...DEFAULT_PROPS} className={mockClassName} />);
 
-      expect(container.firstChild).toHaveClass('mock-class');
-      expect(container.getElementsByClassName('mock-class').length).toBe(1);
+      expect(container.firstChild).toHaveClass(mockClassName);
+      expect(container.getElementsByClassName(mockClassName).length).toBe(1);
     });
   });
 
-  test('should render children', () => {
-    render(
-      <Wizard.Container {...DEFAULT_PROPS}>
-        <div>{mockChildren}</div>
-      </Wizard.Container>
-    );
-    expect(screen.getByText(mockChildren)).toBeInTheDocument();
+  describe('Container', () => {
+    test('should render children', () => {
+      render(
+        <Wizard.Container {...DEFAULT_PROPS}>
+          <div>{mockChildren}</div>
+        </Wizard.Container>
+      );
+      expect(screen.getByText(mockChildren)).toBeInTheDocument();
+    });
+
+    describe('Header', () => {
+      test('should render Header element if header prop is defined', () => {
+        render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeaderText} />);
+
+        expect(screen.getByText(mockHeaderText)).toBeInTheDocument();
+        expect(mockHeader).toHaveBeenCalledWith(expect.objectContaining({ header: mockHeaderText }));
+      });
+
+      test('should not render Header element if header prop is undefined', () => {
+        render(<Wizard.Container {...DEFAULT_PROPS} header={undefined} />);
+
+        expect(screen.queryByText(mockHeaderText)).not.toBeInTheDocument();
+        expect(mockHeader).toHaveBeenCalledTimes(0);
+      });
+
+      test('should forward headerInfo to Header component', () => {
+        render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeaderText} headerInfo={mockHeaderInfo} />);
+
+        expect(mockHeader).toHaveBeenCalledWith(expect.objectContaining({ headerInfo: mockHeaderInfo }));
+      });
+
+      test('should forward subHeader to Header component', () => {
+        render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeaderText} subHeader={mockSubHeader} />);
+
+        expect(mockHeader).toHaveBeenCalledWith(expect.objectContaining({ subHeader: mockSubHeader }));
+      });
+
+      test('should forward sectionDivider to Header component', () => {
+        render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeaderText} sectionDivider={true} />);
+
+        expect(mockHeader).toHaveBeenCalledWith(expect.objectContaining({ sectionDivider: true }));
+      });
+    });
   });
-
-  test('should render Header element if header prop is defined', () => {
-    const { container } = render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeader} />);
-
-    expect(screen.getByText(mockHeader)).toBeInTheDocument();
-    expect(container.getElementsByClassName('zui-wizard-header').length).toBe(1);
-    // expect(yolo).toHaveBeenCalledWith(expect.objectContaining({ header: mockHeader }));
-  });
-
-  test('should not render Header element if header prop is undefined', () => {
-    const { container } = render(<Wizard.Container {...DEFAULT_PROPS} header={undefined} />);
-
-    expect(screen.queryByText(mockHeader)).not.toBeInTheDocument();
-    expect(container.getElementsByClassName('zui-wizard-header').length).toBe(0);
-  });
-});
-
-// test('should forward header to Header component', () => {
-//   render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeader} />);
-//   expect(screen.getByTestId('mock-header')).toBeInTheDocument();
-//   expect(yolo).toHaveBeenCalledWith(expect.objectContaining({ header: 'mock-header' }));
-// });
-
-// test('should forward headerInfo to Header component', () => {
-//   render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeader} headerInfo={} />);
-//   expect(screen.getByTestId('mock-header')).toBeInTheDocument();
-//   expect(yolo).toHaveBeenCalledWith(expect.objectContaining({ headerInfo: 'mock-header-info' }));
-// });
-
-// test('should forward subHeader to Header component', () => {
-//   render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeader} subHeader={} />);
-//   expect(screen.getByTestId('mock-header')).toBeInTheDocument();
-//   expect(yolo).toHaveBeenCalledWith(expect.objectContaining({ subHeader: 'mock-subHeader' }));
-// });
-
-// test('should forward sectionDivider to Header component', () => {
-//   render(<Wizard.Container {...DEFAULT_PROPS} header={mockHeader} sectionDivider={false} />);
-//   expect(screen.getByTestId('mock-header')).toBeInTheDocument();
-//   expect(yolo).toHaveBeenCalledWith(expect.objectContaining({ sectionDivider: false }));
-// });
-
-// existing tests can probably be removed
-test('should render wizard container', () => {
-  const { getByText } = render(<Wizard.Container>{mockContainer}</Wizard.Container>);
-  const container = getByText(mockContainer);
-  expect(container).toBeInTheDocument();
-  expect(container).toHaveClass('zui-wizard');
-});
-
-test('should render wizard loading', () => {
-  const { getByText } = render(<Wizard.Loading message={mockLoadingMessage} />);
-  const loading = getByText(mockLoadingMessage);
-  expect(loading).toBeInTheDocument();
-});
-
-test('should render wizard header', () => {
-  const { getByText } = render(<Wizard.Header header={mockHeader} />);
-  const header = getByText(mockHeader);
-  expect(header).toBeInTheDocument();
-});
-
-test('should render wizard confirmation', () => {
-  const { getByText } = render(
-    <Wizard.Confirmation message={mockConfirmation} onClickPrimaryButton={mockOnClickPrimaryButton} />
-  );
-  const confirmation = getByText(mockConfirmation);
-  expect(confirmation).toBeInTheDocument();
 });

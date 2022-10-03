@@ -25,7 +25,7 @@ const mockTooltip = jest.fn();
 jest.mock('../../../InfoTooltip', () => ({
   InfoTooltip: (props: InfoTooltipProps) => {
     mockTooltip(props);
-    return <div data-testid="mock-info-tooltip">{mockHeaderInfo}</div>;
+    return <div>{mockHeaderInfo}</div>;
   }
 }));
 
