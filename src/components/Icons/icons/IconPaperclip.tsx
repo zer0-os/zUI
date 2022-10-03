@@ -5,7 +5,7 @@ import React from 'react';
 import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
 import { DEFAULT_LABEL, DEFAULT_COLOR, DEFAULT_SIZE } from '../Icons.constants';
 
-export const IconAttachment: FC<IconProps> = ({
+export const IconPaperclip: FC<IconProps> = ({
   label = DEFAULT_LABEL,
   color = DEFAULT_COLOR,
   size = DEFAULT_SIZE
