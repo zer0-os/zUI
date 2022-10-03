@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Header, HeaderProps } from '.';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
+import { InfoTooltipProps } from '../../../InfoTooltip';
 
 const mockHeader = 'Mock Header';
 const mockHeaderInfo = 'Mock Header Info';
@@ -18,6 +19,15 @@ const DEFAULT_PROPS: HeaderProps = {
 beforeEach(() => {
   jest.clearAllMocks();
 });
+
+const mockTooltip = jest.fn();
+
+jest.mock('../../../InfoTooltip', () => ({
+  InfoTooltip: (props: InfoTooltipProps) => {
+    mockTooltip(props);
+    return <div data-testid="mock-info-tooltip">{mockHeaderInfo}</div>;
+  }
+}));
 
 describe('Header', () => {
   describe('class names', () => {
@@ -73,7 +83,7 @@ describe('Header', () => {
     expect(screen.getByText(mockChildren)).toBeInTheDocument();
   });
 
-  test('should render InfoToolTip if headerInfo is defined', () => {
+  test('should render InfoToolTip with content if headerInfo is defined', () => {
     const { container } = render(
       <TooltipProvider>
         <Header {...DEFAULT_PROPS} header={mockHeader} headerInfo={mockHeaderInfo} />
@@ -82,8 +92,8 @@ describe('Header', () => {
 
     const tooltip = container.getElementsByClassName('zui-info-tooltip');
 
-    expect(tooltip.length).toBe(1);
-    expect(tooltip[0].textContent).toBe('icon');
+    expect(tooltip.length).toBe(0);
+    expect(mockTooltip).toHaveBeenCalledWith(expect.objectContaining({ content: mockHeaderInfo }));
   });
 
   test('should not render InfoToolTip if headerInfo is undefined', () => {
@@ -92,6 +102,7 @@ describe('Header', () => {
     const tooltip = container.getElementsByClassName('zui-info-tooltip');
 
     expect(tooltip.length).toBe(0);
+    expect(mockTooltip).not.toHaveBeenCalled();
   });
 
   test('should render sectionDivider by default as <hr />', () => {
