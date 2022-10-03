@@ -2,40 +2,19 @@ import React, { FC } from 'react';
 
 import classNames from 'classnames';
 
-import { Buttons, Confirmation, Loading } from './Presets';
-
-import { InfoTooltip } from '../InfoTooltip/InfoTooltip';
+import { Buttons, Confirmation, Header, HeaderProps, Loading } from './Presets';
 
 import './Wizard.scss';
-
-export interface HeaderProps {
-  header?: React.ReactNode;
-  headerInfo?: string;
-  subHeader?: string;
-  sectionDivider?: boolean;
-}
 
 export interface WizardProps extends HeaderProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ children, header, headerInfo, subHeader, sectionDivider = true }) => (
-  <div className={'zui-wizard-header'}>
-    <div className="zui-wizard-header-container">
-      <h1>{header}</h1>
-      {headerInfo && <InfoTooltip content={headerInfo} />}
-    </div>
-    {subHeader && <h2>{subHeader}</h2>}
-    {children}
-    {sectionDivider && <hr />}
-  </div>
-);
-
-const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => (
+const Container: FC<WizardProps> = ({ children, className, header, headerInfo, subHeader, sectionDivider }) => (
   <div className={classNames('zui-wizard', className)}>
     {/* Header */}
-    {headerProps.header && <Header {...headerProps} />}
+    {header && <Header header={header} headerInfo={headerInfo} subHeader={subHeader} sectionDivider={sectionDivider} />}
 
     {/* Wizard Body */}
     {children}
