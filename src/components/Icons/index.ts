@@ -32,3 +32,4 @@ export * from './icons/IconArrowElbowRight';
 export * from './icons/IconArrowElbowRightDown';
 export * from './icons/IconQuestionMark';
 export * from './icons/IconCross';
+export * from './icons/IconPaperclip';
