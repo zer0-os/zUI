@@ -1,4 +1,4 @@
-import { MarkdownEditorTypes } from './MarkDownEditor.constants';
+import { MarkdownEditorTypes } from './MarkdownEditor.constants';
 
 export type MarkDownEditorProps = {
   type?: MarkdownEditorTypes;

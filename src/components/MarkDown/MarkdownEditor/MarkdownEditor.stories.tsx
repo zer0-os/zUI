@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { MarkDownEditor } from './MarkDownEditor';
-import { MarkdownEditorTypes } from './MarkDownEditor.constants';
+import { MarkdownEditor } from './MarkdownEditor';
+import { MarkdownEditorTypes } from './MarkdownEditor.constants';
 import { StoryCard } from '../../.storybook';
 
 export default {
-  title: 'Inputs/Markdown/MarkDownEditor',
-  component: MarkDownEditor
-} as ComponentMeta<typeof MarkDownEditor>;
+  title: 'Inputs/Markdown/MarkdownEditor',
+  component: MarkdownEditor
+} as ComponentMeta<typeof MarkdownEditor>;
 
-const Template: ComponentStory<typeof MarkDownEditor> = args => {
+const Template: ComponentStory<typeof MarkdownEditor> = args => {
   const [value, setValue] = useState<string>();
   const isError = value === '';
 
   return (
     <StoryCard isContrast isContentFull>
-      <MarkDownEditor
+      <MarkdownEditor
         {...args}
         text={args.text ?? value}
         onChange={setValue}

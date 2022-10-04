@@ -1,2 +1,2 @@
-export * from './MarkDownViewer';
-export * from './MarkDownViewer.types';
+export * from './MarkdownViewer';
+export * from './MarkdownViewer.types';

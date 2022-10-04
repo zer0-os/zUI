@@ -1,12 +1,12 @@
-import type { MarkDownViewerProps } from './MarkDownViewer.types';
+import type { MarkDownViewerProps } from './MarkdownViewer.types';
 
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
-import { MarkDownViewer } from './MarkDownViewer';
-import { REMARK_PLUGINS } from './MarkDownViewer.constants';
+import { MarkdownViewer } from './MarkdownViewer';
+import { REMARK_PLUGINS } from './MarkdownViewer.constants';
 import { MARKDOWN_TEXT } from './MarkdownViewer.stories.constants';
-import styles from './MarkDownViwer.module.scss';
+import styles from './MarkdownViewer.module.scss';
 
 const DEFAULT_PROPS: MarkDownViewerProps = {
   className: undefined,
@@ -26,7 +26,7 @@ jest.mock('remark-gemoji', () => jest.fn());
 
 describe('<MarkDownViewer />', () => {
   test('should pass default properties MarkdownViewer', () => {
-    render(<MarkDownViewer {...DEFAULT_PROPS} />);
+    render(<MarkdownViewer {...DEFAULT_PROPS} />);
 
     expect(mockMarkdownViewer).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -38,13 +38,13 @@ describe('<MarkDownViewer />', () => {
   });
 
   test('should forward text to MarkdownViewer', () => {
-    render(<MarkDownViewer {...DEFAULT_PROPS} text={MARKDOWN_TEXT} />);
+    render(<MarkdownViewer {...DEFAULT_PROPS} text={MARKDOWN_TEXT} />);
 
     expect(mockMarkdownViewer).toHaveBeenCalledWith(expect.objectContaining({ source: MARKDOWN_TEXT }));
   });
 
   test('should forward className to MarkdownViewer', () => {
-    render(<MarkDownViewer {...DEFAULT_PROPS} className={'mock-class'} />);
+    render(<MarkdownViewer {...DEFAULT_PROPS} className={'mock-class'} />);
 
     expect(mockMarkdownViewer).toHaveBeenCalledWith(
       expect.objectContaining({ className: expect.stringContaining('mock-class') })
@@ -52,7 +52,7 @@ describe('<MarkDownViewer />', () => {
   });
 
   test('should pass Container class to MarkdownViewer', () => {
-    render(<MarkDownViewer {...DEFAULT_PROPS} />);
+    render(<MarkdownViewer {...DEFAULT_PROPS} />);
 
     expect(mockMarkdownViewer).toHaveBeenCalledWith(
       expect.objectContaining({ className: expect.stringContaining(styles.Container) })
