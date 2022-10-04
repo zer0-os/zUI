@@ -48,7 +48,10 @@ describe('Buttons', () => {
     test('should apply negative variant class to secondary button', () => {
       render(<Buttons {...DEFAULT_PROPS} />);
 
-      expect(screen.getByTestId('secondary-button')).toHaveClass('zui-button-negative');
+      const secondaryyButton = screen.getByRole('button', {
+        name: mockSecondaryButtonText
+      });
+      expect(secondaryyButton).toHaveClass('zui-button-negative');
     });
   });
 
