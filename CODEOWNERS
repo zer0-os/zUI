@@ -1,0 +1,12 @@
+# Global owners
+# They will be requested for review when someone opens a pull
+# request unless a later match takes precedence,
+@colbr
+
+# Test owners
+*.test.* @colbr @domw30
+
+# Storybook owners
+*.stories.* @colbr
+.storybook/ @colbr
+/src/components/.storybook/ @colbr
