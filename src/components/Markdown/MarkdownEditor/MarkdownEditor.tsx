@@ -4,13 +4,17 @@ import type { MarkDownEditorProps } from './MarkdownEditor.types';
 import React from 'react';
 import classNames from 'classnames/bind';
 import MDEditor, { ICommand } from '@uiw/react-md-editor';
-import { MarkdownEditorTypes, MarkdownEditorModes, MARKDOWN_EDITOR_TOOLBAR_TITLES } from './MarkdownEditor.constants';
+import {
+  MarkdownEditorVariants,
+  MarkdownEditorModes,
+  MARKDOWN_EDITOR_TOOLBAR_TITLES
+} from './MarkdownEditor.constants';
 import styles from './MarkdownEditor.module.scss';
 
 const cx = classNames.bind(styles);
 
 export const MarkdownEditor: FC<MarkDownEditorProps> = ({
-  type = MarkdownEditorTypes.PRIMARY,
+  variant = MarkdownEditorVariants.PRIMARY,
   text = '',
   placeholder,
   onChange,
@@ -48,7 +52,7 @@ export const MarkdownEditor: FC<MarkDownEditorProps> = ({
   return (
     <div
       className={cx(styles.Container, className, {
-        Secondary: type === MarkdownEditorTypes.SECONDARY,
+        Secondary: variant === MarkdownEditorVariants.SECONDARY,
         Error: error
       })}
     >

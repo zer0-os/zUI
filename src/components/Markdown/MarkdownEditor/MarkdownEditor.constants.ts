@@ -1,4 +1,4 @@
-export enum MarkdownEditorTypes {
+export enum MarkdownEditorVariants {
   PRIMARY = 'primary',
   SECONDARY = 'secondary'
 }

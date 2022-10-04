@@ -1,7 +1,7 @@
-import { MarkdownEditorTypes } from './MarkdownEditor.constants';
+import { MarkdownEditorVariants } from './MarkdownEditor.constants';
 
 export type MarkDownEditorProps = {
-  type?: MarkdownEditorTypes;
+  variant?: MarkdownEditorVariants;
   text?: string;
   placeholder?: string;
   onChange?: (value?: string) => void;

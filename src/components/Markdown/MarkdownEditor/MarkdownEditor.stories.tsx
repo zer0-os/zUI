@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MarkdownEditor } from './MarkdownEditor';
-import { MarkdownEditorTypes } from './MarkdownEditor.constants';
+import { MarkdownEditorVariants } from './MarkdownEditor.constants';
 import { StoryCard } from '../../.storybook';
 
 export default {
@@ -28,12 +28,12 @@ const Template: ComponentStory<typeof MarkdownEditor> = args => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: MarkdownEditorTypes.PRIMARY,
+  type: MarkdownEditorVariants.PRIMARY,
   placeholder: 'Text Content'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  type: MarkdownEditorTypes.SECONDARY,
+  type: MarkdownEditorVariants.SECONDARY,
   placeholder: 'Text Content'
 };

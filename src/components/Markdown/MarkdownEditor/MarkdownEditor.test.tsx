@@ -4,11 +4,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MDEditorProps } from '@uiw/react-md-editor';
 import { MarkdownEditor } from './MarkdownEditor';
-import { MarkdownEditorTypes, MarkdownEditorModes } from './MarkdownEditor.constants';
+import { MarkdownEditorVariants, MarkdownEditorModes } from './MarkdownEditor.constants';
 import styles from './MarkdownEditor.module.scss';
 
 const DEFAULT_PROPS: MarkDownEditorProps = {
-  type: MarkdownEditorTypes.PRIMARY,
+  type: MarkdownEditorVariants.PRIMARY,
   text: '',
   placeholder: undefined,
   error: false,
@@ -56,7 +56,7 @@ describe('<MarkdownEditor />', () => {
   });
 
   test('should pass Secondary class to container', () => {
-    const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} type={MarkdownEditorTypes.SECONDARY} />);
+    const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} type={MarkdownEditorVariants.SECONDARY} />);
 
     expect(container.firstChild).toHaveClass(styles.Secondary);
   });
