@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import { Button } from '../../Button';
+import { Button, ButtonProps } from '../../Button';
 
 import './Buttons.scss';
 
@@ -12,6 +12,8 @@ export interface ButtonsProps {
   isSecondaryButtonActive?: boolean;
   onClickPrimaryButton: () => void;
   onClickSecondaryButton?: () => void;
+  primaryButtonVariant?: ButtonProps['variant'];
+  secondaryButtonVariant?: ButtonProps['variant'];
   primaryButtonText?: string;
   secondaryButtonText?: string;
 }
@@ -22,16 +24,18 @@ export const Buttons = ({
   isSecondaryButtonActive = false,
   onClickPrimaryButton,
   onClickSecondaryButton,
+  primaryButtonVariant = 'primary',
+  secondaryButtonVariant = 'negative',
   primaryButtonText = 'Continue',
   secondaryButtonText = 'Cancel'
 }: ButtonsProps) => (
   <div className={classNames('zui-wizard-buttons', className)}>
     {onClickSecondaryButton && (
-      <Button variant="negative" isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
+      <Button variant={secondaryButtonVariant} isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
         {secondaryButtonText}
       </Button>
     )}
-    <Button isDisabled={!isPrimaryButtonActive} onPress={onClickPrimaryButton}>
+    <Button variant={primaryButtonVariant} isDisabled={!isPrimaryButtonActive} onPress={onClickPrimaryButton}>
       {primaryButtonText}
     </Button>
   </div>

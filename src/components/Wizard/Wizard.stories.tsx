@@ -55,6 +55,8 @@ Confirmation.args = {
   message: 'Some confirmation text',
   isPrimaryButtonActive: true,
   isSecondaryButtonActive: true,
+  primaryButtonVariant: 'primary',
+  secondaryButtonVariant: 'negative',
   onClickPrimaryButton: () => alert('Clicked confirm'),
   onClickSecondaryButton: () => alert('Clicked cancel')
 };
