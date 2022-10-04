@@ -64,6 +64,16 @@ describe('Buttons', () => {
 
       expect(mockOnClickPrimaryButton).toHaveBeenCalledTimes(1);
     });
+
+    test('should be disabled by default', () => {
+      render(<Buttons {...DEFAULT_PROPS} primaryButtonText={mockPrimaryButtonText} />);
+
+      const primaryButton = screen.getByRole('button', {
+        name: mockPrimaryButtonText
+      });
+
+      expect(primaryButton).toHaveAttribute('aria-disabled', 'true');
+    });
   });
 
   describe('secondary button', () => {
@@ -88,6 +98,22 @@ describe('Buttons', () => {
 
       const secondaryButton = screen.queryByText(mockSecondaryButtonText);
       expect(secondaryButton).not.toBeInTheDocument();
+    });
+
+    test('should be disabled by default', () => {
+      render(
+        <Buttons
+          {...DEFAULT_PROPS}
+          secondaryButtonText={mockSecondaryButtonText}
+          onClickSecondaryButton={mockOnClickSecondaryButton}
+        />
+      );
+
+      const secondaryyButton = screen.getByRole('button', {
+        name: mockSecondaryButtonText
+      });
+
+      expect(secondaryyButton).toHaveAttribute('aria-disabled', 'true');
     });
   });
 });
