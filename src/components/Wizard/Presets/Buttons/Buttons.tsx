@@ -27,7 +27,12 @@ export const Buttons = ({
 }: ButtonsProps) => (
   <div className={classNames('zui-wizard-buttons', className)}>
     {onClickSecondaryButton && (
-      <Button variant="negative" isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
+      <Button
+        data-testid="secondary-button"
+        variant="negative"
+        isDisabled={!isSecondaryButtonActive}
+        onPress={onClickSecondaryButton}
+      >
         {secondaryButtonText}
       </Button>
     )}
