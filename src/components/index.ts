@@ -5,7 +5,7 @@ export { DropdownMenu } from './DropdownMenu';
 export { Input } from './Input';
 export { LoadingIndicator } from './LoadingIndicator';
 export * from './Markdown';
-export { MediaInput } from './MediaInput';
+export * from './MediaInput';
 export { Modal } from './Modal';
 export { Skeleton } from './Skeleton';
 export * from './StepBar';
