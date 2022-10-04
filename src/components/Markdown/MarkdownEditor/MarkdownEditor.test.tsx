@@ -8,7 +8,7 @@ import { MarkdownEditorVariants, MarkdownEditorModes } from './MarkdownEditor.co
 import styles from './MarkdownEditor.module.scss';
 
 const DEFAULT_PROPS: MarkDownEditorProps = {
-  type: MarkdownEditorVariants.PRIMARY,
+  variant: MarkdownEditorVariants.PRIMARY,
   text: '',
   placeholder: undefined,
   error: false,
@@ -56,7 +56,7 @@ describe('<MarkdownEditor />', () => {
   });
 
   test('should pass Secondary class to container', () => {
-    const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} type={MarkdownEditorVariants.SECONDARY} />);
+    const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} variant={MarkdownEditorVariants.SECONDARY} />);
 
     expect(container.firstChild).toHaveClass(styles.Secondary);
   });
