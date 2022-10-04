@@ -21,8 +21,8 @@
     transition: text-shadow 0.1s ease-in-out;
 
     &:hover {
-      text-shadow: 0px 0px 24px transparentize($purple-100, 0.6), 0px 0px 12px transparentize($purple-100, 0.6),
-        0px 0px 6px transparentize($purple-100, 0.6) !important;
+      text-shadow: 0 0 24px transparentize($purple-100, 0.6), 0 0 12px transparentize($purple-100, 0.6),
+        0 0 6px transparentize($purple-100, 0.6) !important;
     }
   }
 
