@@ -4,6 +4,7 @@ export { Card } from './Card';
 export { DropdownMenu } from './DropdownMenu';
 export { Input } from './Input';
 export { LoadingIndicator } from './LoadingIndicator';
+export * from './Markdown';
 export { Modal } from './Modal';
 export { Skeleton } from './Skeleton';
 export * from './StepBar';

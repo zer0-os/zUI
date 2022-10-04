@@ -1,0 +1,165 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+@import '../../../styles/dimensions';
+
+/* stylelint-disable no-descending-specificity */
+.Container {
+  .CustomTextToolbarButton {
+    padding: 0.25rem 0.5rem !important;
+    font-size: $size-tiny !important;
+  }
+
+  :global(.w-md-editor) {
+    min-height: 15rem;
+    color: $white;
+    background-color: $almost-black;
+    border: 1px solid $anakiwa-lighter;
+    border-radius: 1.5rem;
+    box-shadow: unset;
+    overflow: hidden;
+  }
+
+  :global(.w-md-editor-toolbar) {
+    background: $ocean-10;
+    border: unset;
+
+    > ul:first-child {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      height: 2.5rem !important;
+      margin: auto 1.5rem;
+
+      @media only screen and (max-width: $breakpoint-mobile-l) {
+        margin: auto 0.75rem;
+      }
+
+      > li > button {
+        color: $white;
+        height: 1.5rem;
+
+        > svg {
+          width: 1.125rem;
+          height: 1.125rem;
+        }
+
+        @media only screen and (max-width: $breakpoint-mobile-l) {
+          height: 1.25rem;
+
+          > svg {
+            width: 1.125rem;
+            height: 1.125rem;
+          }
+        }
+      }
+
+      :global(.w-md-editor-toolbar-divider) {
+        margin: 0 0.85rem !important;
+        background-color: unset;
+
+        @media only screen and (max-width: $breakpoint-mobile-l) {
+          margin: 0 0.25rem !important;
+        }
+      }
+    }
+
+    > ul:last-child {
+      display: none;
+    }
+  }
+
+  :global(.w-md-editor-content) {
+    textarea {
+      font-size: $size-default;
+      line-height: 1.5rem;
+
+      &::placeholder {
+        color: $grey-lighter-2;
+      }
+    }
+  }
+
+  :global(.w-md-editor-text-pre) {
+    code {
+      font-size: $size-default !important;
+      line-height: 1.5rem !important;
+      color: $white !important;
+
+      span {
+        color: $white !important;
+      }
+    }
+  }
+
+  :global(.w-md-editor-bar) {
+    margin-top: -1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $anakiwa-lighter;
+    -webkit-mask-image: url('./assets/md-resize-bar.svg');
+    mask-image: url('./assets/md-resize-bar.svg');
+
+    svg {
+      display: none;
+    }
+  }
+
+  :global(.w-md-editor-input) {
+    position: absolute;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      background-color: rgba(82, 203, 255, 0.25);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $anakiwa-lighter;
+      border-radius: 0.5rem;
+    }
+  }
+
+  &.Secondary {
+    :global(.w-md-editor) {
+      border-color: $purple-50;
+    }
+
+    :global(.w-md-editor-toolbar) {
+      background: $purple-10;
+    }
+
+    :global(.w-md-editor-bar) {
+      background-color: $purple-50;
+    }
+
+    :global(.w-md-editor-input) {
+      &::-webkit-scrollbar {
+        background-color: $purple-5;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $purple-25;
+      }
+    }
+  }
+
+  &.Error {
+    :global(.w-md-editor) {
+      border-color: $red-300;
+    }
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+.ErrorMessage {
+  margin-top: 2px;
+  margin-left: 1.5rem;
+  font-size: $size-tiny;
+  font-weight: $font-weight-regular;
+  line-height: 1rem;
+  color: $red-300;
+  text-align: left;
+}
