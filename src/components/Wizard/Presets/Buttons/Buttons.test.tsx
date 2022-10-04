@@ -1,13 +1,12 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import { Buttons, ButtonsProps } from '.';
 
 const mockOnClickPrimaryButton = jest.fn();
 const mockOnClickSecondaryButton = jest.fn();
 
-const mockClassName = 'Mock Class Name';
+const mockClassName = 'Mock class name';
 const mockPrimaryButtonText = 'Mock primary button text';
 const mockSecondaryButtonText = 'Mock secondary button text';
 
