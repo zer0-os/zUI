@@ -84,15 +84,12 @@ describe('Header', () => {
   });
 
   test('should render InfoToolTip with content if headerInfo is defined', () => {
-    const { container } = render(
+    render(
       <TooltipProvider>
         <Header {...DEFAULT_PROPS} header={mockHeader} headerInfo={mockHeaderInfo} />
       </TooltipProvider>
     );
 
-    const tooltip = container.getElementsByClassName('zui-info-tooltip');
-
-    expect(tooltip.length).toBe(0);
     expect(mockTooltip).toHaveBeenCalledWith(expect.objectContaining({ content: mockHeaderInfo }));
   });
 
