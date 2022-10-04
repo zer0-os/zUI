@@ -1,4 +1,4 @@
-export type MarkDownViewerProps = {
+export type MarkdownViewerProps = {
   text?: string;
   className?: string;
 };

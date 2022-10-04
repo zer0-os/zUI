@@ -1,4 +1,4 @@
-import type { MarkDownEditorProps } from './MarkdownEditor.types';
+import type { MarkdownEditorProps } from './MarkdownEditor.types';
 
 import React from 'react';
 import { render } from '@testing-library/react';
@@ -7,7 +7,7 @@ import { MarkdownEditor } from './MarkdownEditor';
 import { MarkdownEditorVariants, MarkdownEditorModes } from './MarkdownEditor.constants';
 import styles from './MarkdownEditor.module.scss';
 
-const DEFAULT_PROPS: MarkDownEditorProps = {
+const DEFAULT_PROPS: MarkdownEditorProps = {
   variant: MarkdownEditorVariants.PRIMARY,
   text: '',
   placeholder: undefined,
@@ -16,17 +16,17 @@ const DEFAULT_PROPS: MarkDownEditorProps = {
   className: undefined
 };
 
-const mockMarkDownEditor = jest.fn();
+const mockMarkdownEditor = jest.fn();
 
 jest.mock('@uiw/react-md-editor', () => {
-  return (props: MDEditorProps) => <>{mockMarkDownEditor(props)}</>;
+  return (props: MDEditorProps) => <>{mockMarkdownEditor(props)}</>;
 });
 
 describe('<MarkdownEditor />', () => {
   test('should pass default properties MarkdownEditor', () => {
     render(<MarkdownEditor {...DEFAULT_PROPS} />);
 
-    expect(mockMarkDownEditor).toHaveBeenCalledWith(
+    expect(mockMarkdownEditor).toHaveBeenCalledWith(
       expect.objectContaining({
         value: DEFAULT_PROPS.text,
         textareaProps: {
@@ -40,7 +40,7 @@ describe('<MarkdownEditor />', () => {
   test('should forward text to MarkdownEditor', () => {
     render(<MarkdownEditor {...DEFAULT_PROPS} text={'mock text'} />);
 
-    expect(mockMarkDownEditor).toHaveBeenCalledWith(expect.objectContaining({ value: 'mock text' }));
+    expect(mockMarkdownEditor).toHaveBeenCalledWith(expect.objectContaining({ value: 'mock text' }));
   });
 
   test('should pass Container class to container', () => {

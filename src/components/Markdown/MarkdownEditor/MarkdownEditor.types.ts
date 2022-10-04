@@ -1,6 +1,6 @@
 import { MarkdownEditorVariants } from './MarkdownEditor.constants';
 
-export type MarkDownEditorProps = {
+export type MarkdownEditorProps = {
   variant?: MarkdownEditorVariants;
   text?: string;
   placeholder?: string;

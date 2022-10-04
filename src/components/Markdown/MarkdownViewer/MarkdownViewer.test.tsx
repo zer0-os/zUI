@@ -1,4 +1,4 @@
-import type { MarkDownViewerProps } from './MarkdownViewer.types';
+import type { MarkdownViewerProps } from './MarkdownViewer.types';
 
 import React from 'react';
 import { render } from '@testing-library/react';
@@ -8,7 +8,7 @@ import { REMARK_PLUGINS } from './MarkdownViewer.constants';
 import { MARKDOWN_TEXT } from './MarkdownViewer.stories.constants';
 import styles from './MarkdownViewer.module.scss';
 
-const DEFAULT_PROPS: MarkDownViewerProps = {
+const DEFAULT_PROPS: MarkdownViewerProps = {
   className: undefined,
   text: ''
 };
@@ -24,7 +24,7 @@ jest.mock('@uiw/react-md-editor', () => ({
 jest.mock('remark-emoji', () => jest.fn());
 jest.mock('remark-gemoji', () => jest.fn());
 
-describe('<MarkDownViewer />', () => {
+describe('<MarkdownViewer />', () => {
   test('should pass default properties MarkdownViewer', () => {
     render(<MarkdownViewer {...DEFAULT_PROPS} />);
 

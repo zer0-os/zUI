@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import type { MarkDownEditorProps } from './MarkdownEditor.types';
+import type { MarkdownEditorProps } from './MarkdownEditor.types';
 
 import React from 'react';
 import classNames from 'classnames/bind';
@@ -13,7 +13,7 @@ import styles from './MarkdownEditor.module.scss';
 
 const cx = classNames.bind(styles);
 
-export const MarkdownEditor: FC<MarkDownEditorProps> = ({
+export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   variant = MarkdownEditorVariants.PRIMARY,
   text = '',
   placeholder,

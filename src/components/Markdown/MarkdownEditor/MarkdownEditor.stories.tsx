@@ -28,12 +28,12 @@ const Template: ComponentStory<typeof MarkdownEditor> = args => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: MarkdownEditorVariants.PRIMARY,
+  variant: MarkdownEditorVariants.PRIMARY,
   placeholder: 'Text Content'
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  type: MarkdownEditorVariants.SECONDARY,
+  variant: MarkdownEditorVariants.SECONDARY,
   placeholder: 'Text Content'
 };
