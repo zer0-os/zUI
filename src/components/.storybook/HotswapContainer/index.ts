@@ -1,2 +1,1 @@
-export { HotswapContainer } from './HotswapContainer';
-export { HotswapContainerProps } from './HotswapContainer';
+export { HotswapContainer, HotswapContainerProps } from './HotswapContainer';
