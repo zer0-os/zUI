@@ -1,6 +1,6 @@
 export { AsyncTable } from './AsyncTable';
 export { Button } from './Button';
-export { Card } from './Card';
+export * from './Card';
 export { DropdownMenu } from './DropdownMenu';
 export { Input } from './Input';
 export { LoadingIndicator } from './LoadingIndicator';
@@ -10,4 +10,5 @@ export { Skeleton } from './Skeleton';
 export * from './StepBar';
 export * from './Tabs';
 export * from './Tooltip';
+export * from './TextStack';
 export { Wizard } from './Wizard';

@@ -1,0 +1,25 @@
+@import '../../styles/colors';
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+
+    font-size: 0.75rem;
+
+    color: grey;
+
+    .Primary {
+        font-size: 1.125rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    > * {
+        white-space: nowrap;
+        overflow: hidden;
+        display: block;
+        text-overflow: ellipsis;
+    }
+}

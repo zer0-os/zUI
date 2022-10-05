@@ -1,34 +1,22 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 
-import { Skeleton } from '../Skeleton';
+import { TextStack, TextStackProps } from '../TextStack';
 
 import styles from './Card.module.scss';
-
-export interface AsyncText {
-  text?: string | ReactNode;
-  isLoading?: boolean;
-}
+import classNames from 'classnames';
 
 export interface CardProps {
-  title: string;
-  value: AsyncText | string | number;
-  bottomText?: AsyncText | string | number;
+  className?: string;
+  label: TextStackProps['label'];
+  primaryText: TextStackProps['primaryText'];
+  secondaryText?: TextStackProps['secondaryText'];
 }
 
-export const Card: FC<CardProps> = ({ title, value, bottomText }) => (
-  <div className={styles.Container}>
-    <label className={styles.Title}>{title}</label>
-    <b className={styles.Value}>
-      {typeof value === 'object' ? <>{value.isLoading ? <Skeleton width={'50%'} /> : value.text ?? 'ERR'}</> : value}
-    </b>
-    {bottomText && (
-      <span className={styles.BottomText}>
-        {typeof bottomText === 'object' ? (
-          <>{bottomText.isLoading ? <Skeleton width={'50%'} /> : bottomText.text ?? 'ERR'}</>
-        ) : (
-          bottomText
-        )}
-      </span>
-    )}
-  </div>
+export const Card: FC<CardProps> = ({ className, label, primaryText, secondaryText }) => (
+  <TextStack
+    className={classNames(styles.Container, className)}
+    label={label}
+    primaryText={primaryText}
+    secondaryText={secondaryText}
+  />
 );

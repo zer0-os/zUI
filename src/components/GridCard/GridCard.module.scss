@@ -1,0 +1,36 @@
+.Container {
+
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    border: 1px solid grey;
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+
+    .ImageContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        overflow: hidden;
+
+        border-radius: 0.5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            transition: transform 0.3s ease;
+
+        }
+    }
+
+    .Content {
+        padding: 1rem;
+    }
+}
