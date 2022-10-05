@@ -10,7 +10,7 @@ export interface GridCardProps {
   aspectRatio: AspectRatioProps['ratio'];
   children: ReactNode;
   imageSrc: string;
-  imageAlt?: string;
+  imageAlt: string;
 }
 
 export const GridCard = ({ aspectRatio, className, children, imageAlt, imageSrc }: GridCardProps) => {
