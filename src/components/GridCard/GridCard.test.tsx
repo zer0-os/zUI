@@ -35,6 +35,13 @@ describe('<GridCard />', () => {
     expect(screen.getByTestId(mockChildrenId)).toBeInTheDocument();
   });
 
+  // should be able to pass in a className
+  test('should be able to pass in a className', () => {
+    const mockClassName = 'mock-class-name';
+    const { container } = render(<GridCard {...DEFAULT_PROPS} className={mockClassName} />);
+    expect(container.firstChild).toHaveClass(mockClassName);
+  });
+
   describe('Image', () => {
     test('should pass aspect ratio prop to AspectRatio component', () => {
       const aspectRatio = 1;
