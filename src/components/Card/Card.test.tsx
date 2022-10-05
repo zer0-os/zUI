@@ -8,17 +8,10 @@ import styles from './Card.module.scss';
 
 let mockTextStack = jest.fn();
 
-const MOCK_SKELETON_ID = 'mock-skeleton';
-
-jest.mock('../Skeleton', () => ({
-  Skeleton: () => <div data-testid={MOCK_SKELETON_ID} />
-}));
-
-// mock TextStack component
 jest.mock('../TextStack', () => ({
   TextStack: (props: TextStackProps) => {
     mockTextStack(props);
-    return <div data-testid="mock-text-detail" />;
+    return <div />;
   }
 }));
 

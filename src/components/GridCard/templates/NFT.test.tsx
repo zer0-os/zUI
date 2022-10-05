@@ -10,7 +10,7 @@ const mockTextStack = jest.fn();
 jest.mock('../../TextStack', () => ({
   TextStack: (props: TextStackProps) => {
     mockTextStack(props);
-    return <div data-testid="mock-text-detail"></div>;
+    return <div />;
   }
 }));
 
@@ -19,7 +19,7 @@ const mockButton = jest.fn();
 jest.mock('../../Button', () => ({
   Button: (props: ButtonProps) => {
     mockButton(props);
-    return <div data-testid="mock-button" />;
+    return <div />;
   }
 }));
 

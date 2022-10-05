@@ -28,7 +28,7 @@ describe('<TextStack />', () => {
       const { container } = render(<TextStack {...DEFAULT_PROPS} label={'mock label'} />);
       const label = container.getElementsByTagName('label');
       expect(label.length).toBe(1);
-      expect(label[0]).toHaveTextContent('mock label');
+      expect(label[0].textContent).toBe('mock label');
     });
   });
 
@@ -36,6 +36,7 @@ describe('<TextStack />', () => {
     test('should apply Container class to container', () => {
       const { container } = render(<TextStack {...DEFAULT_PROPS} />);
       expect(container.firstChild).toHaveClass(styles.Container);
+      expect(container.getElementsByClassName(styles.Container).length).toBe(1);
     });
 
     test('should apply Primary class to primary element', () => {

@@ -26,16 +26,14 @@ beforeEach(() => {
 
 describe('<GridCard />', () => {
   test('should render children', () => {
-    const mockChildrenId = 'mock-children';
     render(
       <GridCard {...DEFAULT_PROPS}>
-        <div data-testid={mockChildrenId} />
+        <div>mock child text</div>
       </GridCard>
     );
-    expect(screen.getByTestId(mockChildrenId)).toBeInTheDocument();
+    expect(screen.getByText('mock child text')).toBeInTheDocument();
   });
 
-  // should be able to pass in a className
   test('should be able to pass in a className', () => {
     const mockClassName = 'mock-class-name';
     const { container } = render(<GridCard {...DEFAULT_PROPS} className={mockClassName} />);
