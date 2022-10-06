@@ -1,0 +1,40 @@
+@import '../../../../styles/animations';
+@import '../../../../styles/borders';
+@import '../../../../styles/colors';
+@import '../../../../styles/typography';
+
+.Container {
+  display: flex;
+  position: relative;
+  border-radius: $radius-primary;
+
+  input {
+    font-size: $size-default;
+    width: 100%;
+    height: 2rem;
+    background: inherit;
+    border-radius: 2rem;
+    padding: 0 1.5rem 0 2.5rem;
+    border: 1px solid $mine-shaft;
+    outline: none;
+    text-align: left;
+    color: $grey-lighter-2;
+    transition: all $time-short linear;
+
+    &::placeholder {
+      opacity: 1;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid $purple-50;
+    }
+  }
+
+  button {
+    position: absolute;
+    left: 1rem;
+    top: 0.625rem;
+  }
+}

@@ -1,0 +1,46 @@
+@import '../../styles/animations';
+@import '../../styles/borders';
+@import '../../styles/colors';
+
+.IconButton {
+  display: flex;
+  position: relative;
+  padding: 0;
+  color: $blue;
+  background-color: $black;
+  border: none;
+  cursor: pointer;
+  border-radius: calc($radius-primary/ 2);
+  transition: all $time-medium ease-in-out;
+  z-index: 1;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 0;
+    width: 0;
+    border-radius: calc($radius-primary / 2);
+    z-index: -2;
+    transition: box-shadow $time-medium ease-in-out;
+  }
+
+  &:hover {
+    text-shadow: $text-glow-primary;
+    background: $purple-15;
+
+    &::after {
+      background: $purple-15;
+    }
+  }
+
+  &.selectedIcon {
+    color: $text-primary;
+    background: $purple-15;
+
+    &::after {
+      box-shadow: 0 0 20px 13px rgba($white, 0.5);
+    }
+  }
+}

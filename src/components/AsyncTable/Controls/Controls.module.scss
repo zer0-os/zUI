@@ -1,0 +1,19 @@
+.Controls {
+  display: flex;
+  grid-gap: 1rem;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+
+  .SearchBarContainer {
+    width: 100%;
+  }
+
+  .IconButtons {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+}

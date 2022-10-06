@@ -1,0 +1,9 @@
+import React from 'react';
+
+export const IconList: React.FC = () => (
+  <svg width="32" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8.29138" y="10" width="16" height="2" rx="1" fill="white" />
+    <rect x="8.29138" y="15" width="16" height="2" rx="1" fill="white" />
+    <rect x="8.29138" y="20" width="16" height="2" rx="1" fill="white" />
+  </svg>
+);
