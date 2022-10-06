@@ -4,6 +4,7 @@
  * across zApps.
  */
 
+import React from 'react';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './override.scss';
 
