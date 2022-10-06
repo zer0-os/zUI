@@ -8,7 +8,6 @@ export * from './Markdown';
 export * from './MediaInput';
 export { Modal } from './Modal';
 export * from './Skeleton';
-export * from './Skeleton';
 export * from './SkeletonText';
 export * from './StepBar';
 export * from './Tabs';

@@ -11,11 +11,10 @@ import './override.scss';
 import { default as SkeletonComponent } from 'react-loading-skeleton';
 import type { SkeletonProps as DefaultSkeletonProps } from 'react-loading-skeleton';
 
-export interface SkeletonProps
-  extends Omit<
+export type SkeletonProps = Omit<
     DefaultSkeletonProps,
     'baseColor' | 'highlightColor' | 'duration' | 'direction' | 'borderRadius' | 'enableAnimation'
-  > {}
+  >
 
 export const Skeleton = (props: SkeletonProps) => {
   return <SkeletonComponent {...props} />;

@@ -1,3 +1,4 @@
+import React from 'react';
 import { MaybeSkeletonText, SkeletonText } from './';
 import { render, screen } from '@testing-library/react';
 

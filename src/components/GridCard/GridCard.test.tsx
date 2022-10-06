@@ -49,7 +49,7 @@ describe('<GridCard />', () => {
     });
 
     test('should pass alt prop to img element', () => {
-      render(<GridCard {...DEFAULT_PROPS} imageAlt={'mock-alt'} />);
+      render(<GridCard {...DEFAULT_PROPS} imageAlt={'mock-alt'} imageSrc={'mock-src'} />);
       expect(screen.getByRole('img')).toHaveAttribute('alt', 'mock-alt');
     });
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TextStack } from './';
 import { StoryCard } from '../.storybook';

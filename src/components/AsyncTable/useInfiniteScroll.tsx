@@ -3,15 +3,15 @@ import React, { memo, ReactNode, useCallback, useEffect, useMemo, useRef, useSta
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { useOnScreen } from '../../lib/hooks/useOnScreen';
-import { AsyncTableProps } from './AsyncTable';
+import { AsyncTableComponent } from './types';
 
 export interface InfiniteScrollProps<T> {
   items: T[];
   chunkSize: number;
-  component: AsyncTableProps<T>['rowComponent'] | AsyncTableProps<T>['gridComponent'];
+  component: AsyncTableComponent<T>;
 }
 
-interface WrapperProps<T> {
+interface WrapperProps {
   children: ReactNode;
   className?: string;
 }
@@ -32,7 +32,7 @@ export const useInfiniteScroll = <T extends unknown>({ items, chunkSize, compone
 
   const InfiniteScrollWrapper = useMemo(
     () =>
-      ({ children, className }: WrapperProps<T>) => {
+      ({ children, className }: WrapperProps) => {
         const handleNext = () => setChunk(chunk + 1);
         return (
           <InfiniteScroll
@@ -46,7 +46,7 @@ export const useInfiniteScroll = <T extends unknown>({ items, chunkSize, compone
           </InfiniteScroll>
         );
       },
-    [chunk, chunkSize, totalItems, totalRendered]
+    [chunk, chunkSize, hasMore]
   );
 
   return {
@@ -69,7 +69,7 @@ const Loader = memo(({ onVisible }: { onVisible: () => void }) => {
     if (isVisible) {
       onVisible();
     }
-  }, [isVisible]);
+  }, [isVisible, onVisible]);
 
   return <div ref={ref} />;
 });

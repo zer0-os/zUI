@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { Column } from './Column';
 import { LoadingIndicator } from '../LoadingIndicator';
@@ -7,6 +7,7 @@ import { Grid } from './Grid';
 import { Table } from './Table';
 
 import styles from './AsyncTable.module.scss';
+import { AsyncTableComponent } from './types';
 
 /**
  * NOTE:
@@ -23,8 +24,6 @@ import styles from './AsyncTable.module.scss';
  * data for the row (i.e. data from the first query) should
  * be rendered first.
  */
-type TableComponent<T> = (data: T, options?: unknown) => ReactNode;
-
 export interface SearchKey<T> {
   key: keyof T;
   name: string;
@@ -34,13 +33,13 @@ export interface AsyncTableProps<T> {
   className?: string;
   columns: Column[];
   data?: T[];
-  gridComponent: TableComponent<T>;
+  gridComponent: AsyncTableComponent<T>;
   isGridView?: boolean;
   isLoading?: boolean;
   isSingleColumnGrid?: boolean;
   itemKey: keyof T;
   loadingText?: string;
-  rowComponent: TableComponent<T>;
+  rowComponent: AsyncTableComponent<T>;
   searchKey: SearchKey<T>;
 }
 
@@ -72,6 +71,7 @@ export const AsyncTable = <T extends unknown>({
     if (lastView.current === 'list' && !isGridView) {
       console.warn('Detected unmemoized rowComponent!');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rowComponent]);
 
   // Warn if dev didn't memoize gridComponent
@@ -79,13 +79,14 @@ export const AsyncTable = <T extends unknown>({
     if (lastView.current === 'grid' && isGridView) {
       console.warn('Detected unmemoized gridComponent!');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gridComponent]);
 
   // Reset infinite scroll whenever user changes view
   useEffect(() => {
     lastView.current = 'grid';
     resetChunk();
-  }, [isGridView]);
+  }, [isGridView, resetChunk]);
 
   // Grid view doesn't render Skeletons when loading (yet)
   if (isGridView && isLoading) {
