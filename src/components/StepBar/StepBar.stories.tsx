@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StepBar from './StepBar';
+import { StepBar } from './StepBar';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoryCard } from '../.storybook';
 import { Step } from './StepBar.types';
@@ -10,6 +10,7 @@ export default {
 } as ComponentMeta<typeof StepBar>;
 
 export const Default: ComponentStory<typeof StepBar> = ({ currentStepId, steps }) => {
+  // @ts-ignore
   const [step, setStep] = useState(steps.find(x => x.id === currentStepId));
 
   return (

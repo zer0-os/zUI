@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Spinner from './Spinner';
+import { Spinner } from './Spinner';
 import { StoryCard } from '../.storybook';
 
 export default {
