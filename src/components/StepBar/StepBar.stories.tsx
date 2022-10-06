@@ -10,8 +10,7 @@ export default {
 } as ComponentMeta<typeof StepBar>;
 
 export const Default: ComponentStory<typeof StepBar> = ({ currentStepId, steps }) => {
-  // @ts-ignore
-  const [step, setStep] = useState(steps.find(x => x.id === currentStepId));
+  const [step, setStep] = useState(steps.find((x: Step) => x.id === currentStepId));
 
   return (
     <StoryCard isContrast>
