@@ -116,13 +116,14 @@
     "@stitches/react": "^1.2.8",
     "@storybook/preset-scss": "^1.0.3",
     "@uiw/react-md-editor": "^3.12.3",
-    "remark-emoji": "^3.0.2",
-    "remark-gemoji": "^7.0.1",
     "classnames": "^2.3.1",
     "ethers": "^5.6.9",
     "focus-visible": "^5.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-loading-skeleton": "^3.1.0",
     "react-router-dom": "^6.3.0",
+    "remark-emoji": "^3.0.2",
+    "remark-gemoji": "^7.0.1",
     "sass": "^1.52.2"
   }
 }

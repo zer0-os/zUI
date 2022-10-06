@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+// @ts-ignore
 import styles from './HotswapContainer.module.scss';
 
 export interface HotswapContainerProps {

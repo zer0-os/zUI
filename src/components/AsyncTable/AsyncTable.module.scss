@@ -1,7 +1,8 @@
 @import '../../styles/colors';
 
-.Container {
+.Table {
   width: 100%;
+  border-collapse: collapse;
 
   th {
     font-size: 0.75rem;
@@ -16,26 +17,25 @@
     vertical-align: middle;
 
     &:first-of-type {
-      padding-left: 0;
+      padding-left: 1rem;
     }
 
     &:last-of-type {
-      padding-right: 0;
+      padding-right: 1rem;
     }
   }
+}
 
-  .Right {
-    margin-left: auto;
-    text-align: right;
-  }
+.Loading {
+  margin-top: 3rem;
+}
 
-  .Center {
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .Left {
-    margin-right: auto;
-    text-align: left;
-  }
+.Grid {
+  display: grid;
+  width: 100%;
+  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(32%, 0.5fr));
+  grid-row-start: 1;
+  list-style: none;
+  grid-gap: 0.875rem 0.75rem;
 }
