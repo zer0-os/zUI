@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { GridCard } from './';
 import { NFT } from './templates/NFT';
@@ -12,7 +11,12 @@ export default {
 const Template: ComponentStory<typeof GridCard> = args => {
   return (
     <StoryCard isContrast>
-      <GridCard {...args} imageAlt={'Storybook mock image'} imageSrc={'https://picsum.photos/200/500'} />
+      <GridCard
+        {...args}
+        imageAlt={'Storybook mock image'}
+        imageSrc={'https://picsum.photos/200/500'}
+        children={<>Empty</>}
+      />
     </StoryCard>
   );
 };
@@ -29,7 +33,7 @@ NFTTemplate.args = {
       buttonText={'Bid'}
       label={'Top Bid ($MOCK)'}
       onClickButton={() => alert('yeah')}
-      primaryText={'1,234'}
+      primaryText={'1,234.50'}
       secondaryText={'$1,234.50'}
       title={'Lorem Ipsum'}
       zna={'lorem.ipsum'}

@@ -1,11 +1,12 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 
-import classNames from 'classnames/bind';
-import Skeleton from 'react-loading-skeleton';
+import { Column } from './Column';
+import { LoadingIndicator } from '../LoadingIndicator';
+import { useInfiniteScroll } from './useInfiniteScroll';
+import { Grid } from './Grid';
+import { Table } from './Table';
 
 import styles from './AsyncTable.module.scss';
-
-const cx = classNames.bind(styles);
 
 /**
  * NOTE:
@@ -21,18 +22,8 @@ const cx = classNames.bind(styles);
  * should be deferred to a row component, and the minimal
  * data for the row (i.e. data from the first query) should
  * be rendered first.
- *
- * @TODO: make sure row components enforce column alignments
- * @TODO: improve typings
- * @TODO: implement grid view
  */
-
-export interface Column {
-  id: string; // ID is required because header is optional
-  header?: string;
-  alignment: 'left' | 'right' | 'center';
-  className?: string;
-}
+type TableComponent<T> = (data: T, options?: unknown) => ReactNode;
 
 export interface SearchKey<T> {
   key: keyof T;
@@ -40,76 +31,74 @@ export interface SearchKey<T> {
 }
 
 export interface AsyncTableProps<T> {
-  // Data
-  data?: T[];
-  itemKey: keyof T;
+  className?: string;
   columns: Column[];
-
-  // Display
+  data?: T[];
+  gridComponent: TableComponent<T>;
   isGridView?: boolean;
   isLoading?: boolean;
-  numLoadingRows?: number;
-  rowHeight?: number;
+  isSingleColumnGrid?: boolean;
+  itemKey: keyof T;
   loadingText?: string;
-  // @TODO: pick a better name for "options"
-  rowComponent: (data: T, options?: unknown) => ReactNode;
-  gridComponent: (data: T, options?: unknown) => ReactNode;
-
-  // Search
+  rowComponent: TableComponent<T>;
   searchKey: SearchKey<T>;
 }
 
+const CONFIG = {
+  chunkSizeGrid: 3,
+  chunkSizeList: 10
+};
+
 export const AsyncTable = <T extends unknown>({
-  data,
-  // itemKey,
+  className,
   columns,
+  data,
+  gridComponent,
   isGridView,
   isLoading,
-  numLoadingRows = 3,
-  rowHeight = 40,
+  isSingleColumnGrid = false,
   rowComponent
-}: // gridComponent,
-// searchKey,
-AsyncTableProps<T>) => {
-  // @TODO: handle loading
+}: AsyncTableProps<T>) => {
+  const lastView = useRef<'grid' | 'list'>();
 
-  if (isGridView) {
-    return <div>Grid View</div>;
+  const { InfiniteScrollWrapper, chunkedComponents, resetChunk } = useInfiniteScroll({
+    items: data ?? [],
+    chunkSize: isGridView ? CONFIG.chunkSizeGrid : CONFIG.chunkSizeList,
+    component: isGridView ? gridComponent : rowComponent
+  });
+
+  // Warn if dev didn't memoize rowComponent
+  useEffect(() => {
+    if (lastView.current === 'list' && !isGridView) {
+      console.warn('Detected unmemoized rowComponent!');
+    }
+  }, [rowComponent]);
+
+  // Warn if dev didn't memoize gridComponent
+  useEffect(() => {
+    if (lastView.current === 'grid' && isGridView) {
+      console.warn('Detected unmemoized gridComponent!');
+    }
+  }, [gridComponent]);
+
+  // Reset infinite scroll whenever user changes view
+  useEffect(() => {
+    lastView.current = 'grid';
+    resetChunk();
+  }, [isGridView]);
+
+  // Grid view doesn't render Skeletons when loading (yet)
+  if (isGridView && isLoading) {
+    return <LoadingIndicator className={styles.Loading} text={'Loading'} />;
   }
 
   return (
-    <table className={styles.Container}>
-      <thead>
-        <tr>
-          {columns.map((c: Column) => (
-            <th
-              className={cx(c.className, {
-                Left: c.alignment === 'left',
-                Center: c.alignment === 'center',
-                Right: c.alignment === 'right'
-              })}
-              key={`async-table-th-${c.id}`}
-            >
-              {isLoading ? <Skeleton /> : c.header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {isLoading
-          ? Array(numLoadingRows)
-              .fill(0)
-              .map((_, numIndex) => (
-                <tr key={`async-table-tr-${numIndex}`}>
-                  {columns.map((c: Column) => (
-                    <td key={`async-table-tr-${numIndex}-td-${c.id}`}>
-                      <Skeleton width={'100%'} height={rowHeight} />
-                    </td>
-                  ))}
-                </tr>
-              ))
-          : data?.map(d => rowComponent(d))}
-      </tbody>
-    </table>
+    <InfiniteScrollWrapper className={className}>
+      {isGridView ? (
+        <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
+      ) : (
+        <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+      )}
+    </InfiniteScrollWrapper>
   );
 };
