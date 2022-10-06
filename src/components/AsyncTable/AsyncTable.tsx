@@ -44,7 +44,7 @@ export interface AsyncTableProps<T> {
 }
 
 const CONFIG = {
-  chunkSizeGrid: 3,
+  chunkSizeGrid: 6,
   chunkSizeList: 10
 };
 
