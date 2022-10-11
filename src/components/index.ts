@@ -1,7 +1,7 @@
 export { AsyncTable } from './AsyncTable';
 export { Button } from './Button';
 export * from './Card';
-export { DropdownMenu } from './DropdownMenu';
+export * from './DropdownMenu';
 export { Input } from './Input';
 export { LoadingIndicator } from './LoadingIndicator';
 export * from './Markdown';
