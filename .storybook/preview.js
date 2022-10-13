@@ -1,13 +1,18 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { ZUIProvider } from '../src/ZUIProvider';
+
+const queryClient = new QueryClient();
 
 export const decorators = [
   Story => {
     return (
       <MemoryRouter initialEntries={['/']}>
         <ZUIProvider>
-          <Story />
+          <QueryClientProvider client={queryClient}>
+            <Story />
+          </QueryClientProvider>
         </ZUIProvider>
       </MemoryRouter>
     );

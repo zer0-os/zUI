@@ -5,3 +5,4 @@ jest.config.js
 jest.setup.ts
 babel.config.js
 lint-staged.config.js
+src/cloudinary-react.d.ts

@@ -1,4 +1,4 @@
 {
-  "*.{js,jsx,ts,tsx}": ["yarn prettify", "yarn lint:scripts"],
+  "*.{ts,tsx}": ["yarn prettify", "yarn lint:scripts"],
   "*.scss": ["yarn prettify", "yarn lint:styles"]
 }

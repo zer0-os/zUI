@@ -1,0 +1,13 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .Image {
+    display: none;
+
+    &.Loaded {
+      display: block;
+    }
+  }
+}

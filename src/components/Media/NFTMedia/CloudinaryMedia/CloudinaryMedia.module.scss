@@ -1,0 +1,18 @@
+@import '../../../../styles/animations';
+@import '../../../../styles/borders';
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+
+  .Media {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    transition: opacity $time-medium ease-in-out;
+    border-radius: calc($radius-primary / 2);
+  }
+}
