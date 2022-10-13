@@ -1,36 +1,34 @@
 .Container {
+  border-radius: 0.5rem;
+  overflow: hidden;
 
-    border-radius: 0.5rem;
+  border: 1px solid #404040;
+
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  .ImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     overflow: hidden;
 
-    border: 1px solid #404040;
+    border-radius: 0.5rem;
 
-    &:hover {
-        img {
-            transform: scale(1.05);
-        }
+    > * {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition: transform 0.3s ease;
     }
+  }
 
-    .ImageContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        overflow: hidden;
-
-        border-radius: 0.5rem;
-
-        > * {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-
-            transition: transform 0.3s ease;
-
-        }
-    }
-
-    .Content {
-        padding: 1rem;
-    }
+  .Content {
+    padding: 1rem;
+  }
 }
