@@ -107,6 +107,8 @@
     "@radix-ui/react-dialog": "^0.1.7",
     "@radix-ui/react-dropdown-menu": "^0.1.6",
     "@radix-ui/react-tabs": "^0.1.5",
+    "@radix-ui/react-toggle": "^1.0.0",
+    "@radix-ui/react-toggle-group": "^1.0.0",
     "@radix-ui/react-tooltip": "^1.0.0",
     "@react-aria/button": "^3.5.0",
     "@react-aria/i18n": "^3.4.1",
