@@ -19,19 +19,17 @@ const mockButton = jest.fn();
 jest.mock('../../Button', () => ({
   Button: (props: ButtonProps) => {
     mockButton(props);
-    return <div />;
+    return <div>Mock Button</div>;
   }
 }));
 
 const DEFAULT_PROPS: NFTProps = {
-  buttonText: '',
-  isButtonDisabled: false,
   label: '',
-  onClickButton: undefined,
   primaryText: '',
   secondaryText: undefined,
   title: '',
-  zna: ''
+  zna: '',
+  button: undefined
 };
 
 beforeEach(() => {
@@ -76,32 +74,16 @@ describe('<NFT />', () => {
   });
 
   describe('Button', () => {
-    test('should forward buttonText to Button children', () => {
-      render(<NFT {...DEFAULT_PROPS} buttonText={'mock button text'} />);
-      expect(mockButton).toHaveBeenCalledWith(
-        expect.objectContaining({
-          children: 'mock button text'
-        })
-      );
+    test('should not render button by default', () => {
+      const { container } = render(<NFT {...DEFAULT_PROPS} />);
+
+      expect(container.getElementsByClassName('Button').length).toBe(0);
     });
 
-    test('should forward isButtonDisabled to Button', () => {
-      render(<NFT {...DEFAULT_PROPS} isButtonDisabled={true} />);
-      expect(mockButton).toHaveBeenCalledWith(
-        expect.objectContaining({
-          isDisabled: true
-        })
-      );
-    });
+    test('should render button ', () => {
+      const { container } = render(<NFT {...DEFAULT_PROPS} button={mockButton} />);
 
-    test('should forward onClickButton to Button', () => {
-      const mockOnClickButton = jest.fn();
-      render(<NFT {...DEFAULT_PROPS} onClickButton={mockOnClickButton} />);
-      expect(mockButton).toHaveBeenCalledWith(
-        expect.objectContaining({
-          onPress: mockOnClickButton
-        })
-      );
+      expect(container.getElementsByClassName('Button').length).toBe(1);
     });
   });
 });
