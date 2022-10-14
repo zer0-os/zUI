@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { DropdownMenu } from './';
 import { StoryCard } from '../.storybook';
-import { IconArrowBendLeftDown } from '../Icons';
+import { IconArrowDownLeft } from '../Icons';
 
 export default {
   title: 'Data Display/DropdownMenu',
@@ -45,5 +45,5 @@ TextTrigger.args = {
 
 export const CustomTrigger = Template.bind({});
 CustomTrigger.args = {
-  trigger: <IconArrowBendLeftDown />
+  trigger: <IconArrowDownLeft />
 };

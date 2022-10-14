@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './InfoTooltip.scss';
 import { Tooltip } from '../Tooltip';
-import { IconQuestionMark } from '../Icons';
+import { IconHelpCircle } from '../Icons';
 
 export type InfoTooltipProps = {
   content: string;
@@ -12,7 +12,7 @@ export const InfoTooltip: FC<InfoTooltipProps> = ({ content }) => (
     <Tooltip content={content}>
       <div className="zui-info-tooltip-tile">
         <div className="zui-info-tooltip-tile-center">
-          <IconQuestionMark />
+          <IconHelpCircle size={'1rem'} />
         </div>
       </div>
     </Tooltip>
