@@ -1,32 +1,20 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-import { Button } from '../../Button';
+import { AsyncText } from '../../../lib/types';
+
 import { TextStack, TextStackProps } from '../../TextStack';
+import { MaybeSkeletonText } from '../../SkeletonText';
 
 import styles from './NFT.module.scss';
-import { AsyncText } from '../../../lib/types';
-import { MaybeSkeletonText } from '../../SkeletonText';
 
 export interface NFTProps extends TextStackProps {
   className?: string;
-  buttonText: string;
-  isButtonDisabled?: boolean;
-  onClickButton: () => void;
+  button?: ReactNode;
   title: string | AsyncText;
   zna: string;
 }
 
-export const NFT: FC<NFTProps> = ({
-  className,
-  buttonText,
-  isButtonDisabled,
-  label,
-  onClickButton,
-  primaryText,
-  secondaryText,
-  title,
-  zna
-}) => {
+export const NFT: FC<NFTProps> = ({ className, button, label, primaryText, secondaryText, title, zna }) => {
   return (
     <div className={className}>
       <div className={styles.Details}>
@@ -35,11 +23,7 @@ export const NFT: FC<NFTProps> = ({
       </div>
       <div className={styles.Action}>
         <TextStack label={label} primaryText={primaryText} secondaryText={secondaryText} />
-        <div className={styles.Button}>
-          <Button onPress={onClickButton} isDisabled={isButtonDisabled}>
-            {buttonText}
-          </Button>
-        </div>
+        {button && <div className={styles.Button}>{button}</div>}
       </div>
     </div>
   );
