@@ -1,3 +1,4 @@
+export * from './AspectRatio';
 export { AsyncTable } from './AsyncTable';
 export { Button } from './Button';
 export * from './Card';
