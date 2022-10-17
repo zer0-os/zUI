@@ -57,11 +57,8 @@ export const Controls = ({
 
   return (
     <div className={styles.Container}>
-      {/* Rendering empty div to persist positioning when searchbar isn't rendered */}
-      {isSearchable ? (
+      {isSearchable && (
         <Search className={styles.Search} queryString={searchQuery} onQueryStringChange={onChangeSearchQuery} />
-      ) : (
-        <div></div>
       )}
       <ViewToggle />
     </div>
