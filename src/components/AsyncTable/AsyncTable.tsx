@@ -76,12 +76,11 @@ export const AsyncTable = <T extends unknown>({
   const filteredData = useMemo(() => {
     if (!query || !searchKey) {
       return data;
-    } else {
-      return data?.filter(item => {
-        const searchValue = item[searchKey.key]?.toString().toLowerCase();
-        return searchValue.includes(query.toLowerCase());
-      });
     }
+    return data?.filter(item => {
+      const searchValue = item[searchKey.key]?.toString().toLowerCase();
+      return searchValue.includes(query.toLowerCase());
+    });
   }, [data, query, searchKey]);
 
   // Set up infinite scroll chunks
