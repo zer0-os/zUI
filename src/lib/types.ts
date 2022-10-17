@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 export interface AsyncText {
   isLoading: boolean;
-  text?: string;
+  text?: ReactNode;
   errorText?: string;
   errorClassName?: string;
 }
