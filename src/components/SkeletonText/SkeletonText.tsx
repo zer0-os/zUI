@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import React, { createElement, ReactNode } from 'react';
 
 import { AsyncText, HTMLTextElement } from '../../lib/types';
 import { Skeleton, SkeletonProps } from '../Skeleton';
@@ -59,7 +59,7 @@ export const SkeletonText = ({
  * Props specific to MaybeSkeletonText
  */
 interface MaybeProps {
-  text: string | AsyncProps['asyncText'];
+  text: ReactNode | AsyncProps['asyncText'];
 }
 
 export type MaybeSkeletonTextProps = SharedProps & MaybeProps;
