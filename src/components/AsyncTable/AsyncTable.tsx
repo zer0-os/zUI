@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { LoadingIndicator } from '../LoadingIndicator';
 import { Grid } from './Grid';
 import { Table } from './Table';
 import { Column } from './Column';
+import { Controls } from './Controls';
 
 import { AsyncTableComponent } from './types';
 import { useInfiniteScroll } from './useInfiniteScroll';
@@ -20,16 +21,16 @@ export interface AsyncTableProps<T> {
   className?: string;
   columns: Column[];
   data?: T[];
-  gridComponent: AsyncTableComponent<T>;
-  isGridView?: boolean;
+  gridComponent?: AsyncTableComponent<T>;
   isLoading?: boolean;
   isSingleColumnGrid?: boolean;
   itemKey: keyof T;
   loadingText?: string;
-  rowComponent: AsyncTableComponent<T>;
+  rowComponent?: AsyncTableComponent<T>;
   // @TODO: typings to prevent passing searchQuery if searchKey is undefined
   searchKey?: SearchKey<T>;
-  searchQuery?: string;
+  showControls?: boolean;
+  isGridViewByDefault?: boolean;
 }
 
 const CONFIG = {
@@ -58,14 +59,16 @@ export const AsyncTable = <T extends unknown>({
   columns,
   data,
   gridComponent,
-  isGridView,
   isLoading,
   isSingleColumnGrid = false,
   rowComponent,
-  searchQuery,
-  searchKey
+  searchKey,
+  showControls = true,
+  isGridViewByDefault = true
 }: AsyncTableProps<T>) => {
   const lastView = useRef<'grid' | 'list'>();
+  const [isGridView, setIsGridView] = useState<boolean>(isGridViewByDefault);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const query = useDebounce(searchQuery, CONFIG.searchDebounceMilliseconds);
 
@@ -116,12 +119,24 @@ export const AsyncTable = <T extends unknown>({
   }
 
   return (
-    <InfiniteScrollWrapper className={className}>
-      {isGridView ? (
-        <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
-      ) : (
-        <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+    <>
+      {showControls && (
+        <Controls
+          canSwitchViews={Boolean(gridComponent) && Boolean(rowComponent)}
+          onSwitchViews={(isGridView: boolean) => setIsGridView(isGridView)}
+          isGridView={isGridView}
+          searchQuery={searchQuery}
+          onChangeSearchQuery={setSearchQuery}
+          isSearchable={Boolean(searchKey)}
+        />
       )}
-    </InfiniteScrollWrapper>
+      <InfiniteScrollWrapper className={className}>
+        {isGridView ? (
+          <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
+        ) : (
+          <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+        )}
+      </InfiniteScrollWrapper>
+    </>
   );
 };
