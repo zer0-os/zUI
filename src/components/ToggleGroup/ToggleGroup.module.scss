@@ -26,14 +26,7 @@
 
     &[data-variant='minimal'] {
         padding: 0;
-
-        .Toggle {
-            height: 3.438rem; // 55px
-
-            &[data-type='icon'] {
-                padding: 0.969rem; // 15.5px
-            }
-        }
+        border: none;
     }
 
     /*
