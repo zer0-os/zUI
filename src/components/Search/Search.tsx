@@ -3,9 +3,6 @@ import React from 'react';
 import { Input, InputProps } from '../Input';
 import { IconSearchMd } from '../Icons';
 
-import classNames from 'classnames';
-import styles from './Search.module.scss';
-
 export interface SearchProps {
   className?: string;
   placeholder?: string;
@@ -17,7 +14,7 @@ export interface SearchProps {
 export const Search = ({ className, placeholder, queryString, onQueryStringChange, isDisabled }: SearchProps) => {
   return (
     <Input
-      className={classNames(styles.Container, className)}
+      className={className}
       onChange={onQueryStringChange}
       startEnhancer={<IconSearchMd size={16} />}
       value={queryString}
