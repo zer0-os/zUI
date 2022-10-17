@@ -2,6 +2,7 @@ import React, { createElement, FC, forwardRef, ReactNode, useCallback, useRef } 
 
 // eslint-disable-next-line import/no-unresolved
 import { AriaTextFieldProps } from '@react-types/textfield';
+import { Alert, AlertProps } from '../Alert';
 
 import classNames from 'classnames';
 
@@ -18,6 +19,7 @@ export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange
   value: string;
   onChange: (value: string) => void;
   size?: 'large' | 'small';
+  alert?: { variant: AlertProps['variant']; text: ReactNode };
 }
 
 type EnhancerProps = {
@@ -35,6 +37,7 @@ const Enhancer: FC<EnhancerProps> = ({ value }) => {
 export const Input = forwardRef<HTMLDivElement, InputProps>(
   (
     {
+      alert,
       isDisabled,
       className,
       endEnhancer,
@@ -87,6 +90,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
           />
           {endEnhancer && <Enhancer value={endEnhancer} />}
         </div>
+        {alert && <Alert variant={alert.variant}>{alert.text}</Alert>}
       </div>
     );
   }
