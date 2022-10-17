@@ -1,38 +1,35 @@
-import React, { FC, forwardRef, ReactNode, useCallback, useRef } from 'react';
+import React, { createElement, FC, forwardRef, ReactNode, useCallback, useRef } from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { AriaTextFieldProps } from '@react-types/textfield';
 
 import classNames from 'classnames';
 
-import './Input.scss';
+import styles from './Input.module.scss';
 
 export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
   className?: string;
   error?: boolean;
+  // @deprecated
   success?: boolean;
   helperText?: string;
   startEnhancer?: ReactNode | string;
   endEnhancer?: ReactNode | string;
   value: string;
   onChange: (value: string) => void;
+  size?: 'large' | 'small';
 }
 
 type EnhancerProps = {
   value: ReactNode | string;
-  className: string;
 };
 
-const Enhancer: FC<EnhancerProps> = ({ value, className }) => {
-  if (typeof value === 'object') {
-    return <div className={classNames('zui-input-enhancer', className)}>{value}</div>;
-  } else {
-    return (
-      <div className={classNames('zui-input-enhancer', className)}>
-        <span className={'zui-input-enhancer-default'}>{value}</span>
-      </div>
-    );
-  }
+const Enhancer: FC<EnhancerProps> = ({ value }) => {
+  return createElement(
+    'div',
+    { className: styles.Enhancer },
+    typeof value === 'object' ? value : <span className={styles.EnhancerText}>{value}</span>
+  );
 };
 
 export const Input = forwardRef<HTMLDivElement, InputProps>(
@@ -43,13 +40,13 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
       endEnhancer,
       startEnhancer,
       error,
-      success,
       value,
       label,
       onChange,
       helperText,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       type, // note: intentionally pulling type out for now
+      size = 'large',
       ...rest
     },
     ref
@@ -60,41 +57,50 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
       inputRef.current.focus();
     }, [inputRef]);
 
+    const handleOnChange = useCallback(() => {
+      if (!isDisabled) {
+        onChange(inputRef.current.value);
+      }
+    }, [onChange, isDisabled]);
+
+    const status = error ? 'error' : undefined;
+
     return (
-      <div
-        data-disabled={isDisabled}
-        className={classNames(className, 'zui-input-container', {
-          'zui-input-error': error,
-          'zui-input-success': success
-        })}
-        ref={ref}
-      >
-        <div onClick={clickWrapper} className={classNames('zui-input-wrapper', { 'zui-input-empty': !value?.length })}>
-          {startEnhancer && <Enhancer value={startEnhancer} className={'zui-input-enhancer-start'} />}
-          <div
-            className={classNames('zui-input-input', {
-              'zui-input-enhanced-end': endEnhancer !== undefined,
-              'zui-input-enhanced-start': startEnhancer !== undefined
-            })}
-          >
-            {label && value && <label>{label}</label>}
-            <input
-              className={classNames({
-                'zui-input-no-label': label === undefined,
-                'zui-input-input-empty': value === undefined || !value.length
-              })}
-              onChange={event => {
-                onChange(event.target.value);
-              }}
-              ref={inputRef}
-              value={value}
-              {...rest}
-            />
-          </div>
-          {endEnhancer && <Enhancer value={endEnhancer} className={'zui-input-enhancer-end'} />}
+      <div data-disabled={isDisabled} className={classNames(className, styles.Container)} ref={ref}>
+        <Labels label={label} helperText={helperText} />
+        <div
+          onClick={clickWrapper}
+          className={classNames(styles.Wrapper)}
+          data-testid={`zui-input-wrapper`}
+          data-size={size}
+          data-status={status}
+          data-disabled={isDisabled ? '' : undefined}
+        >
+          {startEnhancer && <Enhancer value={startEnhancer} />}
+          <input
+            className={styles.Input}
+            onChange={handleOnChange}
+            ref={inputRef}
+            value={value}
+            disabled={isDisabled}
+            {...rest}
+          />
+          {endEnhancer && <Enhancer value={endEnhancer} />}
         </div>
-        {helperText && <p className={'zui-input-helper'}>{helperText}</p>}
       </div>
     );
   }
 );
+
+const Labels = ({ label, helperText }: { label?: InputProps['label']; helperText?: InputProps['helperText'] }) => {
+  if (!label && !helperText) {
+    return null;
+  }
+
+  return (
+    <div className={styles.Labels}>
+      {label && <label className={styles.Label}>{label}</label>}
+      {helperText && <p className={styles.Helper}>{helperText}</p>}
+    </div>
+  );
+};
