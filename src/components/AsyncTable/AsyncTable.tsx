@@ -1,29 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
-import { Column } from './Column';
 import { LoadingIndicator } from '../LoadingIndicator';
-import { useInfiniteScroll } from './useInfiniteScroll';
 import { Grid } from './Grid';
 import { Table } from './Table';
+import { Column } from './Column';
+
+import { AsyncTableComponent } from './types';
+import { useInfiniteScroll } from './useInfiniteScroll';
+import { useDebounce } from '../../utils/hooks/useDebounce';
 
 import styles from './AsyncTable.module.scss';
-import { AsyncTableComponent } from './types';
 
-/**
- * NOTE:
- * This table should only be used when data is coming
- * from multiple sources, but we need to defer loading
- * after the first source.
- *
- * For example, when loading a zNS NFT, the initial query
- * grabs a list of domain IDs and metadata URLs. We might
- * want to also show the name of the NFT and how many bids
- * have been placed on it. Both of these data points come
- * from different sources. Loading of these resources
- * should be deferred to a row component, and the minimal
- * data for the row (i.e. data from the first query) should
- * be rendered first.
- */
 export interface SearchKey<T> {
   key: keyof T;
   name: string;
@@ -40,14 +27,32 @@ export interface AsyncTableProps<T> {
   itemKey: keyof T;
   loadingText?: string;
   rowComponent: AsyncTableComponent<T>;
-  searchKey: SearchKey<T>;
+  // @TODO: typings to prevent passing searchQuery if searchKey is undefined
+  searchKey?: SearchKey<T>;
+  searchQuery?: string;
 }
 
 const CONFIG = {
   chunkSizeGrid: 6,
-  chunkSizeList: 10
+  chunkSizeList: 10,
+  searchDebounceMilliseconds: 100
 };
 
+/**
+ * NOTE:
+ * This table should only be used when data is coming
+ * from multiple sources, but we need to defer loading
+ * after the first source.
+ *
+ * For example, when loading a zNS NFT, the initial query
+ * grabs a list of domain IDs and metadata URLs. We might
+ * want to also show the name of the NFT and how many bids
+ * have been placed on it. Both of these data points come
+ * from different sources. Loading of these resources
+ * should be deferred to a row component, and the minimal
+ * data for the row (i.e. data from the first query) should
+ * be rendered first.
+ */
 export const AsyncTable = <T extends unknown>({
   className,
   columns,
@@ -56,12 +61,29 @@ export const AsyncTable = <T extends unknown>({
   isGridView,
   isLoading,
   isSingleColumnGrid = false,
-  rowComponent
+  rowComponent,
+  searchQuery,
+  searchKey
 }: AsyncTableProps<T>) => {
   const lastView = useRef<'grid' | 'list'>();
 
+  const query = useDebounce(searchQuery, CONFIG.searchDebounceMilliseconds);
+
+  // Filter data based on search query
+  const filteredData = useMemo(() => {
+    if (!query || !searchKey) {
+      return data;
+    } else {
+      return data?.filter(item => {
+        const searchValue = item[searchKey.key]?.toString().toLowerCase();
+        return searchValue.includes(query.toLowerCase());
+      });
+    }
+  }, [data, query, searchKey]);
+
+  // Set up infinite scroll chunks
   const { InfiniteScrollWrapper, chunkedComponents, resetChunk } = useInfiniteScroll({
-    items: data ?? [],
+    items: filteredData ?? [],
     chunkSize: isGridView ? CONFIG.chunkSizeGrid : CONFIG.chunkSizeList,
     component: isGridView ? gridComponent : rowComponent
   });
