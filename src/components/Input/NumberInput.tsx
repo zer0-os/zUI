@@ -13,8 +13,6 @@ export interface NumberInputProps extends InputProps {
   isBigNumber?: boolean;
 }
 
-import './Input.scss';
-
 /**
  * Number input, with optional BigNumber parsing.
  */

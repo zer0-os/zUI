@@ -1,13 +1,43 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-import { Column } from './Column';
 import { LoadingIndicator } from '../LoadingIndicator';
-import { useInfiniteScroll } from './useInfiniteScroll';
 import { Grid } from './Grid';
 import { Table } from './Table';
+import { Column } from './Column';
+import { Controls } from './Controls';
+
+import { AsyncTableComponent } from './types';
+import { useInfiniteScroll } from './useInfiniteScroll';
+import { useDebounce } from '../../utils/hooks/useDebounce';
 
 import styles from './AsyncTable.module.scss';
-import { AsyncTableComponent } from './types';
+
+export interface SearchKey<T> {
+  key: keyof T;
+  name: string;
+}
+
+export interface AsyncTableProps<T> {
+  className?: string;
+  columns: Column[];
+  data?: T[];
+  gridComponent?: AsyncTableComponent<T>;
+  isLoading?: boolean;
+  isSingleColumnGrid?: boolean;
+  itemKey: keyof T;
+  loadingText?: string;
+  rowComponent?: AsyncTableComponent<T>;
+  // @TODO: typings to prevent passing searchQuery if searchKey is undefined
+  searchKey?: SearchKey<T>;
+  showControls?: boolean;
+  isGridViewByDefault?: boolean;
+}
+
+const CONFIG = {
+  chunkSizeGrid: 6,
+  chunkSizeList: 10,
+  searchDebounceMilliseconds: 100
+};
 
 /**
  * NOTE:
@@ -24,44 +54,38 @@ import { AsyncTableComponent } from './types';
  * data for the row (i.e. data from the first query) should
  * be rendered first.
  */
-export interface SearchKey<T> {
-  key: keyof T;
-  name: string;
-}
-
-export interface AsyncTableProps<T> {
-  className?: string;
-  columns: Column[];
-  data?: T[];
-  gridComponent: AsyncTableComponent<T>;
-  isGridView?: boolean;
-  isLoading?: boolean;
-  isSingleColumnGrid?: boolean;
-  itemKey: keyof T;
-  loadingText?: string;
-  rowComponent: AsyncTableComponent<T>;
-  searchKey: SearchKey<T>;
-}
-
-const CONFIG = {
-  chunkSizeGrid: 6,
-  chunkSizeList: 10
-};
-
 export const AsyncTable = <T extends unknown>({
   className,
   columns,
   data,
   gridComponent,
-  isGridView,
   isLoading,
   isSingleColumnGrid = false,
-  rowComponent
+  rowComponent,
+  searchKey,
+  showControls = true,
+  isGridViewByDefault = true
 }: AsyncTableProps<T>) => {
   const lastView = useRef<'grid' | 'list'>();
+  const [isGridView, setIsGridView] = useState<boolean>(isGridViewByDefault);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const query = useDebounce(searchQuery, CONFIG.searchDebounceMilliseconds);
+
+  // Filter data based on search query
+  const filteredData = useMemo(() => {
+    if (!query || !searchKey) {
+      return data;
+    }
+    return data?.filter(item => {
+      const searchValue = item[searchKey.key]?.toString().toLowerCase();
+      return searchValue.includes(query.toLowerCase());
+    });
+  }, [data, query, searchKey]);
+
+  // Set up infinite scroll chunks
   const { InfiniteScrollWrapper, chunkedComponents, resetChunk } = useInfiniteScroll({
-    items: data ?? [],
+    items: filteredData ?? [],
     chunkSize: isGridView ? CONFIG.chunkSizeGrid : CONFIG.chunkSizeList,
     component: isGridView ? gridComponent : rowComponent
   });
@@ -94,12 +118,24 @@ export const AsyncTable = <T extends unknown>({
   }
 
   return (
-    <InfiniteScrollWrapper className={className}>
-      {isGridView ? (
-        <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
-      ) : (
-        <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+    <>
+      {showControls && (
+        <Controls
+          canSwitchViews={Boolean(gridComponent) && Boolean(rowComponent)}
+          onSwitchViews={(isGridView: boolean) => setIsGridView(isGridView)}
+          isGridView={isGridView}
+          searchQuery={searchQuery}
+          onChangeSearchQuery={setSearchQuery}
+          isSearchable={Boolean(searchKey)}
+        />
       )}
-    </InfiniteScrollWrapper>
+      <InfiniteScrollWrapper className={className}>
+        {isGridView ? (
+          <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
+        ) : (
+          <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+        )}
+      </InfiniteScrollWrapper>
+    </>
   );
 };

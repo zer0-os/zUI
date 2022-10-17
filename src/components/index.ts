@@ -1,5 +1,6 @@
+export * from './Alert';
 export * from './AspectRatio';
-export { AsyncTable } from './AsyncTable';
+export * from './AsyncTable';
 export { Button } from './Button';
 export * from './Card';
 export * from './DropdownMenu';
@@ -8,6 +9,7 @@ export { LoadingIndicator } from './LoadingIndicator';
 export * from './Markdown';
 export * from './MediaInput';
 export { Modal } from './Modal';
+export * from './Search';
 export * from './Skeleton';
 export * from './SkeletonText';
 export * from './StepBar';

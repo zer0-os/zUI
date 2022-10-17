@@ -1,33 +1,83 @@
-import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Input, InputProps } from './';
 
 const mockOnChange = jest.fn();
 
-const renderComponent = (props: InputProps) => render(<Input {...props} />);
+const DEFAULT_PROPS: InputProps = {
+  onChange: mockOnChange,
+  value: 'mock value'
+};
 
-test('should render controlled input value', () => {
-  const { getByDisplayValue } = renderComponent({ value: 'test input value' } as InputProps);
-  const input = getByDisplayValue('test input value') as HTMLInputElement;
-  expect(input.nodeName.toLowerCase()).toBe('input');
+beforeEach(() => {
+  jest.resetAllMocks();
 });
 
-test('should show label when field is not empty', () => {
-  const { getByText } = renderComponent({ value: 'hello', label: 'test label' } as InputProps);
-  const label = getByText('test label') as HTMLLabelElement;
-  expect(label).toBeInTheDocument();
-  expect(label.nodeName.toLowerCase()).toBe('label');
-});
+describe('<Input />', () => {
+  test('should call onChange when input value changes', () => {
+    render(<Input {...DEFAULT_PROPS} value={''} />);
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'mock new value' } });
+    expect(mockOnChange).toHaveBeenCalledWith('mock new value');
+  });
 
-test('should hide label when field is empty', () => {
-  const { queryByText } = renderComponent({ value: '', label: 'test label' } as InputProps);
-  expect(queryByText('test label')).toBeNull();
-});
+  test('should set size attribute on input wrapper', () => {
+    render(<Input {...DEFAULT_PROPS} />);
+    expect(screen.getByTestId('zui-input-wrapper')).toHaveAttribute('data-size', 'large');
+  });
 
-test('should fire onChange on input change', () => {
-  const { getByDisplayValue } = renderComponent({ value: 'test input value', onChange: mockOnChange });
-  const input = getByDisplayValue('test input value');
-  fireEvent.change(input, { target: { value: 'new input value' } });
-  expect(mockOnChange).toBeCalledWith('new input value');
+  test('should set status attribute to error on error', () => {
+    render(<Input {...DEFAULT_PROPS} error={true} />);
+    expect(screen.getByTestId('zui-input-wrapper')).toHaveAttribute('data-status', 'error');
+  });
+
+  test('should focus on input when wrapper is clicked', () => {
+    render(<Input {...DEFAULT_PROPS} />);
+    fireEvent.click(screen.getByTestId('zui-input-wrapper'));
+    expect(screen.getByRole('textbox')).toHaveFocus();
+  });
+
+  describe('labels', () => {
+    test('should render label outside of input wrapper', () => {
+      render(<Input {...DEFAULT_PROPS} label={'mock label'} />);
+      expect(screen.getByText('mock label')).toBeInTheDocument();
+      expect(screen.getByTestId('zui-input-wrapper')).not.toHaveTextContent('mock label');
+    });
+
+    test('should render helper text outside of input wrapper', () => {
+      render(<Input {...DEFAULT_PROPS} helperText={'mock helper text'} />);
+      expect(screen.getByText('mock helper text')).toBeInTheDocument();
+      expect(screen.getByTestId('zui-input-wrapper')).not.toHaveTextContent('mock helper text');
+    });
+  });
+
+  describe('enhancers', () => {
+    test('should render start enhancer as first child of input wrapper', () => {
+      render(<Input {...DEFAULT_PROPS} startEnhancer={'mock start enhancer'} />);
+      expect(screen.getByTestId('zui-input-wrapper').firstChild).toHaveTextContent('mock start enhancer');
+    });
+
+    test('should render end enhancer as last child of input wrapper', () => {
+      render(<Input {...DEFAULT_PROPS} endEnhancer={'mock end enhancer'} />);
+      expect(screen.getByTestId('zui-input-wrapper').lastChild).toHaveTextContent('mock end enhancer');
+    });
+  });
+
+  describe('when Input is disabled', () => {
+    test('should render disabled attribute on input', () => {
+      render(<Input {...DEFAULT_PROPS} isDisabled={true} />);
+      expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
+    });
+
+    test('should render disabled data attribute on input wrapper', () => {
+      render(<Input {...DEFAULT_PROPS} isDisabled={true} />);
+      expect(screen.getByTestId('zui-input-wrapper')).toHaveAttribute('data-disabled');
+    });
+
+    test('should not call onChange', () => {
+      render(<Input {...DEFAULT_PROPS} value={''} isDisabled={true} />);
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'mock new value' } });
+      expect(mockOnChange).not.toHaveBeenCalled();
+    });
+  });
 });

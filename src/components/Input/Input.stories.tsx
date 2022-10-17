@@ -22,26 +22,15 @@ const Template: ComponentStory<typeof Input> = args => {
 export const Text = Template.bind({});
 Text.args = { label: 'NFT Name', placeholder: 'NFT Name' };
 
+export const HelperText = Template.bind({});
+HelperText.args = {
+  label: 'NFT Name',
+  placeholder: 'NFT Name',
+  helperText: 'Some helper text here to help contextualize your input.'
+};
+
 export const Number = Template.bind({});
 Number.args = { type: 'number', label: 'Bid Amount (ETH)', placeholder: 'Bid Amount (ETH)' };
-
-export const Error = Template.bind({});
-Error.args = {
-  value: 'zero.Domain',
-  label: 'Domain zNA',
-  placeholder: 'Domain zNA',
-  error: true,
-  helperText: 'Domain zNAs must be lowercase.'
-};
-
-export const Success = Template.bind({});
-Success.args = {
-  value: 'zero.domain',
-  label: 'Domain zNA',
-  placeholder: 'Domain zNA',
-  success: true,
-  helperText: 'Domain zNA is available!'
-};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
@@ -59,4 +48,21 @@ EndEnhancer.args = {
   placeholder: 'Token Address',
   endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
   label: 'Token Address'
+};
+
+export const Alert = Template.bind({});
+Alert.args = {
+  placeholder: 'Token Address',
+  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
+  label: 'Token Address',
+  alert: { variant: 'success', text: 'Token address is valid!' }
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  value: 'zero.Domain',
+  label: 'Domain zNA',
+  placeholder: 'Domain zNA',
+  error: true,
+  alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
 };
