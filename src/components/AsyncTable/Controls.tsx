@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import { ToggleGroup } from '../ToggleGroup';
 import { IconRows3, IconGrid1 } from '../Icons';
-import { Search } from '../Search/Search';
+import { Search } from '../Search';
 
 import styles from './Controls.module.scss';
 
