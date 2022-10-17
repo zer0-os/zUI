@@ -11,6 +11,7 @@ interface ControlsProps {
   isGridView?: boolean;
   onSwitchViews?: (isGridView: boolean) => void;
   onChangeSearchQuery: (value: string) => void;
+  searchPlaceholder?: string;
   searchQuery?: string;
   isSearchable?: boolean;
 }
@@ -31,6 +32,7 @@ export const Controls = ({
   onSwitchViews,
   isGridView,
   onChangeSearchQuery,
+  searchPlaceholder,
   searchQuery,
   isSearchable
 }: ControlsProps) => {
@@ -58,7 +60,12 @@ export const Controls = ({
   return (
     <div className={styles.Container}>
       {isSearchable && (
-        <Search className={styles.Search} queryString={searchQuery} onQueryStringChange={onChangeSearchQuery} />
+        <Search
+          className={styles.Search}
+          placeholder={searchPlaceholder}
+          queryString={searchQuery}
+          onQueryStringChange={onChangeSearchQuery}
+        />
       )}
       <ViewToggle />
     </div>
