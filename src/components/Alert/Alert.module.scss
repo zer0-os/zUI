@@ -1,0 +1,29 @@
+.Container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+
+    border-radius: 0.5rem;
+
+    &[data-variant="success"] {
+        color: #58C573;
+        background-color: #113123;
+    }
+
+    &[data-variant="error"] {
+        color: #FF6369;
+        background-color: #481A1D;
+    }
+
+    &[data-variant="warning"] {
+        color: #FF8B3E;
+        background-color: #441F04;
+    }
+
+    &[data-variant="info"] {
+        color: #BF7AF0;
+        background-color: #381C4E;
+    }
+}
