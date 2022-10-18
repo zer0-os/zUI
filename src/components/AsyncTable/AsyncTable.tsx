@@ -120,8 +120,11 @@ export const AsyncTable = <T extends unknown>({
     return <LoadingIndicator className={styles.Loading} text={loadingText ?? 'Loading'} />;
   }
 
-  // Show emotyText when there is no data
-  if (!query && !isLoading && !data.length) {
+  const isEmpty = !query && !isLoading && !data.length;
+  const isSearchEmpty = query && !isLoading && !filteredData.length;
+
+  // Show emptyText when there is no data
+  if (isEmpty) {
     return <p className={styles.Empty}>{emptyText ?? 'No items to display.'}</p>;
   }
 
@@ -138,15 +141,16 @@ export const AsyncTable = <T extends unknown>({
           isSearchable={Boolean(searchKey)}
         />
       )}
-      {query && !isLoading && filteredData.length ? (
-        <InfiniteScrollWrapper className={className}>
-          {isGridView ? (
-            <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
-          ) : (
-            <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
-          )}
-        </InfiniteScrollWrapper>
-      ) : (
+
+      <InfiniteScrollWrapper className={className}>
+        {isGridView ? (
+          <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
+        ) : (
+          <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+        )}
+      </InfiniteScrollWrapper>
+
+      {isSearchEmpty && (
         <p className={styles.Empty}>
           No items match your search <strong>{query}</strong>.
         </p>
