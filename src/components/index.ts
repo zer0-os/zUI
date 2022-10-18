@@ -4,6 +4,7 @@ export * from './AsyncTable';
 export { Button } from './Button';
 export * from './Card';
 export * from './DropdownMenu';
+export * from './Image';
 export { Input } from './Input';
 export { LoadingIndicator } from './LoadingIndicator';
 export * from './Markdown';
