@@ -26,6 +26,7 @@ export interface AsyncTableProps<T> {
   isSingleColumnGrid?: boolean;
   itemKey: keyof T;
   loadingText?: string;
+  emptyText?: string;
   rowComponent?: AsyncTableComponent<T>;
   // @TODO: typings to prevent passing searchQuery if searchKey is undefined
   searchKey?: SearchKey<T>;
@@ -61,6 +62,8 @@ export const AsyncTable = <T extends unknown>({
   gridComponent,
   isLoading,
   isSingleColumnGrid = false,
+  loadingText,
+  emptyText,
   rowComponent,
   searchKey,
   showControls = true,
@@ -114,7 +117,15 @@ export const AsyncTable = <T extends unknown>({
 
   // Grid view doesn't render Skeletons when loading (yet)
   if (isGridView && isLoading) {
-    return <LoadingIndicator className={styles.Loading} text={'Loading'} />;
+    return <LoadingIndicator className={styles.Loading} text={loadingText ?? 'Loading'} />;
+  }
+
+  const isEmpty = !query && !isLoading && !data.length;
+  const isSearchEmpty = query && !isLoading && !filteredData.length;
+
+  // Show emptyText when there is no data
+  if (isEmpty) {
+    return <p className={styles.Empty}>{emptyText ?? 'No items to display.'}</p>;
   }
 
   return (
@@ -124,11 +135,13 @@ export const AsyncTable = <T extends unknown>({
           canSwitchViews={Boolean(gridComponent) && Boolean(rowComponent)}
           onSwitchViews={(isGridView: boolean) => setIsGridView(isGridView)}
           isGridView={isGridView}
+          searchPlaceholder={searchKey?.name && `Search by ${searchKey?.name}`}
           searchQuery={searchQuery}
           onChangeSearchQuery={setSearchQuery}
           isSearchable={Boolean(searchKey)}
         />
       )}
+
       <InfiniteScrollWrapper className={className}>
         {isGridView ? (
           <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
@@ -136,6 +149,12 @@ export const AsyncTable = <T extends unknown>({
           <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
         )}
       </InfiniteScrollWrapper>
+
+      {isSearchEmpty && (
+        <p className={styles.Empty}>
+          No items match your search <strong>{query}</strong>.
+        </p>
+      )}
     </>
   );
 };
