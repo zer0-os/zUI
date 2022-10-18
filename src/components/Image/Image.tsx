@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Skeleton } from '../Skeleton';
 
@@ -21,20 +21,20 @@ interface ImageState {
 
 // named Img here to avoid conflict with the HTMLImageElement in useEffect
 const Img = ({ className, objectFit = 'cover', alt, src, onLoad, onError }: ImageProps) => {
-  const [image, setImage] = React.useState<ImageState | undefined>();
+  const [loadedImage, setLoadedImage] = useState<ImageState>();
 
   useEffect(() => {
-    setImage(undefined);
+    setLoadedImage(undefined);
     if (src && Boolean(new URL(src))) {
       const image = new Image();
       image.src = src;
       // if image is cached, set isCached so we can skip animations
       if (image.complete) {
-        setImage({ isCached: true, src });
+        setLoadedImage({ isCached: true, src });
       } else {
         // else wait until load is complete to set state
         image.onload = () => {
-          setImage({ isCached: false, src });
+          setLoadedImage({ isCached: false, src });
         };
       }
     }
@@ -43,14 +43,14 @@ const Img = ({ className, objectFit = 'cover', alt, src, onLoad, onError }: Imag
   return (
     <div
       className={classNames(styles.Container, className)}
-      data-status={image?.src ? 'loaded' : 'loading'}
-      data-is-cached={image?.isCached ? '' : undefined}
+      data-status={loadedImage?.src ? 'loaded' : 'loading'}
+      data-is-cached={loadedImage?.isCached ? '' : undefined}
     >
       <img
         data-testid={'zui-image-img'}
         className={styles.Image}
         style={{ objectFit }}
-        src={image?.src}
+        src={loadedImage?.src}
         alt={alt}
         onLoad={onLoad}
         onError={onError}
