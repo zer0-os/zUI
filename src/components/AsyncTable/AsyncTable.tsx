@@ -120,7 +120,7 @@ export const AsyncTable = <T extends unknown>({
     return <LoadingIndicator className={styles.Loading} text={loadingText ?? 'Loading'} />;
   }
 
-  const isEmpty = !query && !isLoading && !data.length;
+  const isEmpty = !query && !isLoading && !data?.length;
   const isSearchEmpty = query && !isLoading && !filteredData.length;
 
   // Show emptyText when there is no data
