@@ -36,6 +36,10 @@ const Img = ({ className, objectFit = 'cover', alt, src, onLoad, onError }: Imag
         image.onload = () => {
           setLoadedImage({ isCached: false, src });
         };
+
+        image.onerror = () => {
+          onError?.();
+        };
       }
     }
   }, [src]);
