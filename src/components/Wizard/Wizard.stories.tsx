@@ -52,6 +52,7 @@ export const Confirmation: ComponentStory<typeof Wizard.Confirmation> = args => 
 );
 
 Confirmation.args = {
+  error: '',
   message: 'Some confirmation text',
   isPrimaryButtonActive: true,
   isSecondaryButtonActive: true,

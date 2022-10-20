@@ -1,24 +1,24 @@
-import React, { useMemo } from 'react';
-
-import classNames from 'classnames/bind';
+import React, { useMemo, ReactNode } from 'react';
 
 import { Buttons, ButtonsProps } from './Buttons';
-import './Confirmation.scss';
+
+import classNames from 'classnames/bind';
+import styles from './Confirmation.module.scss';
 
 export interface ConfirmationProps extends ButtonsProps {
   error?: string;
-  message: React.ReactNode | string;
+  message: ReactNode;
 }
 
-export const Confirmation = ({ className, message, error, ...rest }: ConfirmationProps) => {
+export const Confirmation = ({ className, message, error = '', ...rest }: ConfirmationProps) => {
   const isMessageString = useMemo(() => {
     return ['string', 'number'].includes(typeof message);
   }, [message]);
 
   return (
-    <div className={classNames('zui-wizard-confirmation', className)}>
-      {isMessageString ? <p>{message}</p> : message}
-      {error !== undefined && <p className="error-text">{error}</p>}
+    <div className={classNames(styles.Container, className)}>
+      {isMessageString ? <p className={styles.Message}>{message}</p> : message}
+      {error && <p className={styles.Error}>{error}</p>}
       <Buttons {...rest} />
     </div>
   );

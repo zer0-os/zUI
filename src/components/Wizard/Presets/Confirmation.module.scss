@@ -1,0 +1,21 @@
+@import '../../../styles/colors';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > p {
+    margin: unset;
+  }
+
+  .Message {
+    margin: unset;
+  }
+
+  .Error {
+    margin-top: 2rem;
+    color: $red-300;
+  }
+}
