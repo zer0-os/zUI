@@ -41,6 +41,7 @@ export const useInfiniteScroll = <T extends unknown>({ items, chunkSize, compone
             next={handleNext}
             hasMore={hasMore}
             loader={hasMore && <Loader onVisible={handleNext} />}
+            style={{ overflow: 'hidden' }}
           >
             {children}
           </InfiniteScroll>
