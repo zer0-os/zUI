@@ -1,9 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Tooltip, BASE_CLASSNAME } from './Tooltip';
+import { Tooltip } from './Tooltip';
 import { Button } from '../Button';
 import { StoryCard } from '../.storybook';
-import './Tooltip.scss';
 
 export default {
   title: 'Data Display/Tooltip',
@@ -11,7 +10,7 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = args => (
-  <StoryCard isContrast className={`${BASE_CLASSNAME}__storycard`}>
+  <StoryCard isContrast isContentCentered>
     <Tooltip {...args}>
       <Button>Click or Hover</Button>
     </Tooltip>

@@ -37,5 +37,23 @@
         flex: 1;
       }
     }
+
+    &--is-content-centered {
+      align-items: center;
+      justify-content: center;
+      min-height: 500px;
+
+      > * {
+        margin: unset;
+      }
+    }
+
+    &--is-height-full {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 }

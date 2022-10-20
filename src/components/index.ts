@@ -17,5 +17,6 @@ export * from './StepBar';
 export * from './Tabs';
 export * from './TextStack';
 export * from './ToggleGroup';
+export * from './Toast';
 export * from './Tooltip';
 export { Wizard } from './Wizard';

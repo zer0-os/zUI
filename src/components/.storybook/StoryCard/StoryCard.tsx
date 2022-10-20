@@ -7,6 +7,8 @@ export interface StoryCardProps {
   isContrast?: boolean;
   isWrapDisabled?: boolean;
   isContentFull?: boolean;
+  isContentCentered?: boolean;
+  isHeightFull?: boolean;
   className?: string;
   containerClassName?: string;
   children: ReactNode;
@@ -17,6 +19,8 @@ export const StoryCard = ({
   isContrast,
   isWrapDisabled,
   isContentFull,
+  isContentCentered,
+  isHeightFull,
   className,
   containerClassName,
   children
@@ -28,6 +32,8 @@ export const StoryCard = ({
         className={classnames('story_card__content', className, {
           'story_card__content--is-contrast': isContrast,
           'story_card__content--is-content-full': isContentFull,
+          'story_card__content--is-content-centered': isContentCentered,
+          'story_card__content--is-height-full': isHeightFull,
           'story_card__content--is-wrap-disabled': isWrapDisabled
         })}
       >

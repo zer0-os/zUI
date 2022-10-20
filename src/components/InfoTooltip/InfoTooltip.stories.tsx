@@ -9,9 +9,14 @@ export default {
 } as ComponentMeta<typeof InfoTooltip>;
 
 const Template: ComponentStory<typeof InfoTooltip> = args => (
-  <StoryCard isContrast>
+  <StoryCard isContrast isContentCentered>
     <InfoTooltip {...args} />
   </StoryCard>
 );
 
 export const Default = Template.bind({});
+Default.args = {
+  side: 'top',
+  align: 'center',
+  content: 'This may take up to 20 minutes depending on the state of the Ethereum network.'
+};
