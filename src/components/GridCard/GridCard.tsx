@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { MouseEventHandler, ReactNode } from 'react';
 
 import { AspectRatioProps, Root as AspectRatioRoot } from '@radix-ui/react-aspect-ratio';
 import { Skeleton } from '../Skeleton';
@@ -13,7 +13,7 @@ export interface GridCardProps {
   children: ReactNode;
   imageSrc?: string;
   imageAlt: string;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 export const GridCard = ({ aspectRatio = 1, className, children, imageAlt, imageSrc, onClick }: GridCardProps) => {
