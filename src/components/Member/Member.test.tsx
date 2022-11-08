@@ -22,20 +22,6 @@ beforeEach(() => {
 });
 
 describe('Member', () => {
-  test('should apply primary variant to <label> data-variant attribute by default', () => {
-    render(<Member {...DEFAULT_PROPS} label={mockLabel} />);
-    const label = screen.getByText(mockLabel);
-
-    expect(label).toHaveAttribute('data-variant', 'primary');
-  });
-
-  test('should pass and apply secondary variant to <label> data-variant attribute', () => {
-    render(<Member {...DEFAULT_PROPS} label={mockLabel} variant={'secondary'} />);
-    const label = screen.getByText(mockLabel);
-
-    expect(label).toHaveAttribute('data-variant', 'secondary');
-  });
-
   test('should render label and content in the correct order - label, children', () => {
     const { container } = render(
       <Member {...DEFAULT_PROPS} label={mockLabel}>
@@ -46,28 +32,46 @@ describe('Member', () => {
     expect(container.firstChild?.textContent).toBe(`${mockLabel}${mockChildren}`);
   });
 
-  test('should not render member content as <a> by default', () => {
-    render(
-      <Member {...DEFAULT_PROPS}>
-        <>{mockChildren}</>
-      </Member>
-    );
-    const memberContent = screen.getByText(mockChildren);
+  describe('label', () => {
+    test('should apply primary variant to <label> data-variant attribute by default', () => {
+      render(<Member {...DEFAULT_PROPS} label={mockLabel} />);
+      const label = screen.getByText(mockLabel);
 
-    expect(memberContent).toBeInTheDocument();
-    expect(memberContent).not.toHaveAttribute('href', mockUrl);
+      expect(label).toHaveAttribute('data-variant', 'primary');
+    });
+
+    test('should pass and apply secondary variant to <label> data-variant attribute', () => {
+      render(<Member {...DEFAULT_PROPS} label={mockLabel} variant={'secondary'} />);
+      const label = screen.getByText(mockLabel);
+
+      expect(label).toHaveAttribute('data-variant', 'secondary');
+    });
   });
 
-  test('should render member content as <a> when href is defined', () => {
-    render(
-      <Member {...DEFAULT_PROPS} href={mockUrl}>
-        <>{mockChildren}</>
-      </Member>
-    );
-    const memberContent = screen.getByText(mockChildren);
+  describe('member content', () => {
+    test('should not render member content as <a> by default', () => {
+      render(
+        <Member {...DEFAULT_PROPS}>
+          <>{mockChildren}</>
+        </Member>
+      );
+      const memberContent = screen.getByText(mockChildren);
 
-    expect(memberContent).toBeInTheDocument();
-    expect(memberContent).toHaveAttribute('href', mockUrl);
+      expect(memberContent).toBeInTheDocument();
+      expect(memberContent).not.toHaveAttribute('href', mockUrl);
+    });
+
+    test('should render member content as <a> when href is defined', () => {
+      render(
+        <Member {...DEFAULT_PROPS} href={mockUrl}>
+          <>{mockChildren}</>
+        </Member>
+      );
+      const memberContent = screen.getByText(mockChildren);
+
+      expect(memberContent).toBeInTheDocument();
+      expect(memberContent).toHaveAttribute('href', mockUrl);
+    });
   });
 
   describe('class names', () => {
