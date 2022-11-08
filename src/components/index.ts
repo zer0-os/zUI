@@ -1,3 +1,4 @@
+export * from './Address';
 export * from './Alert';
 export * from './AspectRatio';
 export * from './AsyncTable';
@@ -9,6 +10,7 @@ export { Input } from './Input';
 export { LoadingIndicator } from './LoadingIndicator';
 export * from './Markdown';
 export * from './MediaInput';
+export * from './Member';
 export { Modal } from './Modal';
 export * from './Search';
 export * from './Skeleton';
