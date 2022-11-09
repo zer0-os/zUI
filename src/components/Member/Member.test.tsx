@@ -17,10 +17,6 @@ const DEFAULT_PROPS: MemberProps = {
   variant: undefined
 };
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('Member', () => {
   test('should render label and content in the correct order - label, children', () => {
     const { container } = render(
@@ -33,14 +29,14 @@ describe('Member', () => {
   });
 
   describe('label', () => {
-    test('should apply primary variant to <label> data-variant attribute by default', () => {
+    test('should apply primary variant to <label> by default', () => {
       render(<Member {...DEFAULT_PROPS} label={mockLabel} />);
       const label = screen.getByText(mockLabel);
 
       expect(label).toHaveAttribute('data-variant', 'primary');
     });
 
-    test('should pass and apply secondary variant to <label> data-variant attribute', () => {
+    test('should pass and apply secondary variant to <label>', () => {
       render(<Member {...DEFAULT_PROPS} label={mockLabel} variant={'secondary'} />);
       const label = screen.getByText(mockLabel);
 
