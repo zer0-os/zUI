@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { truncateAddress } from '../../utils';
 import { render, screen } from '@testing-library/react';
 
 import { Address, AddressProps } from '.';
@@ -32,7 +33,7 @@ describe('Address', () => {
   test('should render address', () => {
     const { container } = render(<Address {...DEFAULT_PROPS} address={mockAddress} />);
 
-    expect(container.firstChild?.textContent).toBe(mockAddress);
+    expect(container.firstChild?.textContent).toBe(truncateAddress(mockAddress));
   });
 
   describe('when address type === string', () => {
@@ -61,7 +62,7 @@ describe('Address', () => {
 
       expect(address).toBeInTheDocument();
       expect(mockSkeletonText).toHaveBeenCalledWith(
-        expect.objectContaining({ asyncText: { text: mockAddress, isLoading: false } })
+        expect.objectContaining({ asyncText: { text: truncateAddress(mockAddress), isLoading: false } })
       );
     });
   });

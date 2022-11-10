@@ -18,7 +18,7 @@ export const Address = ({ className, address }: AddressProps) => {
     return <span className={className}>{truncateAddress(address)}</span>;
   }
 
-  const truncatedAddress = address.text ? truncateAddress(address.text as string) : address.text;
+  const truncatedAddress = address?.text ? truncateAddress(address.text as string) : address.text;
 
   return (
     <SkeletonText
