@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { AsyncText } from '../../lib/types';
-import { truncateAddress } from '../../utils/formatting/addresses';
+import { truncateAddress } from '../../utils';
 
 import { SkeletonText } from '../../components/SkeletonText';
 
