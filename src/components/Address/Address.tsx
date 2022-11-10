@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { AsyncText } from '../../lib/types';
+import { truncateAddress } from '../../utils/formatting/addresses';
 
 import { SkeletonText } from '../../components/SkeletonText';
 
@@ -14,15 +15,17 @@ export interface AddressProps {
 
 export const Address = ({ className, address }: AddressProps) => {
   if (typeof address === 'string') {
-    return <span className={className}>{address}</span>;
+    return <span className={className}>{truncateAddress(address)}</span>;
   }
+
+  const truncatedAddress = address.text ? truncateAddress(address.text as string) : address.text;
 
   return (
     <SkeletonText
       className={classNames(styles.AsyncAddress, className)}
       asyncText={{
         ...address,
-        text: address?.text
+        text: truncatedAddress
       }}
     />
   );
