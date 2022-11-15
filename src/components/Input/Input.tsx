@@ -10,6 +10,8 @@ import styles from './Input.module.scss';
 
 export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
   className?: string;
+  wrapperClassName?: string;
+  inputClassName?: string;
   error?: boolean;
   // @deprecated
   success?: boolean;
@@ -40,6 +42,8 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
       alert,
       isDisabled,
       className,
+      wrapperClassName,
+      inputClassName,
       endEnhancer,
       startEnhancer,
       error,
@@ -73,15 +77,16 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
         <Labels label={label} helperText={helperText} />
         <div
           onClick={clickWrapper}
-          className={classNames(styles.Wrapper)}
-          data-testid={`zui-input-wrapper`}
+          className={classNames(styles.Wrapper, wrapperClassName)}
+          data-testid="zui-input-wrapper"
           data-size={size}
           data-status={status}
           data-disabled={isDisabled ? '' : undefined}
         >
           {startEnhancer && <Enhancer value={startEnhancer} />}
           <input
-            className={styles.Input}
+            className={classNames(styles.Input, inputClassName)}
+            data-testid="zui-input"
             onChange={handleOnChange}
             ref={inputRef}
             value={value}

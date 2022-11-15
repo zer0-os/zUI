@@ -1,0 +1,13 @@
+@import '../../styles/colors';
+
+.InputContainer {
+    text-align: left;
+}
+
+.WrapperOpen {
+    background-color: #{$purple-25};
+}
+
+.InputOpen {
+    font-weight: bold;
+}
