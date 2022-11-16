@@ -18,11 +18,15 @@ export const Address = ({ className, address }: AddressProps) => {
     return <span className={className}>{truncateAddress(address)}</span>;
   }
 
-  const truncatedAddress = address?.text ? truncateAddress(address.text as string) : address.text;
+  let truncatedAddress;
+  if (address?.text) {
+    truncatedAddress = truncateAddress(address?.text as string);
+  }
 
   return (
     <SkeletonText
       className={classNames(styles.AsyncAddress, className)}
+      as={'span'}
       asyncText={{
         ...address,
         text: truncatedAddress
