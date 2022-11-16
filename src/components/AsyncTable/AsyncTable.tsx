@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-import { LoadingIndicator } from '../LoadingIndicator';
+import { AsyncTableComponent } from './types';
+import { useInfiniteScroll } from './useInfiniteScroll';
+import { useDebounce } from '../../lib/hooks/useDebounce';
+
 import { Grid } from './Grid';
 import { Table } from './Table';
 import { Column } from './Column';
 import { Controls } from './Controls';
-
-import { AsyncTableComponent } from './types';
-import { useInfiniteScroll } from './useInfiniteScroll';
-import { useDebounce } from '../../utils/hooks/useDebounce';
+import { LoadingIndicator } from '../LoadingIndicator';
 
 import styles from './AsyncTable.module.scss';
 
