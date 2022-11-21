@@ -75,7 +75,6 @@ export const Checkbox = ({
 
   return (
     <div
-      style={{ display: 'flex', alignItems: 'center' }}
       className={classNames(className, styles.Container, `${isDisabled ? styles.DisabledCheckbox : ''}`,
       `${hasLightBg ? styles.LightBg : ''}`
       )}

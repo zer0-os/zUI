@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof Checkbox> = args => {
   return (
-    <StoryCard isContrast isContentFull>
+    <StoryCard isContrast>
       <Checkbox {...args} />
     </StoryCard>
   );
