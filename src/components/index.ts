@@ -19,3 +19,4 @@ export * from './TextStack';
 export * from './ToggleGroup';
 export * from './Tooltip';
 export { Wizard } from './Wizard';
+export * from './Checkbox';
