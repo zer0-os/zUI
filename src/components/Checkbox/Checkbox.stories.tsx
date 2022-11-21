@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof Checkbox> = args => {
 
 const LightThemeTemplate: ComponentStory<typeof Checkbox> = args => {
   return (
-    <StoryCard isContentFull>
+    <StoryCard>
       <Checkbox {...args} />
     </StoryCard>
   );
