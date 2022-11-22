@@ -1,0 +1,121 @@
+// GLOBAL SLIDER STYLES
+
+.SliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 18.75rem;
+  background-color: #37273f;
+  border-radius: 1rem;
+  height: 1rem;
+}
+
+.SmallSliderRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 18.75rem;
+  background-color: #37273f;
+  border-radius: 1rem;
+  height: 0.5rem;
+}
+
+// STANDARD SLIDER
+
+.SliderTrack {
+  position: relative;
+  flex-grow: 2;
+  border-radius: 1rem;
+  height: 0.25rem;
+}
+
+.SliderRange {
+  position: absolute;
+  background-color: #67eace;
+  border-radius: 2rem;
+  height: 1rem;
+  top: -0.4rem;
+}
+
+.SliderThumb {
+  display: block;
+  height: 1.75rem;
+  width: 1.75rem;
+  background-color: #ededef;
+  border: 0.125rem solid #67eace;
+  border-radius: 1rem;
+}
+
+.SliderThumb:focus {
+  outline: none;
+  // box-shadow: 0 0 0 5px #67eace;
+}
+
+// SMALL STANDARD SLIDER
+
+.SmallSliderTrack {
+  position: relative;
+  flex-grow: 2;
+  border-radius: 1rem;
+  height: 0.25rem;
+}
+
+.SmallSliderRange {
+  position: absolute;
+  background-color: #67eace;
+  border-radius: 2rem;
+  height: 0.5rem;
+  top: -0.1rem;
+}
+
+.SmallSliderThumb {
+  display: block;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: #ededef;
+  border: 0.125rem solid #67eace;
+  border-radius: 1rem;
+}
+
+.SmallSliderThumb:focus {
+  outline: none;
+  // box-shadow: 0 0 0 5px #67eace;
+}
+
+// RANGE SLIDER
+
+.RangeSliderThumb {
+  display: block;
+  height: 1.75rem;
+  width: 1.75rem;
+  background-color: #ededef;
+  border: 0.125rem solid #67eace;
+  border-radius: 1rem;
+}
+
+.RangeSliderThumb:focus {
+  outline: none;
+  // box-shadow: 0 0 0 5px #67eace;
+}
+
+// SMALL RANGE SLIDER
+
+.SmallRangeSliderThumb {
+  display: block;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: #ededef;
+  border: 0.125rem solid #67eace;
+  border-radius: 1rem;
+}
+
+.SmallRangeSliderThumb:focus {
+  outline: none;
+  // box-shadow: 0 0 0 5px #67eace;
+}
+
+// Values styles
+
+.valueDisplay {
+  padding-bottom: 1rem;
+}
