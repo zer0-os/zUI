@@ -1,20 +1,6 @@
-import { TableData, TableHeader } from './Column';
+import { TableData } from './Column';
 import Skeleton from 'react-loading-skeleton';
 import React from 'react';
-
-interface HeaderPlaceholdersProps {
-  amount: number;
-}
-
-export const HeaderPlaceholders = ({ amount }: HeaderPlaceholdersProps) => {
-  const columnPlaceholder = (
-    <TableHeader alignment={'center'}>
-      <Skeleton width={'100%'} />
-    </TableHeader>
-  );
-
-  return <>{Array(amount).fill(columnPlaceholder)}</>;
-};
 
 interface RowPlaceholdersProps {
   amount: number;
