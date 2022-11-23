@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 // - Style Imports
 import styles from './Slider.module.scss';
+import classNames from 'classnames/bind';
 
 // Slider components Imports
 import { Root, Track, Range, Thumb } from '@radix-ui/react-slider';
@@ -13,9 +14,10 @@ export interface SliderProps {
   max?: number; // Maximum value
   value?: number; // Current value/Default value on initial render
   isSmall?: boolean; // Whether the slider is small or regular size
+  className?: string; // Additional class name
 }
 
-export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, isSmall }) => {
+export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, isSmall, className }) => {
   const [
     currentValue,
     setValue
@@ -34,7 +36,7 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
       <div className={styles.valueDisplay}>{currentValue}</div>
       <form>
         <Root
-          className={isSmall ? styles.SmallSliderRoot : styles.SliderRoot}
+          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`)}
           defaultValue={currentValue}
           min={min}
           max={max}
@@ -42,10 +44,10 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
           aria-label='Value'
           onValueChange={(value) => setValue(value)}
         >
-          <Track className={isSmall ? styles.SmallSliderTrack : styles.SliderTrack}>
-            <Range className={isSmall ? styles.SmallSliderRange : styles.SliderRange} />
+          <Track className={classNames(styles.SliderTrack)}>
+            <Range className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`)} />
           </Track>
-          <Thumb className={isSmall ? styles.SmallSliderThumb : styles.SliderThumb} />
+          <Thumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
         </Root>
       </form>
     </>
