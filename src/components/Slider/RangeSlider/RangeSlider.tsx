@@ -3,23 +3,27 @@ import React, { useState } from 'react';
 
 // - Style Imports
 import styles from '../Slider.module.scss';
+import classNames from 'classnames/bind';
 
 // Slider components Imports
 import { Root, Track, Range, Thumb } from '@radix-ui/react-slider';
 
-export interface SliderProps {
-  step?: number; // How much each step should increment by
-  min?: number; // Minimum value
-  max?: number; // Maximum value
-  value?: number; // Current value
-  defaultValue?: [number, number]; // Default value on initial render
-  isSmall?: boolean; // Whether the slider is small or regular size
-  minStep?: number; // Minimum step value between two thumbs
+export interface RangeSliderProps {
+  step?: number; // The amount to increment/decrement the value by
+  min?: number; // The minimum value of the slider
+  max?: number; // The maximum value of the slider
+  value?: number; // The current value of the slider
+  defaultValue?: [number, number]; // The default value of the slider
+  className?: string; // The class name of the slider
+  isSmall?: boolean; // The size of the slider
+  minStep?: number; // The minimum step of the slider
 }
 
-export const RangeSlider: React.FC<SliderProps> = ({ step, min, max, value, isSmall, minStep, defaultValue }) => {
-
-  const [currentValue, setValue] = useState([value]);
+export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value, isSmall, minStep, defaultValue }) => {
+  const [
+    currentValue,
+    setValue
+  ] = useState([value]);
 
   // export const TEST_ID = {
   //   CONTAINER: 'arrow-link-container',
@@ -54,7 +58,7 @@ export const RangeSlider: React.FC<SliderProps> = ({ step, min, max, value, isSm
       </div>
       <form>
         <Root
-          className={isSmall ? styles.SmallSliderRoot : styles.SliderRoot}
+          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`)}
           defaultValue={defaultValue}
           min={min}
           max={max}
@@ -63,11 +67,11 @@ export const RangeSlider: React.FC<SliderProps> = ({ step, min, max, value, isSm
           onValueChange={(value) => setValue(value)}
           minStepsBetweenThumbs={minStep}
         >
-          <Track className={isSmall ? styles.SmallSliderTrack : styles.SliderTrack}>
-            <Range className={isSmall ? styles.SmallSliderRange : styles.SliderRange} />
+          <Track className={classNames(styles.SliderTrack)}>
+            <Range className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`)} />
           </Track>
-          <Thumb className={isSmall ? styles.SmallRangeSliderThumb : styles.RangeSliderThumb} />
-          <Thumb className={isSmall ? styles.SmallRangeSliderThumb : styles.RangeSliderThumb} />
+          <Thumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
+          <Thumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
         </Root>
       </form>
     </>
