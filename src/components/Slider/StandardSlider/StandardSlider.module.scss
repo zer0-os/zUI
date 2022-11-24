@@ -14,6 +14,10 @@
   height: 0.5rem;
 }
 
+.LightRoot {
+  background-color: #E8E7E9;
+}
+
 // STANDARD SLIDER
 
 .SliderTrack {
@@ -31,6 +35,10 @@
   top: -0.4rem;
 }
 
+.LightRange {
+  background-color: #26EDCC;
+}
+
 .SliderThumb {
   display: block;
   height: 1.75rem;
@@ -38,6 +46,11 @@
   background-color: #ededef;
   border: 0.125rem solid #67eace;
   border-radius: 1rem;
+}
+
+.LightThumb {
+  background-color: #1A1523;
+  border: 0.125rem solid #26EDCC;
 }
 
 .SliderThumb:focus {

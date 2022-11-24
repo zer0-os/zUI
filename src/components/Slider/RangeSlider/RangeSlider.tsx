@@ -22,9 +22,10 @@ export interface RangeSliderProps {
   className?: string; // The class name of the slider
   isSmall?: boolean; // The size of the slider
   minStep?: number; // The minimum step of the slider
+  isLight?: boolean; // The color of the slider
 }
 
-export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value, isSmall, minStep, defaultValue }) => {
+export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value, isSmall, minStep, defaultValue, isLight }) => {
   const [
     currentValue,
     setValue
@@ -55,7 +56,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value,
       </div>
       <form>
         <SliderRoot
-          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`)}
+          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`, `${isLight ? styles.LightRoot : ''}`)}
           defaultValue={defaultValue}
           min={min}
           max={max}
@@ -65,10 +66,10 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value,
           minStepsBetweenThumbs={minStep}
         >
           <SliderTrack className={classNames(styles.SliderTrack)}>
-            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`)} />
+            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`, `${isLight ? styles.LightRange : ''}`)} />
           </SliderTrack>
-          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
-          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
+          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`, `${isLight ? styles.LightThumb : ''}`)} />
+          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`, `${isLight ? styles.LightThumb : ''}`)} />
         </SliderRoot>
       </form>
     </>

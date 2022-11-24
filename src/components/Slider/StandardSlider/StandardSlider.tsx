@@ -21,9 +21,10 @@ export interface SliderProps {
   isSmall?: boolean; // Whether the slider is small or regular size
   className?: string; // Additional class name
   onValueChange?: (value: number) => void; // Callback function when value changes
+  isLight?: boolean; // Whether the slider is light or dark
 }
 
-export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, isSmall }) => {
+export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, isSmall, isLight }) => {
   const [
     currentValue,
     setValue
@@ -34,7 +35,7 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
       <div className={styles.valueDisplay}>{currentValue}</div>
       <form>
         <SliderRoot
-          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`)}
+          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`, `${isLight ? styles.LightRoot : ''}`)}
           defaultValue={currentValue}
           min={min}
           max={max}
@@ -43,9 +44,9 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
           onValueChange={(value) => setValue(value)}
         >
           <SliderTrack className={classNames(styles.SliderTrack)}>
-            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`)} />
+            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`, `${isLight ? styles.LightRange : ''}`)} />
           </SliderTrack>
-          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
+          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`, `${isLight ? styles.LightThumb : ''}`)} />
         </SliderRoot>
       </form>
     </>
