@@ -1,2 +1,2 @@
-export * from './Slider';
+export * from './StandardSlider/StandardSlider';
 export * from './RangeSlider/RangeSlider';

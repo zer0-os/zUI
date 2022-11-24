@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StandardSlider } from './index';
-import { StoryCard } from '../.storybook';
+import { StandardSlider } from '../index';
+import { StoryCard } from '../../.storybook';
 
 export default {
   title: 'Sliders/Standard Slider',

@@ -2,11 +2,16 @@
 import React, { useState } from 'react';
 
 // - Style Imports
-import styles from '../Slider.module.scss';
+import styles from '../StandardSlider/StandardSlider.module.scss';
 import classNames from 'classnames/bind';
 
 // Slider components Imports
-import { Root, Track, Range, Thumb } from '@radix-ui/react-slider';
+import { 
+  Root as SliderRoot, 
+  Track as SliderTrack, 
+  Range as SliderRange, 
+  Thumb as SliderThumb 
+} from '@radix-ui/react-slider';
 
 export interface RangeSliderProps {
   step?: number; // The amount to increment/decrement the value by
@@ -24,14 +29,6 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value,
     currentValue,
     setValue
   ] = useState([value]);
-
-  // export const TEST_ID = {
-  //   CONTAINER: 'arrow-link-container',
-  //   ARROW: {
-  //     CONTAINER: 'arrow-link-arrow-container',
-  //     ARROW: 'arrow-link-arrow'
-  //   }
-  // };
 
   const defaultValues = [
     defaultValue[0],
@@ -57,7 +54,7 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value,
         {initialiseDefaultValues()[0]} - {initialiseDefaultValues()[1]}
       </div>
       <form>
-        <Root
+        <SliderRoot
           className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`)}
           defaultValue={defaultValue}
           min={min}
@@ -67,12 +64,12 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value,
           onValueChange={(value) => setValue(value)}
           minStepsBetweenThumbs={minStep}
         >
-          <Track className={classNames(styles.SliderTrack)}>
-            <Range className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`)} />
-          </Track>
-          <Thumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
-          <Thumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
-        </Root>
+          <SliderTrack className={classNames(styles.SliderTrack)}>
+            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`)} />
+          </SliderTrack>
+          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
+          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`)} />
+        </SliderRoot>
       </form>
     </>
   );
