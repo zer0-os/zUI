@@ -38,32 +38,26 @@ const DEFAULT_PROPS: SliderProps = {
   isSmall: false
 };
 
-const renderComponent = (customProps: Partial<SliderProps> = {}) => {
-  return render(
-    <StandardSlider {...DEFAULT_PROPS} {...customProps} />
-  );
-};
-
 afterEach(() => {
   jest.resetAllMocks();
 });
 
 test('should pass props to Radix Slider Root', () => {
-  renderComponent({ isSmall: true, min: 20, step: 1 });
+  render(<StandardSlider {...DEFAULT_PROPS} min={20} step={1} isSmall />);
   expect(mockSliderRoot).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderRoot SmallRoot", min: 20, step: 1 }));
 });
 
 test('should pass props to Radix Slider Track', () => {
-  renderComponent();
+  render(<StandardSlider {...DEFAULT_PROPS} />);
   expect(mockSliderTrack).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderTrack" }));
 });
 
-test('Radix Slider Range should have small classes', () => {
-  renderComponent({ isSmall: true });
+test('should correctly apply small classes to Radix Slider Range', () => {
+  render(<StandardSlider {...DEFAULT_PROPS} isSmall />);
   expect(mockSliderRange).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderRange SmallSliderRange" }));
 });
 
 test('should pass props to Radix Slider Thumb', () => {
-  renderComponent();
+  render(<StandardSlider {...DEFAULT_PROPS} />);
   expect(mockSliderThumb).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderThumb" }));
 });

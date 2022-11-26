@@ -43,33 +43,26 @@ const DEFAULT_PROPS: RangeSliderProps = {
   isSmall: false
 };
 
-const renderComponent = (customProps: Partial<RangeSliderProps> = {}) => {
-  return render(
-    <RangeSlider {...DEFAULT_PROPS} {...customProps} />
-  );
-};
-
 afterEach(() => {
   jest.resetAllMocks();
 });
 
 test('should pass props to Radix Slider Root', () => {
-  renderComponent({ isSmall: true, step: 1 });
+  render(<RangeSlider {...DEFAULT_PROPS} step={1} isSmall />);
   expect(mockSliderRoot).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderRoot SmallRoot", step: 1 }));
 });
 
 test('should pass props to Radix Slider Track', () => {
-  renderComponent();
+  render(<RangeSlider {...DEFAULT_PROPS} />);
   expect(mockSliderTrack).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderTrack" }));
 });
 
-test('Radix Slider Range should have small classes', () => {
-  renderComponent({ isSmall: true });
+test('should correctly apply small classes to Radix Slider Range', () => {
+  render(<RangeSlider {...DEFAULT_PROPS} isSmall />);
   expect(mockSliderRange).toHaveBeenCalledWith(expect.objectContaining({ className: "SliderRange SmallSliderRange" }));
 });
 
-test('if 2 thumbs are rendered', () => {
-  renderComponent();
-  const thumbs = screen.getAllByTestId('thumb').length;
-  expect(thumbs).toBe(2);
+test('should correctly render both thumbs', () => {
+  render(<RangeSlider {...DEFAULT_PROPS} />);
+  expect(screen.getAllByTestId('thumb').length).toEqual(2);
 });
