@@ -1,11 +1,20 @@
 @import '../../styles/colors';
 
 .InputContainer {
+    min-width: 16rem;
     text-align: left;
 }
 
 .WrapperOpen {
     background-color: #{$purple-10};
+}
+
+Input:hover, .Wrapper:hover {
+    cursor: pointer;
+}
+
+.Wrapper:hover {
+    border-color: #8E4EC6;
 }
 
 .InputOpen {

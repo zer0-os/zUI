@@ -6,6 +6,7 @@ import { DropdownItem, DropdownMenu } from '../DropdownMenu';
 import { AlertProps } from '../Alert';
 
 import styles from './SelectInput.module.scss';
+import classNames from 'classnames/bind';
 
 export type SelectInputProps = {
   className?: string;
@@ -36,8 +37,8 @@ export const SelectInput: FC<SelectInputProps> = ({
   const trigger = (
     <Input
       className={styles.InputContainer}
-      wrapperClassName={isOpen && styles.WrapperOpen}
-      inputClassName={isOpen && styles.InputOpen}
+      wrapperClassName={classNames(styles.Wrapper, isOpen && styles.WrapperOpen)}
+      inputClassName={classNames(styles.Input, isOpen && styles.InputOpen)}
       type="text"
       label={label}
       placeholder={placeholder}
@@ -45,7 +46,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       helperText={helperText}
       alert={alert}
       error={error}
-      endEnhancer={<IconChevronDown />}
+      endEnhancer={<IconChevronDown size={16} />}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       onChange={() => {}}
     />
