@@ -13,6 +13,9 @@ button {
   }
   &:hover{
     cursor: pointer;
+    & .Label:hover{
+      cursor: pointer;
+    }
   }
 }
 .CheckboxRoot {
@@ -80,6 +83,12 @@ button {
     cursor: not-allowed;
     .Link {
       color: #{$grey-9};
+    }
+  }
+  &:hover{
+    cursor: not-allowed;
+    & .Label:hover{
+      cursor: not-allowed;
     }
   }
 }
