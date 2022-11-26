@@ -58,7 +58,7 @@ export const Checkbox = ({
       );
     } else if (link) {
       return (
-        <label className={classNames(styles.Label)} htmlFor={name}>
+        <label className={classNames(styles.Label,styles.hasOnlyLink)} htmlFor={name}>
           <span onClick={handleClick} className={classNames(styles.Link)}>
             {link}
           </span>

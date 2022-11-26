@@ -8,13 +8,16 @@ button {
   align-items: center;
   padding: 4px;
   &:focus-within {
-    border-radius: 4px;
+    border-radius: 8px;
     outline: 1px solid #{$green-11};
+  }
+  &:hover{
+    cursor: pointer;
   }
 }
 .CheckboxRoot {
-  min-width: 16px;
-  min-height: 16px;
+  min-width: 14px;
+  min-height: 14px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -37,6 +40,9 @@ button {
   user-select: none;
   color: #{$purple-12};
   padding-right: 4px;
+  &.hasOnlyLink{
+    padding-left: 4px;
+  }
   .hasLable {
     padding-left: 4px;
   }
