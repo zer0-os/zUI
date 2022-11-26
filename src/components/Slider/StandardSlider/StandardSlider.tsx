@@ -1,11 +1,9 @@
-// - React Imports
 import React, { useState } from 'react';
 
-// - Style Imports
-import styles from './StandardSlider.module.scss';
+import styles from '../Slider.module.scss';
 import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
-// Slider components Imports
 import { 
   Root as SliderRoot, 
   Track as SliderTrack, 
@@ -14,14 +12,14 @@ import {
 } from '@radix-ui/react-slider';
 
 export interface SliderProps {
-  step?: number; // How much each step should increment by
-  min?: number; // Minimum value
-  max?: number; // Maximum value
-  value?: number; // Current value/Default value on initial render
-  isSmall?: boolean; // Whether the slider is small or regular size
-  className?: string; // Additional class name
-  onValueChange?: (value: number) => void; // Callback function when value changes
-  isLight?: boolean; // Whether the slider is light or dark
+  step?: number;
+  min?: number; 
+  max?: number; 
+  value?: number;
+  isSmall?: boolean;
+  className?: string;
+  onValueChange?: (value: number) => void;
+  isLight?: boolean;
 }
 
 export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, isSmall, isLight }) => {
@@ -32,21 +30,21 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
 
   return (
     <>
-      <div className={styles.valueDisplay}>{currentValue}</div>
+      <div className={styles.ValueDisplay}>{currentValue}</div>
       <form>
         <SliderRoot
-          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`, `${isLight ? styles.LightRoot : ''}`)}
+          className={cx(styles.SliderRoot, { SmallRoot: isSmall, LightRoot: isLight })}
           defaultValue={currentValue}
           min={min}
           max={max}
           step={step}
-          aria-label='Value'
+          aria-label='Standard Slider'
           onValueChange={(value) => setValue(value)}
         >
           <SliderTrack className={classNames(styles.SliderTrack)}>
-            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`, `${isLight ? styles.LightRange : ''}`)} />
+            <SliderRange className={cx(styles.SliderRange, { SmallRange: isSmall, LightRange: isLight })} />
           </SliderTrack>
-          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`, `${isLight ? styles.LightThumb : ''}`)} />
+          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, Light: isLight })} />
         </SliderRoot>
       </form>
     </>

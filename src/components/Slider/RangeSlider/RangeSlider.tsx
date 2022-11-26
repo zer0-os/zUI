@@ -1,11 +1,9 @@
-// - React Imports
 import React, { useState } from 'react';
 
-// - Style Imports
-import styles from '../StandardSlider/StandardSlider.module.scss';
+import styles from '../Slider.module.scss';
 import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
-// Slider components Imports
 import { 
   Root as SliderRoot, 
   Track as SliderTrack, 
@@ -14,62 +12,44 @@ import {
 } from '@radix-ui/react-slider';
 
 export interface RangeSliderProps {
-  step?: number; // The amount to increment/decrement the value by
-  min?: number; // The minimum value of the slider
-  max?: number; // The maximum value of the slider
-  value?: number; // The current value of the slider
-  defaultValue?: [number, number]; // The default value of the slider
-  className?: string; // The class name of the slider
-  isSmall?: boolean; // The size of the slider
-  minStep?: number; // The minimum step of the slider
-  isLight?: boolean; // The color of the slider
+  step?: number;
+  min?: number;
+  max?: number;
+  value?: number;
+  defaultValue?: [number, number]; 
+  className?: string;
+  isSmall?: boolean; 
+  minStep?: number; 
+  isLight?: boolean;
 }
 
-export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, value, isSmall, minStep, defaultValue, isLight }) => {
+export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, isSmall, minStep, defaultValue, isLight }) => {
   const [
     currentValue,
-    setValue
-  ] = useState([value]);
-
-  const defaultValues = [
-    defaultValue[0],
-    defaultValue[1]
-  ];
-  const currentValues = [
-    currentValue[0],
-    currentValue[1]
-  ];
-
-  function initialiseDefaultValues() {
-    if (currentValue.length === 1) {
-      const valuesOnDisplay = defaultValues;
-      return valuesOnDisplay;
-    } else {
-      return currentValues;
-    }
-  }
+    setCurrentValue
+  ] = useState(defaultValue ?? [min, max]);
 
   return (
     <>
-      <div className={styles.valueDisplay}>
-        {initialiseDefaultValues()[0]} - {initialiseDefaultValues()[1]}
+      <div className={styles.ValueDisplay}>
+        {currentValue[0]} - {currentValue[1]}
       </div>
       <form>
         <SliderRoot
-          className={classNames(styles.SliderRoot, `${isSmall ? styles.SmallRoot : ''}`, `${isLight ? styles.LightRoot : ''}`)}
+          className={cx(styles.SliderRoot, { SmallRoot: isSmall, LightRoot: isLight })}
           defaultValue={defaultValue}
           min={min}
           max={max}
           step={step}
-          aria-label='Value'
-          onValueChange={(value) => setValue(value)}
+          aria-label='Range Slider'
+          onValueChange={(value) => setCurrentValue(value)}
           minStepsBetweenThumbs={minStep}
         >
           <SliderTrack className={classNames(styles.SliderTrack)}>
-            <SliderRange className={classNames(styles.SliderRange, `${isSmall ? styles.SmallSliderRange : ''}`, `${isLight ? styles.LightRange : ''}`)} />
+            <SliderRange className={cx(styles.SliderRange, { SmallRange: isSmall, LightRange: isLight })} />
           </SliderTrack>
-          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`, `${isLight ? styles.LightThumb : ''}`)} />
-          <SliderThumb className={classNames(styles.SliderThumb, `${isSmall ? styles.SmallSliderThumb : ''}`, `${isLight ? styles.LightThumb : ''}`)} />
+          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
+          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
         </SliderRoot>
       </form>
     </>
