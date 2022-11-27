@@ -8,10 +8,35 @@ export default {
   component: RangeSlider
 } as ComponentMeta<typeof RangeSlider>;
 
-export const Template: ComponentStory<typeof RangeSlider> = args => {
-  return (
-    <StoryCard isContrast>
-      <RangeSlider min={0} max={100} defaultValue={[0, 100]} {...args} />
-    </StoryCard>
-  );
+const Template: ComponentStory<typeof RangeSlider> = args => (
+  <StoryCard isContrast>
+    <RangeSlider {...args} />
+  </StoryCard>
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  min: 0,
+  max: 100,
+  step: 1,
+  isSmall: false,
+  isLight: false
+};
+
+export const Light = Template.bind({});
+Light.args = {
+  min: 0,
+  max: 100,
+  step: 1,
+  isSmall: false,
+  isLight: true
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  min: 0,
+  max: 100,
+  step: 1,
+  isSmall: true,
+  isLight: false
 };
