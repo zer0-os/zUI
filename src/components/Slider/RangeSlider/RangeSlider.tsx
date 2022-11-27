@@ -40,10 +40,10 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, values
           onValueChange={value => setCurrentValues(value)}
         >
           <SliderTrack className={styles.SliderTrack}>
-            <SliderRange className={cx(styles.SliderRange, { SmallSliderRange: isSmall, LightRange: isLight })} />
+            <SliderRange className={cx(styles.SliderRange, { SmallRange: isSmall, LightRange: isLight })} />
           </SliderTrack>
-          <SliderThumb className={cx(styles.SliderThumb, { SmallSliderThumb: isSmall, LightThumb: isLight })} />
-          <SliderThumb className={cx(styles.SliderThumb, { SmallSliderThumb: isSmall, LightThumb: isLight })} />
+          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
+          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
         </SliderRoot>
       </form>
     </>
