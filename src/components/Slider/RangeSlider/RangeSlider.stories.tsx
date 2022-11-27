@@ -14,6 +14,12 @@ const Template: ComponentStory<typeof RangeSlider> = args => (
   </StoryCard>
 );
 
+const LightTheme: ComponentStory<typeof RangeSlider> = args => (
+  <StoryCard>
+    <RangeSlider {...args} />
+  </StoryCard>
+);
+
 export const Default = Template.bind({});
 Default.args = {
   min: 0,
@@ -23,15 +29,6 @@ Default.args = {
   isLight: false
 };
 
-export const Light = Template.bind({});
-Light.args = {
-  min: 0,
-  max: 100,
-  step: 1,
-  isSmall: false,
-  isLight: true
-};
-
 export const Small = Template.bind({});
 Small.args = {
   min: 0,
@@ -39,4 +36,13 @@ Small.args = {
   step: 1,
   isSmall: true,
   isLight: false
+};
+
+export const Light = LightTheme.bind({});
+Light.args = {
+  min: 0,
+  max: 100,
+  step: 1,
+  isSmall: false,
+  isLight: true
 };

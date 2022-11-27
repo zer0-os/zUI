@@ -41,7 +41,7 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
           <SliderTrack className={styles.SliderTrack}>
             <SliderRange className={cx(styles.SliderRange, { SmallRange: isSmall, LightRange: isLight })} />
           </SliderTrack>
-          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, Light: isLight })} />
+          <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
         </SliderRoot>
       </form>
     </>

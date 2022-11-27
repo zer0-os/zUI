@@ -16,6 +16,14 @@ const Template: ComponentStory<typeof StandardSlider> = args => {
   );
 };
 
+const LightTheme: ComponentStory<typeof StandardSlider> = args => {
+  return (
+    <StoryCard>
+      <StandardSlider {...args} />
+    </StoryCard>
+  );
+};
+
 export const Default = Template.bind({});
 Default.args = {
   min: 0,
@@ -26,16 +34,6 @@ Default.args = {
   value: 50
 };
 
-export const Light = Template.bind({});
-Light.args = {
-  min: 0,
-  max: 100,
-  step: 1,
-  isSmall: false,
-  isLight: true,
-  value: 50
-};
-
 export const Small = Template.bind({});
 Small.args = {
   min: 0,
@@ -43,5 +41,15 @@ Small.args = {
   step: 1,
   isSmall: true,
   isLight: false,
+  value: 50
+};
+
+export const Light = LightTheme.bind({});
+Light.args = {
+  min: 0,
+  max: 100,
+  step: 1,
+  isSmall: false,
+  isLight: true,
   value: 50
 };
