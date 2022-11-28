@@ -70,3 +70,10 @@
   height: 1rem;
   width: 1rem;
 }
+
+.SliderThumb:focus {
+  outline: none;
+  outline-width: 0.1rem;
+  outline-style: solid;
+  box-shadow: 0 0 0 0.2rem #26edcc
+}
