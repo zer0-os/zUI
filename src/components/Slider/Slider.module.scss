@@ -1,3 +1,14 @@
+
+.RootContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.LightRootContainer {
+  color: black;
+}
+
 .SliderRoot {
   position: relative;
   display: flex;
@@ -42,11 +53,12 @@
 
 .SliderThumb {
   display: block;
-  height: 1.75rem;
-  width: 1.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
   background-color: #ededef;
   border: 0.125rem solid #67eace;
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 .LightThumb {
@@ -54,15 +66,7 @@
   border: 0.125rem solid #26edcc;
 }
 
-.SliderThumb:focus {
-  outline: none;
-}
-
 .SmallThumb {
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
-.ValueDisplay {
-  padding-bottom: 1rem;
+  height: 1rem;
+  width: 1rem;
 }

@@ -24,10 +24,8 @@ export interface RangeSliderProps {
 export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, values, isSmall, minStep, isLight }) => {
   const [currentValues, setCurrentValues] = useState(values ?? [min, max]);
   return (
-    <>
-      <div className={styles.ValueDisplay}>
-        {currentValues[0]} - {currentValues[1]}
-      </div>
+    <div className={cx(styles.RootContainer, { LightRootContainer: isLight })}>
+      {currentValues[0]} - {currentValues[1]}
       <form>
         <SliderRoot
           className={cx(styles.SliderRoot, { SmallRoot: isSmall, LightRoot: isLight })}
@@ -46,6 +44,6 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ step, min, max, values
           <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
         </SliderRoot>
       </form>
-    </>
+    </div>
   );
 };

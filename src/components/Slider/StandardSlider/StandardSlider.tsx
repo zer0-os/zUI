@@ -26,8 +26,8 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
   const [currentValue, setCurrentValue] = useState([value]);
 
   return (
-    <>
-      <div className={styles.ValueDisplay}>{currentValue}</div>
+    <div className={cx(styles.RootContainer, { LightRootContainer: isLight })}>
+      {currentValue}
       <form>
         <SliderRoot
           className={cx(styles.SliderRoot, { SmallRoot: isSmall, LightRoot: isLight })}
@@ -44,6 +44,6 @@ export const StandardSlider: React.FC<SliderProps> = ({ step, min, max, value, i
           <SliderThumb className={cx(styles.SliderThumb, { SmallThumb: isSmall, LightThumb: isLight })} />
         </SliderRoot>
       </form>
-    </>
+    </div>
   );
 };
