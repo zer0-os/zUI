@@ -77,7 +77,7 @@ export const Checkbox = ({
     <div
       className={cx(className, styles.Container, {
         [styles.DisabledCheckbox]: isDisabled,
-        [styles.LightBg]: hasLightBackground
+        [styles.LightBackground]: hasLightBackground
       })}
     >
       <RadixCheckbox.Root
