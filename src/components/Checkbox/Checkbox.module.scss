@@ -3,21 +3,26 @@
 button {
   all: unset;
 }
+
 .Container {
   display: flex;
   align-items: center;
   padding: 4px;
-  &:focus-within {
-    border-radius: 8px;
-    outline: 1px solid #{$green-11};
-  }
-  &:hover{
+}
+
+.Container:focus-within {
+  border-radius: 8px;
+  outline: 1px solid #{$green-11};
+}
+
+.Container:hover {
+  cursor: pointer;
+
+  .Label:hover {
     cursor: pointer;
-    & .Label:hover{
-      cursor: pointer;
-    }
   }
 }
+
 .CheckboxRoot {
   min-width: 14px;
   min-height: 14px;
@@ -26,14 +31,15 @@ button {
   align-items: center;
   justify-content: center;
   border: 1px solid #{$green-11};
-  
-  &:hover {
-    background-color: transparentize($green-11, 0.7);
-    box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
-  }
+
   .CheckboxIndicator {
     color: #{$dark-secondary};
   }
+}
+
+.CheckboxRoot:hover {
+  background-color: transparentize($green-11, 0.7);
+  box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
 }
 
 .Label {
@@ -43,24 +49,28 @@ button {
   user-select: none;
   color: #{$purple-12};
   padding-right: 4px;
-  &.hasOnlyLink{
+
+  .HasLabel {
     padding-left: 4px;
   }
-  .hasLable {
-    padding-left: 4px;
-  }
+
   .Link {
     text-decoration: none;
     color: #{$green-11};
   }
 }
 
+.Label .HasOnlyLink {
+  padding-left: 4px;
+}
+
 .CheckedCheckboxRoot {
   background-color: #{$green-11};
-  &:hover {
-    background-color: #{$green-11};
-    box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
-  }
+}
+
+.CheckedCheckboxRoot:hover {
+  background-color: #{$green-11};
+  box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
 }
 
 .DisabledCheckbox {
@@ -68,50 +78,60 @@ button {
     background: #{$grey-11};
     border: 1px solid #{$grey-9};
     cursor: not-allowed;
-    &.CheckedCheckboxRoot {
-      .CheckboxIndicator {
-        color: #{$grey-12};
-      }
-    }
-    &:hover {
-      background-color: #{$grey-11};
-      box-shadow: none;
+  }
+
+  .CheckedCheckboxRoot {
+    .CheckboxIndicator {
+      color: #{$grey-12};
     }
   }
+
+  .CheckboxRoot:hover {
+    background-color: #{$grey-11};
+    box-shadow: none;
+  }
+
   .Label {
     color: #{$grey-11};
     cursor: not-allowed;
+
     .Link {
       color: #{$grey-9};
     }
   }
-  &:hover{
+}
+
+.DisabledCheckbox:hover {
+  cursor: not-allowed;
+
+  .Label:hover {
     cursor: not-allowed;
-    & .Label:hover{
-      cursor: not-allowed;
-    }
   }
 }
 
 .LightBg {
   .CheckboxRoot {
     border: 1px solid #{$green-12};
-    &:hover {
-      background-color: transparentize($green-12, 0.7);
-      box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
-    }
-    &.CheckedCheckboxRoot {
-      background: #{$green-12};
-      &:hover {
-        background-color: #{$green-12};
-      }
-    }
   }
-  
+
+  .CheckboxRoot:hover {
+    background-color: transparentize($green-12, 0.7);
+    box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
+  }
+
+  .CheckedCheckboxRoot {
+    background: #{$green-12};
+  }
+
+  .CheckedCheckboxRoot:hover {
+    background-color: #{$green-12};
+  }
+
   .CheckboxIndicator {
     color: #fff;
   }
+
   .Label {
-    color: #2B0E44;
+    color: #2b0e44;
   }
 }

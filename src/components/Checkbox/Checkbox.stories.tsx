@@ -8,154 +8,64 @@ export default {
   component: Checkbox
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = args => {
-  return (
-    <StoryCard isContrast>
-      <Checkbox {...args} />
-    </StoryCard>
-  );
-};
+const Template: ComponentStory<typeof Checkbox> = args => (
+  <StoryCard isContrast>
+    <Checkbox {...args} />
+  </StoryCard>
+);
 
-const LightThemeTemplate: ComponentStory<typeof Checkbox> = args => {
-  return (
-    <StoryCard>
-      <Checkbox {...args} />
-    </StoryCard>
-  );
-};
+const LightThemeTemplate: ComponentStory<typeof Checkbox> = args => (
+  <StoryCard>
+    <Checkbox {...args} />
+  </StoryCard>
+);
 
-export const DefaultCheckbox = Template.bind({});
-DefaultCheckbox.args = {
+export const Default = Template.bind({});
+Default.args = {
   name: 'DefaultCheckbox',
   text: 'Text'
 };
 
-export const DefaultDisabled = Template.bind({});
-DefaultDisabled.args = {
-  name: 'DefaultDisabledCheckboxChecked',
+export const Disabled = Template.bind({});
+Disabled.args = {
+  name: 'Disabled',
   text: 'Text',
   isDisabled: true
 };
 
-export const DefaultChecked = Template.bind({});
-DefaultChecked.args = {
-  name: 'DefaultCheckboxChecked',
-  text: 'Text',
-  checked: true
-};
-export const DefaultDisabledChecked = Template.bind({});
-DefaultDisabledChecked.args = {
-  name: 'DefaultDisabledCheckboxChecked',
-  text: 'Text',
-  checked: true,
-  isDisabled: true
+export const WithoutText = Template.bind({});
+WithoutText.args = {
+  name: 'WithoutText'
 };
 
-export const withoutText = Template.bind({});
-withoutText.args = {
-  name: 'WithoutTextCheckbox'
-};
-
-export const withoutTextDisabled = Template.bind({});
-withoutTextDisabled.args = {
-  name: 'WithoutTextCheckbox',
-  isDisabled: true
-};
-
-export const withoutTextChecked = Template.bind({});
-withoutTextChecked.args = {
-  name: 'WithoutTextCheckboxChecked',
-  checked: true
-};
-
-export const withoutTextCheckedDisabled = Template.bind({});
-withoutTextCheckedDisabled.args = {
-  name: 'WithoutTextCheckboxChecked',
-  checked: true,
-  isDisabled: true
-};
-
-export const LinkCheckbox = Template.bind({});
-LinkCheckbox.args = {
-  name: 'LinkCheckbox',
+export const LabelAndLink = Template.bind({});
+LabelAndLink.args = {
+  name: 'LabelAndLink',
   text: 'Text',
   link: 'Text',
-  redirectLinkTriggered: () => {
+  onLinkClick: () => {
     console.log('Redirected link');
   }
 };
 
-export const LinkDisabled = Template.bind({});
-LinkDisabled.args = {
-  name: 'LinkCheckboxCheckedDisabled',
-  text: 'Text',
+export const Link = Template.bind({});
+Link.args = {
+  name: 'Link',
   link: 'Text',
-  isDisabled: true
-};
-
-export const LinkChecked = Template.bind({});
-LinkChecked.args = {
-  name: 'LinkCheckboxChecked',
-  text: 'Text',
-  link: 'Text',
-  checked: true,
-  redirectLinkTriggered: () => {
-    console.log('Redirected link');
-  }
-};
-export const LinkCheckedDisabled = Template.bind({});
-LinkCheckedDisabled.args = {
-  name: 'LinkCheckboxCheckedDisabled',
-  text: 'Text',
-  link: 'Text',
-  checked: true,
-  isDisabled: true
-};
-
-export const LinkWithoutText = Template.bind({});
-LinkWithoutText.args = {
-  name: 'LinkWithoutTextCheckbox',
-  link: 'Text',
-  redirectLinkTriggered: () => {
+  onLinkClick: () => {
     console.log('Redirected link');
   }
 };
 
-export const LinkWithoutTextDisabled = Template.bind({});
-LinkWithoutTextDisabled.args = {
-  name: 'LinkWithoutTextCheckbox',
-  link: 'Text',
-  isDisabled: true
-};
-
-export const LinkWithoutTextChecked = Template.bind({});
-LinkWithoutTextChecked.args = {
-  name: 'LinkWithoutTextCheckboxChecked',
-  link: 'Text',
-  checked: true,
-  redirectLinkTriggered: () => {
-    console.log('Redirected link');
-  }
-};
-
-export const LinkWithoutTextCheckedDisabled = Template.bind({});
-LinkWithoutTextCheckedDisabled.args = {
-  name: 'LinkWithoutTextCheckboxChecked',
-  link: 'Text',
-  checked: true,
-  isDisabled: true
-};
-
-export const LongContentFull = Template.bind({});
-LongContentFull.args = {
-  name: 'LongTextCheckBox',
+export const LongContent = Template.bind({});
+LongContent.args = {
+  name: 'LongContent',
   text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled '
 };
 
-export const LightThemeCheckbox = LightThemeTemplate.bind({});
-LightThemeCheckbox.args = {
-  name: 'LightThemeCheckbox',
+export const Light = LightThemeTemplate.bind({});
+Light.args = {
+  name: 'Light',
   text: 'Text',
-  hasLightBg: true
+  hasLightBackground: true
 };
-
