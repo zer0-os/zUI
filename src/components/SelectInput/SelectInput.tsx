@@ -7,6 +7,7 @@ import { AlertProps } from '../Alert';
 
 import styles from './SelectInput.module.scss';
 import classNames from 'classnames/bind';
+const cx = classNames.bind(styles);
 
 export type SelectInputProps = {
   className?: string;
@@ -37,8 +38,10 @@ export const SelectInput: FC<SelectInputProps> = ({
   const trigger = (
     <Input
       className={styles.InputContainer}
-      wrapperClassName={classNames(styles.Wrapper, isOpen && styles.WrapperOpen)}
-      inputClassName={classNames(styles.Input, isOpen && styles.InputOpen)}
+      wrapperClassName={cx(styles.Wrapper, {
+        WrapperOpen: isOpen
+      })}
+      inputClassName={cx(styles.Input, { InputOpen: isOpen })}
       type="text"
       label={label}
       placeholder={placeholder}
@@ -52,5 +55,13 @@ export const SelectInput: FC<SelectInputProps> = ({
     />
   );
 
-  return <DropdownMenu trigger={trigger} items={items} open={isOpen} onOpenChange={onOpenChange} />;
+  return (
+    <DropdownMenu
+      menuClassName={cx({ AlertOverlap: alert })}
+      trigger={trigger}
+      items={items}
+      open={isOpen}
+      onOpenChange={onOpenChange}
+    />
+  );
 };

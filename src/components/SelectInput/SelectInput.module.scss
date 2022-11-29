@@ -1,7 +1,7 @@
 @import '../../styles/colors';
 
 .InputContainer {
-    min-width: 16rem;
+    min-width: 17rem;
     text-align: left;
 }
 
@@ -19,4 +19,8 @@ Input:hover, .Wrapper:hover {
 
 .InputOpen {
     font-weight: bold;
+}
+
+.AlertOverlap {
+    margin-top: -3.25rem;
 }

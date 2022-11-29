@@ -40,10 +40,26 @@ export interface DropdownMenuProps {
 
   /** Class to apply to the trigger */
   className?: string;
+
+  /** Class to apply to the menu */
+  menuClassName?: string;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
-  ({ className, alignMenu = 'center', items, trigger, side = 'bottom', open, defaultOpen, onOpenChange }, ref) => {
+  (
+    {
+      className,
+      menuClassName,
+      alignMenu = 'center',
+      items,
+      trigger,
+      side = 'bottom',
+      open,
+      defaultOpen,
+      onOpenChange
+    },
+    ref
+  ) => {
     const triggerElement = !trigger ? <span>...</span> : typeof trigger === 'string' ? <span>{trigger}</span> : trigger;
 
     return (
@@ -51,7 +67,12 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
         <RadixUIDropdownMenuTrigger className={classNames(className, 'zui-dropdown-trigger')}>
           {triggerElement}
         </RadixUIDropdownMenuTrigger>
-        <RadixUIDropdownMenuContent className={'zui-dropdown-menu'} align={alignMenu} side={side} ref={ref}>
+        <RadixUIDropdownMenuContent
+          className={classNames(menuClassName, 'zui-dropdown-menu')}
+          align={alignMenu}
+          side={side}
+          ref={ref}
+        >
           {items.map(item => (
             <RadixUIDropdownMenuItem
               className={classNames('zui-dropdown-item', item.className)}
