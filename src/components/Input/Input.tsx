@@ -12,6 +12,8 @@ export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange
   className?: string;
   wrapperClassName?: string;
   inputClassName?: string;
+  alertClassName?: string;
+  helperTextClassName?: string;
   error?: boolean;
   // @deprecated
   success?: boolean;
@@ -44,6 +46,8 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
       className,
       wrapperClassName,
       inputClassName,
+      alertClassName,
+      helperTextClassName,
       endEnhancer,
       startEnhancer,
       error,
@@ -74,7 +78,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
 
     return (
       <div data-disabled={isDisabled} className={classNames(className, styles.Container)} ref={ref}>
-        <Labels label={label} helperText={helperText} />
+        <Labels className={helperTextClassName} label={label} helperText={helperText} />
         <div
           onClick={clickWrapper}
           className={classNames(styles.Wrapper, wrapperClassName)}
@@ -95,19 +99,31 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
           />
           {endEnhancer && <Enhancer value={endEnhancer} />}
         </div>
-        {alert && <Alert variant={alert.variant}>{alert.text}</Alert>}
+        {alert && (
+          <Alert className={alertClassName} variant={alert.variant}>
+            {alert.text}
+          </Alert>
+        )}
       </div>
     );
   }
 );
 
-const Labels = ({ label, helperText }: { label?: InputProps['label']; helperText?: InputProps['helperText'] }) => {
+const Labels = ({
+  className,
+  label,
+  helperText
+}: {
+  className?: string;
+  label?: InputProps['label'];
+  helperText?: InputProps['helperText'];
+}) => {
   if (!label && !helperText) {
     return null;
   }
 
   return (
-    <div className={styles.Labels}>
+    <div className={classNames(className, styles.Labels)}>
       {label && <label className={styles.Label}>{label}</label>}
       {helperText && <p className={styles.Helper}>{helperText}</p>}
     </div>

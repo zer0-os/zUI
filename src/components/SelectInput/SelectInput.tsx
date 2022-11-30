@@ -42,6 +42,8 @@ export const SelectInput: FC<SelectInputProps> = ({
         WrapperOpen: isOpen
       })}
       inputClassName={cx(styles.Input, { InputOpen: isOpen })}
+      alertClassName={styles.Alert}
+      helperTextClassName={styles.HelperText}
       type="text"
       label={label}
       placeholder={placeholder}

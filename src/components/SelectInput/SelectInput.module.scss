@@ -21,6 +21,10 @@ Input:hover, .Wrapper:hover {
     font-weight: bold;
 }
 
+.Alert, .HelperText  {
+    max-width: 16rem;
+}
+
 .AlertOverlap {
     margin-top: -3.25rem;
 }
