@@ -41,7 +41,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       wrapperClassName={cx(styles.Wrapper, {
         WrapperOpen: isOpen
       })}
-      inputClassName={cx(styles.Input, { InputOpen: isOpen })}
+      inputClassName={styles.Input}
       alertClassName={styles.Alert}
       helperTextClassName={styles.HelperText}
       type="text"

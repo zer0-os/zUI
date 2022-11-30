@@ -65,7 +65,7 @@ Error.args = {
   placeholder: 'Select a fruit...',
   alert: {
     variant: 'error',
-    text: 'The fruit choice is not delicious!'
+    text: 'Not delicious!'
   },
   error: true
 };
