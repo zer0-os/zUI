@@ -1,3 +1,5 @@
+@import '../../styles/colors';
+
 .RootContainer {
   display: flex;
   flex-direction: column;
@@ -13,7 +15,7 @@
   display: flex;
   align-items: center;
   width: 18.75rem;
-  background-color: #37273f;
+  background-color: #{$purple-light-4};
   border-radius: 1rem;
   height: 1rem;
 }
@@ -35,7 +37,7 @@
 
 .SliderRange {
   position: absolute;
-  background-color: #67eace;
+  background-color: #{$blue-dark-9};
   border-radius: 2rem;
   height: 1rem;
   top: -0.4rem;
@@ -47,22 +49,22 @@
 }
 
 .LightRange {
-  background-color: #26edcc;
+  background-color: #{$blue-light-9};
 }
 
 .SliderThumb {
   display: block;
   height: 1.5rem;
   width: 1.5rem;
-  background-color: #ededef;
-  border: 0.125rem solid #67eace;
+  background-color: #{$grey-dark-12};
+  border: 0.125rem solid #{$blue-dark-9};
   border-radius: 1rem;
   cursor: pointer;
 }
 
 .LightThumb {
-  background-color: #1a1523;
-  border: 0.125rem solid #26edcc;
+  background-color: #{$grey-light-12};
+  border: 0.125rem solid #{$blue-light-9};
 }
 
 .SmallThumb {
@@ -74,5 +76,5 @@
   outline: none;
   outline-width: 0.1rem;
   outline-style: solid;
-  box-shadow: 0 0 0 0.2rem #67eace;
+  box-shadow: 0 0 0 0.2rem #{$blue-dark-9};
 }
