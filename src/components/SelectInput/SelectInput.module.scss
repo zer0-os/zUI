@@ -3,24 +3,24 @@
 .InputContainer {
     min-width: 17rem;
     text-align: left;
-}
 
-.WrapperOpen {
-    background-color: #{$purple-10};
-}
+    .Wrapper:hover {
+        border-color: #8E4EC6;
+    }
 
-Input:hover, .Wrapper:hover {
-    cursor: pointer;
-}
+    .WrapperOpen {
+        background-color: #{$purple-10};
+    }
 
-.Wrapper:hover {
-    border-color: #8E4EC6;
-}
-
-.Alert, .HelperText  {
-    max-width: 16rem;
-}
-
-.AlertOverlap {
-    margin-top: -3.25rem;
+    Input:hover, .Wrapper:hover {
+        cursor: pointer;
+    }
+    
+    .Alert, .HelperText  {
+        max-width: 16rem;
+    }
+    
+    .AlertOverlap {
+        margin-top: -3.25rem;
+    }
 }
