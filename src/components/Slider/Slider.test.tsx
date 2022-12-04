@@ -1,6 +1,6 @@
 import React from 'react';
-import { StandardSlider, SliderProps } from './StandardSlider';
-import { render } from '@testing-library/react';
+import { Slider, SliderProps } from './Slider';
+import { render, screen } from '@testing-library/react';
 
 const mockSliderRoot = jest.fn();
 const mockSliderRange = jest.fn();
@@ -47,7 +47,9 @@ const DEFAULT_PROPS: SliderProps = {
   min: 0,
   max: 100,
   value: 20,
-  isSmall: false
+  isSmall: false,
+  isLight: false,
+  isRangeSlider: false
 };
 
 afterEach(() => {
@@ -55,23 +57,28 @@ afterEach(() => {
 });
 
 test('should pass props to Radix Slider Root', () => {
-  render(<StandardSlider {...DEFAULT_PROPS} min={20} step={1} isSmall />);
+  render(<Slider {...DEFAULT_PROPS} min={20} step={1} isSmall />);
   expect(mockSliderRoot).toHaveBeenCalledWith(
     expect.objectContaining({ className: 'SliderRoot SmallRoot', min: 20, step: 1 })
   );
 });
 
 test('should pass props to Radix Slider Track', () => {
-  render(<StandardSlider {...DEFAULT_PROPS} />);
+  render(<Slider {...DEFAULT_PROPS} />);
   expect(mockSliderTrack).toHaveBeenCalledWith(expect.objectContaining({ className: 'SliderTrack' }));
 });
 
 test('should correctly apply small classes to Radix Slider Range', () => {
-  render(<StandardSlider {...DEFAULT_PROPS} isSmall />);
+  render(<Slider {...DEFAULT_PROPS} isSmall />);
   expect(mockSliderRange).toHaveBeenCalledWith(expect.objectContaining({ className: 'SliderRange SmallRange' }));
 });
 
 test('should pass props to Radix Slider Thumb', () => {
-  render(<StandardSlider {...DEFAULT_PROPS} />);
+  render(<Slider {...DEFAULT_PROPS} />);
   expect(mockSliderThumb).toHaveBeenCalledWith(expect.objectContaining({ className: 'SliderThumb' }));
+});
+
+test('should correctly render both thumbs', () => {
+  render(<Slider {...DEFAULT_PROPS} isRangeSlider />);
+  expect(screen.getAllByTestId('thumb').length).toEqual(2);
 });
