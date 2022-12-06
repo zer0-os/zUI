@@ -28,7 +28,7 @@
           top: -0.39rem;
         }
 
-        .SmallRange {
+        .Range[data-size="small"] {
           height: 0.5rem;
           top: -0.1rem;
         }
@@ -60,13 +60,13 @@
         border: 0.125rem solid $blue-light-9;
       }
       
-      .SmallThumb {
+      .Thumb[data-size="small"] {
         height: 1rem;
         width: 1rem;
       }
     }
   
-  .SmallRoot {
+  .Root[data-size="small"] {
     height: 0.5rem;
   }
   

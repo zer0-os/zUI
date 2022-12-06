@@ -26,6 +26,9 @@ Default.args = {
   max: 100,
   step: 1,
   value: 50,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: false,
   isLight: false,
   isRangeSlider: false
@@ -36,8 +39,10 @@ Range.args = {
   min: 0,
   max: 100,
   step: 1,
-  value: 50,
   minStep: 10,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: false,
   isLight: false,
   isRangeSlider: true
@@ -49,6 +54,9 @@ Small.args = {
   max: 100,
   step: 1,
   value: 50,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: true,
   isLight: false,
   isRangeSlider: false
@@ -59,8 +67,10 @@ SmallRange.args = {
   min: 0,
   max: 100,
   step: 1,
-  value: 50,
   minStep: 10,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: true,
   isLight: false,
   isRangeSlider: true
@@ -72,6 +82,9 @@ Light.args = {
   max: 100,
   step: 1,
   value: 50,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: false,
   isLight: true,
   isRangeSlider: false
@@ -82,8 +95,10 @@ LightRange.args = {
   min: 0,
   max: 100,
   step: 1,
-  value: 50,
   minStep: 10,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: false,
   isLight: true,
   isRangeSlider: true
@@ -94,8 +109,10 @@ SmallLightRange.args = {
   min: 0,
   max: 100,
   step: 1,
-  value: 50,
   minStep: 10,
+  onValueChange: (value: number[]) => {
+    console.log(value);
+  },
   isSmall: true,
   isLight: true,
   isRangeSlider: true

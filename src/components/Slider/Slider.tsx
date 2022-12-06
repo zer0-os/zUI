@@ -16,29 +16,50 @@ export interface SliderProps {
   isLight?: boolean;
   isSmall?: boolean;
   isRangeSlider?: boolean;
+  label?: string;
+  onValueChange?: (value: number[]) => void;
 }
 
-export const Slider: React.FC<SliderProps> = ({ step, min, max, value, isSmall, isLight, isRangeSlider, minStep }) => {
+export const Slider: React.FC<SliderProps> = ({
+  step,
+  min,
+  max,
+  value,
+  isSmall,
+  isLight,
+  isRangeSlider,
+  minStep,
+  label,
+  onValueChange
+}) => {
+  const thumbStyles = cx(styles.Thumb, { LightThumb: isLight });
   const [currentValues, setCurrentValues] = useState(!isRangeSlider ? [value] : [min, max]);
+
+  const handleChange = (value: number[]) => {
+    onValueChange(value);
+    setCurrentValues(value);
+  };
+
   return (
     <div className={cx(styles.Container, { LightContainer: isLight })}>
       {!isRangeSlider ? currentValues[0] : `${currentValues[0]} - ${currentValues[1]}`}
       <form>
         <Root
-          className={cx(styles.Root, { SmallRoot: isSmall, LightRoot: isLight })}
-          defaultValue={currentValues}
+          className={cx(styles.Root, { LightRoot: isLight })}
+          data-size={isSmall ? 'small' : ''}
+          value={currentValues}
           min={min}
           max={max}
           step={step}
           minStepsBetweenThumbs={isRangeSlider ? minStep : 1}
-          aria-label="Slider"
-          onValueChange={value => setCurrentValues(value)}
+          aria-label={label}
+          onValueChange={value => handleChange(value)}
         >
           <Track className={styles.Track}>
-            <Range className={cx(styles.Range, { SmallRange: isSmall, LightRange: isLight })} />
+            <Range className={cx(styles.Range, { LightRange: isLight })} data-size={isSmall ? 'small' : ''} />
           </Track>
-          <Thumb className={cx(styles.Thumb, { SmallThumb: isSmall, LightThumb: isLight })} />
-          {isRangeSlider ? <Thumb className={cx(styles.Thumb, { SmallThumb: isSmall, LightThumb: isLight })} /> : <></>}
+          <Thumb className={thumbStyles} data-size={isSmall ? 'small' : ''} />
+          {isRangeSlider ? <Thumb className={thumbStyles} data-size={isSmall ? 'small' : ''} /> : <></>}
         </Root>
       </form>
     </div>
