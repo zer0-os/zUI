@@ -13,8 +13,7 @@ export interface SliderProps {
   value?: number;
   className?: string;
   minStep?: number;
-  isLight?: boolean;
-  isSmall?: boolean;
+  size?: 'default' | 'small';
   isRangeSlider?: boolean;
   label?: string;
   onValueChange?: (value: number[]) => void;
@@ -25,14 +24,13 @@ export const Slider: React.FC<SliderProps> = ({
   min,
   max,
   value,
-  isSmall,
-  isLight,
+  size,
   isRangeSlider,
   minStep,
   label,
   onValueChange
 }) => {
-  const thumbStyles = cx(styles.Thumb, { LightThumb: isLight });
+  const thumbStyles = cx(styles.Thumb);
   const [currentValues, setCurrentValues] = useState(!isRangeSlider ? [value] : [min, max]);
 
   const handleChange = (value: number[]) => {
@@ -41,27 +39,25 @@ export const Slider: React.FC<SliderProps> = ({
   };
 
   return (
-    <div className={cx(styles.Container, { LightContainer: isLight })}>
+    <div className={cx(styles.Container)}>
       {!isRangeSlider ? currentValues[0] : `${currentValues[0]} - ${currentValues[1]}`}
-      <form>
-        <Root
-          className={cx(styles.Root, { LightRoot: isLight })}
-          data-size={isSmall ? 'small' : ''}
-          value={currentValues}
-          min={min}
-          max={max}
-          step={step}
-          minStepsBetweenThumbs={isRangeSlider ? minStep : 1}
-          aria-label={label}
-          onValueChange={value => handleChange(value)}
-        >
-          <Track className={styles.Track}>
-            <Range className={cx(styles.Range, { LightRange: isLight })} data-size={isSmall ? 'small' : ''} />
-          </Track>
-          <Thumb className={thumbStyles} data-size={isSmall ? 'small' : ''} />
-          {isRangeSlider ? <Thumb className={thumbStyles} data-size={isSmall ? 'small' : ''} /> : <></>}
-        </Root>
-      </form>
+      <Root
+        className={cx(styles.Root)}
+        data-size={size}
+        value={currentValues}
+        min={min}
+        max={max}
+        step={step}
+        minStepsBetweenThumbs={isRangeSlider ? minStep : 1}
+        aria-label={label}
+        onValueChange={value => handleChange(value)}
+      >
+        <Track className={styles.Track}>
+          <Range className={cx(styles.Range)} data-size={size} />
+        </Track>
+        <Thumb className={thumbStyles} data-size={size} />
+        {isRangeSlider ? <Thumb className={thumbStyles} data-size={size} /> : <></>}
+      </Root>
     </div>
   );
 };

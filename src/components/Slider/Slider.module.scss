@@ -30,11 +30,7 @@
 
         .Range[data-size="small"] {
           height: 0.5rem;
-          top: -0.1rem;
-        }
-          
-        .LightRange {
-          background-color: $blue-light-9;
+          top: -0.11rem;
         }
       }
       
@@ -55,11 +51,6 @@
         box-shadow: 0 0 0 0.2rem $blue-dark-9;
       }
       
-      .LightThumb {
-        background-color: $grey-light-12;
-        border: 0.125rem solid $blue-light-9;
-      }
-      
       .Thumb[data-size="small"] {
         height: 1rem;
         width: 1rem;
@@ -69,12 +60,4 @@
   .Root[data-size="small"] {
     height: 0.5rem;
   }
-  
-  .LightRoot {
-    background-color: #e8e7e9;
-  }
-}
-
-.LightContainer {
-  color: $black;
 }

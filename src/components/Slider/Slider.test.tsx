@@ -47,8 +47,6 @@ const DEFAULT_PROPS: SliderProps = {
   min: 0,
   max: 100,
   value: 20,
-  isSmall: false,
-  isLight: false,
   isRangeSlider: false
 };
 
@@ -57,28 +55,28 @@ afterEach(() => {
 });
 
 test('should pass props to Radix Slider Root', () => {
-  render(<Slider {...DEFAULT_PROPS} min={20} step={1} isSmall />);
+  render(<Slider {...DEFAULT_PROPS} min={20} step={1} size="small" />);
   expect(mockSliderRoot).toHaveBeenCalledWith(
-    expect.objectContaining({ className: 'SliderRoot SmallRoot', min: 20, step: 1 })
+    expect.objectContaining({ className: 'Root', min: 20, step: 1, 'data-size': 'small' })
   );
 });
 
 test('should pass props to Radix Slider Track', () => {
   render(<Slider {...DEFAULT_PROPS} />);
-  expect(mockSliderTrack).toHaveBeenCalledWith(expect.objectContaining({ className: 'SliderTrack' }));
+  expect(mockSliderTrack).toHaveBeenCalledWith(expect.objectContaining({ className: 'Track' }));
 });
 
 test('should correctly apply small classes to Radix Slider Range', () => {
-  render(<Slider {...DEFAULT_PROPS} isSmall />);
-  expect(mockSliderRange).toHaveBeenCalledWith(expect.objectContaining({ className: 'SliderRange SmallRange' }));
+  render(<Slider {...DEFAULT_PROPS} size="small" />);
+  expect(mockSliderRange).toHaveBeenCalledWith(expect.objectContaining({ 'data-size': 'small', className: 'Range' }));
 });
 
 test('should pass props to Radix Slider Thumb', () => {
   render(<Slider {...DEFAULT_PROPS} />);
-  expect(mockSliderThumb).toHaveBeenCalledWith(expect.objectContaining({ className: 'SliderThumb' }));
+  expect(mockSliderThumb).toHaveBeenCalledWith(expect.objectContaining({ className: 'Thumb' }));
 });
 
-test('should correctly render both thumbs', () => {
+test('should correctly render both thumbs when isRangeSlider is true', () => {
   render(<Slider {...DEFAULT_PROPS} isRangeSlider />);
   expect(screen.getAllByTestId('thumb').length).toEqual(2);
 });
