@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Checkbox, CheckboxProps } from './';
+import { Checkbox, CheckboxProps, LinkProps } from './';
 
 const mockOnChange = jest.fn();
 const triggerLink = jest.fn();
@@ -41,13 +41,15 @@ describe('<Checkbox />', () => {
   });
 
   test('should call the triggerLink function when the user clicks on the link', () => {
-    render(<Checkbox {...DEFAULT_PROPS} link="helloLink" onLinkClick={triggerLink} />);
+    const linkData: LinkProps = { text: 'helloLink', onClick: () => triggerLink() };
+    render(<Checkbox {...DEFAULT_PROPS} link={linkData} />);
     fireEvent.click(screen.getByText('helloLink', { exact: false }));
     expect(triggerLink).toBeCalledTimes(1);
   });
 
   test('should not call the triggerLink function when the checkbox is disabled and user clicks on the link', () => {
-    render(<Checkbox {...DEFAULT_PROPS} link="helloLink" isDisabled onLinkClick={triggerLink} />);
+    const linkData: LinkProps = { text: 'helloLink', onClick: () => triggerLink() };
+    render(<Checkbox {...DEFAULT_PROPS} link={linkData} isDisabled />);
     fireEvent.click(screen.getByText('helloLink', { exact: false }));
     expect(triggerLink).toBeCalledTimes(0);
   });

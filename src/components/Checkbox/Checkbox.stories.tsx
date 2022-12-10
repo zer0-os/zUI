@@ -42,18 +42,22 @@ export const LabelAndLink = Template.bind({});
 LabelAndLink.args = {
   name: 'LabelAndLink',
   text: 'Text',
-  link: 'Text',
-  onLinkClick: () => {
-    console.log('Redirected link');
+  link: {
+    text: 'Text',
+    onClick: () => {
+      console.log('Redirected link');
+    }
   }
 };
 
 export const Link = Template.bind({});
 Link.args = {
   name: 'Link',
-  link: 'Text',
-  onLinkClick: () => {
-    console.log('Redirected link');
+  link: {
+    text: 'Text',
+    onClick: () => {
+      console.log('Redirected link');
+    }
   }
 };
 
@@ -61,11 +65,4 @@ export const LongContent = Template.bind({});
 LongContent.args = {
   name: 'LongContent',
   text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled '
-};
-
-export const Light = LightThemeTemplate.bind({});
-Light.args = {
-  name: 'Light',
-  text: 'Text',
-  hasLightBackground: true
 };
