@@ -1,137 +1,100 @@
 @import '../../styles/colors';
 
-button {
-  all: unset;
+.ZuiCheckbox {
+  --zui-checbox-cursor: pointer;
+  --zui-checkbox-border: 0.0625rem solid #{$green-11};
+  --zui-checkbox-check-color: #{$dark-secondary};
+  --zui-checkbox-check-background: #{rgba($green-11, 0.3)};
+  --zui-checkbox-check-box-shadow: 0 0 0.25rem 0.03rem #{$green-light-75};
+  --zui-checkbox-label-color: #{$purple-12};
+  --zui-checkbox-link-color: #{$green-11};
+
+  &[data-disabled='true'] {
+    --zui-checbox-cursor: not-allowed;
+    --zui-checkbox-border: 0.0625rem solid #{$grey-9};
+    --zui-checkbox-check-color: #{$grey-12};
+    --zui-checkbox-check-box-shadow: none;
+    --zui-checkbox-label-color: #{$grey-11};
+    --zui-checkbox-link-color: #{$grey-9};
+  }
 }
 
-.Container {
+.ZuiCheckbox {
   display: flex;
   align-items: center;
-  padding: 4px;
-}
+  padding: 0.25rem;
 
-.Container:focus-within {
-  border-radius: 8px;
-  outline: 1px solid #{$green-11};
-}
-
-.Container:hover {
-  cursor: pointer;
-
-  .Label:hover {
-    cursor: pointer;
-  }
-}
-
-.CheckboxRoot {
-  min-width: 14px;
-  min-height: 14px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #{$green-11};
-
-  .CheckboxIndicator {
-    color: #{$dark-secondary};
-  }
-}
-
-.CheckboxRoot:hover {
-  background-color: transparentize($green-11, 0.7);
-  box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
-}
-
-.Label {
-  padding-left: 8px;
-  font-size: 16px;
-  line-height: 24px;
-  user-select: none;
-  color: #{$purple-12};
-  padding-right: 4px;
-
-  .HasLabel {
-    padding-left: 4px;
+  &:focus-within {
+    border-radius: 0.5rem;
+    outline: 0.0625rem solid $green-11;
   }
 
-  .Link {
-    text-decoration: none;
-    color: #{$green-11};
-  }
-}
+  &:hover {
+    cursor: var(--zui-checbox-cursor);
 
-.HasOnlyLink {
-  padding-left: 4px;
-}
-
-.CheckedCheckboxRoot {
-  background-color: #{$green-11};
-}
-
-.CheckedCheckboxRoot:hover {
-  background-color: #{$green-11};
-  box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
-}
-
-.DisabledCheckbox {
-  .CheckboxRoot {
-    background: #{$grey-11};
-    border: 1px solid #{$grey-9};
-    cursor: not-allowed;
-  }
-
-  .CheckedCheckboxRoot {
-    .CheckboxIndicator {
-      color: #{$grey-12};
+    .Label:hover {
+      cursor: var(--zui-checbox-cursor);
     }
   }
 
-  .CheckboxRoot:hover {
-    background-color: #{$grey-11};
-    box-shadow: none;
+  button {
+    all: unset;
+  }
+
+  .CheckboxRoot {
+    min-width: 0.875rem;
+    min-height: 0.875rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--zui-checkbox-border);
+
+    .CheckboxIndicator {
+      color: var(--zui-checkbox-check-color);
+    }
+
+    &:hover {
+      background-color: var(--zui-checkbox-check-background);
+      box-shadow: var(--zui-checkbox-check-box-shadow);
+    }
+
+    &[data-checked='true'] {
+      background-color: $green-11;
+
+      &:hover {
+        background-color: $green-11;
+        box-shadow: 0 0 0.25rem 0.03rem $green-light-75;
+      }
+    }
   }
 
   .Label {
-    color: #{$grey-11};
-    cursor: not-allowed;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    user-select: none;
+    color: var(--zui-checkbox-label-color);
+    padding-right: 0.25rem;
+    display: flex;
+
+    &[data-link='true'] {
+      padding-left: 0.25rem;
+    }
+
+    & [data-label-link='true'] {
+      padding-right: 0.25rem;
+    }
 
     .Link {
-      color: #{$grey-9};
+      text-decoration: none;
+      color: var(--zui-checkbox-link-color);
     }
   }
-}
 
-.DisabledCheckbox:hover {
-  cursor: not-allowed;
-
-  .Label:hover {
-    cursor: not-allowed;
-  }
-}
-
-.LightBackground {
-  .CheckboxRoot {
-    border: 1px solid #{$green-12};
-  }
-
-  .CheckboxRoot:hover {
-    background-color: transparentize($green-12, 0.7);
-    box-shadow: 0px 0px 4px 0.5px #{$green-light-75};
-  }
-
-  .CheckedCheckboxRoot {
-    background: #{$green-12};
-  }
-
-  .CheckedCheckboxRoot:hover {
-    background-color: #{$green-12};
-  }
-
-  .CheckboxIndicator {
-    color: #fff;
-  }
-
-  .Label {
-    color: #2b0e44;
+  &[data-disabled='true'] {
+    .CheckboxRoot {
+      background: $grey-11;
+    }
   }
 }
