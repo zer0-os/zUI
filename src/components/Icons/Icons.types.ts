@@ -7,7 +7,5 @@ export type IconProps = {
   label?: string;
   color?: string;
   size?: string | number;
-  width?: string | number;
-  height?: string | number;
   isFilled?: boolean;
 };
