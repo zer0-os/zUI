@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
-import { IconCheckBoxCheck } from '../Icons';
+import { IconCheck } from '../Icons';
 
 import classNames from 'classnames';
 import styles from './Checkbox.module.scss';
 const cx = classNames.bind(styles);
 
+export interface LinkProps {
+  text: string;
+  onClick?: () => void;
+}
 export interface CheckboxProps {
   className?: string;
   name: string;
   text?: string;
-  link?: string;
   isDisabled?: boolean;
   checked?: boolean;
-  hasLightBackground?: boolean;
+  link?: LinkProps;
+  variant?: 'Standard' | 'Advanced';
   onChange?: (value: boolean) => void;
-  onLinkClick?: () => void;
 }
 
 export const Checkbox = ({
@@ -26,9 +29,8 @@ export const Checkbox = ({
   link,
   isDisabled,
   checked,
-  hasLightBackground,
-  onChange,
-  onLinkClick
+  variant = 'Standard',
+  onChange
 }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -39,59 +41,48 @@ export const Checkbox = ({
     }
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
-    if (onLinkClick && !isDisabled) {
-      event.preventDefault();
-      onLinkClick();
-    }
-  };
-
-  const getLabelComponent = () => {
-    if (text && link) {
-      return (
-        <label className={styles.Label} htmlFor={name}>
-          <span>{text}</span>
-          <span onClick={handleClick} className={cx(styles.Link, styles.HasLabel)}>
-            {link}
-          </span>
-        </label>
-      );
-    } else if (link) {
-      return (
-        <label className={cx(styles.Label, styles.HasOnlyLink)} htmlFor={name}>
-          <span onClick={handleClick} className={styles.Link}>
-            {link}
-          </span>
-        </label>
-      );
-    } else {
-      return (
-        <label className={styles.Label} htmlFor={name}>
-          {text}
-        </label>
-      );
-    }
-  };
-
   return (
-    <div
-      className={cx(className, styles.Container, {
-        [styles.DisabledCheckbox]: isDisabled,
-        [styles.LightBackground]: hasLightBackground
-      })}
-    >
+    <div className={cx(className, styles.ZuiCheckbox, styles[`ZuiCheckbox${variant}`])} data-disabled={isDisabled}>
       <RadixCheckbox.Root
-        className={cx(styles.CheckboxRoot, { [styles.CheckedCheckboxRoot]: isChecked })}
+        className={styles.CheckboxRoot}
+        data-checked={isChecked}
         checked={isChecked}
         disabled={isDisabled}
         onCheckedChange={handleChange}
         id={name}
       >
         <RadixCheckbox.Indicator className={styles.CheckboxIndicator}>
-          <IconCheckBoxCheck width={10} height={8} />
+          <IconCheck size={'0.9rem'} />
         </RadixCheckbox.Indicator>
       </RadixCheckbox.Root>
-      {(text || link) && getLabelComponent()}
+      {(text || link) && <Label name={name} link={link} text={text} isDisabled={isDisabled} />}
     </div>
+  );
+};
+
+interface LabelProps {
+  text?: string;
+  link?: LinkProps;
+  name: string;
+  isDisabled?: boolean;
+}
+
+const Label = ({ text, link, name, isDisabled }: LabelProps) => {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (link && link.onClick && !isDisabled) {
+      event.preventDefault();
+      link.onClick();
+    }
+  };
+
+  return (
+    <label className={styles.Label} data-link={link && true} htmlFor={name}>
+      {text && <div data-label-link={text && link && true}>{text}</div>}
+      {link && (
+        <div onClick={handleClick} className={styles.Link}>
+          {link.text}
+        </div>
+      )}
+    </label>
   );
 };
