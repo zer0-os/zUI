@@ -1,7 +1,7 @@
 @import '../../styles/colors';
 
 .ZuiCheckbox {
-  --zui-checbox-cursor: pointer;
+  --zui-checkbox-cursor: pointer;
   --zui-checkbox-border: 0.0625rem solid #{$green-11};
   --zui-checkbox-check-color: #{$dark-secondary};
   --zui-checkbox-check-background: #{rgba($green-11, 0.3)};
@@ -10,7 +10,7 @@
   --zui-checkbox-link-color: #{$green-11};
 
   &[data-disabled='true'] {
-    --zui-checbox-cursor: not-allowed;
+    --zui-checkbox-cursor: not-allowed;
     --zui-checkbox-border: 0.0625rem solid #{$grey-9};
     --zui-checkbox-check-color: #{$grey-12};
     --zui-checkbox-check-box-shadow: none;
@@ -30,10 +30,10 @@
   }
 
   &:hover {
-    cursor: var(--zui-checbox-cursor);
+    cursor: var(--zui-checkbox-cursor);
 
     .Label:hover {
-      cursor: var(--zui-checbox-cursor);
+      cursor: var(--zui-checkbox-cursor);
     }
   }
 
@@ -82,7 +82,7 @@
       padding-left: 0.25rem;
     }
 
-    & [data-label-link='true'] {
+    [data-label-link='true'] {
       padding-right: 0.25rem;
     }
 
