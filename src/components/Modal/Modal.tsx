@@ -17,14 +17,15 @@ import classNames from 'classnames';
 export interface ModalProps extends DialogProps {
   className?: string;
   trigger?: ReactNode;
+  buttonVariant?: 'primary' | 'secondary' | 'negative' | 'text';
 }
 
-export const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...rest }) => {
+export const Modal: React.FC<ModalProps> = ({ className, children, trigger, buttonVariant, ...rest }) => {
   return (
     <DialogRoot {...rest}>
       {trigger && (
         <DialogTrigger asChild={true}>
-          {typeof trigger === 'string' ? <Button>{trigger}</Button> : trigger}
+          {typeof trigger === 'string' ? <Button variant={buttonVariant}>{trigger}</Button> : trigger}
         </DialogTrigger>
       )}
       <DialogPortal>
