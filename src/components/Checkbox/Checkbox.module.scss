@@ -78,13 +78,16 @@
     padding-right: 0.25rem;
     display: flex;
 
+    [data-label-link='true'] {
+      padding-right: 0.25rem;
+      padding-left: 0.25rem;
+    }
+
     &[data-link='true'] {
       padding-left: 0.25rem;
     }
 
-    [data-label-link='true'] {
-      padding-right: 0.25rem;
-    }
+    
 
     .Link {
       text-decoration: none;
