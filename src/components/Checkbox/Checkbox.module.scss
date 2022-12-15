@@ -1,6 +1,6 @@
 @import '../../styles/colors';
 
-.ZuiCheckbox {
+.Checkbox {
   --zui-checkbox-cursor: pointer;
   --zui-checkbox-border: 0.0625rem solid #{$green-11};
   --zui-checkbox-check-color: #{$dark-secondary};
@@ -19,7 +19,7 @@
   }
 }
 
-.ZuiCheckbox {
+.Checkbox {
   display: flex;
   align-items: center;
   padding: 0.25rem;

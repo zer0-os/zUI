@@ -42,7 +42,7 @@ export const Checkbox = ({
   };
 
   return (
-    <div className={cx(className, styles.ZuiCheckbox, styles[`ZuiCheckbox${variant}`])} data-disabled={isDisabled}>
+    <div className={cx(className, styles.Checkbox, styles[`Checkbox${variant}`])} data-disabled={isDisabled}>
       <RadixCheckbox.Root
         className={styles.CheckboxRoot}
         data-checked={isChecked}
@@ -59,6 +59,10 @@ export const Checkbox = ({
     </div>
   );
 };
+
+/*******************
+ * Label and Link
+ *******************/
 
 interface LabelProps {
   text?: string;

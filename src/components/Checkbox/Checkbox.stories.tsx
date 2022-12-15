@@ -14,12 +14,6 @@ const Template: ComponentStory<typeof Checkbox> = args => (
   </StoryCard>
 );
 
-const LightThemeTemplate: ComponentStory<typeof Checkbox> = args => (
-  <StoryCard>
-    <Checkbox {...args} />
-  </StoryCard>
-);
-
 export const Default = Template.bind({});
 Default.args = {
   name: 'DefaultCheckbox',
