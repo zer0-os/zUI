@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Checkbox, CheckboxProps, LinkProps } from './';
+import { Checkbox, CheckboxProps, StandardCheckboxProps, ButtonLink, ExternalLink } from './';
 
 const mockOnChange = jest.fn();
 const triggerLink = jest.fn();
@@ -35,21 +35,47 @@ describe('<Checkbox />', () => {
   });
 
   test('should call onChange with true when the user clicks on the checkbox text', () => {
-    render(<Checkbox {...DEFAULT_PROPS} text="HelloText" />);
+    const checkboxWithTextProps: StandardCheckboxProps = { ...DEFAULT_PROPS, text: 'HelloText', variant: 'standard' };
+    render(<Checkbox {...checkboxWithTextProps} />);
     fireEvent.click(screen.getByText('HelloText', { exact: false }));
     expect(mockOnChange).toHaveBeenCalledWith(true);
   });
 
   test('should call the triggerLink function when the user clicks on the link', () => {
-    const linkData: LinkProps = { text: 'helloLink', onClick: () => triggerLink() };
-    render(<Checkbox {...DEFAULT_PROPS} link={linkData} />);
+    const linkData: ButtonLink = { text: 'helloLink', onClickLink: () => triggerLink() };
+    const checkboxWithTextProps: StandardCheckboxProps = {
+      ...DEFAULT_PROPS,
+      text: 'HelloText',
+      variant: 'standard',
+      link: linkData
+    };
+    render(<Checkbox {...checkboxWithTextProps} />);
     fireEvent.click(screen.getByText('helloLink', { exact: false }));
     expect(triggerLink).toBeCalledTimes(1);
   });
 
+  test('should call the external link when the user clicks on the link', () => {
+    const linkData: ExternalLink = { text: 'helloLink', href: 'https://zer0.io/a/home' };
+    const checkboxWithTextProps: StandardCheckboxProps = {
+      ...DEFAULT_PROPS,
+      text: 'HelloText',
+      variant: 'standard',
+      link: linkData
+    };
+    render(<Checkbox {...checkboxWithTextProps} />);
+    const linkElement = screen.getByText('helloLink', { exact: false }) as HTMLAnchorElement;
+    expect(linkElement.href).toEqual('https://zer0.io/a/home');
+  });
+
   test('should not call the triggerLink function when the checkbox is disabled and user clicks on the link', () => {
-    const linkData: LinkProps = { text: 'helloLink', onClick: () => triggerLink() };
-    render(<Checkbox {...DEFAULT_PROPS} link={linkData} isDisabled />);
+    const linkData: ButtonLink = { text: 'helloLink', onClickLink: () => triggerLink() };
+    const checkboxWithTextProps: StandardCheckboxProps = {
+      ...DEFAULT_PROPS,
+      text: 'HelloText',
+      variant: 'standard',
+      link: linkData
+    };
+    render(<Checkbox {...checkboxWithTextProps} isDisabled />);
     fireEvent.click(screen.getByText('helloLink', { exact: false }));
     expect(triggerLink).toBeCalledTimes(0);
   });
