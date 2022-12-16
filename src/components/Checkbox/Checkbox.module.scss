@@ -37,7 +37,8 @@
     }
   }
 
-  button {
+  button,
+  a {
     all: unset;
   }
 
@@ -86,8 +87,6 @@
     &[data-link='true'] {
       padding-left: 0.25rem;
     }
-
-    
 
     .Link {
       text-decoration: none;

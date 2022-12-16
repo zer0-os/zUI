@@ -38,18 +38,26 @@ LabelAndLink.args = {
   text: 'Text',
   link: {
     text: 'Text',
-    onClick: () => {
-      console.log('Redirected link');
-    }
+    href: 'https://zer0.io/a/home'
   }
 };
 
-export const Link = Template.bind({});
-Link.args = {
+export const LinkExternal = Template.bind({});
+LinkExternal.args = {
   name: 'Link',
   link: {
     text: 'Text',
-    onClick: () => {
+    href: 'https://zer0.io/a/home',
+    openInNewTab: true
+  }
+};
+
+export const LinkCallback = Template.bind({});
+LinkCallback.args = {
+  name: 'LinkCallback',
+  link: {
+    text: 'Text',
+    onClickLink: () => {
       console.log('Redirected link');
     }
   }
