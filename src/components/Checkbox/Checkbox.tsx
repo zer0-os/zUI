@@ -45,6 +45,10 @@ interface AdvancedCheckboxLabel {
 
 export type AdvancedCheckboxProps = AdvancedCheckboxLabel & CheckboxProps;
 
+/**
+ * Temporarily marked as experimental
+ * @experimental
+ */
 export const Checkbox = ({
   className,
   name,
