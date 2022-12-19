@@ -16,6 +16,7 @@ export * from './Search';
 export * from './Skeleton';
 export * from './SkeletonText';
 export * from './StepBar';
+export * from './SelectInput';
 export * from './Tabs';
 export * from './TextStack';
 export * from './ToggleGroup';
