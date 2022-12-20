@@ -1,0 +1,26 @@
+@import '../../styles/typography';
+@import '../../styles/colors';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+
+  .Label {
+    font-size: $size-tiny;
+    line-height: 0.908rem;
+
+    &[data-variant='primary'] {
+      color: $purple-lightest;
+    }
+
+    &[data-variant='secondary'] {
+      color: $grey-lighter-2;
+    }
+  }
+
+  .Content {
+    color: $white;
+    text-decoration: none;
+    line-height: 1.5rem;
+  }
+}

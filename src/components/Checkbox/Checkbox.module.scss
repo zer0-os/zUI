@@ -1,0 +1,102 @@
+@import '../../styles/colors';
+
+.Checkbox {
+  --zui-checkbox-cursor: pointer;
+  --zui-checkbox-border: 0.0625rem solid #{$green-11};
+  --zui-checkbox-check-color: #{$dark-secondary};
+  --zui-checkbox-check-background: #{rgba($green-11, 0.3)};
+  --zui-checkbox-check-box-shadow: 0 0 0.25rem 0.03rem #{$green-light-75};
+  --zui-checkbox-label-color: #{$purple-12};
+  --zui-checkbox-link-color: #{$green-11};
+
+  &[data-disabled='true'] {
+    --zui-checkbox-cursor: not-allowed;
+    --zui-checkbox-border: 0.0625rem solid #{$grey-9};
+    --zui-checkbox-check-color: #{$grey-12};
+    --zui-checkbox-check-box-shadow: none;
+    --zui-checkbox-label-color: #{$grey-11};
+    --zui-checkbox-link-color: #{$grey-9};
+  }
+}
+
+.Checkbox {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+
+  &:focus-within {
+    border-radius: 0.5rem;
+    outline: 0.0625rem solid $green-11;
+  }
+
+  &:hover {
+    cursor: var(--zui-checkbox-cursor);
+
+    .Label:hover {
+      cursor: var(--zui-checkbox-cursor);
+    }
+  }
+
+  button,
+  a {
+    all: unset;
+  }
+
+  .CheckboxRoot {
+    min-width: 0.875rem;
+    min-height: 0.875rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--zui-checkbox-border);
+
+    .CheckboxIndicator {
+      color: var(--zui-checkbox-check-color);
+    }
+
+    &:hover {
+      background-color: var(--zui-checkbox-check-background);
+      box-shadow: var(--zui-checkbox-check-box-shadow);
+    }
+
+    &[data-checked='true'] {
+      background-color: $green-11;
+
+      &:hover {
+        background-color: $green-11;
+        box-shadow: 0 0 0.25rem 0.03rem $green-light-75;
+      }
+    }
+  }
+
+  .Label {
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    user-select: none;
+    color: var(--zui-checkbox-label-color);
+    padding-right: 0.25rem;
+    display: flex;
+
+    [data-label-link='true'] {
+      padding-right: 0.25rem;
+      padding-left: 0.25rem;
+    }
+
+    &[data-link='true'] {
+      padding-left: 0.25rem;
+    }
+
+    .Link {
+      text-decoration: none;
+      color: var(--zui-checkbox-link-color);
+    }
+  }
+
+  &[data-disabled='true'] {
+    .CheckboxRoot {
+      background: $grey-11;
+    }
+  }
+}
