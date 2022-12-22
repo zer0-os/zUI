@@ -68,3 +68,20 @@ LongContent.args = {
   name: 'LongContent',
   text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled '
 };
+
+export const Advanced = Template.bind({});
+Advanced.args = {
+  name: 'Advanced',
+  variant: 'advanced',
+  title: 'Majority',
+  description: 'The greater number of votes cast will decide the outcome'
+};
+
+export const AdvancedWithImage = Template.bind({});
+AdvancedWithImage.args = {
+  name: 'AdvancedWithImage',
+  variant: 'advanced',
+  title: 'Majority',
+  description: 'The greater number of votes cast will decide the outcome',
+  image: 'https://picsum.photos/200/300'
+};
