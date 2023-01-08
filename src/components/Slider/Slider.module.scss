@@ -1,0 +1,63 @@
+@import '../../styles/colors';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+    .Root {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 18.75rem;
+      background-color: $purple-light-4;
+      border-radius: 1rem;
+      height: 1rem;
+      
+      .Track {
+        position: relative;
+        flex-grow: 2;
+        border-radius: 1rem;
+        height: 0.25rem;
+        
+        .Range {
+          position: absolute;
+          background-color: $blue-dark-9;
+          border-radius: 2rem;
+          height: 1rem;
+          top: -0.39rem;
+        }
+
+        .Range[data-size="small"] {
+          height: 0.5rem;
+          top: -0.11rem;
+        }
+      }
+      
+      .Thumb {
+        display: block;
+        height: 1.5rem;
+        width: 1.5rem;
+        background-color: $grey-dark-12;
+        border: 0.125rem solid $blue-dark-9;
+        border-radius: 1rem;
+        cursor: pointer;
+      }
+      
+      .Thumb:focus {
+        outline: none;
+        outline-width: 0.1rem;
+        outline-style: solid;
+        box-shadow: 0 0 0 0.2rem $blue-dark-9;
+      }
+      
+      .Thumb[data-size="small"] {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+  
+  .Root[data-size="small"] {
+    height: 0.5rem;
+  }
+}
