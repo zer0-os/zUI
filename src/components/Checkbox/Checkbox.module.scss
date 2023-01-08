@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 
+/* stylelint-disable no-duplicate-selectors */
 .Checkbox {
   --zui-checkbox-cursor: pointer;
   --zui-checkbox-border: 0.0625rem solid #{$green-11};

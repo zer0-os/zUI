@@ -4,9 +4,7 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { IconCheck } from '../Icons';
 import { Image } from '../Image';
 
-import classNames from 'classnames';
 import styles from './Checkbox.module.scss';
-const cx = classNames.bind(styles);
 
 interface LinkProps {
   text: string;
@@ -164,7 +162,7 @@ const LinkComponent = ({ link, isDisabled }: LinkComponentProps) => {
   let { text, href, openInNewTab = true } = link as ExternalLink;
 
   return (
-    <a href={href} target={openInNewTab ? '_blank' : '_self'} className={styles.Link}>
+    <a href={href} target={openInNewTab ? '_blank' : '_self'} className={styles.Link} rel="noreferrer">
       {text}
     </a>
   );

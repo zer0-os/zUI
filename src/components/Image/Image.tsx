@@ -42,7 +42,7 @@ const Img = ({ className, objectFit = 'cover', alt, src, onLoad, onError }: Imag
         };
       }
     }
-  }, [src]);
+  }, [src, onError]);
 
   return (
     <div
