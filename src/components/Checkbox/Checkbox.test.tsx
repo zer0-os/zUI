@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import { Checkbox, CheckboxProps, StandardCheckboxProps, ButtonLink, ExternalLink } from './';
+import { Checkbox, CheckboxProps, StandardCheckboxProps, AdvancedCheckboxProps, ButtonLink, ExternalLink } from './';
 
 const mockOnChange = jest.fn();
 const triggerLink = jest.fn();
@@ -78,5 +78,30 @@ describe('<Checkbox />', () => {
     render(<Checkbox {...checkboxWithTextProps} isDisabled />);
     fireEvent.click(screen.getByText('helloLink', { exact: false }));
     expect(triggerLink).toBeCalledTimes(0);
+  });
+
+  test('should call onChange with true when the user clicks on the advance checkbox text', () => {
+    const checkboxWithTextProps: AdvancedCheckboxProps = {
+      ...DEFAULT_PROPS,
+      title: 'HelloText',
+      description: 'sample description',
+      variant: 'advanced'
+    };
+    render(<Checkbox {...checkboxWithTextProps} />);
+    fireEvent.click(screen.getByText('HelloText', { exact: false }));
+    expect(mockOnChange).toHaveBeenCalledWith(true);
+  });
+
+  test('should not call onChange when the user clicks on the advance checkbox text as the checkbox in disabled state', () => {
+    const checkboxWithTextProps: AdvancedCheckboxProps = {
+      ...DEFAULT_PROPS,
+      title: 'HelloText',
+      isDisabled: true,
+      description: 'sample description',
+      variant: 'advanced'
+    };
+    render(<Checkbox {...checkboxWithTextProps} />);
+    fireEvent.click(screen.getByText('HelloText', { exact: false }));
+    expect(mockOnChange).toBeCalledTimes(0);
   });
 });

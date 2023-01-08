@@ -9,6 +9,11 @@
   --zui-checkbox-label-color: #{$purple-12};
   --zui-checkbox-link-color: #{$green-11};
 
+  &[data-variant='advanced'] {
+    --zui-checkbox-background: #{$purple-3};
+    --zui-checkbox-label-color: #{$grey-12};
+  }
+
   &[data-disabled='true'] {
     --zui-checkbox-cursor: not-allowed;
     --zui-checkbox-border: 0.0625rem solid #{$grey-9};
@@ -16,6 +21,8 @@
     --zui-checkbox-check-box-shadow: none;
     --zui-checkbox-label-color: #{$grey-11};
     --zui-checkbox-link-color: #{$grey-9};
+    --zui-checkbox-background: #{$grey-3};
+    --zui-checkbox-check-background: #{$grey-11};
   }
 }
 
@@ -59,14 +66,11 @@
       background-color: var(--zui-checkbox-check-background);
       box-shadow: var(--zui-checkbox-check-box-shadow);
     }
+  }
 
-    &[data-checked='true'] {
+  &[data-checked='true'] {
+    .CheckboxRoot {
       background-color: $green-11;
-
-      &:hover {
-        background-color: $green-11;
-        box-shadow: 0 0 0.25rem 0.03rem $green-light-75;
-      }
     }
   }
 
@@ -78,6 +82,11 @@
     color: var(--zui-checkbox-label-color);
     padding-right: 0.25rem;
     display: flex;
+    align-items: center;
+
+    &[data-no-text-or-link='true'] {
+      padding: 0;
+    }
 
     [data-label-link='true'] {
       padding-right: 0.25rem;
@@ -91,6 +100,61 @@
     .Link {
       text-decoration: none;
       color: var(--zui-checkbox-link-color);
+    }
+  }
+
+  &[data-variant='advanced'] {
+    background: var(--zui-checkbox-background);
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    &[data-checked='true'] {
+      border: 0.0625rem solid $green-11;
+      padding-right: 0.9375rem;
+    }
+
+    &:focus-within {
+      outline-offset: 0.25rem;
+      outline: 0.0625rem solid $green-11;
+    }
+
+    .Label {
+      padding-left: 1rem;
+
+      .Title {
+        font-size: 0.875rem;
+        line-height: 1.063rem;
+      }
+
+      .Description {
+        font-size: 0.75rem;
+        line-height: 0.938rem;
+        padding-top: 0.5rem;
+        opacity: 0.7;
+      }
+
+      [data-has-image='true'] {
+        padding: 0.313rem 0;
+      }
+
+      .CheckboxImageContainer {
+        padding-left: 1.25rem;
+        width: 4.625rem;
+        height: 4.063rem;
+
+        .CheckboxImage {
+          width: 4.625rem;
+          height: 4.063rem;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+
+    &[data-disabled='true'] {
+      &[data-checked='true'] {
+        border: none;
+        padding-right: 1rem;
+      }
     }
   }
 

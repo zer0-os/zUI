@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { IconCheck } from '../Icons';
+import { Image } from '../Image';
 
 import classNames from 'classnames';
 import styles from './Checkbox.module.scss';
@@ -40,7 +41,7 @@ interface AdvancedCheckboxLabel {
   variant: 'advanced';
   title: string;
   description: string;
-  image: string;
+  image?: string;
 }
 
 export type AdvancedCheckboxProps = AdvancedCheckboxLabel & CheckboxProps;
@@ -75,10 +76,9 @@ export const Checkbox = ({
   };
 
   return (
-    <div className={styles.Checkbox} data-disabled={isDisabled} data-variant={variant}>
+    <div className={styles.Checkbox} data-disabled={isDisabled} data-variant={variant} data-checked={isChecked}>
       <RadixCheckbox.Root
         className={styles.CheckboxRoot}
-        data-checked={isChecked}
         checked={isChecked}
         disabled={isDisabled}
         onCheckedChange={handleChange}
@@ -101,7 +101,20 @@ export const Checkbox = ({
  * Advanced Title and Description
  *******************/
 const AdvancedBody = (props: AdvancedCheckboxProps) => {
-  return <></>;
+  const { name, title, description, image } = props;
+  return (
+    <label className={styles.Label} htmlFor={name}>
+      <div data-has-image={image && true}>
+        <div className={styles.Title}> {title}</div>
+        <div className={styles.Description}> {description}</div>
+      </div>
+      {image && (
+        <div className={styles.CheckboxImageContainer}>
+          <Image src={image} alt={title + '_info'} className={styles.CheckboxImage} />
+        </div>
+      )}
+    </label>
+  );
 };
 
 /*******************
@@ -110,7 +123,12 @@ const AdvancedBody = (props: AdvancedCheckboxProps) => {
 const StandardBody = (props: StandardCheckboxProps) => {
   const { text, name, isDisabled, link } = props;
   return (
-    <label className={styles.Label} data-link={link && true} htmlFor={name}>
+    <label
+      className={styles.Label}
+      data-link={link && true}
+      data-no-text-or-link={!link && !text && true}
+      htmlFor={name}
+    >
       {text && <div data-label-link={text && link && true}>{text}</div>}
       {link && <LinkComponent link={link} isDisabled={isDisabled} />}
     </label>
