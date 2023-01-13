@@ -21,9 +21,6 @@ LowContrast.args = {
     {
       title: 'Title',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
-    }, {
-      title: 'Title',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
     },
     {
       title: 'Title',
@@ -36,7 +33,12 @@ LowContrast.args = {
     {
       title: 'Title',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
-    }, {
+    },
+    {
+      title: 'Title',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
+    },
+    {
       title: 'Title',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
     },
@@ -51,16 +53,13 @@ LowContrast.args = {
   ]
 };
 
-export const HighContrast = Template.bind({}  );
+export const HighContrast = Template.bind({});
 HighContrast.args = {
   contrast: 'high',
   items: [
     {
       title: 'Title',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
-    }, {
-      title: 'Title',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
     },
     {
       title: 'Title',
@@ -73,7 +72,12 @@ HighContrast.args = {
     {
       title: 'Title',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
-    }, {
+    },
+    {
+      title: 'Title',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
+    },
+    {
       title: 'Title',
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget quam netus consectetur magnis. Lorem est ac duis risus semper. Nunc faucibus turpis ac sollicitudin suscipit imperdiet est, cursus.'
     },

@@ -1,182 +1,181 @@
 @import '../../styles/colors';
 
 .Accordion {
-    --zui-accordion-margin-top: 4px;
-    --zui-accordion-group-border-radius: 8px;
+  --zui-accordion-margin-top: 4px;
+  --zui-accordion-group-border-radius: 8px;
 
-    .AccordionItem:first-child {
-        --zui-accordion-margin-top: 0;
+  .AccordionItem:first-child {
+    --zui-accordion-margin-top: 0;
+  }
+
+  .AccordionHeader {
+    --zui-accordion-border-bottom: 1px solid #{$purple-50};
+
+    &:hover {
+      --zui-accordion-border-bottom: 1px solid #{$purple-8};
     }
 
+    &:active {
+      --zui-accordion-border-bottom: 1px solid #{$purple-50};
+    }
+  }
+
+  .AccordionTrigger {
+    --zui-accordion-item-padding: 8px 0 7px;
+    --zui-accordion-header-background-color: transparent;
+
+    &[data-state='open'] {
+      --zui-accordion-header-background-color: #{$purple-2};
+      --zui-accordion-item-padding: 8px 16px 7px;
+    }
+
+    &:hover {
+      --zui-accordion-header-background-color: #{$purple-2};
+      --zui-accordion-item-padding: 8px 16px 7px;
+    }
+
+    &:active {
+      --zui-accordion-header-background-color: #{$purple-2};
+    }
+  }
+
+  &[data-contrast='high'] {
     .AccordionHeader {
-        --zui-accordion-border-bottom: 1px solid #{$purple-50};
+      --zui-accordion-border-bottom: 1px solid #{$purple-6};
 
-        &:hover {
-            --zui-accordion-border-bottom: 1px solid #{$purple-8};
-        }
+      &[data-state='open'] {
+        --zui-accordion-border-bottom: none;
+      }
 
-        &:active {
-            --zui-accordion-border-bottom: 1px solid #{$purple-50};
-        }
+      &:hover {
+        --zui-accordion-border-bottom: 1px solid #{$purple-8};
+      }
+
+      &:active {
+        --zui-accordion-border-bottom: 1px solid #{$purple-6};
+      }
     }
 
     .AccordionTrigger {
-        --zui-accordion-item-padding: 8px 0 7px;
-        --zui-accordion-header-background-color: transparent;
+      --zui-accordion-header-background-color: #{$purple-4};
+      --zui-accordion-item-padding: 8px 16px 7px;
 
-        &[data-state='open'] {
-            --zui-accordion-header-background-color: #{$purple-2};
-            --zui-accordion-item-padding: 8px 16px 7px;
-        }
+      &[data-state='open'] {
+        --zui-accordion-header-background-color: #{$purple-2};
+      }
 
-        &:hover {
-            --zui-accordion-header-background-color: #{$purple-2};
-            --zui-accordion-item-padding: 8px 16px 7px;
-        }
-
-        &:active {
-            --zui-accordion-header-background-color: #{$purple-2};
-        }
+      &:hover {
+        --zui-accordion-header-background-color: #{$purple-2};
+      }
     }
-
-    &[data-contrast='high'] {
-        .AccordionHeader {
-            --zui-accordion-border-bottom: 1px solid #{$purple-6};
-
-            &[data-state='open'] {
-                --zui-accordion-border-bottom: none;
-            }
-
-            &:hover {
-                --zui-accordion-border-bottom: 1px solid #{$purple-8};
-            }
-
-            &:active {
-                --zui-accordion-border-bottom: 1px solid #{$purple-6};
-            }
-        }
-
-        .AccordionTrigger {
-            --zui-accordion-header-background-color: #{$purple-4};
-            --zui-accordion-item-padding: 8px 16px 7px;
-
-            &[data-state='open'] {
-                --zui-accordion-header-background-color: #{$purple-2};
-            }
-
-            &:hover {
-                --zui-accordion-header-background-color: #{$purple-2};
-            }
-        }
-    }
+  }
 }
 
 .Accordion {
+  width: 100%;
+  color: $grey-12;
+
+  button,
+  h3 {
+    all: unset;
+  }
+
+  .AccordionItem {
+    overflow: hidden;
+    margin-top: var(--zui-accordion-margin-top);
+
+    &:first-child {
+      border-top-left-radius: var(--zui-accordion-group-border-radius);
+      border-top-right-radius: var(--zui-accordion-group-border-radius);
+    }
+
+    &:last-child {
+      border-bottom-left-radius: var(--zui-accordion-group-border-radius);
+      border-bottom-right-radius: var(--zui-accordion-group-border-radius);
+    }
+
+    &:focus-within {
+      border-radius: 4px;
+      outline-offset: 4px;
+      outline: 0.0625rem solid $green-11;
+    }
+  }
+
+  .AccordionHeader {
+    display: flex;
     width: 100%;
+    border-bottom: var(--zui-accordion-border-bottom);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .AccordionTrigger {
+    font-family: inherit;
+    padding: var(--zui-accordion-item-padding);
+    // height: 36px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 24px;
+    background-color: var(--zui-accordion-header-background-color);
+
+    &[data-state='open'] {
+      & > .AccordionChevron {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &[data-contrast='high'] {
+    .AccordionContent[data-state='open'] {
+      border: 1px solid $purple-6;
+    }
+  }
+
+  .AccordionChevron {
     color: $grey-12;
+    transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
 
-    button,
-    h3 {
-        all: unset;
+  .AccordionContent {
+    overflow: hidden;
+    font-size: 16px;
+    line-height: 24px;
+
+    .AccordionContentText {
+      padding: 16px;
     }
 
-    .AccordionItem {
-        overflow: hidden;
-        margin-top: var(--zui-accordion-margin-top);
-
-        &:first-child {
-            border-top-left-radius: var(--zui-accordion-group-border-radius);
-            border-top-right-radius: var(--zui-accordion-group-border-radius);
-        }
-
-        &:last-child {
-            border-bottom-left-radius: var(--zui-accordion-group-border-radius);
-            border-bottom-right-radius: var(--zui-accordion-group-border-radius);
-        }
-
-        &:focus-within {
-            border-radius: 4px;
-            outline-offset: 4px;
-            outline: 0.0625rem solid $green-11;
-        }
+    &[data-state='open'] {
+      animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
     }
 
-    .AccordionHeader {
-        display: flex;
-        width: 100%;
-        border-bottom: var(--zui-accordion-border-bottom);
+    &[data-state='closed'] {
+      animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+    }
+  }
 
-        &:hover {
-            cursor: pointer;
-        }
+  @keyframes slideDown {
+    from {
+      height: 0;
     }
 
-    .AccordionTrigger {
-        font-family: inherit;
-        padding: var(--zui-accordion-item-padding);
-        // height: 36px;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 16px;
-        line-height: 24px;
-        background-color: var(--zui-accordion-header-background-color);
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
 
-        &[data-state='open'] {
-            &>.AccordionChevron {
-                transform: rotate(180deg);
-            }
-        }
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
     }
 
-    &[data-contrast='high'] {
-        .AccordionContent[data-state='open'] {
-            border: 1px solid $purple-6;
-        }
+    to {
+      height: 0;
     }
-
-    .AccordionChevron {
-        color: $grey-12;
-        transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
-    }
-
-    .AccordionContent {
-        overflow: hidden;
-        font-size: 16px;
-        line-height: 24px;
-
-        .AccordionContentText {
-            padding: 16px;
-        }
-
-        &[data-state='open'] {
-            animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
-        }
-
-        &[data-state='closed'] {
-            animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
-        }
-    }
-
-    @keyframes slideDown {
-        from {
-            height: 0;
-        }
-
-        to {
-            height: var(--radix-accordion-content-height);
-        }
-    }
-
-    @keyframes slideUp {
-        from {
-            height: var(--radix-accordion-content-height);
-        }
-
-        to {
-            height: 0;
-        }
-    }
-
+  }
 }
