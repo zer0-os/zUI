@@ -3,8 +3,6 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Accordion, AccordionProps } from './';
 
-// const mockOnChange = jest.fn();
-
 const DEFAULT_PROPS: AccordionProps = {
   items: [
     {
