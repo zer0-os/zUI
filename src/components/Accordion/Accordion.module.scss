@@ -110,8 +110,6 @@
     display: flex;
     width: 100%;
     border-bottom: var(--zui-accordion-border-bottom);
-    transition: 0.15s all ease;
-
 
     &:hover {
       cursor: pointer;
@@ -129,6 +127,7 @@
     font-size: 16px;
     line-height: 24px;
     background-color: var(--zui-accordion-header-background-color);
+    transition: 0.15s all ease;
 
     &[data-state='open'] {
       &>.AccordionChevron {
