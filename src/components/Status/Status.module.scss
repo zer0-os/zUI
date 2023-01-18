@@ -1,0 +1,29 @@
+.Status {
+  &[data-status-type='active'] {
+    --zui-status-background: #30a46c;
+  }
+
+  &[data-status-type='idle'] {
+    --zui-status-background: #ff802b;
+  }
+
+  &[data-status-type='busy'] {
+    --zui-status-background: #f2555a;
+  }
+
+  &[data-status-type='offline'] {
+    --zui-status-background: #7e7d86;
+  }
+
+  &[data-status-type='unread'] {
+    --zui-status-background: #bf7af0;
+  }
+}
+
+.Status {
+  display: flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--zui-status-background);
+}

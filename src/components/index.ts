@@ -23,3 +23,4 @@ export * from './ToggleGroup';
 export * from './Tooltip';
 export { Wizard } from './Wizard';
 export * from './Checkbox';
+export * from './Status';
