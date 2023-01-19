@@ -1,22 +1,24 @@
+@import '../../styles/colors';
+
 .Status {
   &[data-status-type='active'] {
-    --zui-status-background: #30a46c;
+    --zui-status-background: #{$green-9};
   }
 
   &[data-status-type='idle'] {
-    --zui-status-background: #ff802b;
+    --zui-status-background: #{$orange-10};
   }
 
   &[data-status-type='busy'] {
-    --zui-status-background: #f2555a;
+    --zui-status-background: #{$read-10};
   }
 
   &[data-status-type='offline'] {
-    --zui-status-background: #7e7d86;
+    --zui-status-background: #{$grey-10};
   }
 
   &[data-status-type='unread'] {
-    --zui-status-background: #bf7af0;
+    --zui-status-background: #{$purple-11};
   }
 }
 
