@@ -24,8 +24,8 @@
 
 .Status {
   display: flex;
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
   background: var(--zui-status-background);
 }
