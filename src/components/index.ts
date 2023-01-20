@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Address';
 export * from './Alert';
 export * from './AspectRatio';
@@ -23,4 +24,3 @@ export * from './ToggleGroup';
 export * from './Tooltip';
 export { Wizard } from './Wizard';
 export * from './Checkbox';
-export * from './Accordion';

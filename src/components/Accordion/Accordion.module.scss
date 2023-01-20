@@ -1,41 +1,41 @@
 @import '../../styles/colors';
 
 .Accordion {
-  --zui-accordion-margin-top: 4px;
-  --zui-accordion-group-border-radius: 8px;
+  --zui-accordion-margin-top: 0.25rem;
+  --zui-accordion-group-border-radius: 0.5rem;
 
   .AccordionItem:first-child {
     --zui-accordion-margin-top: 0;
   }
 
   .AccordionHeader {
-    --zui-accordion-border-bottom: 1px solid #{$purple-50};
+    --zui-accordion-border-bottom: 0.063rem solid #{$purple-50};
 
     &:hover {
-      --zui-accordion-border-bottom: 1px solid #{$purple-8};
+      --zui-accordion-border-bottom: 0.063rem solid #{$purple-8};
     }
 
     &:active {
-      --zui-accordion-border-bottom: 1px solid #{$purple-50};
+      --zui-accordion-border-bottom: 0.063rem solid #{$purple-50};
     }
   }
 
   .AccordionTrigger {
-    --zui-accordion-item-padding: 8px 0 7px;
+    --zui-accordion-item-padding: 0.5rem 0 0.438rem;
     --zui-accordion-header-background-color: transparent;
 
     &:hover {
       --zui-accordion-header-background-color: #{$purple-2};
-      --zui-accordion-item-padding: 8px 0px 7px;
+      --zui-accordion-item-padding: 0.5rem 0px 0.438rem;
     }
 
     &[data-state='open'] {
       --zui-accordion-header-background-color: #{$purple-2};
-      --zui-accordion-item-padding: 8px 16px 7px;
+      --zui-accordion-item-padding: 0.5rem 1rem 0.438rem;
 
       &:hover {
         --zui-accordion-header-background-color: #{$purple-2};
-        --zui-accordion-item-padding: 8px 16px 7px;
+        --zui-accordion-item-padding: 0.5rem 1rem 0.438rem;
       }
     }
 
@@ -46,24 +46,24 @@
 
   &[data-contrast='high'] {
     .AccordionHeader {
-      --zui-accordion-border-bottom: 1px solid #{$purple-6};
+      --zui-accordion-border-bottom: 0.063rem solid #{$purple-6};
 
       &[data-state='open'] {
         --zui-accordion-border-bottom: none;
       }
 
       &:hover {
-        --zui-accordion-border-bottom: 1px solid #{$purple-8};
+        --zui-accordion-border-bottom: 0.063rem solid #{$purple-8};
       }
 
       &:active {
-        --zui-accordion-border-bottom: 1px solid #{$purple-6};
+        --zui-accordion-border-bottom: 0.063rem solid #{$purple-6};
       }
     }
 
     .AccordionTrigger {
       --zui-accordion-header-background-color: #{$purple-4};
-      --zui-accordion-item-padding: 8px 16px 7px;
+      --zui-accordion-item-padding: 0.5rem 1rem 0.438rem;
 
       &[data-state='open'] {
         --zui-accordion-header-background-color: #{$purple-2};
@@ -100,8 +100,8 @@
     }
 
     &:focus-within {
-      border-radius: 4px;
-      outline-offset: 4px;
+      border-radius: 0.25rem;
+      outline-offset: 0.25rem;
       outline: 0.0625rem solid $green-11;
     }
   }
@@ -124,8 +124,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     background-color: var(--zui-accordion-header-background-color);
     transition: 0.15s all ease;
 
@@ -138,7 +138,7 @@
 
   &[data-contrast='high'] {
     .AccordionContent[data-state='open'] {
-      border: 1px solid $purple-6;
+      border: 0.063rem solid $purple-6;
     }
   }
 
@@ -149,11 +149,11 @@
 
   .AccordionContent {
     overflow: hidden;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
 
     .AccordionContentText {
-      padding: 16px;
+      padding: 1rem;
     }
 
     &[data-state='open'] {
