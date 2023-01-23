@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import { IconChevronDown } from '../Icons';
