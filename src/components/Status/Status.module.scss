@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 
+/* stylelint-disable no-duplicate-selectors */
 .Status {
   &[data-status-type='active'] {
     --zui-status-background: #{$green-9};
