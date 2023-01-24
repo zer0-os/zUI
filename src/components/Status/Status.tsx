@@ -1,9 +1,6 @@
 import React from 'react';
 
-import classNames from 'classnames';
 import styles from './Status.module.scss';
-
-const cx = classNames.bind(styles);
 
 export interface StatusProps {
   type: 'active' | 'idle' | 'busy' | 'offline' | 'unread';
