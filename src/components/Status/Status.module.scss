@@ -1,0 +1,31 @@
+@import '../../styles/colors';
+
+.Status {
+  &[data-status-type='active'] {
+    --zui-status-background: #{$green-9};
+  }
+
+  &[data-status-type='idle'] {
+    --zui-status-background: #{$orange-10};
+  }
+
+  &[data-status-type='busy'] {
+    --zui-status-background: #{$read-10};
+  }
+
+  &[data-status-type='offline'] {
+    --zui-status-background: #{$grey-10};
+  }
+
+  &[data-status-type='unread'] {
+    --zui-status-background: #{$purple-11};
+  }
+}
+
+.Status {
+  display: flex;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--zui-status-background);
+}
