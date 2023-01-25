@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import { IconChevronDown } from '../Icons';
@@ -18,13 +18,23 @@ export interface AccordionProps {
 }
 
 export const Accordion = ({ items, contrast = 'high' }: AccordionProps) => {
+  const [focusState, setFocusState] = useState(false);
   return (
     <div className={styles.Accordion} data-contrast={contrast}>
       <RadixAccordion.Root className={styles.AccordionRoot} type="single" collapsible>
         {items.map((itm, i) => (
-          <RadixAccordion.Item className={styles.AccordionItem} value={`item-${i}`} key={i}>
+          <RadixAccordion.Item
+            className={styles.AccordionItem}
+            value={`item-${i}`}
+            key={i}
+            data-focus-on-key-press={focusState}
+          >
             <RadixAccordion.Header className={styles.AccordionHeader}>
-              <RadixAccordion.Trigger className={styles.AccordionTrigger}>
+              <RadixAccordion.Trigger
+                className={styles.AccordionTrigger}
+                onMouseDown={() => setFocusState(false)}
+                onKeyDown={e => setFocusState(true)}
+              >
                 {itm.title}
                 <IconChevronDown className={styles.AccordionChevron} aria-hidden size={22} />
               </RadixAccordion.Trigger>
