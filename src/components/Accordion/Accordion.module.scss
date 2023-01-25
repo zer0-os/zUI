@@ -99,7 +99,7 @@
       border-bottom-right-radius: var(--zui-accordion-group-border-radius);
     }
 
-    &:focus-within {
+    &[data-focus-on-key-press='true']:focus-within {
       border-radius: 0.25rem;
       outline-offset: 0.25rem;
       outline: 0.0625rem solid $green-11;
@@ -136,7 +136,7 @@
   }
 
   &[data-contrast='high'] {
-    .AccordionContent[data-state='open'] {
+    .AccordionContent {
       border: 0.063rem solid $purple-6;
     }
   }
