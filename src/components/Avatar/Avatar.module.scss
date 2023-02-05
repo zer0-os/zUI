@@ -1,0 +1,180 @@
+@import '../../styles/colors';
+
+.Avatar {
+  &:focus-within {
+    --zui-avatar-border-radius: 50%;
+  }
+
+  .AvatarRoot {
+    --zui-avatar-border-radius: 50%;
+    --zui-avatar-width: 2.5rem;
+    --zui-avatar-height: 2.5rem;
+  }
+
+  &[data-type='square'] {
+    .AvatarRoot {
+      --zui-avatar-border-radius: 0.5rem;
+    }
+
+    &:focus-within {
+      --zui-avatar-border-radius: 0.5rem;
+    }
+  }
+
+  .AvatarFallback {
+    --zui-avatar-font-size: 0.875rem;
+    --zui-avatar-font-line-height: 150%;
+  }
+
+  .Badge {
+    --zui-avatar-badge-position-right: -0.375rem;
+    --zui-avatar-badge-position-top: -0.375rem;
+  }
+
+  &[data-size='small'] {
+    .AvatarRoot {
+      --zui-avatar-width: 1.5rem;
+      --zui-avatar-height: 1.5rem;
+    }
+
+    .Badge {
+      --zui-avatar-badge-position-top: -0.625rem;
+      --zui-avatar-badge-position-right: -0.625rem;
+    }
+
+    .AvatarFallback {
+      --zui-avatar-font-size: 0.625rem;
+      --zui-avatar-font-line-height: 0.75rem;
+    }
+  }
+
+  &[data-size='extra small'] {
+    .AvatarRoot {
+      --zui-avatar-width: 1rem;
+      --zui-avatar-height: 1rem;
+    }
+
+    .AvatarFallback {
+      --zui-avatar-font-size: 0.5rem;
+      --zui-avatar-font-line-height: 0.625rem;
+    }
+  }
+
+  &[data-size='medium'] {
+    .AvatarRoot {
+      --zui-avatar-width: 2rem;
+      --zui-avatar-height: 2rem;
+    }
+
+    .Badge {
+      --zui-avatar-badge-position-top: -0.625rem;
+      --zui-avatar-badge-position-right: -0.625rem;
+    }
+
+    .AvatarFallback {
+      --zui-avatar-font-size: 0.625rem;
+      --zui-avatar-font-line-height: 0.75rem;
+    }
+  }
+
+  .Status {
+    &[data-status-type='active'] {
+      --zui-avatar-status-background: #{$green-9};
+    }
+
+    &[data-status-type='idle'] {
+      --zui-avatar-status-background: #{$orange-10};
+    }
+
+    &[data-status-type='busy'] {
+      --zui-avatar-status-background: #{$read-10};
+    }
+
+    &[data-status-type='offline'] {
+      --zui-avatar-status-background: #{$grey-10};
+    }
+
+    &[data-status-type='unread'] {
+      --zui-avatar-status-background: #{$purple-11};
+    }
+  }
+}
+
+.Avatar {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+
+  &:focus-within {
+    border-radius: var(--zui-avatar-border-radius);
+    outline-offset: 0.25rem;
+    outline: 0.0625rem solid $green-11;
+  }
+
+  .AvatarRoot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    overflow: hidden;
+    user-select: none;
+    background-color: $black;
+    border-radius: var(--zui-avatar-border-radius);
+    width: var(--zui-avatar-width);
+    height: var(--zui-avatar-height);
+  }
+
+  .AvatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  .AvatarFallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $purple-light-4;
+    color: $purple-12;
+    font-weight: 400;
+    font-size: var(--zui-avatar-font-size);
+    line-height: var(--zui-avatar-font-line-height);
+  }
+
+  .Status {
+    display: flex;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--zui-avatar-status-background);
+    position: absolute;
+    bottom: -0.125rem;
+    right: -0.125rem;
+    border: 0.125rem solid $background-primary;
+  }
+
+  .Badge {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    right: var(--zui-avatar-badge-position-right);
+    top: var(--zui-avatar-badge-position-top);
+    background: $purple-9;
+    border: 0.125rem solid $background-primary;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.5rem;
+    line-height: 0.688rem;
+    color: $almost-black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .DefaultAvatarIcon {
+    color: $purple-8;
+  }
+}

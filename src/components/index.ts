@@ -2,6 +2,7 @@ export * from './Address';
 export * from './Alert';
 export * from './AspectRatio';
 export * from './AsyncTable';
+export * from './Avatar';
 export { Button } from './Button';
 export * from './Card';
 export * from './Checkbox';
