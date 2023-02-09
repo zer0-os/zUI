@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 
-import classNames from 'classnames/bind';
 import styles from './Member.module.scss';
 
 type LabelVariant = 'primary' | 'secondary';
@@ -14,7 +13,7 @@ export type MemberProps = {
 
 export const Member: FC<MemberProps> = ({ label, href, children, className, variant = 'primary' }) => {
   return (
-    <div className={classNames(styles.Container, className)}>
+    <div className={`${styles.Container} ${className}`}>
       <label className={styles.Label} data-variant={variant}>
         {label}
       </label>

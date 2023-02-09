@@ -1,6 +1,6 @@
 //- React Imports
 import React, { FC, useRef } from 'react';
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 
 //- Style Imports
 import './MediaInput.scss';

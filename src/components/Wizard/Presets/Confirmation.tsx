@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 
-import classNames from 'classnames/bind';
-
 import { Buttons, ButtonsProps } from './Buttons';
 import './Confirmation.scss';
 
@@ -16,7 +14,7 @@ export const Confirmation = ({ className, message, error, ...rest }: Confirmatio
   }, [message]);
 
   return (
-    <div className={classNames('zui-wizard-confirmation', className)}>
+    <div className={`zui-wizard-confirmation ${className}`}>
       {isMessageString ? <p>{message}</p> : message}
       {error !== undefined && <p className="error-text">{error}</p>}
       <Buttons {...rest} />

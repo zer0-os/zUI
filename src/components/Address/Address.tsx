@@ -5,7 +5,6 @@ import { truncateAddress } from '../../utils';
 
 import { SkeletonText } from '../../components/SkeletonText';
 
-import classNames from 'classnames/bind';
 import styles from './Address.module.scss';
 
 export interface AddressProps {
@@ -25,7 +24,7 @@ export const Address = ({ className, address }: AddressProps) => {
 
   return (
     <SkeletonText
-      className={classNames(styles.AsyncAddress, className)}
+      className={`${styles.AsyncAddress} ${className}`}
       as={'span'}
       asyncText={{
         ...address,
