@@ -4,11 +4,11 @@
   --zui-accordion-margin-top: 0.25rem;
   --zui-accordion-group-border-radius: 0.5rem;
 
-  .AccordionItem:first-child {
+  .Item:first-child {
     --zui-accordion-margin-top: 0;
   }
 
-  .AccordionHeader {
+  .Header {
     --zui-accordion-border-bottom: 0.063rem solid #{$purple-50};
 
     &:hover {
@@ -20,7 +20,7 @@
     }
   }
 
-  .AccordionTrigger {
+  .Trigger {
     --zui-accordion-item-padding: 0.5rem 0 0.438rem;
     --zui-accordion-header-background-color: transparent;
 
@@ -45,7 +45,7 @@
   }
 
   &[data-contrast='high'] {
-    .AccordionHeader {
+    .Header {
       --zui-accordion-border-bottom: 0.063rem solid #{$purple-6};
 
       &[data-state='open'] {
@@ -61,7 +61,7 @@
       }
     }
 
-    .AccordionTrigger {
+    .Trigger {
       --zui-accordion-header-background-color: #{$purple-4};
       --zui-accordion-item-padding: 0.5rem 1rem 0.438rem;
 
@@ -85,7 +85,7 @@
     all: unset;
   }
 
-  .AccordionItem {
+  .Item {
     overflow: hidden;
     margin-top: var(--zui-accordion-margin-top);
 
@@ -106,7 +106,7 @@
     }
   }
 
-  .AccordionHeader {
+  .Header {
     display: flex;
     width: 100%;
     border-bottom: var(--zui-accordion-border-bottom);
@@ -116,7 +116,7 @@
     }
   }
 
-  .AccordionTrigger {
+  .Trigger {
     font-family: inherit;
     padding: var(--zui-accordion-item-padding);
     flex: 1;
@@ -129,29 +129,29 @@
     transition: 0.15s all ease;
 
     &[data-state='open'] {
-      &>.AccordionChevron {
+      &>.Chevron {
         transform: rotate(180deg);
       }
     }
   }
 
   &[data-contrast='high'] {
-    .AccordionContent {
+    .Content {
       border: 0.063rem solid $purple-6;
     }
   }
 
-  .AccordionChevron {
+  .Chevron {
     color: $grey-12;
     transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
   }
 
-  .AccordionContent {
+  .Content {
     overflow: hidden;
     font-size: 1rem;
     line-height: 1.5rem;
 
-    .AccordionContentText {
+    .ContentText {
       padding: 1rem;
     }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import { IconChevronDown } from '../Icons';
@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 export interface AccordionItem {
   title: string;
-  text: string;
+  content: ReactNode;
 }
 export interface AccordionProps {
   items: AccordionItem[];
@@ -21,26 +21,26 @@ export const Accordion = ({ items, contrast = 'high' }: AccordionProps) => {
   const [focusState, setFocusState] = useState(false);
   return (
     <div className={styles.Accordion} data-contrast={contrast}>
-      <RadixAccordion.Root className={styles.AccordionRoot} type="single" collapsible>
+      <RadixAccordion.Root className={styles.Root} type="single" collapsible>
         {items.map((itm, i) => (
           <RadixAccordion.Item
-            className={styles.AccordionItem}
+            className={styles.Item}
             value={`item-${i}`}
-            key={i}
+            key={`${itm.title}-${i}`}
             data-focus-on-key-press={focusState}
           >
-            <RadixAccordion.Header className={styles.AccordionHeader}>
+            <RadixAccordion.Header className={styles.Header}>
               <RadixAccordion.Trigger
-                className={styles.AccordionTrigger}
+                className={styles.Trigger}
                 onMouseDown={() => setFocusState(false)}
-                onKeyDown={e => setFocusState(true)}
+                onKeyDown={() => setFocusState(true)}
               >
                 {itm.title}
-                <IconChevronDown className={styles.AccordionChevron} aria-hidden size={22} />
+                <IconChevronDown className={styles.Chevron} aria-hidden size={22} />
               </RadixAccordion.Trigger>
             </RadixAccordion.Header>
-            <RadixAccordion.Content className={styles.AccordionContent}>
-              <div className={styles.AccordionContentText}>{itm.text}</div>
+            <RadixAccordion.Content className={styles.Content}>
+              <div className={styles.ContentText}>{itm.content}</div>
             </RadixAccordion.Content>
           </RadixAccordion.Item>
         ))}
