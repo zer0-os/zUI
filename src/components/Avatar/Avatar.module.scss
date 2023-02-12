@@ -4,15 +4,17 @@
   &:focus-within {
     --zui-avatar-border-radius: 50%;
   }
+  --zui-avatar-font-size: 0.875rem;
+  --zui-avatar-font-line-height: 150%;
 
-  .AvatarRoot {
+  .Root {
     --zui-avatar-border-radius: 50%;
     --zui-avatar-width: 2.5rem;
     --zui-avatar-height: 2.5rem;
   }
 
   &[data-type='square'] {
-    .AvatarRoot {
+    .Root {
       --zui-avatar-border-radius: 0.5rem;
     }
 
@@ -21,18 +23,16 @@
     }
   }
 
-  .AvatarFallback {
-    --zui-avatar-font-size: 0.875rem;
-    --zui-avatar-font-line-height: 150%;
-  }
-
   .Badge {
     --zui-avatar-badge-position-right: -0.375rem;
     --zui-avatar-badge-position-top: -0.375rem;
   }
 
   &[data-size='small'] {
-    .AvatarRoot {
+    --zui-avatar-font-size: 0.625rem;
+    --zui-avatar-font-line-height: 0.75rem;
+
+    .Root {
       --zui-avatar-width: 1.5rem;
       --zui-avatar-height: 1.5rem;
     }
@@ -41,27 +41,23 @@
       --zui-avatar-badge-position-top: -0.625rem;
       --zui-avatar-badge-position-right: -0.625rem;
     }
-
-    .AvatarFallback {
-      --zui-avatar-font-size: 0.625rem;
-      --zui-avatar-font-line-height: 0.75rem;
-    }
   }
 
   &[data-size='extra small'] {
-    .AvatarRoot {
+    --zui-avatar-font-size: 0.5rem;
+    --zui-avatar-font-line-height: 0.625rem;
+
+    .Root {
       --zui-avatar-width: 1rem;
       --zui-avatar-height: 1rem;
-    }
-
-    .AvatarFallback {
-      --zui-avatar-font-size: 0.5rem;
-      --zui-avatar-font-line-height: 0.625rem;
     }
   }
 
   &[data-size='medium'] {
-    .AvatarRoot {
+    --zui-avatar-font-size: 0.625rem;
+    --zui-avatar-font-line-height: 0.75rem;
+
+    .Root {
       --zui-avatar-width: 2rem;
       --zui-avatar-height: 2rem;
     }
@@ -70,33 +66,6 @@
       --zui-avatar-badge-position-top: -0.625rem;
       --zui-avatar-badge-position-right: -0.625rem;
     }
-
-    .AvatarFallback {
-      --zui-avatar-font-size: 0.625rem;
-      --zui-avatar-font-line-height: 0.75rem;
-    }
-  }
-
-  .Status {
-    &[data-status-type='active'] {
-      --zui-avatar-status-background: #{$green-9};
-    }
-
-    &[data-status-type='idle'] {
-      --zui-avatar-status-background: #{$orange-10};
-    }
-
-    &[data-status-type='busy'] {
-      --zui-avatar-status-background: #{$read-10};
-    }
-
-    &[data-status-type='offline'] {
-      --zui-avatar-status-background: #{$grey-10};
-    }
-
-    &[data-status-type='unread'] {
-      --zui-avatar-status-background: #{$purple-11};
-    }
   }
 }
 
@@ -104,6 +73,8 @@
   position: relative;
   display: flex;
   cursor: pointer;
+  font-size: var(--zui-avatar-font-size);
+  line-height: var(--zui-avatar-font-line-height);
 
   &:focus-within {
     border-radius: var(--zui-avatar-border-radius);
@@ -111,7 +82,7 @@
     outline: 0.0625rem solid $green-11;
   }
 
-  .AvatarRoot {
+  .Root {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -124,14 +95,14 @@
     height: var(--zui-avatar-height);
   }
 
-  .AvatarImage {
+  .Image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
   }
 
-  .AvatarFallback {
+  .Fallback {
     width: 100%;
     height: 100%;
     display: flex;
@@ -140,16 +111,9 @@
     background-color: $purple-light-4;
     color: $purple-12;
     font-weight: 400;
-    font-size: var(--zui-avatar-font-size);
-    line-height: var(--zui-avatar-font-line-height);
   }
 
   .Status {
-    display: flex;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--zui-avatar-status-background);
     position: absolute;
     bottom: -0.125rem;
     right: -0.125rem;
@@ -174,7 +138,7 @@
     display: flex;
   }
 
-  .DefaultAvatarIcon {
+  .DefaultIcon {
     color: $purple-8;
   }
 }
