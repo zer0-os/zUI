@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classBind from 'classnames/bind';
+import classNames from 'classnames';
 
 import { ArrowLink } from '../Link';
 import styles from './StepBar.module.scss';
@@ -24,7 +25,7 @@ export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChange
   };
 
   return (
-    <div className={`${styles.StepBar} ${className}`}>
+    <div className={classNames(styles.StepBar, className)}>
       {steps
         .map((s: Step, i: number) => {
           return currentStepIndex > i ? (
