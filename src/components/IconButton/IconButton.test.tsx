@@ -1,36 +1,45 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 
 import { IconButton, Properties } from '.';
 import { IconXClose } from '../Icons/icons/IconXClose';
 
+let iconRender = jest.fn();
+jest.mock('../Icons/icons/IconXClose', () => {
+  return {
+    IconXClose: (props: any) => {
+      iconRender(props);
+      return <div />;
+    }
+  };
+});
+
 describe('IconButton', () => {
-  const subject = (props: Partial<Properties> = {}, children = <></>) => {
-    const allProps = {
-      getIcon: () => <path />,
+  const renderComponent = (props: Partial<Properties> = {}) => {
+    const allProps: Properties = {
       onClick: (): void => null,
       Icon: () => <></>,
       ...props
     };
 
-    return shallow(<IconButton {...allProps}>{children}</IconButton>);
+    return render(<IconButton {...allProps}></IconButton>);
   };
 
   it('adds className to main element', () => {
-    const wrapper = subject({ className: 'tacos' });
+    const { getByRole } = renderComponent({ className: 'tacos' });
 
-    expect(wrapper.is('.tacos')).toBe(true);
+    expect(getByRole('button')).toHaveClass('tacos');
   });
 
   it('renders the chosen icon', () => {
-    const wrapper = subject({
+    renderComponent({
       Icon: IconXClose,
       label: 'the-label',
       size: 12,
       isFilled: false
     });
 
-    expect(wrapper.find('IconXClose').props()).toEqual({
+    expect(iconRender).toHaveBeenLastCalledWith({
       label: 'the-label',
       size: 12,
       isFilled: false
@@ -39,27 +48,25 @@ describe('IconButton', () => {
 
   it('fires onClick', () => {
     const onClick = jest.fn();
-    const wrapper = subject({ onClick });
+    const { getByRole } = renderComponent({ onClick });
 
-    click(wrapper.find('button'));
+    fireEvent.click(getByRole('button'));
 
     expect(onClick).toHaveBeenCalledOnce();
   });
 
   it('prevents propagation of click event', () => {
-    const stopPropagation = jest.fn();
-    const wrapper = subject({});
+    const onClick = jest.fn();
+    const onOuterClick = jest.fn();
 
-    click(wrapper.find('button'), { stopPropagation });
+    const { getByRole } = render(
+      <div onClick={onOuterClick}>
+        <IconButton onClick={onClick} Icon={() => <></>}></IconButton>
+      </div>
+    );
 
-    expect(stopPropagation).toHaveBeenCalledOnce();
+    fireEvent.click(getByRole('button'));
+
+    expect(onOuterClick).toHaveBeenCalledTimes(0);
   });
 });
-
-function click(node: any, eventAttrs: any = {}) {
-  node.simulate('click', {
-    preventDefault: (): void => null,
-    stopPropagation: (): void => null,
-    ...eventAttrs
-  });
-}
