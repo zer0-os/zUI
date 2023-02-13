@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor } from 'react';
+import React, { FC, JSXElementConstructor } from 'react';
 
 import classNames from 'classnames';
 import styles from './IconButton.module.scss';
@@ -14,17 +14,15 @@ export interface Properties {
   isFilled?: boolean;
 }
 
-export class IconButton extends React.Component<Properties> {
-  handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+export const IconButton: FC<Properties> = ({ Icon, onClick, className, label, size, isFilled }) => {
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
-    this.props.onClick();
-  };
-
-  render() {
-    return (
-      <button className={classNames(styles.IconButton, this.props.className)} onClick={this.handleClick}>
-        <this.props.Icon label={this.props.label} size={this.props.size} isFilled={this.props.isFilled} />
-      </button>
-    );
+    onClick();
   }
-}
+
+  return (
+    <button className={classNames(styles.IconButton, className)} onClick={handleClick}>
+      <Icon label={label} size={size} isFilled={isFilled} />
+    </button>
+  );
+};
