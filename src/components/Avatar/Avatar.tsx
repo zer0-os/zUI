@@ -54,6 +54,12 @@ const AvatarBadge = ({ badgeContent }: StatusBadgeTypeProps) => {
   return <div className={styles.Badge}> {badgeContent}</div>;
 };
 
+/**
+ *
+ * Used to fetch the first two letter of the name
+ * @param userFriendlyName provided user name
+ * @returns two chars from the string
+ */
 const getInitials = (userFriendlyName: string): string => {
   const userNameArray = userFriendlyName.split(' ');
   let charFromName = userNameArray[0].substring(0, 1);
