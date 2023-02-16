@@ -18,15 +18,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    
+    color: var(--color-greyscale-12);
+    background-color: var(--color-primary-3);
 
     & > * {
       margin: 1rem;
-    }
-
-    &--is-contrast {
-      background-color: var(--color-primary-3);
-      color: var(--color-greyscale-12);
     }
 
     &--is-wrap-disabled {
@@ -45,145 +41,4 @@
       color: inherit;
     }
   }
-}
-
-.story_card__content--is-contrast {
-  // Imported from zOS
-  // TODO: pull the theme component from zOS into zUI
-  //       and add it to the storybook page to allow dynamic switching
-  --color-primary-1: #0A0A0A;
-  --color-primary-2: #141316;
-  --color-primary-3: #1F1B22;
-  --color-primary-4: #37273F;
-  --color-primary-5: #463258;
-  --color-primary-6: #4C335B;
-  --color-primary-7: #6A3991;
-  --color-primary-8: #7F46AA;
-  --color-primary-9: #973CDD;
-  --color-primary-10: #934BCE;
-  --color-primary-11: #BF7AF0;
-  --color-primary-12: #F5ECFC;
-  --color-secondary-1: #051C18;
-  --color-secondary-2: #05201B;
-  --color-secondary-3: #052923;
-  --color-secondary-4: #01342C;
-  --color-secondary-5: #013C32;
-  --color-secondary-6: #01453A;
-  --color-secondary-7: #005648;
-  --color-secondary-8: #136C5E;
-  --color-secondary-9: #67EACE;
-  --color-secondary-10: #8AFFE5;
-  --color-secondary-11: #01F4CB;
-  --color-secondary-12: #E4FFF9;
-  --color-greyscale-1: #09090A;
-  --color-greyscale-2: #1C1C1F;
-  --color-greyscale-3: #232326;
-  --color-greyscale-4: #28282C;
-  --color-greyscale-5: #2E2E32;
-  --color-greyscale-6: #34343A;
-  --color-greyscale-7: #404040;
-  --color-greyscale-8: #504F57;
-  --color-greyscale-9: #706F78;
-  --color-greyscale-10: #7E7D86;
-  --color-greyscale-11: #A09FA6;
-  --color-greyscale-12: #EDEDEF;
-  --color-text-primary-1: rgba(174, 105, 228, 0.03);
-  --color-text-primary-2: rgba(172, 71, 222, 0.04);
-  --color-text-primary-3: rgba(180, 94, 227, 0.13);
-  --color-text-primary-4: rgba(174, 126, 200, 0.19);
-  --color-text-primary-5: rgba(176, 119, 210, 0.25);
-  --color-text-primary-6: rgba(183, 75, 255, 0.33);
-  --color-text-primary-7: rgba(177, 74, 255, 0.46);
-  --color-text-primary-8: rgba(171, 75, 255, 0.66);
-  --color-text-primary-9: rgba(181, 97, 255, 0.75);
-  --color-text-primary-10: rgba(189, 109, 255, 0.8);
-  --color-text-primary-11: rgba(195, 176, 208, 0.93);
-  --color-text-primary-12: rgba(252, 240, 255, 0.98);
-  --color-success-1: #0D1912;
-  --color-success-2: #0C1F17;
-  --color-success-3: #0F291E;
-  --color-success-4: #113123;
-  --color-success-5: #133929;
-  --color-success-6: #164430;
-  --color-success-7: #1B543A;
-  --color-success-8: #236E4A;
-  --color-success-9: #30A46C;
-  --color-success-10: #3CB179;
-  --color-success-11: #58C573;
-  --color-success-12: #E5FBEB;
-  --color-warning-1: #1F1206;
-  --color-warning-2: #2B1400;
-  --color-warning-3: #391A03;
-  --color-warning-4: #441F04;
-  --color-warning-5: #4F2305;
-  --color-warning-6: #5F2A06;
-  --color-warning-7: #763205;
-  --color-warning-8: #943E00;
-  --color-warning-9: #F76808;
-  --color-warning-10: #FF802B;
-  --color-warning-11: #FF8B3E;
-  --color-warning-12: #FEEADD;
-  --color-failure-1: #1F1315;
-  --color-failure-2: #291415;
-  --color-failure-3: #3C181A;
-  --color-failure-4: #481A1D;
-  --color-failure-5: #541B1F;
-  --color-failure-6: #671E22;
-  --color-failure-7: #822025;
-  --color-failure-8: #AA2429;
-  --color-failure-9: #E5484D;
-  --color-failure-10: #F2555A;
-  --color-failure-11: #FF6369;
-  --color-failure-12: #FEECEE;
-  --color-greyscale-transparency-1: #09090A;
-  --color-greyscale-transparency-2: rgba(215, 215, 250, 0.03);
-  --color-greyscale-transparency-3: rgba(235, 235, 254, 0.06);
-  --color-greyscale-transparency-4: rgba(229, 229, 254, 0.09);
-  --color-greyscale-transparency-5: rgba(234, 234, 254, 0.11);
-  --color-greyscale-transparency-6: rgba(225, 225, 254, 0.15);
-  --color-greyscale-transparency-7: rgba(232, 232, 254, 0.19);
-  --color-greyscale-transparency-8: rgba(234, 231, 255, 0.27);
-  --color-greyscale-transparency-9: rgba(238, 236, 255, 0.42);
-  --color-greyscale-transparency-10: rgba(240, 238, 255, 0.48);
-  --color-greyscale-transparency-11: rgba(247, 245, 255, 0.62);
-  --color-greyscale-transparency-12: rgba(253, 253, 255, 0.93);
-  --color-primary-transparency-1: rgba(174, 105, 228, 0.03);
-  --color-primary-transparency-2: rgba(172, 71, 222, 0.04);
-  --color-primary-transparency-3: rgba(180, 94, 227, 0.13);
-  --color-primary-transparency-4: rgba(174, 126, 200, 0.19);
-  --color-primary-transparency-5: rgba(176, 119, 210, 0.25);
-  --color-primary-transparency-6: rgba(183, 75, 255, 0.33);
-  --color-primary-transparency-7: rgba(177, 74, 255, 0.46);
-  --color-primary-transparency-8: rgba(171, 75, 255, 0.66);
-  --color-primary-transparency-9: rgba(181, 97, 255, 0.75);
-  --color-primary-transparency-10: rgba(189, 109, 255, 0.8);
-  --color-primary-transparency-11: rgba(195, 176, 208, 0.93);
-  --color-primary-transparency-12: rgba(252, 240, 255, 0.98);
-  --color-secondary-transparency-1: #051C18;
-  --color-secondary-transparency-2: rgba(0, 251, 251, 0.03);
-  --color-secondary-transparency-3: rgba(0, 253, 237, 0.07);
-  --color-secondary-transparency-4: rgba(0, 253, 224, 0.1);
-  --color-secondary-transparency-5: rgba(0, 254, 224, 0.14);
-  --color-secondary-transparency-6: rgba(0, 254, 220, 0.19);
-  --color-secondary-transparency-7: rgba(0, 254, 216, 0.27);
-  --color-secondary-transparency-8: rgba(0, 254, 208, 0.37);
-  --color-secondary-transparency-9: rgba(128, 255, 227, 0.87);
-  --color-secondary-transparency-10: rgba(157, 255, 227, 0.95);
-  --color-secondary-transparency-11: rgba(44, 255, 209, 0.8);
-  --color-secondary-transparency-12: rgba(236, 255, 251, 0.98);
-  --color-error-transparency-1: #1F1315;
-  --color-error-transparency-2: rgba(253, 40, 21, 0.045);
-  --color-error-transparency-3: rgba(254, 58, 61, 0.13);
-  --color-error-transparency-4: rgba(254, 57, 64, 0.184);
-  --color-error-transparency-5: rgba(255, 53, 63, 0.237);
-  --color-error-transparency-6: rgba(255, 53, 60, 0.322);
-  --color-error-transparency-7: rgba(255, 48, 59, 0.442);
-  --color-error-transparency-8: rgba(255, 47, 54, 0.621);
-  --color-error-transparency-9: rgba(255, 79, 85, 0.884);
-  --color-error-transparency-10: rgba(255, 89, 95, 0.942);
-  --color-error-transparency-11: rgba(255, 100, 106, 0.98);
-  --color-error-transparency-12: rgba(255, 240, 242, 0.98);
-  --color-black: #101010;
-  --color-white: #FFFFFF;
-  --color-grey: #808080;
 }
