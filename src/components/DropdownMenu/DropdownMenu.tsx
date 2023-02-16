@@ -24,6 +24,8 @@ export interface DropdownItem {
 }
 
 export interface DropdownMenuProps {
+  /** Childrens to render as content in the dropdown */
+  children?: ReactNode;
   /** List of items to render in the dropdown menu */
   items: DropdownItem[];
   /** Clicking this will make the dropdown menu appear */
@@ -48,6 +50,7 @@ export interface DropdownMenuProps {
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   (
     {
+      children,
       className,
       menuClassName,
       alignMenu = 'center',
@@ -73,6 +76,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           side={side}
           ref={ref}
         >
+          {children}
           {items.map(item => (
             <RadixUIDropdownMenuItem
               className={classNames('zui-dropdown-item', item.className)}
