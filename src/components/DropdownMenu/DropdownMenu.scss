@@ -3,7 +3,7 @@
 
 .zui-dropdown-trigger {
   background: none;
-  color: #{$text-primary};
+  color: $text-primary;
   border: none;
   cursor: pointer;
   font-size: inherit;
@@ -13,18 +13,18 @@
   width: 16rem; // 256px
   padding: 0.5rem;
 
-  background: #{$purple-10};
+  background: $purple-10;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  border: 1px solid #{$purple-25};
+  border: 1px solid $purple-25;
 
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 
   .zui-dropdown-item {
     padding: 1rem;
 
-    color: #{$text-primary};
+    color: $text-primary;
     outline: none;
 
     &:hover {
@@ -47,10 +47,10 @@
   }
 
   .zui-dropdown-header-title {
-    font-weight: #{$font-weight-bold};
-    font-size: #{$size-default};
+    font-weight: $font-weight-bold;
+    font-size: $size-default;
 
-    color: #{$text-primary};
+    color: $text-primary;
     outline: none;
 
     user-select: none;
