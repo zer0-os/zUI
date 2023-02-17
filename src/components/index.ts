@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Address';
 export * from './Alert';
 export * from './AspectRatio';
