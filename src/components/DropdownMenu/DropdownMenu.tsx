@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode, FC } from 'react';
 
 import {
   DropdownMenuProps as RadixUIDropdownMenuProps,
@@ -91,3 +91,25 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
     );
   }
 );
+
+export interface HeaderProps {
+  /** Item to render inside the Header */
+  item: string | ReactNode;
+
+  /** Class to apply to the container */
+  className?: string;
+
+  /** Class to apply to the text */
+  titleClassName?: string;
+}
+
+export const Header: FC<HeaderProps> = ({ item, className, titleClassName }) => {
+  const itemElement =
+    typeof item === 'string' ? (
+      <span className={classNames('zui-dropdown-header-title', titleClassName)}>{item}</span>
+    ) : (
+      item
+    );
+
+  return <div className={classNames('zui-dropdown-header-container', className)}>{itemElement}</div>;
+};

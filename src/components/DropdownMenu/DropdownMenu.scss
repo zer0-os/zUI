@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/typography';
 
 .zui-dropdown-trigger {
   background: none;
@@ -27,7 +28,7 @@
     outline: none;
 
     &:hover {
-      background: #381C4E;
+      background: #381c4e;
       text-shadow: 0 0 0.25rem rgba(177, 78, 255, 0.75);
     }
 
@@ -35,6 +36,23 @@
 
     user-select: none;
     cursor: pointer;
+  }
 
+  .zui-dropdown-header-container {
+    padding: 0.5rem 1rem 1rem 1rem;
+
+    border-bottom: 1px solid #463258;
+
+    user-select: none;
+  }
+
+  .zui-dropdown-header-title {
+    font-weight: #{$font-weight-bold};
+    font-size: #{$size-default};
+
+    color: #{$text-primary};
+    outline: none;
+
+    user-select: none;
   }
 }
