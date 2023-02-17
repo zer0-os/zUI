@@ -1,18 +1,19 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { DropdownMenu } from './';
+import * as Dropdown from './';
 import { StoryCard } from '../.storybook';
 import { IconArrowDownLeft } from '../Icons';
+import { Member } from '../Member/Member';
 
 export default {
   title: 'Data Display/DropdownMenu',
-  component: DropdownMenu
-} as ComponentMeta<typeof DropdownMenu>;
+  component: Dropdown.DropdownMenu
+} as ComponentMeta<typeof Dropdown.DropdownMenu | typeof Dropdown.Header>;
 
-const Template: ComponentStory<typeof DropdownMenu> = args => {
+const Template: ComponentStory<typeof Dropdown.DropdownMenu> = args => {
   return (
     <StoryCard isContrast>
-      <DropdownMenu
+      <Dropdown.DropdownMenu
         {...args}
         items={[
           {
@@ -46,4 +47,42 @@ TextTrigger.args = {
 export const CustomTrigger = Template.bind({});
 CustomTrigger.args = {
   trigger: <IconArrowDownLeft />
+};
+
+const TemplateHeader: ComponentStory<typeof Dropdown.Header> = args => {
+  return (
+    <StoryCard isContrast>
+      <Dropdown.DropdownMenu
+        items={[
+          {
+            id: 'dropdown_menu_1',
+            label: 'Apple',
+            onSelect: () => console.log('you clicked Apple!')
+          },
+          {
+            id: 'dropdown_menu_2',
+            label: 'Orange',
+            onSelect: () => console.log('you clicked Orange!')
+          },
+          {
+            id: 'pear',
+            label: 'Pear',
+            onSelect: () => console.log('you clicked Pear!')
+          }
+        ]}
+      >
+        <Dropdown.Header {...args} />
+      </Dropdown.DropdownMenu>
+    </StoryCard>
+  );
+};
+
+export const TextHeader = TemplateHeader.bind({});
+TextHeader.args = {
+  item: 'Delicious fruits!'
+};
+
+export const ComponentHeader = TemplateHeader.bind({});
+ComponentHeader.args = {
+  item: <Member label="Member Label" children={<span>Member Content</span>} />
 };
