@@ -35,6 +35,7 @@
   }
 
   .zui-dropdown-header-container {
+    display: flex;
     padding: 0.5rem 1rem 1rem 1rem;
     border-bottom: 1px solid $purple-dark-5;
     user-select: none;

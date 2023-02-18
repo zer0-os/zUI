@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import * as Dropdown from './';
 import { StoryCard } from '../.storybook';
 import { IconArrowDownLeft } from '../Icons';
-import { Member } from '../Member/Member';
+import { Avatar } from '../Avatar';
 
 export default {
   title: 'Data Display/DropdownMenu',
@@ -84,5 +84,14 @@ TextHeader.args = {
 
 export const ComponentHeader = TemplateHeader.bind({});
 ComponentHeader.args = {
-  item: <Member label="Member Label" children={<span>Member Content</span>} />
+  item: (
+    <Avatar
+      size="regular"
+      type="circle"
+      badgeContent="+9"
+      userFriendlyName="Mic Brooklyn"
+      imageURL="https://picsum.photos/200/300"
+      statusType="active"
+    />
+  )
 };
