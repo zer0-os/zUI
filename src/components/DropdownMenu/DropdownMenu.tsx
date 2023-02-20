@@ -24,7 +24,7 @@ export interface DropdownItem {
 }
 
 export interface DropdownMenuProps {
-  /** Childrens to render as content in the dropdown */
+  /** Header component */
   header?: ReactNode;
   /** List of items to render in the dropdown menu */
   items: DropdownItem[];
