@@ -70,9 +70,8 @@ const TemplateHeader: ComponentStory<typeof Dropdown.Header> = args => {
             onSelect: () => console.log('you clicked Pear!')
           }
         ]}
-      >
-        <Dropdown.Header {...args} />
-      </Dropdown.DropdownMenu>
+        header={<Dropdown.Header {...args} />}
+      />
     </StoryCard>
   );
 };
