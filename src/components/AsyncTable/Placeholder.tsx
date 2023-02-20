@@ -1,8 +1,6 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
-import { randomUUID } from '../../utils';
-
 import { TableData } from './Column';
 
 interface RowPlaceholdersProps {
@@ -18,11 +16,10 @@ export const RowPlaceholders = ({ amount, height, numColumns }: RowPlaceholdersP
     </TableData>
   );
 
-  const rowPlaceholderKey = `grid-placeholder-key-${randomUUID()}`;
   const columns = Array(numColumns).fill(columnPlaceholder);
   const rows = Array(amount).fill(<tr>{columns}</tr>);
 
-  return <div key={rowPlaceholderKey}>{rows}</div>;
+  return <div>{rows}</div>;
 };
 
 interface GridPlaceholdersProps {
@@ -30,8 +27,7 @@ interface GridPlaceholdersProps {
 }
 
 export const GridPlaceholders = ({ amount }: GridPlaceholdersProps) => {
-  const gridPlaceholderKey = `grid-placeholder-key-${randomUUID()}`;
   const placeholders = Array(amount).fill(<div />);
 
-  return <div key={gridPlaceholderKey}>{placeholders}</div>;
+  return <div>{placeholders}</div>;
 };
