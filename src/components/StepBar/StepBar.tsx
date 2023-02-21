@@ -1,12 +1,13 @@
 import React from 'react';
 
-import classNames from 'classnames/bind';
+import classBind from 'classnames/bind';
+import classNames from 'classnames';
 
 import { ArrowLink } from '../Link';
 import styles from './StepBar.module.scss';
 import type { Step } from './StepBar.types';
 
-const cx = classNames.bind(styles);
+const cx = classBind.bind(styles);
 
 export type StepBarProps = {
   currentStepId: Step['id'];

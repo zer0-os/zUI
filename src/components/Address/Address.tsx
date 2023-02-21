@@ -5,7 +5,7 @@ import { truncateAddress } from '../../utils';
 
 import { SkeletonText } from '../../components/SkeletonText';
 
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 import styles from './Address.module.scss';
 
 export interface AddressProps {

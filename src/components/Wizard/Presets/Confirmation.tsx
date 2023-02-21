@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 
 import { Buttons, ButtonsProps } from './Buttons';
 import './Confirmation.scss';

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 import styles from './Member.module.scss';
 
 type LabelVariant = 'primary' | 'secondary';
