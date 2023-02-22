@@ -13,7 +13,7 @@ interface SharedProps {
  * Table container
  ***********************/
 
-interface TableProps extends SharedProps {}
+type TableProps = SharedProps
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(({ children, className, ...props }: TableProps, ref) => {
   return (
@@ -27,7 +27,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(({ children, class
  * Header container
  ***********************/
 
-interface HeaderGroupProps extends SharedProps {}
+type HeaderGroupProps = SharedProps
 
 export const HeaderGroup = forwardRef<HTMLTableSectionElement, HeaderGroupProps>(
   ({ children, className, ...props }: HeaderGroupProps, ref) => {
@@ -43,7 +43,7 @@ export const HeaderGroup = forwardRef<HTMLTableSectionElement, HeaderGroupProps>
  * Body container
  ***********************/
 
-interface BodyProps extends SharedProps {}
+type BodyProps = SharedProps
 
 export const Body = forwardRef<HTMLTableSectionElement, BodyProps>(
   ({ children, className, ...props }: BodyProps, ref) => {
