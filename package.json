@@ -30,7 +30,8 @@
     "export:images": "copyfiles -u 1 src/**/*.{png,jpg,jpeg,gif,svg} dist/",
     "link": "bash .scripts/link.sh",
     "prettify": "prettier -w ./",
-    "storybook": "start-storybook -p 6007"
+    "storybook": "start-storybook -p 6007",
+    "generate-theme": "node .scripts/generate-theme.js"
   },
   "publishConfig": {
     "access": "public",
