@@ -11,7 +11,7 @@ export enum ViewModes {
 export interface ThemeEngineProperties {
   viewMode: ViewModes;
   element: HTMLElement;
-  theme: { [viewMode: string]: { [styleProp: string]: any } };
+  theme: { [viewMode: string]: { [styleProp: string]: string } };
 }
 
 export class Component extends React.Component<ThemeEngineProperties> {
