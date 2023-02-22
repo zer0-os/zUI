@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import styles from './IconButton.module.scss';
 import { IconProps } from '../Icons/Icons.types';
 
-export interface Properties {
+export interface IconButtonProperties {
   className?: string;
   onClick: () => void;
 
@@ -14,7 +14,7 @@ export interface Properties {
   isFilled?: boolean;
 }
 
-export const IconButton: FC<Properties> = ({ Icon, onClick, className, label, size, isFilled }) => {
+export const IconButton: FC<IconButtonProperties> = ({ Icon, onClick, className, label, size, isFilled }) => {
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
     onClick();

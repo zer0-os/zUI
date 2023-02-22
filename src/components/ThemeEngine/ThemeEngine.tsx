@@ -8,18 +8,18 @@ export enum ViewModes {
   Dark = 'dark'
 }
 
-export interface Properties {
+export interface ThemeEngineProperties {
   viewMode: ViewModes;
   element: HTMLElement;
   theme: { [viewMode: string]: { [styleProp: string]: any } };
 }
 
-export class Component extends React.Component<Properties> {
+export class Component extends React.Component<ThemeEngineProperties> {
   componentDidMount() {
     this.setVars(this.props.viewMode);
   }
 
-  componentDidUpdate(prevProps: Properties) {
+  componentDidUpdate(prevProps: ThemeEngineProperties) {
     if (prevProps.viewMode !== this.props.viewMode) {
       this.setVars(this.props.viewMode);
     }
@@ -38,6 +38,6 @@ export class Component extends React.Component<Properties> {
   }
 }
 
-export function ThemeEngine(props: Partial<Properties>) {
+export function ThemeEngine(props: Partial<ThemeEngineProperties>) {
   return <Component viewMode={props.viewMode} theme={theme} element={document.documentElement} />;
 }

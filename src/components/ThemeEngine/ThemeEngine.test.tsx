@@ -1,15 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Component, Properties, ViewModes } from '.';
+import { Component, ThemeEngineProperties, ViewModes } from '.';
 
 describe('theme-engine', () => {
   const getElement = (setProperty = (_prop: string, _value: string): any => undefined) => {
     return { style: { setProperty } } as HTMLElement;
   };
 
-  const renderComponent = (props: Partial<Properties> = {}) => {
-    const allProps: Properties = {
+  const renderComponent = (props: Partial<ThemeEngineProperties> = {}) => {
+    const allProps: ThemeEngineProperties = {
       element: getElement(),
       viewMode: ViewModes.Light,
       theme: {},
