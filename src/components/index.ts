@@ -22,6 +22,7 @@ export * from './SkeletonText';
 export * from './StepBar';
 export * from './SelectInput';
 export * from './Status';
+export * from './Table';
 export * from './Tabs';
 export * from './TextStack';
 export * from './ToggleGroup';
