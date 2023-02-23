@@ -15,7 +15,7 @@ jest.mock('../ToggleGroup', () => ({
 
 const DEFAULT_PROPS: ViewToggleProps = {
   onChange: jest.fn(),
-  view: View.Grid
+  view: View.GRID
 };
 
 const renderViewToggle = (props?: Partial<ViewToggleProps>) => {
@@ -25,7 +25,7 @@ const renderViewToggle = (props?: Partial<ViewToggleProps>) => {
 
 describe('<ViewToggle />', () => {
   describe('when forwarding props to ToggleGroup', () => {
-    renderViewToggle({ view: View.Grid });
+    renderViewToggle({ view: View.GRID });
 
     test('should pass Toggle className to ToggleGroup', () => {
       expect(mockToggleView).toHaveBeenCalledWith(expect.objectContaining({ className: 'Toggle' }));

@@ -22,24 +22,24 @@ const TableMessage = ({ children }: TableMessageProps) => {
  ************************/
 
 export enum TableStatus {
-  Loading = 'loading',
-  Empty = 'empty',
-  Searching = 'searching',
-  Error = 'error'
+  LOADING = 'loading',
+  EMPTY = 'empty',
+  SEARCHING = 'searching',
+  ERROR = 'error'
 }
 
 const StatusMessage = {
-  [TableStatus.Loading]: 'Loading',
-  [TableStatus.Empty]: 'Nothing to see here.',
-  [TableStatus.Searching]: 'Searching',
-  [TableStatus.Error]: 'Something went wrong!'
+  [TableStatus.LOADING]: 'Loading',
+  [TableStatus.EMPTY]: 'Nothing to see here.',
+  [TableStatus.SEARCHING]: 'Searching',
+  [TableStatus.ERROR]: 'Something went wrong!'
 };
 
 const StatusIcon = {
-  [TableStatus.Loading]: <Spinner />,
-  [TableStatus.Empty]: <IconFolderClosed />,
-  [TableStatus.Searching]: <Spinner />,
-  [TableStatus.Error]: <IconAlertCircle />
+  [TableStatus.LOADING]: <Spinner />,
+  [TableStatus.EMPTY]: <IconFolderClosed />,
+  [TableStatus.SEARCHING]: <Spinner />,
+  [TableStatus.ERROR]: <IconAlertCircle />
 };
 
 interface TableStatusMessageProps {

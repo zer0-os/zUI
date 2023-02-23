@@ -30,17 +30,17 @@ export const Controls = forwardRef<HTMLDivElement, ControlsProps>(({ children }:
  ***********************/
 
 export enum View {
-  Table = 'table',
-  Grid = 'grid'
+  TABLE = 'table',
+  GRID = 'grid'
 }
 
 const VIEW_OPTIONS = [
   {
-    key: View.Table,
+    key: View.TABLE,
     icon: <IconRows3 isFilled={true} />
   },
   {
-    key: View.Grid,
+    key: View.GRID,
     icon: <IconGrid1 isFilled={true} />
   }
 ];
