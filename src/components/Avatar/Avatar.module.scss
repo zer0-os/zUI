@@ -1,83 +1,14 @@
 @import '../../styles/colors';
 
 .Avatar {
-  &:focus-within {
-    --zui-avatar-border-radius: 50%;
-  }
-  --zui-avatar-font-size: 0.875rem;
-  --zui-avatar-font-line-height: 150%;
-
-  .Root {
-    --zui-avatar-border-radius: 50%;
-    --zui-avatar-width: 2.5rem;
-    --zui-avatar-height: 2.5rem;
-  }
-
-  &[data-type='square'] {
-    .Root {
-      --zui-avatar-border-radius: 0.5rem;
-    }
-
-    &:focus-within {
-      --zui-avatar-border-radius: 0.5rem;
-    }
-  }
-
-  .Badge {
-    --zui-avatar-badge-position-right: -0.375rem;
-    --zui-avatar-badge-position-top: -0.375rem;
-  }
-
-  &[data-size='small'] {
-    --zui-avatar-font-size: 0.625rem;
-    --zui-avatar-font-line-height: 0.75rem;
-
-    .Root {
-      --zui-avatar-width: 1.5rem;
-      --zui-avatar-height: 1.5rem;
-    }
-
-    .Badge {
-      --zui-avatar-badge-position-top: -0.625rem;
-      --zui-avatar-badge-position-right: -0.625rem;
-    }
-  }
-
-  &[data-size='extra small'] {
-    --zui-avatar-font-size: 0.5rem;
-    --zui-avatar-font-line-height: 0.625rem;
-
-    .Root {
-      --zui-avatar-width: 1rem;
-      --zui-avatar-height: 1rem;
-    }
-  }
-
-  &[data-size='medium'] {
-    --zui-avatar-font-size: 0.625rem;
-    --zui-avatar-font-line-height: 0.75rem;
-
-    .Root {
-      --zui-avatar-width: 2rem;
-      --zui-avatar-height: 2rem;
-    }
-
-    .Badge {
-      --zui-avatar-badge-position-top: -0.625rem;
-      --zui-avatar-badge-position-right: -0.625rem;
-    }
-  }
-}
-
-.Avatar {
   position: relative;
   display: flex;
   cursor: pointer;
-  font-size: var(--zui-avatar-font-size);
-  line-height: var(--zui-avatar-font-line-height);
+  font-size: 0.875rem;
+  line-height: 150%;
 
   &:focus-within {
-    border-radius: var(--zui-avatar-border-radius);
+    border-radius: 50%;
     outline-offset: 0.25rem;
     outline: 0.0625rem solid $green-11;
   }
@@ -90,9 +21,79 @@
     overflow: hidden;
     user-select: none;
     background-color: $black;
-    border-radius: var(--zui-avatar-border-radius);
-    width: var(--zui-avatar-width);
-    height: var(--zui-avatar-height);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+
+  &[data-type='square'] {
+    .Root {
+      border-radius: 0.5rem;
+    }
+
+    &:focus-within {
+      border-radius: 0.5rem;
+    }
+  }
+
+  .Badge {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    right: -0.375rem;
+    top: -0.375rem;
+    background: $purple-9;
+    border: 0.125rem solid $background-primary;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.5rem;
+    line-height: 0.688rem;
+    color: $almost-black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+
+  &[data-size='small'] {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+
+    .Root {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .Badge {
+      top: -0.625rem;
+      right: -0.625rem;
+    }
+  }
+
+  &[data-size='extra small'] {
+    font-size: 0.5rem;
+    line-height: 0.625rem;
+
+    .Root {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  &[data-size='medium'] {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+
+    .Root {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .Badge {
+      top: -0.625rem;
+      right: -0.625rem;
+    }
   }
 
   .Image {
@@ -118,24 +119,6 @@
     bottom: -0.125rem;
     right: -0.125rem;
     border: 0.125rem solid $background-primary;
-  }
-
-  .Badge {
-    position: absolute;
-    width: 1rem;
-    height: 1rem;
-    right: var(--zui-avatar-badge-position-right);
-    top: var(--zui-avatar-badge-position-top);
-    background: $purple-9;
-    border: 0.125rem solid $background-primary;
-    border-radius: 50%;
-    font-weight: 700;
-    font-size: 0.5rem;
-    line-height: 0.688rem;
-    color: $almost-black;
-    align-items: center;
-    justify-content: center;
-    display: flex;
   }
 
   .DefaultIcon {
