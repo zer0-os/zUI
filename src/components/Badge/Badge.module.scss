@@ -1,0 +1,33 @@
+@import '../../styles/colors';
+
+.Badge {
+  &[data-content-type='icon'] {
+    --zui-badge-border-radius: 50%;
+    --zui-badge-padding: 0.125rem;
+  }
+  &[data-content-type='text'] {
+    --zui-badge-border-radius: 624.938rem;
+    --zui-badge-padding: 0.156rem 0.25rem;
+  }
+  &[data-content-type='count'] {
+    --zui-badge-border-radius: 50%;
+    --zui-badge-padding: 0.156rem;
+  }
+}
+
+.Badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--zui-badge-border-radius);
+  font-weight: 700;
+  font-size: 0.5rem;
+  line-height: 0.688rem;
+  padding: var(--zui-badge-padding);
+
+  &[data-alert-state='true'] {
+    color: $red-9;
+    outline: 0.125rem solid $red-1;
+    background: $red-3 !important;
+  }
+}
