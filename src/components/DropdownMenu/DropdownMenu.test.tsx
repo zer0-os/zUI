@@ -147,11 +147,11 @@ describe('<DropdownMenu />', () => {
   describe('menu header component', () => {
     test('should render Header component', () => {
       const { container } = render(
-        <Dropdown.DropdownMenu 
-          {...DEFAULT_PROPS_MENU} 
-          open={true} 
+        <Dropdown.DropdownMenu
+          {...DEFAULT_PROPS_MENU}
+          open={true}
           defaultOpen={true}
-          header={<Dropdown.Header {...DEFAULT_PROPS_HEADER} classname={mockClassName} item={mockText[0]} />}
+          header={<Dropdown.Header {...DEFAULT_PROPS_HEADER} className={mockClassName} item={mockText[0]} />}
         />
       );
       expect(container.getElementsByClassName(mockClassName).length).toBe(1);
