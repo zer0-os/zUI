@@ -12,7 +12,11 @@ export default {
 const Template: ComponentStory<typeof RowPlaceholders> = args => {
   return (
     <StoryCard isContrast>
-      <RowPlaceholders {...args} />
+      <table>
+        <tbody>
+          <RowPlaceholders {...args} />
+        </tbody>
+      </table>
     </StoryCard>
   );
 };

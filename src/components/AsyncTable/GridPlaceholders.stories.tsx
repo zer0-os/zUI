@@ -12,7 +12,9 @@ export default {
 const Template: ComponentStory<typeof GridPlaceholders> = args => {
   return (
     <StoryCard isContrast>
-      <GridPlaceholders {...args} />
+      <div>
+        <GridPlaceholders {...args} />
+      </div>
     </StoryCard>
   );
 };
