@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 
-import { Badge, BadgeProps } from './';
+import { Badge } from './';
 import { IconArrowUpRight } from '../Icons';
 
 beforeEach(() => {
