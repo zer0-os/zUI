@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 
 import { Badge, BadgeProps } from './';
-import { IconArrowUpRight } from '../icons';
+import { IconArrowUpRight } from '../Icons';
 
 beforeEach(() => {
   jest.resetAllMocks();
