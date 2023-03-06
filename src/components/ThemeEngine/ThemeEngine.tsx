@@ -1,47 +1,35 @@
 import React from 'react';
 import kebabCase from 'lodash.kebabcase';
 
-import theme from './theme.json';
+import builtinThemes from './theme.json';
 
-export enum ViewModes {
+export enum Themes {
   Light = 'light',
   Dark = 'dark'
 }
 
+type ThemeDefinition = { [styleProp: string]: string };
+type ThemeList = { [viewMode: string]: ThemeDefinition };
+
 export interface ThemeComponentProperties {
-  viewMode: ViewModes;
-  element: HTMLElement;
-  theme: { [viewMode: string]: { [styleProp: string]: string } };
+  theme: Themes;
+  element?: HTMLElement;
+  themes?: ThemeList;
 }
 
-export class Component extends React.Component<ThemeComponentProperties> {
-  componentDidMount() {
-    this.setVars(this.props.viewMode);
+export const Component = React.memo(
+  ({ theme = Themes.Dark, element = document.documentElement, themes = builtinThemes }: ThemeComponentProperties) => {
+    writeThemePropertiesToElement(themes[theme], element);
+    return null;
   }
+);
 
-  componentDidUpdate(prevProps: ThemeComponentProperties) {
-    if (prevProps.viewMode !== this.props.viewMode) {
-      this.setVars(this.props.viewMode);
-    }
-  }
-
-  setVars(viewMode: ViewModes) {
-    const modeObject = this.props.theme[viewMode];
-
-    Object.keys(modeObject).forEach(prop => {
-      this.props.element.style.setProperty(`--${kebabCase(prop)}`, modeObject[prop]);
-    });
-  }
-
-  render() {
-    return <></>;
-  }
+function writeThemePropertiesToElement(theme: ThemeDefinition, element: HTMLElement) {
+  Object.keys(theme).forEach(cssProperty => {
+    element.style.setProperty(`--${kebabCase(cssProperty)}`, theme[cssProperty]);
+  });
 }
 
-interface ThemeEngineProperties {
-  viewMode: ViewModes;
-}
-
-export function ThemeEngine(props: ThemeEngineProperties) {
-  return <Component viewMode={props.viewMode} theme={theme} element={document.documentElement} />;
+export function ThemeEngine(props: { theme: Themes }) {
+  return <Component theme={props.theme} />;
 }

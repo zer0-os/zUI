@@ -24,7 +24,7 @@ export const decorators = [
           <Story />
           <div style={{'margin-top': '25px'}}>
             <Button onClick={toggleTheme}>Switch to {oppositeTheme}</Button>
-            <ThemeEngine viewMode={theme} />;
+            <ThemeEngine theme={theme} />;
           </div>
         </ZUIProvider>
       </MemoryRouter>

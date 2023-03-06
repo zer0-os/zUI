@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Component, ThemeComponentProperties, ViewModes } from '.';
+import { Component, ThemeComponentProperties, Themes } from '.';
 
 describe('theme-engine', () => {
   const getElement = (setProperty = (_prop: string, _value: string): any => undefined) => {
@@ -11,8 +11,8 @@ describe('theme-engine', () => {
   const renderComponent = (props: Partial<ThemeComponentProperties> = {}) => {
     const allProps: ThemeComponentProperties = {
       element: getElement(),
-      viewMode: ViewModes.Light,
-      theme: {},
+      theme: Themes.Light,
+      themes: {},
       ...props
     };
 
@@ -21,7 +21,7 @@ describe('theme-engine', () => {
 
   it('sets css vars based on view mode', function () {
     const setProperty = jest.fn();
-    const theme = {
+    const themes = {
       dark: {
         textColor: 'red',
         backgroundColor: 'purple'
@@ -34,8 +34,8 @@ describe('theme-engine', () => {
 
     renderComponent({
       element: getElement(setProperty),
-      theme,
-      viewMode: ViewModes.Dark
+      themes,
+      theme: Themes.Dark
     });
 
     expect(setProperty).toHaveBeenCalledWith('--text-color', 'red');
@@ -44,7 +44,7 @@ describe('theme-engine', () => {
 
   it('sets css vars based on updated view mode', function () {
     const setProperty = jest.fn();
-    const theme = {
+    const themes = {
       dark: {
         textColor: 'red',
         backgroundColor: 'purple'
@@ -58,11 +58,11 @@ describe('theme-engine', () => {
     const element = getElement(setProperty);
     const { rerender } = renderComponent({
       element: element,
-      theme,
-      viewMode: ViewModes.Dark
+      themes,
+      theme: Themes.Dark
     });
 
-    rerender(<Component element={element} theme={theme} viewMode={ViewModes.Light} />);
+    rerender(<Component element={element} themes={themes} theme={Themes.Light} />);
 
     expect(setProperty).toHaveBeenCalledWith('--text-color', 'white');
     expect(setProperty).toHaveBeenCalledWith('--background-color', 'green');
