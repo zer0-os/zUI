@@ -25,7 +25,7 @@ export * from './Status';
 export * from './Table';
 export * from './Tabs';
 export * from './TextStack';
-export * from './ThemeEngine';
+export { ThemeEngine } from './ThemeEngine';
 export * from './ToggleGroup';
 export * from './Tooltip';
 export { Wizard } from './Wizard';
