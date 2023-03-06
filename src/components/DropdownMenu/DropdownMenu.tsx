@@ -6,7 +6,8 @@ import {
   Root as RadixUIDropdownMenuRoot,
   Trigger as RadixUIDropdownMenuTrigger,
   Content as RadixUIDropdownMenuContent,
-  Item as RadixUIDropdownMenuItem
+  Item as RadixUIDropdownMenuItem,
+  Separator as RadixUIDropdownMenuSeparator
 } from '@radix-ui/react-dropdown-menu';
 
 import './DropdownMenu.scss';
@@ -21,6 +22,7 @@ export interface DropdownItem {
   /** Callback to run when an item is selected */
   onSelect: (event?: Event) => void;
   className?: string;
+  isCategory?: boolean;
 }
 
 export interface DropdownMenuProps {
@@ -73,15 +75,28 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           side={side}
           ref={ref}
         >
-          {items.map(item => (
-            <RadixUIDropdownMenuItem
-              className={classNames('zui-dropdown-item', item.className)}
-              key={item.id}
-              onSelect={(event: Event) => item.onSelect(event)}
-            >
-              {item.label}
-            </RadixUIDropdownMenuItem>
-          ))}
+          {items.map(item =>
+            item.isCategory ? (
+              <>
+                <RadixUIDropdownMenuSeparator className="zui-dropdown-separator" />
+                <RadixUIDropdownMenuItem
+                  className={classNames('zui-dropdown-item-category', item.className)}
+                  key={item.id}
+                  onSelect={(event: Event) => item.onSelect(event)}
+                >
+                  {item.label}
+                </RadixUIDropdownMenuItem>
+              </>
+            ) : (
+              <RadixUIDropdownMenuItem
+                className={classNames('zui-dropdown-item', item.className)}
+                key={item.id}
+                onSelect={(event: Event) => item.onSelect(event)}
+              >
+                {item.label}
+              </RadixUIDropdownMenuItem>
+            )
+          )}
         </RadixUIDropdownMenuContent>
       </RadixUIDropdownMenuRoot>
     );

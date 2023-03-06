@@ -2,7 +2,7 @@
 
 .zui-dropdown-trigger {
   background: none;
-  color: #{$text-primary};
+  color: $text-primary;
   border: none;
   cursor: pointer;
   font-size: inherit;
@@ -12,29 +12,55 @@
   width: 16rem; // 256px
   padding: 0.5rem;
 
-  background: #{$purple-10};
+  background: $purple-10;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
-  border: 1px solid #{$purple-25};
+  border: 1px solid $purple-25;
 
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 
   .zui-dropdown-item {
     padding: 1rem;
-
-    color: #{$text-primary};
+    
+    color: $text-primary;
     outline: none;
-
-    &:hover {
+    
+    &:hover, &:focus {
       background: #381C4E;
       text-shadow: 0 0 0.25rem rgba(177, 78, 255, 0.75);
     }
-
+    
     border-radius: 0.5rem;
-
+    
     user-select: none;
     cursor: pointer;
+    
+    &:last-child {
+      border-bottom: 1px solid $purple-25;
+      border-radius: 0;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  .zui-dropdown-item-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    color: $grey-11;
+    user-select: none;
 
+    &:hover, &:focus {
+      outline: none;
+    }
+  }
+
+  .zui-dropdown-separator {
+    height: 1px;
+    background-color: $purple-6;
+    margin-bottom: 1rem;
+    margin-top: 0.25rem;
   }
 }
