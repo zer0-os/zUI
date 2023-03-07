@@ -94,11 +94,11 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
 
 export interface HeaderProps {
   /** Item to render inside the Header */
-  item: ReactNode;
+  children: ReactNode;
   /** Class to apply to the container */
   className?: string;
 }
 
-export const Header: FC<HeaderProps> = ({ item, className }) => {
-  return <div className={classNames('zui-dropdown-header-container', className)}>{item}</div>;
+export const Header: FC<HeaderProps> = ({ children, className }) => {
+  return <div className={classNames('zui-dropdown-header-container', className)}>{children}</div>;
 };

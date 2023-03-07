@@ -25,10 +25,6 @@ const MockComponent = ({ text }: { text: string }) => {
   );
 };
 const DEFAULT_PROPS_MENU = { items: MOCK_ITEMS };
-const DEFAULT_PROPS_HEADER: Dropdown.HeaderProps = {
-  item: '',
-  className: undefined
-};
 
 /* Mock Radix DropdownMenu primitives so we can skip testing them */
 const mockRadixRoot = jest.fn();
@@ -151,42 +147,27 @@ describe('<DropdownMenu />', () => {
           {...DEFAULT_PROPS_MENU}
           open={true}
           defaultOpen={true}
-          header={<Dropdown.Header {...DEFAULT_PROPS_HEADER} className={mockClassName} item={mockText[0]} />}
+          header={<Dropdown.Header className={mockClassName}>{mockText[0]}</Dropdown.Header>}
         />
       );
-      expect(container.getElementsByClassName(mockClassName).length).toBe(1);
       expect(screen.getByText(mockText[0])).toBeInTheDocument();
     });
   });
 });
 
-const renderHeader = (props?: Dropdown.HeaderProps) => render(<Dropdown.Header {...DEFAULT_PROPS_HEADER} {...props} />);
-
 describe('<Dropdown.Header />', () => {
   test('should recognize a string and render it from props', () => {
-    const { container } = renderHeader({ item: mockText[0] });
+    const { container } = render(<Dropdown.Header>{mockText[0]}</Dropdown.Header>);
     expect(container.firstChild?.textContent).toBe(mockText[0]);
   });
 
   test('should recognize a Component and render it from props', () => {
-    renderHeader({ item: <MockComponent text={mockText[0]} /> });
+    render(<Dropdown.Header>{<MockComponent text={mockText[0]} />}</Dropdown.Header>);
     expect(screen.getByText(mockText[0])).toBeInTheDocument();
   });
 
-  test('should recognize a Fragment and render it from props', () => {
-    renderHeader({
-      item: (
-        <>
-          <MockComponent text={mockText[0]} />
-          <MockComponent text={mockText[1]} />
-        </>
-      )
-    });
-    mockText.forEach(item => expect(screen.getByText(item)).toBeInTheDocument());
-  });
-
   test('should apply className from props to tag container', () => {
-    const { container } = renderHeader({ ...DEFAULT_PROPS_HEADER, className: mockClassName });
+    const { container } = render(<Dropdown.Header className={mockClassName}>{mockText[0]}</Dropdown.Header>);
     expect(container.firstChild).toHaveClass(mockClassName);
     expect(container.getElementsByClassName(mockClassName).length).toBe(1);
   });

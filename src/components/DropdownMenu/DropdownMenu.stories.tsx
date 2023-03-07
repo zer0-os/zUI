@@ -78,12 +78,12 @@ const TemplateHeader: ComponentStory<typeof Dropdown.Header> = args => {
 
 export const TextHeader = TemplateHeader.bind({});
 TextHeader.args = {
-  item: 'Delicious fruits!'
+  children: 'Delicious fruits!'
 };
 
 export const ComponentHeader = TemplateHeader.bind({});
 ComponentHeader.args = {
-  item: (
+  children: (
     <Avatar
       size="regular"
       type="circle"
