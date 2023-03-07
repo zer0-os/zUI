@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof IconButton> = args => {
   return (
-    <StoryCard isContrast>
+    <StoryCard>
       <IconButton {...args} />
     </StoryCard>
   );
