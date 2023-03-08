@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/typography';
 
 .Overlay {
   display: grid;
@@ -22,4 +23,39 @@
   border: 1px solid #{$grey-dark};
 
   background: #{$almost-black};
+
+  position: relative;
+}
+
+.WiderContent {
+  min-width: 37.64rem;
+}
+
+.FooterActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 2.476rem;
+}
+
+.CloseIcon {
+  // position: absolute;
+  // right: 0;
+  // top: 0;
+}
+
+.Title {
+  font-size: 1.48rem;
+  font-weight: #{$font-weight-bold};
+  // color: red;
+}
+
+.Head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #{$grey-dark};
+
+  margin-bottom: 2.476rem;
 }

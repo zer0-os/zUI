@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Modal } from './';
+import { Modal } from '.';
 import { StoryCard } from '../.storybook';
 
 export default {
