@@ -17,25 +17,28 @@ const Template: ComponentStory<typeof Badge> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  content: '9+',
-  type: 'count'
+  content: 10,
+  type: 'number',
+  variant: 'unread'
 };
 
 export const Icon = Template.bind({});
 Icon.args = {
   content: <IconArrowUpRight size={12} />,
-  type: 'icon'
+  type: 'icon',
+  variant: 'unread'
 };
 
 export const Text = Template.bind({});
 Text.args = {
   content: 'TEXT',
-  type: 'text'
+  type: 'text',
+  variant: 'unread'
 };
 
-export const Alerted = Template.bind({});
-Alerted.args = {
+export const Error = Template.bind({});
+Error.args = {
   content: 'TEXT',
   type: 'text',
-  alertState: true
+  variant: 'error'
 };

@@ -10,28 +10,28 @@ beforeEach(() => {
 
 describe('Badge', () => {
   test('should display text', () => {
-    const { getByText } = render(<Badge content="Hello World" type="text" />);
+    const { getByText } = render(<Badge content="Hello World" variant="active" type="text" />);
     expect(getByText('Hello World')).toBeInTheDocument();
   });
 
   test('should display number', () => {
-    const { getByText } = render(<Badge content="9+" type="count" />);
+    const { getByText } = render(<Badge content="10" type="number" variant="active" />);
     expect(getByText('9+')).toBeInTheDocument();
   });
 
   test('should display icon', () => {
     const icon = <IconArrowUpRight size={12} />;
-    const { container } = render(<Badge content={icon} type="icon" />);
+    const { container } = render(<Badge content={icon} type="icon" variant="active" />);
     expect(container.firstChild).toHaveAttribute('data-content-type', 'icon');
   });
 
-  test('should be in green color', () => {
-    const { container } = render(<Badge content="9+" type="text" color="green" />);
-    expect(container.firstChild).toHaveAttribute('style', 'background-color: green;');
+  test('should be in active state', () => {
+    const { container } = render(<Badge content={10} type="text" variant="active" />);
+    expect(container.firstChild).toHaveAttribute('data-variant', 'active');
   });
 
-  test('should be in alert state', () => {
-    const { container } = render(<Badge content="Text" type="text" alertState={true} />);
-    expect(container.firstChild).toHaveAttribute('data-alert-state', 'true');
+  test('should be in error state', () => {
+    const { container } = render(<Badge content="Text" type="text" variant="error" />);
+    expect(container.firstChild).toHaveAttribute('data-variant', 'error');
   });
 });
