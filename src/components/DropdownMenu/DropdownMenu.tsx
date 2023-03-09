@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode, FC } from 'react';
 
 import {
   DropdownMenuProps as RadixUIDropdownMenuProps,
@@ -24,6 +24,8 @@ export interface DropdownItem {
 }
 
 export interface DropdownMenuProps {
+  /** Header component */
+  header?: ReactNode;
   /** List of items to render in the dropdown menu */
   items: DropdownItem[];
   /** Clicking this will make the dropdown menu appear */
@@ -48,6 +50,7 @@ export interface DropdownMenuProps {
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
   (
     {
+      header,
       className,
       menuClassName,
       alignMenu = 'center',
@@ -73,6 +76,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           side={side}
           ref={ref}
         >
+          {header}
           {items.map(item => (
             <RadixUIDropdownMenuItem
               className={classNames('zui-dropdown-item', item.className)}
@@ -87,3 +91,14 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
     );
   }
 );
+
+export interface HeaderProps {
+  /** Item to render inside the Header */
+  children: ReactNode;
+  /** Class to apply to the container */
+  className?: string;
+}
+
+export const Header: FC<HeaderProps> = ({ children, className }) => {
+  return <div className={classNames('zui-dropdown-header-container', className)}>{children}</div>;
+};
