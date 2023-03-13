@@ -20,11 +20,7 @@ export const GridCard = ({ aspectRatio = 1, className, children, imageAlt, image
   return (
     <div onClick={onClick} className={classNames(styles.Container, className)}>
       <AspectRatioRoot ratio={aspectRatio} className={styles.ImageContainer}>
-        {imageSrc ? (
-          <Image className={styles.Image} src={imageSrc} alt={imageAlt} />
-        ) : (
-          <Skeleton width={'100%'} height={'100%'} />
-        )}
+        <Image className={styles.Image} src={imageSrc} alt={imageAlt} />
       </AspectRatioRoot>
       <div className={styles.Content}>{children}</div>
     </div>
