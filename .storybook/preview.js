@@ -5,9 +5,9 @@ import { ThemeEngine } from '../src/components/ThemeEngine';
 import { Button } from '../src/components/Button';
 
 const themeKey = 'viewMode:theme';
-const currentTheme = function() {
+const currentTheme = function () {
   return localStorage.getItem(themeKey) || 'dark';
-}
+};
 export const decorators = [
   Story => {
     const [theme, setTheme] = useState(currentTheme);
@@ -22,8 +22,8 @@ export const decorators = [
       <MemoryRouter initialEntries={['/']}>
         <ZUIProvider>
           <Story />
-          <div style={{'margin-top': '25px'}}>
-            <Button onClick={toggleTheme}>Switch to {oppositeTheme}</Button>
+          <div style={{ marginTop: '25px' }}>
+            <Button onPress={toggleTheme}>Switch to {oppositeTheme}</Button>
             <ThemeEngine theme={theme} />;
           </div>
         </ZUIProvider>
