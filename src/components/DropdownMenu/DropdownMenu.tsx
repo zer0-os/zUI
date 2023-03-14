@@ -15,6 +15,7 @@ import './DropdownMenu.scss';
 import classNames from 'classnames';
 
 export interface DropdownItem {
+  type?: 'item';
   /** Unique ID to use in Array.map() */
   id: string;
   /** Label to appear in the menu */
@@ -22,12 +23,22 @@ export interface DropdownItem {
   /** Callback to run when an item is selected */
   onSelect: (event?: Event) => void;
   className?: string;
-  isCategory?: boolean;
+}
+export interface DropdownItemCategory {
+  type: 'category';
+  /** Unique ID to use in Array.map() */
+  id: string;
+  /** Label to appear in the menu */
+  name: string | ReactNode;
+  /** Callback to run when an item is selected */
+  onSelect: (event?: Event) => void;
+  className?: string;
+  items: DropdownItem[];
 }
 
 export interface DropdownMenuProps {
   /** List of items to render in the dropdown menu */
-  items: DropdownItem[];
+  items: Array<DropdownItem | DropdownItemCategory>;
   /** Clicking this will make the dropdown menu appear */
   trigger?: ReactNode;
 
@@ -76,7 +87,8 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           ref={ref}
         >
           {items.map(item =>
-            item.isCategory ? (
+            // console.log(item.hasOwnProperty('name'))
+            item.type == 'category' ? (
               <>
                 <RadixUIDropdownMenuSeparator className="zui-dropdown-separator" />
                 <RadixUIDropdownMenuItem
@@ -84,8 +96,17 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
                   key={item.id}
                   onSelect={(event: Event) => item.onSelect(event)}
                 >
-                  {item.label}
+                  {item.name}
                 </RadixUIDropdownMenuItem>
+                {item.items.map(item => (
+                  <RadixUIDropdownMenuItem
+                    className={classNames('zui-dropdown-item', item.className)}
+                    key={item.id}
+                    onSelect={(event: Event) => item.onSelect(event)}
+                  >
+                    {item.label}
+                  </RadixUIDropdownMenuItem>
+                ))}
               </>
             ) : (
               <RadixUIDropdownMenuItem
