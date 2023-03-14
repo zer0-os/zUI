@@ -16,19 +16,45 @@ const Template: ComponentStory<typeof DropdownMenu> = args => {
         {...args}
         items={[
           {
+            type: 'category',
+            id: 'dropdown_menu_category_1',
+            name: 'Fruit',
+            onSelect: () => console.log('you clicked Fruit!'),
+            items: [
+              {
+                id: 'dropdown_menu_1',
+                label: 'Apple',
+                onSelect: () => console.log('you clicked Apple!')
+              },
+              {
+                id: 'dropdown_menu_2',
+                label: 'Pear',
+                onSelect: () => console.log('you clicked Apple!')
+              }
+            ]
+          },
+          {
             id: 'dropdown_menu_1',
             label: 'Apple',
             onSelect: () => console.log('you clicked Apple!')
           },
           {
-            id: 'dropdown_menu_2',
-            label: 'Orange',
-            onSelect: () => console.log('you clicked Orange!')
-          },
-          {
-            id: 'pear',
-            label: 'Pear',
-            onSelect: () => console.log('you clicked Pear!')
+            id: 'dropdown_menu_category_2',
+            type: 'category',
+            name: 'More Fruit',
+            onSelect: () => console.log('you clicked More Fruit!'),
+            items: [
+              {
+                id: 'dropdown_menu_1',
+                label: 'Apple',
+                onSelect: () => console.log('you clicked Apple!')
+              },
+              {
+                id: 'dropdown_menu_2',
+                label: 'Pear',
+                onSelect: () => console.log('you clicked Apple!')
+              }
+            ]
           }
         ]}
       />
