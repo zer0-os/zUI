@@ -11,6 +11,8 @@
   display: inline-block;
   margin: 0px;
 
+  color: theme.$color-greyscale-12;
+
   &:hover {
     background-color: theme.$color-greyscale-transparency-3;
   }

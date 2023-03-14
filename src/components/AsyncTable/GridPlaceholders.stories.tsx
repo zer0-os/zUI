@@ -5,7 +5,7 @@ import { StoryCard } from '../.storybook';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
-  title: 'Placeholder Elements/GridPlaceholders',
+  title: 'Data Display/Table/GridPlaceholders',
   component: GridPlaceholders
 } as ComponentMeta<typeof GridPlaceholders>;
 

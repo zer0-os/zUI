@@ -10,7 +10,10 @@ export default {
 
 const Template: ComponentStory<typeof InfoTooltip> = args => (
   <StoryCard isContrast>
-    <InfoTooltip {...args} />
+    <InfoTooltip
+      {...args}
+      content={'This is a long info message that is used when the text is at least two lines long'}
+    ></InfoTooltip>
   </StoryCard>
 );
 

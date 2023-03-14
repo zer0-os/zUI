@@ -5,7 +5,7 @@ import { StoryCard } from '../.storybook';
 import { IconArrowDownLeft } from '../Icons';
 
 export default {
-  title: 'Data Display/DropdownMenu',
+  title: 'Inputs/DropdownMenu',
   component: DropdownMenu
 } as ComponentMeta<typeof DropdownMenu>;
 

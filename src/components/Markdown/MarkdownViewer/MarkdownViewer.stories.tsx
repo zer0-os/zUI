@@ -5,7 +5,7 @@ import { MARKDOWN_TEXT } from './MarkdownViewer.stories.constants';
 import { StoryCard } from '../../.storybook';
 
 export default {
-  title: 'Typography/Markdown/MarkdownViewer',
+  title: 'Typography/MarkdownViewer',
   component: MarkdownViewer
 } as ComponentMeta<typeof MarkdownViewer>;
 

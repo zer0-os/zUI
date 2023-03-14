@@ -16,8 +16,7 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
       onSelectionChange,
       isRequired = false,
       isDisabled = false,
-      selectionType = 'single',
-      variant = 'default'
+      selectionType = 'single'
     }: ToggleGroupProps,
     ref
   ) => {
@@ -38,7 +37,6 @@ export const ToggleGroup = forwardRef<HTMLDivElement, ToggleGroupProps>(
         type={selectionType as never}
         value={selection as never}
         onValueChange={handleOnValueChange}
-        data-variant={variant}
         data-disabled={isDisabled ? '' : undefined}
       >
         {options.map(option => (

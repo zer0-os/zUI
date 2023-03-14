@@ -12,20 +12,18 @@ export default {
 const Template: ComponentStory<typeof Member> = args => {
   return (
     <StoryCard isContrast>
-      <Member {...args}>{args.children}</Member>
+      <Member {...args}>{args.children ?? 'John Smith'}</Member>
     </StoryCard>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Member Label',
-  children: <span>memeber content</span>
+  label: 'Creator'
 };
 
 export const Link = Template.bind({});
 Link.args = {
-  label: 'Member Label',
-  href: 'href.co.uk',
-  children: <span>memeber content</span>
+  label: 'Creator',
+  href: 'href.co.uk'
 };

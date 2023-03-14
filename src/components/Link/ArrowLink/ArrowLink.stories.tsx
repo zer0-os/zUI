@@ -4,14 +4,16 @@ import { ArrowLink } from '.';
 import { StoryCard } from '../../.storybook';
 
 export default {
-  title: 'Data Display/Link/ArrowLink',
+  title: 'Navigation/Links/ArrowLink',
   component: ArrowLink
 } as ComponentMeta<typeof ArrowLink>;
 
 const Template: ComponentStory<typeof ArrowLink> = args => {
   return (
     <StoryCard isContrast>
-      <ArrowLink {...args} />
+      <ArrowLink {...args} href={'https://zero.tech/'}>
+        Lorem Ipsum
+      </ArrowLink>
     </StoryCard>
   );
 };

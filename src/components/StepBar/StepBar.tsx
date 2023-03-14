@@ -18,44 +18,29 @@ export type StepBarProps = {
 
 export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChangeStep, className }) => {
   const currentStepIndex = steps.findIndex(s => s.id === currentStepId);
-
-  const stepStyle = {
-    translate: Math.min(steps.length - 1, currentStepIndex) * 100,
-    width: 100 / steps.length
-  };
+  const translate = (100 / steps.length) * currentStepIndex;
 
   return (
     <div className={classNames(styles.StepBar, className)}>
-      {steps
-        .map((s: Step, i: number) => {
-          return currentStepIndex > i ? (
-            <div
-              key={s.id}
-              className={styles.Step}
-              onClick={() => onChangeStep(s)}
-              style={{
-                position: 'absolute',
-                left: `${i * stepStyle.width}%`,
-                width: `${stepStyle.width}%`
-              }}
-            >
-              <ArrowLink back>{s.title}</ArrowLink>
-            </div>
-          ) : null;
-        })
-        .filter(Boolean)}
+      {steps.map((s: Step, i: number) => (
+        <div
+          key={s.id}
+          className={styles.Step}
+          onClick={() => currentStepIndex > i && onChangeStep(s)}
+          data-selected={currentStepIndex === i ? '' : undefined}
+          data-disabled={currentStepIndex < i ? '' : undefined}
+        >
+          {i + 1}. {s.title}
+        </div>
+      ))}
 
       <div
         style={{
-          width: `${stepStyle.width}%`,
-          transform: `translateX(${stepStyle.translate}%)`
+          width: `${100 / steps.length}%`,
+          left: `${translate}%`
         }}
-        className={cx(styles.Bar, {
-          Hide: currentStepIndex > steps.length
-        })}
-      >
-        {steps[Math.min(steps.length - 1, currentStepIndex)]?.title}
-      </div>
+        className={styles.Bar}
+      ></div>
     </div>
   );
 };

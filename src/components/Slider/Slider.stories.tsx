@@ -4,7 +4,7 @@ import { Slider } from './Slider';
 import { StoryCard } from '../.storybook';
 
 export default {
-  title: 'Slider',
+  title: 'Inputs/Slider',
   component: Slider
 } as ComponentMeta<typeof Slider>;
 
@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof Slider> = args => (
 
 const LightTheme: ComponentStory<typeof Slider> = args => (
   <StoryCard>
-    <Slider {...args} />
+    <Slider {...args} onValueChange={() => null} />
   </StoryCard>
 );
 
@@ -26,9 +26,6 @@ Default.args = {
   max: 100,
   step: 1,
   value: 50,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
   isRangeSlider: false
 };
 
@@ -38,9 +35,6 @@ Range.args = {
   max: 100,
   step: 1,
   minStep: 10,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
   isRangeSlider: true
 };
 
@@ -50,9 +44,6 @@ Small.args = {
   max: 100,
   step: 1,
   value: 50,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
   size: 'small',
   isRangeSlider: false
 };
@@ -63,9 +54,7 @@ SmallRange.args = {
   max: 100,
   step: 1,
   minStep: 10,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
+  onValueChange: (value: number[]) => {},
   size: 'small',
   isRangeSlider: true
 };
@@ -76,9 +65,6 @@ Light.args = {
   max: 100,
   step: 1,
   value: 50,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
   isRangeSlider: false
 };
 
@@ -88,9 +74,6 @@ LightRange.args = {
   max: 100,
   step: 1,
   minStep: 10,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
   isRangeSlider: true
 };
 
@@ -100,9 +83,6 @@ SmallLightRange.args = {
   max: 100,
   step: 1,
   minStep: 10,
-  onValueChange: (value: number[]) => {
-    console.log(value);
-  },
   size: 'small',
   isRangeSlider: true
 };

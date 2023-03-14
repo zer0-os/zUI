@@ -1,9 +1,12 @@
+@import '../../styles/theme';
+
 .Container {
 
     border-radius: 0.5rem;
     overflow: hidden;
+    color: $color-greyscale-12;
 
-    border: 1px solid #232326;
+    border: 1px solid $color-greyscale-3;
 
     &:hover {
         .Image {

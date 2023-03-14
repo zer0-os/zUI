@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import type { MarkdownEditorProps } from './MarkdownEditor.types';
 
 import React from 'react';
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 import MDEditor, { ICommand } from '@uiw/react-md-editor';
 import {
   MarkdownEditorVariants,
@@ -10,8 +10,7 @@ import {
   MARKDOWN_EDITOR_TOOLBAR_TITLES
 } from './MarkdownEditor.constants';
 import styles from './MarkdownEditor.module.scss';
-
-const cx = classNames.bind(styles);
+import { Alert } from '../../Alert';
 
 const onCommandsFilter = (command: ICommand<string>) => {
   switch (command.name) {
@@ -41,7 +40,6 @@ const onCommandsFilter = (command: ICommand<string>) => {
 };
 
 export const MarkdownEditor: FC<MarkdownEditorProps> = ({
-  variant = MarkdownEditorVariants.PRIMARY,
   text = '',
   placeholder,
   onChange,
@@ -50,22 +48,23 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({
   className
 }) => {
   return (
-    <div
-      className={cx(styles.Container, className, {
-        Secondary: variant === MarkdownEditorVariants.SECONDARY,
-        Error: error
-      })}
-    >
-      <MDEditor
-        value={text}
-        onChange={onChange}
-        commandsFilter={onCommandsFilter}
-        preview={MarkdownEditorModes.EDIT}
-        textareaProps={{
-          placeholder
-        }}
-      />
-      {errorText && <span className={styles.ErrorMessage}>{errorText}</span>}
+    <div className={classNames(styles.Container, className)} data-error={errorText && true}>
+      <div className={styles.Editor}>
+        <MDEditor
+          value={text}
+          onChange={onChange}
+          commandsFilter={onCommandsFilter}
+          preview={MarkdownEditorModes.EDIT}
+          textareaProps={{
+            placeholder
+          }}
+        />
+      </div>
+      {errorText && (
+        <Alert variant={'error'} className={styles.ErrorMessage}>
+          {errorText}
+        </Alert>
+      )}
     </div>
   );
 };

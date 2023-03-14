@@ -5,7 +5,7 @@ import { StoryCard } from '../.storybook';
 import { Step } from './StepBar.types';
 
 export default {
-  title: 'StepBar',
+  title: 'Navigation/Step Bar',
   component: StepBar
 } as ComponentMeta<typeof StepBar>;
 

@@ -5,7 +5,7 @@ import { StoryCard } from '../.storybook';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
-  title: 'Placeholder Elements/RowPlaceholders',
+  title: 'Data Display/Table/RowPlaceholders',
   component: RowPlaceholders
 } as ComponentMeta<typeof RowPlaceholders>;
 

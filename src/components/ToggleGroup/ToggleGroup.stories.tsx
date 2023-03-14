@@ -85,18 +85,6 @@ WithIcons.args = {
   options: DEFAULT_ICONS
 };
 
-export const Minimal = SingleSelectTemplate.bind({});
-Minimal.args = {
-  options: DEFAULT_LABELS,
-  variant: 'minimal'
-};
-
-export const MinimalWithIcons = SingleSelectTemplate.bind({});
-MinimalWithIcons.args = {
-  options: DEFAULT_ICONS,
-  variant: 'minimal'
-};
-
 export const MultiSelectRequired = MultiSelectTemplate.bind({});
 MultiSelectRequired.args = {
   options: DEFAULT_LABELS,
