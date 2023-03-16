@@ -46,23 +46,23 @@
       border-radius: 1rem;
       cursor: pointer;
       outline: none;
-    }
 
-    .Thumb:focus::after {
-      box-sizing: border-box;
-      content: ' ';
-      position: absolute;
-      top: -0.25rem;
-      left: -0.25rem;
-      width: calc(100% + 0.5rem);
-      height: calc(100% + 0.5rem);
-      border-radius: 100%;
-      border: 1px solid $color-secondary-9;
-    }
+      &:focus::after {
+        box-sizing: border-box;
+        content: ' ';
+        position: absolute;
+        top: -0.25rem;
+        left: -0.25rem;
+        width: calc(100% + 0.5rem);
+        height: calc(100% + 0.5rem);
+        border-radius: 100%;
+        border: 1px solid $color-secondary-9;
+      }
 
-    .Thumb[data-size='small'] {
-      height: 1rem;
-      width: 1rem;
+      &[data-size='small'] {
+        height: 1rem;
+        width: 1rem;
+      }
     }
   }
 
