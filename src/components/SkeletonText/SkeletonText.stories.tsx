@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SkeletonText } from './';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Typography/Skeleton Text',
@@ -9,11 +8,7 @@ export default {
 } as ComponentMeta<typeof SkeletonText>;
 
 const Template: ComponentStory<typeof SkeletonText> = args => {
-  return (
-    <StoryCard isContrast>
-      <SkeletonText skeletonOptions={{ width: 50 }} {...args} />
-    </StoryCard>
-  );
+  return <SkeletonText skeletonOptions={{ width: 50 }} {...args} />;
 };
 
 export const Loading = Template.bind({});
@@ -50,18 +45,16 @@ export const AsElement = () => {
   const isLoading = false;
 
   return (
-    <StoryCard isContrast>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        You can render SkeletonText as any text element, e.g.
-        <SkeletonText as="h1" asyncText={{ text: 'As an <h1>', isLoading }} />
-        <SkeletonText as="h1" asyncText={{ isLoading: true }} />
-        <SkeletonText as="h2" asyncText={{ text: 'As an <h2>', isLoading }} />
-        <SkeletonText as="h2" asyncText={{ isLoading: true }} />
-        <SkeletonText as="p" asyncText={{ text: 'As a <p>', isLoading }} />
-        <SkeletonText as="p" asyncText={{ isLoading: true }} />
-        <SkeletonText as="b" asyncText={{ text: 'As a <b>', isLoading }} />
-        <SkeletonText as="b" asyncText={{ isLoading: true }} />
-      </div>
-    </StoryCard>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      You can render SkeletonText as any text element, e.g.
+      <SkeletonText as="h1" asyncText={{ text: 'As an <h1>', isLoading }} />
+      <SkeletonText as="h1" asyncText={{ isLoading: true }} />
+      <SkeletonText as="h2" asyncText={{ text: 'As an <h2>', isLoading }} />
+      <SkeletonText as="h2" asyncText={{ isLoading: true }} />
+      <SkeletonText as="p" asyncText={{ text: 'As a <p>', isLoading }} />
+      <SkeletonText as="p" asyncText={{ isLoading: true }} />
+      <SkeletonText as="b" asyncText={{ text: 'As a <b>', isLoading }} />
+      <SkeletonText as="b" asyncText={{ isLoading: true }} />
+    </div>
   );
 };

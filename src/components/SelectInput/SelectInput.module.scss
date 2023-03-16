@@ -1,15 +1,16 @@
 @import '../../styles/colors';
+@import '../../styles/theme';
 
 .InputContainer {
     min-width: 17rem;
     text-align: left;
 
     .Wrapper:hover {
-        border-color: #8E4EC6;
+        //border-color: $color-;
     }
 
     .WrapperOpen {
-        background-color: #{$purple-10};
+        border: 1px solid $color-primary-9;
     }
 
     Input:hover, .Wrapper:hover {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Tabs } from '.';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Navigation/Tabs',
@@ -9,11 +8,7 @@ export default {
 } as ComponentMeta<typeof Tabs>;
 
 const Template: ComponentStory<typeof Tabs> = args => {
-  return (
-    <StoryCard isContrast>
-      <Tabs {...args} />
-    </StoryCard>
-  );
+  return <Tabs {...args} />;
 };
 
 export const Default = Template.bind({});

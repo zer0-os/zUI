@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './';
 import { Button } from '../Button';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Inputs/Input',
@@ -12,11 +11,7 @@ export default {
 const Template: ComponentStory<typeof Input> = args => {
   const [value, setValue] = useState<string>('');
 
-  return (
-    <StoryCard isContrast isContentFull>
-      <Input {...args} value={value} onChange={setValue} />
-    </StoryCard>
-  );
+  return <Input {...args} value={value} onChange={setValue} />;
 };
 
 export const Text = Template.bind({});

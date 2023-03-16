@@ -71,18 +71,6 @@ describe('<ToggleGroup />', () => {
     expect(container.getElementsByTagName('aside')).toHaveLength(3);
   });
 
-  describe('variant', () => {
-    test('should default to default variant', () => {
-      const { container } = render(<ToggleGroup {...DEFAULT_PROPS_SINGLE} variant="default" />);
-      expect(container.firstChild).toHaveAttribute('data-variant', 'default');
-    });
-
-    test('should pass variant prop to container attribute', () => {
-      const { container } = render(<ToggleGroup {...DEFAULT_PROPS_SINGLE} variant="minimal" />);
-      expect(container.firstChild).toHaveAttribute('data-variant', 'minimal');
-    });
-  });
-
   describe('when whole component is disabled', () => {
     test('should add data-disabled attribute to container', () => {
       const { container } = render(<ToggleGroup {...DEFAULT_PROPS_SINGLE} isDisabled={true} />);

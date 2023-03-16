@@ -1,13 +1,9 @@
 import React from 'react';
 
-import classBind from 'classnames/bind';
 import classNames from 'classnames';
 
-import { ArrowLink } from '../Link';
 import styles from './StepBar.module.scss';
 import type { Step } from './StepBar.types';
-
-const cx = classBind.bind(styles);
 
 export type StepBarProps = {
   currentStepId: Step['id'];
@@ -30,7 +26,7 @@ export const StepBar: React.FC<StepBarProps> = ({ currentStepId, steps, onChange
           data-selected={currentStepIndex === i ? '' : undefined}
           data-disabled={currentStepIndex < i ? '' : undefined}
         >
-          {i + 1}. {s.title}
+          {s.title}
         </div>
       ))}
 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ToggleGroup } from './';
-import { StoryCard } from '../.storybook';
+
 import { IconArrowLeft, IconArrowDown, IconArrowDownRight } from '../Icons';
 
 export default {
@@ -45,21 +45,13 @@ const DEFAULT_ICONS = [
 const SingleSelectTemplate: ComponentStory<any> = args => {
   const [selection, setSelection] = useState<string | undefined>(args?.selection);
 
-  return (
-    <StoryCard isContrast>
-      <ToggleGroup {...args} selectionType={'single'} selection={selection} onSelectionChange={setSelection} />
-    </StoryCard>
-  );
+  return <ToggleGroup {...args} selectionType={'single'} selection={selection} onSelectionChange={setSelection} />;
 };
 
 const MultiSelectTemplate: ComponentStory<any> = args => {
   const [selection, setSelection] = useState<string[]>(args?.selection ?? []);
 
-  return (
-    <StoryCard isContrast>
-      <ToggleGroup {...args} selectionType={'multiple'} selection={selection} onSelectionChange={setSelection} />
-    </StoryCard>
-  );
+  return <ToggleGroup {...args} selectionType={'multiple'} selection={selection} onSelectionChange={setSelection} />;
 };
 
 export const Default = SingleSelectTemplate.bind({});

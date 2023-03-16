@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Address } from '.';
-import { StoryCard } from '../.storybook';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
@@ -10,11 +10,7 @@ export default {
 } as ComponentMeta<typeof Address>;
 
 const Template: ComponentStory<typeof Address> = args => {
-  return (
-    <StoryCard isContrast>
-      <Address {...args} />
-    </StoryCard>
-  );
+  return <Address {...args} />;
 };
 
 export const Text = Template.bind({});

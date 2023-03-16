@@ -6,15 +6,14 @@
 
 @import '../../styles/borders';
 @import '../../styles/animations';
-@import '../../styles/colors';
 @import '../../styles/theme';
-
 @import '../../styles/typography';
 
 // Set up variables
 .zui-button {
   --zui-button-bg: #{$color-secondary-4};
   --zui-button-bg-hover: #{$color-secondary-11};
+  --zui-button-bg-active: #{$color-secondary-10};
   --zui-button-border-color: #{$color-secondary-11};
   --zui-button-border-color-hover: #{$color-primary-12};
   --zui-button-color: #{$color-secondary-11};
@@ -28,12 +27,13 @@
   }
 
   &-negative {
-    --zui-button-color: #{$color-greyscale-12};
-    --zui-button-color-hover: #{$color-greyscale-12};
-    --zui-button-border-color: #{$color-error-transparency-7};
-    --zui-button-border-color-hover: #{$color-error-transparency-11};
     --zui-button-bg: #{$color-failure-5};
     --zui-button-bg-hover: #{$color-failure-9};
+    --zui-button-bg-active: #{$color-secondary-10};
+    --zui-button-border-color: #{$color-error-transparency-7};
+    --zui-button-border-color-hover: #{$color-error-transparency-11};
+    --zui-button-color: #{$color-greyscale-12};
+    --zui-button-color-hover: #{$color-greyscale-12};
   }
 
   &-text {
@@ -75,6 +75,9 @@
     }
   }
 
+  &-active {
+    background: var(--zui-button-bg-active) !important;
+  }
 
   cursor: pointer;
   text-transform: uppercase;

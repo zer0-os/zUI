@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { RowPlaceholders } from './Placeholder';
-import { StoryCard } from '../.storybook';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
@@ -11,13 +11,11 @@ export default {
 
 const Template: ComponentStory<typeof RowPlaceholders> = args => {
   return (
-    <StoryCard isContrast>
-      <table>
-        <tbody>
-          <RowPlaceholders {...args} />
-        </tbody>
-      </table>
-    </StoryCard>
+    <table>
+      <tbody>
+        <RowPlaceholders {...args} />
+      </tbody>
+    </table>
   );
 };
 
