@@ -1,12 +1,14 @@
+import React from 'react';
 import type { FC } from 'react';
+
+import { MarkdownEditorModes, MARKDOWN_EDITOR_TOOLBAR_TITLES } from './MarkdownEditor.constants';
 import type { MarkdownEditorProps } from './MarkdownEditor.types';
 
-import React from 'react';
-import classNames from 'classnames';
 import MDEditor, { ICommand } from '@uiw/react-md-editor';
-import { MarkdownEditorModes, MARKDOWN_EDITOR_TOOLBAR_TITLES } from './MarkdownEditor.constants';
-import styles from './MarkdownEditor.module.scss';
 import { Alert } from '../../Alert';
+
+import classNames from 'classnames';
+import styles from './MarkdownEditor.module.scss';
 
 const onCommandsFilter = (command: ICommand<string>) => {
   switch (command.name) {
@@ -35,14 +37,7 @@ const onCommandsFilter = (command: ICommand<string>) => {
   }
 };
 
-export const MarkdownEditor: FC<MarkdownEditorProps> = ({
-  text = '',
-  placeholder,
-  onChange,
-  error = false,
-  errorText,
-  className
-}) => {
+export const MarkdownEditor: FC<MarkdownEditorProps> = ({ text = '', placeholder, onChange, errorText, className }) => {
   return (
     <div className={classNames(styles.Container, className)} data-error={errorText && true}>
       <div className={styles.Editor}>
