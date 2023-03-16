@@ -14,7 +14,7 @@
         }
     }
 
-    .ImageContainer {
+    .Aspect {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -29,7 +29,6 @@
             object-fit: cover;
 
             transition: transform 0.3s ease;
-
         }
     }
 
