@@ -4,11 +4,7 @@ import type { MarkdownEditorProps } from './MarkdownEditor.types';
 import React from 'react';
 import classNames from 'classnames';
 import MDEditor, { ICommand } from '@uiw/react-md-editor';
-import {
-  MarkdownEditorVariants,
-  MarkdownEditorModes,
-  MARKDOWN_EDITOR_TOOLBAR_TITLES
-} from './MarkdownEditor.constants';
+import { MarkdownEditorModes, MARKDOWN_EDITOR_TOOLBAR_TITLES } from './MarkdownEditor.constants';
 import styles from './MarkdownEditor.module.scss';
 import { Alert } from '../../Alert';
 
