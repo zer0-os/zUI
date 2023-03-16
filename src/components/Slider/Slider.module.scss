@@ -17,6 +17,10 @@
     border-radius: 1rem;
     height: 1rem;
 
+    &[data-size='small'] {
+      height: 0.5rem;
+    }
+
     .Track {
       position: relative;
       flex-grow: 2;
@@ -64,9 +68,5 @@
         width: 1rem;
       }
     }
-  }
-
-  .Root[data-size='small'] {
-    height: 0.5rem;
   }
 }
