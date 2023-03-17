@@ -4,6 +4,7 @@ export * from './Alert';
 export * from './AspectRatio';
 export * from './AsyncTable';
 export * from './Avatar';
+export * from './Badge';
 export { Button } from './Button';
 export * from './Card';
 export * from './Checkbox';
