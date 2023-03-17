@@ -1,3 +1,5 @@
+@import '../../styles/theme';
+
 .Container {
     display: flex;
     flex-direction: column;
@@ -9,8 +11,12 @@
         flex-direction: column;
         gap: 0.25rem;
 
+        .Label {
+            color: $color-greyscale-12;
+        }
+
         .Helper {
-            color: #A09FA6;
+            color: $color-greyscale-11;
             font-size: 0.75rem; // 12px
             padding: 0;
             margin: 0;
@@ -25,14 +31,14 @@
         gap: 0.5rem;
 
         border-radius: 0.5rem;
-        border: 1px solid #404040;
+        border: 1px solid $color-greyscale-7;
 
         cursor: text;
 
         transition: border-color 0.1s ease;
 
         &:focus-within {
-            border-color: #8E4EC6;
+            border-color: $color-primary-9;
         }
 
         &[data-size='small'] {
@@ -45,16 +51,17 @@
         }
 
         &[data-status='error'] {
-            border-color: #AA2429;
+            border-color: $color-failure-8;
 
             &:focus-within {
-                border-color: #E5484D;
+                border-color: $color-failure-9;
             }
         }
 
         &[data-disabled] {
-            border-color: #404040;
-            background: #1C1C1F;
+            border-color: $color-greyscale-6;
+            background: $color-greyscale-2;
+            color: $color-greyscale-11;
 
             cursor: not-allowed;
 
@@ -71,7 +78,7 @@
 
         .Input {
             background: none;
-            color: white;
+            color: $color-greyscale-12;
             border: none;
             font-size: 0.875rem;
             line-height: 1.05625rem;

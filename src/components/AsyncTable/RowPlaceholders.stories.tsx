@@ -1,23 +1,21 @@
 import React from 'react';
 
 import { RowPlaceholders } from './Placeholder';
-import { StoryCard } from '../.storybook';
+
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
-  title: 'Placeholder Elements/RowPlaceholders',
+  title: 'Data Display/Table/RowPlaceholders',
   component: RowPlaceholders
 } as ComponentMeta<typeof RowPlaceholders>;
 
 const Template: ComponentStory<typeof RowPlaceholders> = args => {
   return (
-    <StoryCard isContrast>
-      <table>
-        <tbody>
-          <RowPlaceholders {...args} />
-        </tbody>
-      </table>
-    </StoryCard>
+    <table>
+      <tbody>
+        <RowPlaceholders {...args} />
+      </tbody>
+    </table>
   );
 };
 

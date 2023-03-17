@@ -54,7 +54,6 @@ export const Button: FC<ButtonProps> = ({
     },
     <>
       <div className="zui-button-content">{isLoading ? <Spinner className="zui-button-spinner" /> : children}</div>
-      <div className="zui-button-wash"></div>
     </>
   );
 };

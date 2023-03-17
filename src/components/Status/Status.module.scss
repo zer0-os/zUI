@@ -1,25 +1,26 @@
-@import '../../styles/colors';
+@import '../../styles/theme';
+
 
 /* stylelint-disable no-duplicate-selectors */
 .Status {
   &[data-status-type='active'] {
-    --zui-status-background: #{$green-9};
+    --zui-status-background: #{$color-success-9};
   }
 
   &[data-status-type='idle'] {
-    --zui-status-background: #{$orange-10};
+    --zui-status-background: #{$color-warning-10};
   }
 
   &[data-status-type='busy'] {
-    --zui-status-background: #{$read-10};
+    --zui-status-background: #{$color-failure-10};
   }
 
   &[data-status-type='offline'] {
-    --zui-status-background: #{$grey-10};
+    --zui-status-background: #{$color-greyscale-10};
   }
 
   &[data-status-type='unread'] {
-    --zui-status-background: #{$purple-11};
+    --zui-status-background: #{$color-primary-11};
   }
 }
 

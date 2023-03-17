@@ -1,3 +1,5 @@
+@import '../../styles/theme';
+
 .Container {
     display: flex;
     align-items: center;
@@ -8,22 +10,22 @@
     border-radius: 0.5rem;
 
     &[data-variant="success"] {
-        color: #58C573;
-        background-color: #113123;
+        color: $color-success-11;
+        background-color: $color-success-4;
     }
 
     &[data-variant="error"] {
-        color: #FF6369;
-        background-color: #481A1D;
+        color: $color-failure-11;
+        background-color: $color-failure-4;
     }
 
     &[data-variant="warning"] {
-        color: #FF8B3E;
-        background-color: #441F04;
+        color: $color-warning-11;
+        background-color: $color-warning-4;
     }
 
     &[data-variant="info"] {
-        color: #BF7AF0;
-        background-color: #381C4E;
+        color: $color-primary-11;
+        background-color: $color-primary-4;
     }
 }

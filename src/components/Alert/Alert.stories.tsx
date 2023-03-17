@@ -1,18 +1,13 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Alert } from './';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Data Display/Alert',
   component: Alert
 } as ComponentMeta<typeof Alert>;
 
-const Template: ComponentStory<typeof Alert> = args => (
-  <StoryCard isContrast>
-    <Alert {...args} />
-  </StoryCard>
-);
+const Template: ComponentStory<typeof Alert> = args => <Alert {...args} />;
 
 export const Success = Template.bind({});
 Success.args = {
