@@ -1,5 +1,6 @@
 @import '../../styles/colors';
 
+/* stylelint-disable no-duplicate-selectors */
 .Badge {
   &[data-content-type='icon'] {
     --zui-badge-border-radius: 50%;
