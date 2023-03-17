@@ -25,23 +25,22 @@ describe('<StepBar />', () => {
   });
 
   describe('when clicking steps', () => {
-    let step1: ParentNode, step2: ParentNode;
-    beforeAll(() => {
-      const { getByText } = render(
-        <StepBar currentStepId={mockSteps[1].id} steps={mockSteps} onChangeStep={mockOnChangeStep} />
-      );
-      step1 = getByText(mockSteps[0].title).parentNode;
-      step2 = getByText(mockSteps[1].title).parentNode;
-    });
-
     test('should not be able to navigate forward in steps by clicking next steps', () => {
-      fireEvent.click(step2);
+      const { getByText } = render(
+        <StepBar currentStepId={mockSteps[0].id} steps={mockSteps} onChangeStep={mockOnChangeStep} />
+      );
+      fireEvent.click(getByText(mockSteps[1].title));
+      fireEvent.click(getByText(mockSteps[2].title));
       expect(mockOnChangeStep).not.toHaveBeenCalled();
     });
 
     test('should be able to navigate backwards in steps by clicking a previous step', () => {
-      fireEvent.click(step1);
-      expect(mockOnChangeStep).toHaveBeenCalled();
+      const { getByText } = render(
+        <StepBar currentStepId={mockSteps[2].id} steps={mockSteps} onChangeStep={mockOnChangeStep} />
+      );
+      fireEvent.click(getByText(mockSteps[1].title));
+      fireEvent.click(getByText(mockSteps[0].title));
+      expect(mockOnChangeStep).toHaveBeenCalledTimes(2);
     });
   });
 });
