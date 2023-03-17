@@ -1,5 +1,5 @@
 @import '../../styles/typography';
-@import '../../styles/colors';
+@import '../../styles/theme';
 
 $gutter: 16px;
 
@@ -34,7 +34,7 @@ $gutter: 16px;
       margin-top: 1.5rem;
       margin-bottom: 0;
       height: 1px;
-      background-color: #{$grey};
+      background-color: $color-primary-4;
       border: none;
     }
 

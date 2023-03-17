@@ -5,8 +5,10 @@
  */
 
 @import '../../styles/colors';
+@import '../../styles/theme';
+
 
 .react-loading-skeleton {
-  --base-color: #{$purple-darkest};
-  --highlight-color: #{$purple-lighter};
+  --base-color: #{$color-primary-3};
+  --highlight-color: #{$color-primary-6};
 }

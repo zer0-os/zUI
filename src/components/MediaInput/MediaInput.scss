@@ -1,20 +1,27 @@
 @import '../../styles/animations';
 @import '../../styles/colors';
+@import '../../styles/theme';
 
 .zui-media-input {
   .zui-media-input-preview {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background-color: $color-primary-3;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #{$anakiwa-darker};
+
+    border: 1px dashed $color-greyscale-8;
     border-radius: 16px;
     border-collapse: separate;
+
     overflow: hidden;
     cursor: pointer;
     transition: transform #{$time-medium} ease-in-out, border-color #{$time-medium} ease-in-out;
+
+
 
     > img {
       height: 100%;
@@ -33,14 +40,19 @@
       flex-direction: column;
       text-align: center;
 
+      .zui-media-input-preview-text-icon {
+        margin: 0 auto 1.125rem auto;
+        color: $color-greyscale-12;
+      }
+
       .zui-media-input-preview-text-title {
         font-size: 1rem;
-        color: #{$text-glow-white};
+        color: $color-greyscale-12;
       }
 
       .zui-media-input-preview-text-subtitle {
         font-size: 0.875rem;
-        color: #{$grey-lighter-2};
+        color: $color-greyscale-11;
       }
     }
   }
@@ -60,7 +72,8 @@
   }
 
   .zui-media-input-error {
-    border-color: #{$helitrope};
+    background-color: $color-failure-4;
+    border-color: $color-failure-8;
   }
 
   input {

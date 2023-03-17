@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Wizard } from './';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Data Display/Wizard',
@@ -9,19 +8,15 @@ export default {
 } as ComponentMeta<typeof Wizard.Container>;
 
 export const Container: ComponentStory<typeof Wizard.Container> = args => (
-  <StoryCard isContrast>
-    <Wizard.Container {...args}>
-      <p style={{ textAlign: 'center' }}>
-        You can put any content in this container, and it will apply Wizard styling!
-      </p>
-    </Wizard.Container>
-  </StoryCard>
+  <Wizard.Container {...args}>
+    <p style={{ textAlign: 'center' }}>You can put any content in this container, and it will apply Wizard styling!</p>
+  </Wizard.Container>
 );
 
 export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
-  <StoryCard isContrast>
+  <Wizard.Container>
     <Wizard.Loading {...args} />
-  </StoryCard>
+  </Wizard.Container>
 );
 
 Loading.args = {
@@ -29,11 +24,9 @@ Loading.args = {
 };
 
 export const Header: ComponentStory<typeof Wizard.Header> = args => (
-  <StoryCard isContrast>
-    <Wizard.Container>
-      <Wizard.Header {...args} />
-    </Wizard.Container>
-  </StoryCard>
+  <Wizard.Container>
+    <Wizard.Header {...args} />
+  </Wizard.Container>
 );
 
 Header.args = {
@@ -44,11 +37,9 @@ Header.args = {
 };
 
 export const Confirmation: ComponentStory<typeof Wizard.Confirmation> = args => (
-  <StoryCard isContrast>
-    <Wizard.Container>
-      <Wizard.Confirmation {...args} />
-    </Wizard.Container>
-  </StoryCard>
+  <Wizard.Container>
+    <Wizard.Confirmation {...args} />
+  </Wizard.Container>
 );
 
 Confirmation.args = {

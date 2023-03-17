@@ -1,37 +1,18 @@
+@import '../../styles/theme';
+
 .Container {
     display: flex;
     flex-direction: row;
     align-items: center;
 
-    gap: 0.5rem;
-
-    background: #BC43FE13;
+    background: $color-primary-2;
 
     border-radius: 0.5rem;
-    border: 1px solid #381C4E;
 
     height: auto;
 
-    &[data-variant='default'] {
-        padding: 0.5rem;
-
-        .Toggle {
-            height: 2.438rem; // 39px
-
-            &[data-type='icon'] {
-                padding: 0.469rem; // 15.5px
-            }
-        }
-    }
-
-    &[data-variant='minimal'] {
-        padding: 0;
-        border: none;
-    }
-
-    /*
-     * ToggleGroup Styling
-     */
+    padding: 0;
+    border: none;
 
     .Toggle {
         position: relative;
@@ -43,16 +24,31 @@
         font-size: 1rem;
 
         height: 100%;
-        padding: 0.5rem 1rem; // 0px 11px
+        padding: 0.5rem 1rem;
 
         color: white;
 
         border: none;
-        border-radius: 0.5rem;
         outline: none; // disabling outline as we handle it custom below
         cursor: pointer;
 
-        transition: background 0.1s ease;
+        transition: background 0.1s ease, color 0.1s ease;
+
+        &:not(:first-child) {
+            border-left: 1px solid $color-primary-3;
+        }
+
+        &:first-child {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        &:last-child {
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        svg {
+            transition: color 0.1s ease;
+        }
 
         &[data-focus-visible-added] {
             &::after {
@@ -63,9 +59,11 @@
                 width: calc(100% + 0.25rem + 0.25rem);
                 height: calc(100% + 0.25rem + 0.25rem);
                 border-radius: inherit;
-                box-shadow: 0 0 0.25rem #01F4CB;
                 outline: 1px solid #01F4CB;
+                z-index: 2;
             }
+
+            color: $color-greyscale-12 !important;
         }
 
         /*
@@ -73,17 +71,25 @@
          */
 
         &[data-state='on'] {
-            background: #8E4EC6;
+            background: $color-primary-3;
+            color: $color-greyscale-12;
 
-            &:not(:active) {
-                &:hover {
-                    box-shadow: 0 0 0.25rem #9747FF;
-                }
+            svg {
+                color: inherit !important;
             }
         }
 
         &[data-state='off'] {
             background: none;
+            color: $color-greyscale-11;
+
+            svg {
+                color: inherit !important;
+            }
+
+            &:hover {
+                color: $color-greyscale-12;
+            }
         }
 
         /*
@@ -125,8 +131,9 @@
             align-items: center;
 
             svg {
-                width: 24px;
-                height: 24px;
+                width: 1.5rem;
+                height: 1.5rem;
+                color: $color-greyscale-12;
             }
         }
     }

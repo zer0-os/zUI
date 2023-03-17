@@ -1,0 +1,19 @@
+@use '../../styles/theme' as theme;
+
+.IconButton {
+  border-radius: 50%;
+  padding: 2px;
+  line-height: 0px;
+
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: inline-block;
+  margin: 0px;
+
+  color: theme.$color-greyscale-12;
+
+  &:hover {
+    background-color: theme.$color-greyscale-transparency-3;
+  }
+}

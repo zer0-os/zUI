@@ -1,17 +1,14 @@
+import React from 'react';
 import type { FC } from 'react';
+
+import { MarkdownEditorModes, MARKDOWN_EDITOR_TOOLBAR_TITLES } from './MarkdownEditor.constants';
 import type { MarkdownEditorProps } from './MarkdownEditor.types';
 
-import React from 'react';
-import classNames from 'classnames/bind';
 import MDEditor, { ICommand } from '@uiw/react-md-editor';
-import {
-  MarkdownEditorVariants,
-  MarkdownEditorModes,
-  MARKDOWN_EDITOR_TOOLBAR_TITLES
-} from './MarkdownEditor.constants';
-import styles from './MarkdownEditor.module.scss';
+import { Alert } from '../../Alert';
 
-const cx = classNames.bind(styles);
+import classNames from 'classnames';
+import styles from './MarkdownEditor.module.scss';
 
 const onCommandsFilter = (command: ICommand<string>) => {
   switch (command.name) {
@@ -40,32 +37,25 @@ const onCommandsFilter = (command: ICommand<string>) => {
   }
 };
 
-export const MarkdownEditor: FC<MarkdownEditorProps> = ({
-  variant = MarkdownEditorVariants.PRIMARY,
-  text = '',
-  placeholder,
-  onChange,
-  error = false,
-  errorText,
-  className
-}) => {
+export const MarkdownEditor: FC<MarkdownEditorProps> = ({ text = '', placeholder, onChange, errorText, className }) => {
   return (
-    <div
-      className={cx(styles.Container, className, {
-        Secondary: variant === MarkdownEditorVariants.SECONDARY,
-        Error: error
-      })}
-    >
-      <MDEditor
-        value={text}
-        onChange={onChange}
-        commandsFilter={onCommandsFilter}
-        preview={MarkdownEditorModes.EDIT}
-        textareaProps={{
-          placeholder
-        }}
-      />
-      {errorText && <span className={styles.ErrorMessage}>{errorText}</span>}
+    <div className={classNames(styles.Container, className)} data-error={errorText && true}>
+      <div className={styles.Editor}>
+        <MDEditor
+          value={text}
+          onChange={onChange}
+          commandsFilter={onCommandsFilter}
+          preview={MarkdownEditorModes.EDIT}
+          textareaProps={{
+            placeholder
+          }}
+        />
+      </div>
+      {errorText && (
+        <Alert variant={'error'} className={styles.ErrorMessage}>
+          {errorText}
+        </Alert>
+      )}
     </div>
   );
 };

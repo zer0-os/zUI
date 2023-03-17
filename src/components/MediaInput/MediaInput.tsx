@@ -1,6 +1,6 @@
 //- React Imports
 import React, { FC, useRef } from 'react';
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 
 //- Style Imports
 import './MediaInput.scss';
@@ -10,6 +10,7 @@ import { Preview } from './Preview';
 
 //- Type Imports
 import { MediaType } from './MediaInput.types';
+import { IconFilePlus2 } from '../Icons';
 
 export type MediaInputProps = {
   className?: string;
@@ -64,6 +65,7 @@ export const MediaInput: FC<MediaInputProps> = ({
           <Preview data-testid="preview" mediaType={mediaType} previewUrl={previewUrl} />
         ) : (
           <div className="zui-media-input-preview-text">
+            <IconFilePlus2 className={'zui-media-input-preview-text-icon'} />
             <span className="zui-media-input-preview-text-title">{title}</span>
             {subtitle && <span className="zui-media-input-preview-text-subtitle">{subtitle}</span>}
           </div>

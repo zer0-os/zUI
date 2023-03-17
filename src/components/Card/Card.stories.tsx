@@ -1,18 +1,13 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Card } from '.';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Data Display/Cards/Card',
   component: Card
 } as ComponentMeta<typeof Card>;
 
-const Template: ComponentStory<typeof Card> = args => (
-  <StoryCard isContrast isContentFull>
-    <Card {...args} />
-  </StoryCard>
-);
+const Template: ComponentStory<typeof Card> = args => <Card {...args} />;
 
 export const Loading = Template.bind({});
 Loading.args = {

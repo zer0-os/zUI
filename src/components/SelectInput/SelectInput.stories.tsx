@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SelectInput } from './SelectInput';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Inputs/SelectInput',
@@ -29,11 +28,7 @@ const Template: ComponentStory<typeof SelectInput> = args => {
     }
   ];
 
-  return (
-    <StoryCard isContrast>
-      <SelectInput {...args} items={items} value={items.find(x => x.id === selectedItem)?.label ?? selectedItem} />
-    </StoryCard>
-  );
+  return <SelectInput {...args} items={items} value={items.find(x => x.id === selectedItem)?.label ?? selectedItem} />;
 };
 
 export const Default = Template.bind({});

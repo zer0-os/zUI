@@ -39,6 +39,9 @@ interface ImplToggleGroupProps {
   className?: string;
   isDisabled?: boolean;
   options: ToggleOptions;
+  /**
+   * @deprecated There is no more minimal variant
+   */
   variant: 'minimal' | 'default';
 }
 

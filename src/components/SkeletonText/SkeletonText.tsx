@@ -4,6 +4,7 @@ import { AsyncText, HTMLTextElement } from '../../lib/types';
 import { Skeleton, SkeletonProps } from '../Skeleton';
 
 import classNames from 'classnames';
+import styles from './SkeletonText.module.scss';
 
 /**
  * Props shared between SkeletonText and MaybeSkeletonText
@@ -30,7 +31,7 @@ export const SkeletonText = ({
   skeletonOptions
 }: SkeletonTextProps) => {
   const isError = !isLoading && text === undefined;
-  const className = classNames(classNameProp, isError && errorClassName);
+  const className = classNames(styles.Container, classNameProp, isError && errorClassName);
 
   let children;
   if (isLoading) {

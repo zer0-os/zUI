@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { GridCard } from './';
 import { NFT } from './templates/NFT';
 import { Button } from '../../components/Button';
-import { StoryCard, HotswapContainer } from '../.storybook';
+import { HotswapContainer } from '../.storybook';
 
 export default {
   title: 'Data Display/Cards/Grid Card',
@@ -14,14 +14,12 @@ const CustomButton = <Button onPress={() => alert('Clicked')}>Custom</Button>;
 
 const Template: ComponentStory<typeof GridCard> = args => {
   return (
-    <StoryCard isContrast>
-      <GridCard
-        {...args}
-        imageAlt={'Storybook mock image'}
-        imageSrc={'https://picsum.photos/200/500'}
-        children={<>Empty</>}
-      />
-    </StoryCard>
+    <GridCard
+      {...args}
+      imageAlt={'Storybook mock image'}
+      imageSrc={'https://picsum.photos/200/500'}
+      children={<>Empty</>}
+    />
   );
 };
 

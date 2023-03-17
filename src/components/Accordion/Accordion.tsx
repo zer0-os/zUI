@@ -3,10 +3,7 @@ import React, { ReactNode, useState } from 'react';
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import { IconChevronDown } from '../Icons';
 
-import classNames from 'classnames';
 import styles from './Accordion.module.scss';
-
-const cx = classNames.bind(styles);
 
 export interface AccordionItem {
   title: string;

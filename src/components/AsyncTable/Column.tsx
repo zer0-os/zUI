@@ -44,7 +44,7 @@ const ColumnElement = ({ alignment, element, className, children }: ColumnProps 
   return createElement(
     element,
     {
-      className: classNames(cx(className, styles[startCase(toLower(alignment))]))
+      className: cx(className, styles[startCase(toLower(alignment))])
     },
     children
   );

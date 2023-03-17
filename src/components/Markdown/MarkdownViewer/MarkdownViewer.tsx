@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import type { MarkdownViewerProps } from './MarkdownViewer.types';
 
 import React from 'react';
-import classNames from 'classnames/bind';
+import classNames from 'classnames';
 import MDEditor from '@uiw/react-md-editor';
 import { REMARK_PLUGINS } from './MarkdownViewer.constants';
 import styles from './MarkdownViewer.module.scss';
