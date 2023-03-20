@@ -17,6 +17,7 @@ export * from './Markdown';
 export * from './MediaInput';
 export * from './Member';
 export { Modal } from './Modal';
+export * from './Modal/ModalConfirmation';
 export * from './Search';
 export * from './Skeleton';
 export * from './SkeletonText';
