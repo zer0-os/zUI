@@ -1,3 +1,6 @@
+@import '../../styles/theme';
+
+
 .Container {
   display: flex;
   flex-direction: column;
@@ -18,15 +21,14 @@
 
       transition: color 200ms ease;
 
-      color: grey;
+      color: $color-greyscale-transparency-10;
 
       &[data-state='active'],
       &.Selected {
-        color: white;
+        color: $color-greyscale-12;
       }
 
-      &[data-state='inactive'],
-      &:not(.Selected) {
+      &[data-state='inactive']:not(.Selected) {
         &:hover {
           color: rgb(154, 154, 154);
         }

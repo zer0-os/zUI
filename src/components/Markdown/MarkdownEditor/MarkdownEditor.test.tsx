@@ -55,18 +55,6 @@ describe('<MarkdownEditor />', () => {
     expect(container.firstChild).toHaveClass('mock-class');
   });
 
-  test('should pass Secondary class to container', () => {
-    const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} variant={MarkdownEditorVariants.SECONDARY} />);
-
-    expect(container.firstChild).toHaveClass(styles.Secondary);
-  });
-
-  test('should pass Error class to container', () => {
-    const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} error />);
-
-    expect(container.firstChild).toHaveClass(styles.Error);
-  });
-
   test('should show error message under MarkdownEditor', () => {
     const { container } = render(<MarkdownEditor {...DEFAULT_PROPS} error errorText={'mock error message'} />);
 

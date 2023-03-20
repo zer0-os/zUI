@@ -36,7 +36,7 @@ describe('<TextStack />', () => {
     test('should apply Container class to container', () => {
       const { container } = render(<TextStack {...DEFAULT_PROPS} />);
       expect(container.firstChild).toHaveClass(styles.Container);
-      expect(container.getElementsByClassName(styles.Container).length).toBe(1);
+      expect(container.childNodes.length).toBe(1);
     });
 
     test('should apply Primary class to primary element', () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MediaInput } from './MediaInput';
-import { StoryCard } from '../.storybook';
+
 import { MediaType } from './MediaInput.types';
 
 export default {
@@ -18,11 +18,7 @@ const Template: ComponentStory<typeof MediaInput> = args => {
     setPreviewUrl(previewUrl);
   };
 
-  return (
-    <StoryCard isContrast>
-      <MediaInput {...args} mediaType={mediaType} previewUrl={previewUrl} onChange={handleChange} />
-    </StoryCard>
-  );
+  return <MediaInput {...args} mediaType={mediaType} previewUrl={previewUrl} onChange={handleChange} />;
 };
 
 export const Default = Template.bind({});

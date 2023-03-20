@@ -1,8 +1,9 @@
-@import '../../styles/colors';
+@import '../../styles/theme';
+
 
 .Container {
   padding: 0 1rem;
   height: 5.75rem;
   border-radius: 1rem;
-  background: #{$purple-10};
+  background: $color-primary-2;
 }

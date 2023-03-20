@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import { IconButton, Properties } from '.';
+import { IconButton, IconButtonProperties } from '.';
 import { IconXClose } from '../Icons/icons/IconXClose';
 
 let iconRender = jest.fn();
@@ -15,8 +15,8 @@ jest.mock('../Icons/icons/IconXClose', () => {
 });
 
 describe('IconButton', () => {
-  const renderComponent = (props: Partial<Properties> = {}) => {
-    const allProps: Properties = {
+  const renderComponent = (props: Partial<IconButtonProperties> = {}) => {
+    const allProps: IconButtonProperties = {
       onClick: (): void => null,
       Icon: () => <></>,
       ...props

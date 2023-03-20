@@ -1,5 +1,5 @@
 @import '../../styles/typography';
-@import '../../styles/colors';
+@import '../../styles/theme';
 
 .Container {
   display: flex;
@@ -10,16 +10,16 @@
     line-height: 0.908rem;
 
     &[data-variant='primary'] {
-      color: $purple-lightest;
+      color: $color-greyscale-11;
     }
 
     &[data-variant='secondary'] {
-      color: $grey-lighter-2;
+      color: $color-greyscale-11;
     }
   }
 
   .Content {
-    color: $white;
+    color: $color-greyscale-12;
     text-decoration: none;
     line-height: 1.5rem;
   }

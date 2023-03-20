@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { TextStack } from './';
-import { StoryCard } from '../.storybook';
 
 export default {
   title: 'Typography/Text Detail',
@@ -9,11 +8,7 @@ export default {
 } as ComponentMeta<typeof TextStack>;
 
 const Template: ComponentStory<typeof TextStack> = args => {
-  return (
-    <StoryCard isContrast>
-      <TextStack {...args} />
-    </StoryCard>
-  );
+  return <TextStack {...args} />;
 };
 
 export const Default = Template.bind({});

@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import '../../styles/theme';
 
 .Table {
   width: 100%;
@@ -7,7 +7,7 @@
   th {
     font-size: 0.75rem;
     font-weight: bold;
-    color: #{$grey-lighter-2};
+    color: $color-greyscale-10;
     padding: 1rem;
   }
 
