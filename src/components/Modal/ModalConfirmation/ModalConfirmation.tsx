@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title as DialogTitle, Close as DialogClose } from '@radix-ui/react-dialog';
+import { DialogProps, Title as DialogTitle, Close as DialogClose } from '@radix-ui/react-dialog';
 import classNames from 'classnames';
 import { Button } from '../../Button';
 import { Modal } from '../Modal';
@@ -8,7 +8,7 @@ import { IconXClose } from '../../Icons';
 
 import styles from './ModalConfirmation.module.scss';
 
-export interface ModalConfirmationProps {
+export interface ModalConfirmationProps extends DialogProps {
   className?: string;
   title: string;
   cancelLabel: string;
