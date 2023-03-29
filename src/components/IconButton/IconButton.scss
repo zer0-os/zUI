@@ -1,0 +1,100 @@
+@use '../../styles/theme' as theme;
+
+.zui-iconButton {
+  border-radius: 50%;
+  padding: 2px;
+  line-height: 0px;
+
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: inline-block;
+  margin: 0px;
+
+  color: theme.$color-greyscale-12;
+
+  &:hover {
+    background-color: theme.$color-greyscale-transparency-3;
+  }
+
+  // Variants
+  &-variant-primary {
+    background-color: theme.$color-secondary-11;
+    border: 1px solid theme.$color-secondary-11;
+
+    &.zui-iconButton-color-primary {
+      color: theme.$color-black;
+      &:hover {
+        background-color: theme.$color-secondary-11;
+        box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
+      }
+
+      &:active {
+        background-color: theme.$color-secondary-10;
+        border-color: theme.$color-secondary-10;
+      }
+    }
+
+    &.zui-iconButton-color-red {
+      background-color: theme.$color-error-transparency-9;
+      border: 1px solid theme.$color-error-transparency-9;
+      color: theme.$color-white;
+    }
+
+    &.zui-iconButton-color-greyscale {
+      color: theme.$color-greyscale-12;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  &-variant-secondary {
+    border: 1px solid theme.$color-secondary-7;
+
+    &.zui-iconButton-color-primary {
+      color: theme.$color-secondary-11;
+      &:hover {
+        background-color: theme.$color-secondary-transparency-3;
+        box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
+      }
+      &:active {
+        border-color: theme.$color-secondary-11;
+      }
+    }
+
+    &.zui-iconButton-color-red {
+      border: 1px solid theme.$color-error-transparency-9;
+      color: theme.$color-error-transparency-9;
+    }
+
+    &.zui-iconButton-color-greyscale {
+      color: theme.$color-greyscale-12;
+      border: none;
+      background-color: transparent;
+    }
+  }
+
+  &-variant-tertiary {
+    &.zui-iconButton-color-primary {
+      color: theme.$color-secondary-11;
+      &:hover {
+        background-color: theme.$color-secondary-transparency-3;
+        box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
+      }
+      &:active {
+        background-color: theme.$color-secondary-transparency-2;
+        box-shadow: none;
+      }
+    }
+
+    &.zui-iconButton-color-red {
+      color: theme.$color-error-transparency-9;
+    }
+
+    &.zui-iconButton-color-greyscale {
+      color: theme.$color-greyscale-12;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
