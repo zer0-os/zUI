@@ -24,14 +24,20 @@
 
     &.zui-iconButton-color-primary {
       color: theme.$color-black;
-      &:hover {
+      &:hover:enabled {
         background-color: theme.$color-secondary-11;
         box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
       }
 
-      &:active {
+      &:active:enabled {
         background-color: theme.$color-secondary-10;
         border-color: theme.$color-secondary-10;
+      }
+
+      &:disabled {
+        background-color: transparent;
+        border-color: theme.$color-greyscale-9;
+        color: theme.$color-greyscale-9;
       }
     }
 
@@ -39,12 +45,29 @@
       background-color: theme.$color-error-transparency-9;
       border: 1px solid theme.$color-error-transparency-9;
       color: theme.$color-white;
+
+      &:hover:enabled {
+        box-shadow: 0px 0px 4px 0px theme.$color-error-transparency-9;
+      }
+      &:active:enabled {
+        box-shadow: unset;
+      }
+
+      &:disabled {
+        background-color: transparent;
+        border-color: theme.$color-greyscale-9;
+        color: theme.$color-greyscale-9;
+      }
     }
 
     &.zui-iconButton-color-greyscale {
       color: theme.$color-greyscale-12;
       border: none;
       background-color: transparent;
+
+      &:disabled {
+        color: theme.$color-greyscale-9;
+      }
     }
   }
 
@@ -53,11 +76,11 @@
 
     &.zui-iconButton-color-primary {
       color: theme.$color-secondary-11;
-      &:hover {
+      &:hover:enabled {
         background-color: theme.$color-secondary-transparency-3;
         box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
       }
-      &:active {
+      &:active:enabled {
         border-color: theme.$color-secondary-11;
       }
     }
@@ -65,23 +88,39 @@
     &.zui-iconButton-color-red {
       border: 1px solid theme.$color-error-transparency-9;
       color: theme.$color-error-transparency-9;
+
+      &:hover:enabled {
+        background-color: theme.$color-error-transparency-3;
+        box-shadow: 0px 0px 4px 0px rgba(theme.$color-error-transparency-9, 75%);
+      }
+
+      &:active:enabled {
+        background-color: rgba(theme.$color-error-transparency-2, 4.5%);
+        box-shadow: unset;
+      }
     }
 
     &.zui-iconButton-color-greyscale {
       color: theme.$color-greyscale-12;
       border: none;
-      background-color: transparent;
+      background-color: unset;
+    }
+
+    &:disabled {
+      color: theme.$color-greyscale-9;
+      border-color: theme.$color-greyscale-9;
+      background-color: unset;
     }
   }
 
   &-variant-tertiary {
     &.zui-iconButton-color-primary {
       color: theme.$color-secondary-11;
-      &:hover {
+      &:hover:enabled {
         background-color: theme.$color-secondary-transparency-3;
         box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
       }
-      &:active {
+      &:active:enabled {
         background-color: theme.$color-secondary-transparency-2;
         box-shadow: none;
       }
@@ -89,12 +128,29 @@
 
     &.zui-iconButton-color-red {
       color: theme.$color-error-transparency-9;
+      border: 1px solid transparent;
+
+      &:hover:enabled {
+        background-color: rgba(theme.$color-error-transparency-3, 13%);
+        box-shadow: 0px 0px 4px 0px rgba(theme.$color-error-transparency-3, 75%);
+        border: 1px solid theme.$color-error-transparency-3;
+      }
+      &:active:enabled {
+        background-color: rgba(theme.$color-error-transparency-2, 4.5%);
+        box-shadow: none;
+        border-color: transparent;
+      }
     }
 
     &.zui-iconButton-color-greyscale {
       color: theme.$color-greyscale-12;
       border: none;
       background-color: transparent;
+    }
+
+    &:disabled {
+      color: theme.$color-greyscale-9;
+      background-color: unset;
     }
   }
 }

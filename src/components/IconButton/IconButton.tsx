@@ -16,6 +16,7 @@ export interface IconButtonProperties {
   isFilled?: boolean;
   variant?: Variant;
   color?: Color;
+  isDisabled?: boolean;
 }
 
 export const IconButton: FC<IconButtonProperties> = ({
@@ -26,7 +27,8 @@ export const IconButton: FC<IconButtonProperties> = ({
   size,
   isFilled,
   variant = Variant.PRIMARY,
-  color = Color.PRIMARY
+  color = Color.PRIMARY,
+  isDisabled
 }) => {
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
@@ -57,6 +59,7 @@ export const IconButton: FC<IconButtonProperties> = ({
         className
       )}
       onClick={handleClick}
+      disabled={isDisabled}
     >
       <Icon label={label} size={getSize()} isFilled={isFilled} />
     </button>
