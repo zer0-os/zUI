@@ -146,6 +146,13 @@
       color: theme.$color-greyscale-12;
       border: none;
       background-color: transparent;
+
+      &:hover:enabled {
+        background-color: rgba(theme.$color-greyscale-transparency-4, 9%);
+      }
+      &:active:enabled {
+        background-color: rgba(theme.$color-greyscale-transparency-3, 6%);
+      }
     }
 
     &:disabled {

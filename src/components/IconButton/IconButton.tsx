@@ -2,7 +2,6 @@ import React, { FC, JSXElementConstructor } from 'react';
 
 import classNames from 'classnames';
 import { IconProps } from '../Icons/Icons.types';
-import { Color, Variant } from './IconButton.types';
 
 import './IconButton.scss';
 
@@ -14,8 +13,8 @@ export interface IconButtonProperties {
   label?: string;
   size?: string | number | 'large' | 'small' | 'x-small';
   isFilled?: boolean;
-  variant?: Variant;
-  color?: Color;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  color?: 'primary' | 'red' | 'greyscale';
   isDisabled?: boolean;
 }
 
@@ -26,8 +25,8 @@ export const IconButton: FC<IconButtonProperties> = ({
   label,
   size,
   isFilled,
-  variant = Variant.PRIMARY,
-  color = Color.PRIMARY,
+  variant,
+  color,
   isDisabled
 }) => {
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {

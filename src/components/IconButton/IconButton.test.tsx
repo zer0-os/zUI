@@ -69,4 +69,57 @@ describe('IconButton', () => {
 
     expect(onOuterClick).toHaveBeenCalledTimes(0);
   });
+
+
+  it('render color and variant className', () => {
+    const { getByRole } = renderComponent({ className: 'tacos', variant: 'primary', color: 'red' });
+
+    expect(getByRole('button')).toHaveClass('zui-iconButton-color-red');
+    expect(getByRole('button')).toHaveClass('zui-iconButton-variant-primary');
+  });
+
+  it('renders large size', () => {
+    renderComponent({
+      Icon: IconXClose,
+      label: 'the-label',
+      size: 'large',
+      isFilled: false
+    });
+
+    expect(iconRender).toHaveBeenLastCalledWith({
+      label: 'the-label',
+      size: 40,
+      isFilled: false
+    });
+  });
+
+  it('renders small size', () => {
+    renderComponent({
+      Icon: IconXClose,
+      label: 'the-label',
+      size: 'small',
+      isFilled: false
+    });
+
+    expect(iconRender).toHaveBeenLastCalledWith({
+      label: 'the-label',
+      size: 32,
+      isFilled: false
+    });
+  });
+
+  it('renders x small size', () => {
+    renderComponent({
+      Icon: IconXClose,
+      label: 'the-label',
+      size: 'x-small',
+      isFilled: false
+    });
+
+    expect(iconRender).toHaveBeenLastCalledWith({
+      label: 'the-label',
+      size: 24,
+      isFilled: false
+    });
+  });
 });
