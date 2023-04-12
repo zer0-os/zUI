@@ -18,6 +18,21 @@ export interface IconButtonProperties {
   isDisabled?: boolean;
 }
 
+const getSize = (size: IconButtonProperties['size']) => {
+  if (size && ['large', 'small', 'x-small'].includes(size.toString())) {
+    switch (size) {
+      case 'large':
+        return 40;
+      case 'small':
+        return 32;
+      case 'x-small':
+        return 24;
+    }
+  }
+
+  return size;
+};
+
 export const IconButton: FC<IconButtonProperties> = ({
   Icon,
   onClick,
@@ -34,21 +49,6 @@ export const IconButton: FC<IconButtonProperties> = ({
     onClick();
   }
 
-  const getSize = () => {
-    if (size && ['large', 'small', 'x-small'].includes(size.toString())) {
-      switch (size) {
-        case 'large':
-          return 40;
-        case 'small':
-          return 32;
-        case 'x-small':
-          return 24;
-      }
-    }
-
-    return size;
-  };
-
   return (
     <button
       className={classNames(
@@ -60,7 +60,7 @@ export const IconButton: FC<IconButtonProperties> = ({
       onClick={handleClick}
       disabled={isDisabled}
     >
-      <Icon label={label} size={getSize()} isFilled={isFilled} />
+      <Icon label={label} size={getSize(size)} isFilled={isFilled} />
     </button>
   );
 };
