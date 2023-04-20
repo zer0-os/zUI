@@ -18,6 +18,7 @@ export * from './MediaInput';
 export * from './Member';
 export { Modal } from './Modal';
 export * from './Modal/ModalConfirmation';
+export { PasswordInput } from './Input/PasswordInput';
 export * from './Search';
 export * from './Skeleton';
 export * from './SkeletonText';
