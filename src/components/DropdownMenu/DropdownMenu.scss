@@ -18,7 +18,7 @@
   border-radius: 1rem;
 
   // @note: replace hardcoding when we sort shadow variables
-  box-shadow: 5px 5px 20px 0px #46295C1C;
+  box-shadow: 5px 5px 20px 0px #46295c1c;
 
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 
@@ -35,6 +35,5 @@
     border-radius: 0.5rem;
     user-select: none;
     cursor: pointer;
-
   }
 }

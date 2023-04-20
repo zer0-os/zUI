@@ -70,7 +70,6 @@ describe('IconButton', () => {
     expect(onOuterClick).toHaveBeenCalledTimes(0);
   });
 
-
   it('render color and variant className', () => {
     const { getByRole } = renderComponent({ className: 'tacos', variant: 'primary', color: 'red' });
 

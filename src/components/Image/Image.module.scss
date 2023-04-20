@@ -1,54 +1,54 @@
 @keyframes disappear {
-    from {
-        visibility: visible;
-    }
-    to {
-        visibility: hidden;
-    }
+  from {
+    visibility: visible;
+  }
+  to {
+    visibility: hidden;
+  }
 }
 
 .Container {
+  position: relative;
+
+  > * {
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+  }
+
+  .Image {
     position: relative;
+    opacity: 0;
+    z-index: 1;
+  }
 
-    > * {
-        border-radius: inherit;
-        height: 100%;
-        width: 100%;
+  &[data-is-cached] {
+    * {
+      transition: none;
     }
+  }
 
+  &[data-status='loaded'] {
     .Image {
-        position: relative;
-        opacity: 0;
-        z-index: 1;
-    }
-
-    &[data-is-cached] {
-        * {
-            transition: none;
-        }
-    }
-
-    &[data-status="loaded"] {
-        .Image {
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
-
-        .Skeleton {
-            // hide skeleton on a 0.4s delay
-            animation: disappear 0.4s ease 0.4s forwards;
-        }
+      opacity: 1;
+      transition: opacity 0.4s ease;
     }
 
     .Skeleton {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        opacity: 1;
-
-        border-radius: inherit !important;
+      // hide skeleton on a 0.4s delay
+      animation: disappear 0.4s ease 0.4s forwards;
     }
+  }
+
+  .Skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 1;
+
+    border-radius: inherit !important;
+  }
 }

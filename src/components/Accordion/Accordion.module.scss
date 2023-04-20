@@ -74,7 +74,7 @@ $group-border-radius: 0.5rem;
         padding: 0.5rem 1rem 0.438rem;
       }
 
-      &>.Chevron {
+      & > .Chevron {
         transform: rotate(180deg);
       }
     }
@@ -167,5 +167,4 @@ $group-border-radius: 0.5rem;
       height: 0;
     }
   }
-
 }
