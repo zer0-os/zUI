@@ -63,6 +63,8 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
     ref
   ) => {
     const inputRef = useRef<HTMLInputElement>();
+    // Allow overriding the type to be password only
+    const trueType = type === 'password' ? 'password' : 'text';
 
     const clickWrapper = useCallback(() => {
       inputRef.current.focus();
@@ -95,6 +97,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
             ref={inputRef}
             value={value}
             disabled={isDisabled}
+            type={trueType}
             {...rest}
           />
           {endEnhancer && <Enhancer value={endEnhancer} />}
