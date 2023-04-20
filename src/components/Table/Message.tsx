@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { Spinner } from '../LoadingIndicator';
 import { IconFolderClosed, IconAlertCircle } from '../Icons';
 
+import classNames from 'classnames';
 import styles from './Message.module.scss';
 
 /*************************
@@ -10,11 +11,12 @@ import styles from './Message.module.scss';
  ************************/
 
 interface TableMessageProps {
+  className?: string;
   children: ReactNode;
 }
 
-const TableMessage = ({ children }: TableMessageProps) => {
-  return <div className={styles.Container}>{children}</div>;
+const TableMessage = ({ className, children }: TableMessageProps) => {
+  return <div className={classNames(styles.Container, className)}>{children}</div>;
 };
 
 /*************************
@@ -43,13 +45,14 @@ const StatusIcon = {
 };
 
 interface TableStatusMessageProps {
+  className?: string;
   status: TableStatus;
   message?: ReactNode;
 }
 
-export const TableStatusMessage = ({ status, message }: TableStatusMessageProps): JSX.Element => {
+export const TableStatusMessage = ({ className, status, message }: TableStatusMessageProps): JSX.Element => {
   return (
-    <TableMessage>
+    <TableMessage className={className}>
       {StatusIcon[status]} {message ?? StatusMessage[status]}
     </TableMessage>
   );

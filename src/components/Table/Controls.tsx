@@ -4,6 +4,7 @@ import { ToggleGroup } from '../ToggleGroup';
 import { IconGrid1, IconRows3 } from '../Icons';
 import { Search as SearchComponent, SearchProps } from '../Search';
 
+import classNames from 'classnames';
 import styles from './Controls.module.scss';
 
 /************************
@@ -14,12 +15,13 @@ import styles from './Controls.module.scss';
  ***********************/
 
 export interface ControlsProps {
+  className?: string;
   children: ReactNode;
 }
 
-export const Controls = forwardRef<HTMLDivElement, ControlsProps>(({ children }: ControlsProps, ref) => {
+export const Controls = forwardRef<HTMLDivElement, ControlsProps>(({ className, children }: ControlsProps, ref) => {
   return (
-    <div className={styles.Container} ref={ref}>
+    <div className={classNames(styles.Container, className)} ref={ref}>
       {children}
     </div>
   );
@@ -46,29 +48,32 @@ const VIEW_OPTIONS = [
 ];
 
 export interface ViewToggleProps {
+  className?: string;
   onChange: (view: View) => void;
   view: View;
 }
 
-export const ViewToggle = forwardRef<HTMLDivElement, ViewToggleProps>(({ onChange, view }: ViewToggleProps, ref) => {
-  return (
-    <ToggleGroup
-      ref={ref}
-      className={styles.Toggle}
-      selection={view}
-      selectionType={'single'}
-      onSelectionChange={onChange}
-      options={VIEW_OPTIONS}
-      variant={'minimal'}
-      isRequired={true}
-    />
-  );
-});
+export const ViewToggle = forwardRef<HTMLDivElement, ViewToggleProps>(
+  ({ className, onChange, view }: ViewToggleProps, ref) => {
+    return (
+      <ToggleGroup
+        ref={ref}
+        className={classNames(styles.Toggle, className)}
+        selection={view}
+        selectionType={'single'}
+        onSelectionChange={onChange}
+        options={VIEW_OPTIONS}
+        variant={'minimal'}
+        isRequired={true}
+      />
+    );
+  }
+);
 
 /************************
  * Search
  ***********************/
 
 export const TableSearch = (props: SearchProps) => {
-  return <SearchComponent {...props} className={styles.Search} />;
+  return <SearchComponent {...props} className={classNames(styles.Search, props.className)} />;
 };
