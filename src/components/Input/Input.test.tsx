@@ -37,6 +37,22 @@ describe('<Input />', () => {
     expect(screen.getByRole('textbox')).toHaveFocus();
   });
 
+  test('should set type attribute on input if it is a password type', () => {
+    render(<Input {...DEFAULT_PROPS} type="password" />);
+    expect(screen.getByTestId('zui-input')).toHaveAttribute('type', 'password');
+  });
+
+  test('should set the type attribute to text for anything other than password', () => {
+    const { getByTestId, rerender } = render(<Input {...DEFAULT_PROPS} />);
+    expect(getByTestId('zui-input')).toHaveAttribute('type', 'text');
+
+    rerender(<Input {...DEFAULT_PROPS} type="text" />);
+    expect(getByTestId('zui-input')).toHaveAttribute('type', 'text');
+
+    rerender(<Input {...DEFAULT_PROPS} type="number" />);
+    expect(getByTestId('zui-input')).toHaveAttribute('type', 'text');
+  });
+
   describe('labels', () => {
     test('should render label outside of input wrapper', () => {
       render(<Input {...DEFAULT_PROPS} label={'mock label'} />);

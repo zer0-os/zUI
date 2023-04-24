@@ -27,6 +27,9 @@ HelperText.args = {
 export const Number = Template.bind({});
 Number.args = { type: 'number', label: 'Bid Amount (ETH)', placeholder: 'Bid Amount (ETH)' };
 
+export const Password = Template.bind({});
+Password.args = { type: 'password', label: 'Password', placeholder: 'Password' };
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   value: 'zero.Domain',
