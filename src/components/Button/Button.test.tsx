@@ -85,3 +85,15 @@ test('should apply variant class', () => {
   const button = getByRole('button');
   expect(button).toHaveClass('zui-button-secondary');
 });
+
+test('should default to type "button"', () => {
+  const { getByRole } = renderComponent({ isSubmit: false });
+  const button = getByRole('button');
+  expect(button).toHaveAttribute('type', 'button');
+});
+
+test('should be type "submit" when isSubmit is true', () => {
+  const { getByRole } = renderComponent({ isSubmit: true });
+  const button = getByRole('button');
+  expect(button).toHaveAttribute('type', 'submit');
+});
