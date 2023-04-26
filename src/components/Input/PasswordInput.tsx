@@ -21,7 +21,7 @@ export const PasswordInput = (props: PasswordInputProps) => {
 
 export const EyeButton = (props: { onClick: () => void }) => {
   return (
-    <button onClick={props.onClick} className={styles.PasswordButton}>
+    <button onClick={props.onClick} className={styles.PasswordButton} type="button">
       <IconEye />
     </button>
   );
