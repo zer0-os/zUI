@@ -80,7 +80,7 @@
   }
 
   cursor: pointer;
-  text-transform: uppercase;
+  text-transform: capitalize;
 
   // @TODO: don't transition all
   transition: all #{$time-short} ease-in-out;
