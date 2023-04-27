@@ -17,6 +17,7 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'negative' | 'text';
   isLoading?: boolean;
   isDisabled?: boolean;
+  isSubmit?: boolean;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ export const Button: FC<ButtonProps> = ({
   className,
   isLoading,
   isDisabled,
+  isSubmit,
   variant = 'primary',
   ...rest
 }) => {
@@ -33,6 +35,7 @@ export const Button: FC<ButtonProps> = ({
   const { buttonProps, isPressed } = useButton(
     {
       ...rest,
+      type: isSubmit ? 'submit' : 'button',
       onPress: rest.onPress
         ? () => {
             if (!disabled) rest.onPress();
