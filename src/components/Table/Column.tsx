@@ -1,10 +1,9 @@
 import React, { createElement, forwardRef, ReactNode } from 'react';
+import classNames from 'classnames';
+import styles from './alignments.module.scss';
 
-/**
- * Note: typings here could be improved here
- */
 interface Column {
-  id: string; // ID is required because header is optional
+  id: string;
   header?: string;
   alignment: 'left' | 'right' | 'center';
   className?: string;
@@ -41,10 +40,12 @@ export const Cell = forwardRef<HTMLTableCellElement, ColumnProps>(({ children, .
 
 const ColumnElement = forwardRef<HTMLTableDataCellElement | HTMLTableHeaderCellElement, ColumnElementProps>(
   ({ alignment, element, className, children }: ColumnProps & ColumnElementProps, ref) => {
+    const alignmentClass = alignment === 'left' ? styles.Left : alignment === 'center' ? styles.Center : styles.Right;
+    const columnClasses = classNames(className, alignmentClass);
     return createElement(
       element,
       {
-        className,
+        className: columnClasses,
         'data-alignment': alignment,
         ref: ref
       },
