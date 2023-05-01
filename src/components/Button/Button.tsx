@@ -36,11 +36,7 @@ export const Button: FC<ButtonProps> = ({
     {
       ...rest,
       type: isSubmit ? 'submit' : 'button',
-      onPress: rest.onPress
-        ? () => {
-            if (!disabled) rest.onPress();
-          }
-        : undefined
+      isDisabled: disabled
     },
     ref ?? null
   );
