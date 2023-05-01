@@ -3,7 +3,7 @@ import React, { CSSProperties, forwardRef, ReactNode } from 'react';
 import classNames from 'classnames';
 import styles from './Table.module.scss';
 
-interface SharedProps {
+export interface SharedTableProps {
   className?: string;
   style?: CSSProperties;
   children: ReactNode;
@@ -13,7 +13,7 @@ interface SharedProps {
  * Table container
  ***********************/
 
-type TableProps = SharedProps;
+type TableProps = SharedTableProps;
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(({ children, className, ...props }: TableProps, ref) => {
   return (
@@ -27,7 +27,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(({ children, class
  * Header container
  ***********************/
 
-type HeaderGroupProps = SharedProps;
+type HeaderGroupProps = SharedTableProps;
 
 export const HeaderGroup = forwardRef<HTMLTableSectionElement, HeaderGroupProps>(
   ({ children, className, ...props }: HeaderGroupProps, ref) => {
@@ -43,7 +43,7 @@ export const HeaderGroup = forwardRef<HTMLTableSectionElement, HeaderGroupProps>
  * Body container
  ***********************/
 
-type BodyProps = SharedProps;
+type BodyProps = SharedTableProps;
 
 export const Body = forwardRef<HTMLTableSectionElement, BodyProps>(
   ({ children, className, ...props }: BodyProps, ref) => {

@@ -1,4 +1,5 @@
 @import '../../styles/theme';
+@import './alignments.module.scss';
 
 .Table {
   width: 100%;
@@ -9,6 +10,16 @@
     font-weight: bold;
     color: $color-greyscale-10;
     padding: 1rem;
+
+    &.Left {
+      text-align: left;
+    }
+    &.Center {
+      text-align: center;
+    }
+    &.Right {
+      text-align: right;
+    }
   }
 
   th,
@@ -22,6 +33,16 @@
 
     &:last-of-type {
       padding-right: 1rem;
+    }
+
+    &.Left {
+      text-align: left;
+    }
+    &.Center {
+      text-align: center;
+    }
+    &.Right {
+      text-align: right;
     }
   }
 }
