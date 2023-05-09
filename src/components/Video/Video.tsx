@@ -62,9 +62,9 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
 
         <button data-testid="mute-button" className={styles.Control} onClick={toggleMute}>
           {isMuted ? (
-            <IconVolumeMax isFilled color="#ffffff" size={16} />
-          ) : (
             <IconVolumeX isFilled color="#ffffff" size={16} />
+          ) : (
+            <IconVolumeMax isFilled color="#ffffff" size={16} />
           )}
         </button>
       </div>
