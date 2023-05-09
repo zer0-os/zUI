@@ -41,17 +41,26 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
 
   return (
     <div className={styles.VideoContainer}>
-      <video ref={videoRef} src={src} poster={poster} onError={onError} autoPlay={autoPlay} loop={loop} />
+      <video
+        data-testid="video-element"
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        onError={onError}
+        autoPlay={autoPlay}
+        loop={loop}
+      />
 
       <div className={styles.VideoControls}>
-        <button className={styles.Control} onClick={togglePlayPause}>
+        <button data-testid="play-button" className={styles.Control} onClick={togglePlayPause}>
           {isPlaying ? (
             <IconGrid isFilled color="#ffffff" size={16} />
           ) : (
             <IconPlay isFilled color="#ffffff" size={16} />
           )}
         </button>
-        <button className={styles.Control} onClick={toggleMute}>
+
+        <button data-testid="mute-button" className={styles.Control} onClick={toggleMute}>
           {isMuted ? (
             <IconVolumeMax isFilled color="#ffffff" size={16} />
           ) : (
