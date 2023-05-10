@@ -31,4 +31,5 @@ export * from './TextStack';
 export { ThemeEngine } from './ThemeEngine';
 export * from './ToggleGroup';
 export * from './Tooltip';
+export * from './Video';
 export { Wizard } from './Wizard';

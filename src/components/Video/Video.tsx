@@ -2,9 +2,11 @@ import React, { FC, useRef, useState } from 'react';
 
 import { IconGrid, IconPlay, IconVolumeMax, IconVolumeX } from '../Icons';
 
+import classNames from 'classnames';
 import styles from './Video.module.scss';
 
 export interface VideoProps {
+  className?: string;
   src: string;
   poster?: string;
   autoPlay?: boolean;
@@ -12,7 +14,7 @@ export interface VideoProps {
   onError?: () => void;
 }
 
-export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) => {
+export const Video: FC<VideoProps> = ({ className, src, poster, autoPlay, loop, onError }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [isMuted, setIsMuted] = useState(false);
@@ -40,7 +42,7 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
   };
 
   return (
-    <div className={styles.VideoContainer}>
+    <div className={classNames(styles.VideoContainer, className)}>
       <video
         data-testid="video-element"
         ref={videoRef}
@@ -51,7 +53,7 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
         loop={loop}
       />
 
-      <div className={styles.VideoControls}>
+      <div className={styles.Controls}>
         <button data-testid="play-button" className={styles.Control} onClick={togglePlayPause}>
           {isPlaying ? (
             <IconGrid isFilled color="#ffffff" size={16} />
