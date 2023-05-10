@@ -14,7 +14,7 @@ export interface VideoProps {
   onError?: () => void;
 }
 
-export const Video: FC<VideoProps> = ({ className, src, poster, autoPlay, loop, onError }) => {
+export const Video = ({ className, src, poster, autoPlay, loop, onError }: VideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [isMuted, setIsMuted] = useState(false);
