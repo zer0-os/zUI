@@ -1,10 +1,12 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { IconGrid, IconPlay, IconVolumeMax, IconVolumeX } from '../Icons';
 
+import classNames from 'classnames';
 import styles from './Video.module.scss';
 
 export interface VideoProps {
+  className?: string;
   src: string;
   poster?: string;
   autoPlay?: boolean;
@@ -12,10 +14,10 @@ export interface VideoProps {
   onError?: () => void;
 }
 
-export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) => {
+export const Video = ({ className, src, poster, autoPlay, loop, onError }: VideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
 
   const togglePlayPause = () => {
@@ -31,16 +33,37 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
     }
   };
 
-  const toggleMute = () => {
+  const toggleMute = (event: React.MouseEvent<HTMLButtonElement>) => {
     const video = videoRef.current;
     if (video) {
       video.muted = !video.muted;
       setIsMuted(video.muted);
+      event.preventDefault();
     }
   };
 
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const handleContainerClick = () => {
+      if (isPlaying) {
+        video?.pause();
+        setIsPlaying(false);
+      } else {
+        video?.play();
+        setIsPlaying(true);
+      }
+    };
+
+    video?.addEventListener('click', handleContainerClick);
+
+    return () => {
+      video?.removeEventListener('click', handleContainerClick);
+    };
+  }, [isPlaying]);
+
   return (
-    <div className={styles.VideoContainer}>
+    <div className={classNames(styles.VideoContainer, className)}>
       <video
         data-testid="video-element"
         ref={videoRef}
@@ -49,9 +72,10 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
         onError={onError}
         autoPlay={autoPlay}
         loop={loop}
+        muted={isMuted}
       />
 
-      <div className={styles.VideoControls}>
+      <div className={styles.Controls}>
         <button data-testid="play-button" className={styles.Control} onClick={togglePlayPause}>
           {isPlaying ? (
             <IconGrid isFilled color="#ffffff" size={16} />
@@ -60,7 +84,7 @@ export const Video: FC<VideoProps> = ({ src, poster, autoPlay, loop, onError }) 
           )}
         </button>
 
-        <button data-testid="mute-button" className={styles.Control} onClick={toggleMute}>
+        <button data-testid="mute-button" className={styles.Control} type="button" onClick={toggleMute}>
           {isMuted ? (
             <IconVolumeX isFilled color="#ffffff" size={16} />
           ) : (

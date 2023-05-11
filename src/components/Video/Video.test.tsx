@@ -33,17 +33,18 @@ describe('<Video />', () => {
     expect(mockPlay).toHaveBeenCalled();
   });
 
+  test('should be muted by default and unmute when clicked', () => {
+    const video = render(<Video {...DEFAULT_PROPS} />).container.querySelector('video');
+    expect(video?.muted).toBe(true);
+    fireEvent.click(screen.getByTestId('mute-button'));
+    expect(video?.muted).toBe(false);
+  });
+
   test('should mute video when mute button is clicked', () => {
     const video = render(<Video {...DEFAULT_PROPS} />).container.querySelector('video');
     fireEvent.click(screen.getByTestId('mute-button'));
+    fireEvent.click(screen.getByTestId('mute-button'));
     expect(video?.muted).toBe(true);
-  });
-
-  test('should unmute video when unmute button is clicked', () => {
-    const video = render(<Video {...DEFAULT_PROPS} />).container.querySelector('video');
-    fireEvent.click(screen.getByTestId('mute-button'));
-    fireEvent.click(screen.getByTestId('mute-button'));
-    expect(video?.muted).toBe(false);
   });
 
   test('should call onError when video encounters an error', () => {
