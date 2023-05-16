@@ -76,7 +76,7 @@ export const Video = ({ className, src, poster, autoPlay, loop, onError }: Video
       />
 
       <div className={styles.Controls}>
-        <button data-testid="play-button" className={styles.Control} onClick={togglePlayPause}>
+        <button data-testid="play-button" className={styles.Control} type="button" onClick={togglePlayPause}>
           {isPlaying ? (
             <IconGrid isFilled color="#ffffff" size={16} />
           ) : (
