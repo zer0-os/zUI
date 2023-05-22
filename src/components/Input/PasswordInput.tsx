@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Input, InputProps } from './Input';
 import { IconEye, IconEyeOff } from '../../icons';
 
-import styles from './Input.module.scss';
+import { IconButton } from '../IconButton';
 
 export type PasswordInputProps = Omit<InputProps, 'type'>;
 
@@ -18,20 +18,7 @@ export const PasswordInput = (props: PasswordInputProps) => {
     <Input
       {...props}
       type={isHidden ? 'password' : 'text'}
-      endEnhancer={<EyeButton onClick={toggleVisiblity} isHidden={isHidden} />}
+      endEnhancer={<IconButton onClick={toggleVisiblity} Icon={isHidden ? IconEye : IconEyeOff} />}
     />
-  );
-};
-
-interface EyeButtonProps {
-  isHidden: boolean;
-  onClick: () => void;
-}
-
-export const EyeButton = ({ isHidden, onClick }: EyeButtonProps) => {
-  return (
-    <button onClick={onClick} className={styles.PasswordButton} type="button">
-      {isHidden ? <IconEye /> : <IconEyeOff />}
-    </button>
   );
 };
