@@ -8,17 +8,17 @@ import styles from './Input.module.scss';
 export type PasswordInputProps = Omit<InputProps, 'type'>;
 
 export const PasswordInput = (props: PasswordInputProps) => {
-  const [valueVisible, setValueVisible] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   function toggleVisiblity() {
-    setValueVisible(!valueVisible);
+    setIsHidden(!isHidden);
   }
 
   return (
     <Input
       {...props}
-      type={valueVisible ? 'text' : 'password'}
-      endEnhancer={<EyeButton onClick={toggleVisiblity} isHidden={!valueVisible} />}
+      type={isHidden ? 'password' : 'text'}
+      endEnhancer={<EyeButton onClick={toggleVisiblity} isHidden={isHidden} />}
     />
   );
 };
