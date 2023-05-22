@@ -84,6 +84,11 @@
       line-height: 1.05625rem;
       flex: 1;
       outline: none;
+
+      &:-webkit-autofill {
+        transition: background 500000s ease-in-out 0s;
+        -webkit-text-fill-color: $color-greyscale-12 !important;
+      }
     }
   }
 }
