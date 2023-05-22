@@ -29,6 +29,7 @@ export * from './Table';
 export * from './Tabs';
 export * from './TextStack';
 export { ThemeEngine } from './ThemeEngine';
+export * from './ToastNotification';
 export * from './ToggleGroup';
 export * from './Tooltip';
 export * from './Video';

@@ -1,0 +1,227 @@
+@import '../../styles/theme';
+
+/* reset */
+button {
+  all: unset;
+}
+
+.ToastRoot {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 1.5rem 0.5rem 1.5rem 1.5rem;
+  gap: 1.5rem;
+
+  .TextWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 14.5rem;
+
+    .ToastTitle {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ToastDescription {
+      font-size: 0.75rem;
+      line-height: 0.908rem;
+      color: $color-greyscale-12;
+    }
+  }
+
+  .ToastClose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.25rem;
+    width: 2.25rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // primary variants
+  &[data-variant='primary'] {
+    background: $color-primary-2;
+    border: 1px solid $color-primary-6;
+
+    .ToastIcon {
+      color: $color-primary-11;
+    }
+
+    .ToastTitle {
+      color: $color-greyscale-12;
+    }
+
+    .ToastClose {
+      border-left: 1px solid $color-primary-6;
+    }
+  }
+
+  // success variants
+  &[data-variant='success'] {
+    background: $color-success-3;
+    border: 1px solid $color-success-6;
+
+    .ToastIcon {
+      color: $color-success-11;
+    }
+
+    .ToastTitle {
+      color: $color-success-11;
+    }
+
+    .ToastClose {
+      border-left: 1px solid $color-success-6;
+    }
+  }
+
+  // error variants
+  &[data-variant='error'] {
+    background: $color-failure-3;
+    border: 1px solid $color-failure-6;
+
+    .ToastIcon {
+      color: $color-failure-11;
+    }
+
+    .ToastTitle {
+      color: $color-failure-11;
+    }
+
+    .ToastClose {
+      border-left: 1px solid $color-failure-6;
+    }
+
+    .ToastButton {
+      &:first-of-type {
+        div {
+          color: $color-failure-11;
+        }
+      }
+    }
+  }
+
+  // left position
+  &[data-position='left'] {
+    &[data-state='open'] {
+      animation: slideInLeft 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &[data-state='closed'] {
+      animation: hideLeft 100ms ease-in;
+    }
+
+    &[data-swipe='end'] {
+      animation: swipeOutLeft 100ms ease-out;
+    }
+  }
+
+  // right position
+  &[data-position='right'] {
+    &[data-state='open'] {
+      animation: slideInRight 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    &[data-state='closed'] {
+      animation: hideRight 100ms ease-in;
+    }
+
+    &[data-swipe='end'] {
+      animation: swipeOutRight 100ms ease-out;
+    }
+  }
+
+  &[data-swipe='move'] {
+    transform: translateX(var(--radix-toast-swipe-move-x));
+  }
+
+  &[data-swipe='cancel'] {
+    transform: translateX(0);
+    transition: transform 100ms ease-out;
+  }
+}
+
+.ToastViewport {
+  --viewport-padding: 1.5rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  list-style: none;
+  margin: 0;
+  bottom: 0;
+  right: 0;
+  padding: var(--viewport-padding);
+  gap: 0.625rem;
+  z-index: 99999;
+  outline: none;
+
+  &[data-variant='left'] {
+    right: unset;
+    left: 0;
+  }
+}
+
+// left and right positioning animations
+@keyframes hideRight {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(calc(100% - var(--viewport-padding)));
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(calc(100% + var(--viewport-padding)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeOutRight {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(calc(100% + var(--viewport-padding)));
+  }
+}
+
+@keyframes hideLeft {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(calc(-100% - var(--viewport-padding)));
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(calc(-100% - var(--viewport-padding)));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes swipeOutLeft {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(calc(-100% - var(--viewport-padding)));
+  }
+}
