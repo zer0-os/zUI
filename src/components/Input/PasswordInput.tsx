@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Input, InputProps } from './Input';
-import { IconEye } from '../../icons';
+import { IconEye, IconEyeOff } from '../../icons';
 
 import styles from './Input.module.scss';
 
@@ -15,14 +15,23 @@ export const PasswordInput = (props: PasswordInputProps) => {
   }
 
   return (
-    <Input {...props} type={valueVisible ? 'text' : 'password'} endEnhancer={<EyeButton onClick={toggleVisiblity} />} />
+    <Input
+      {...props}
+      type={valueVisible ? 'text' : 'password'}
+      endEnhancer={<EyeButton onClick={toggleVisiblity} isHidden={!valueVisible} />}
+    />
   );
 };
 
-export const EyeButton = (props: { onClick: () => void }) => {
+interface EyeButtonProps {
+  isHidden: boolean;
+  onClick: () => void;
+}
+
+export const EyeButton = ({ isHidden, onClick }: EyeButtonProps) => {
   return (
-    <button onClick={props.onClick} className={styles.PasswordButton} type="button">
-      <IconEye />
+    <button onClick={onClick} className={styles.PasswordButton} type="button">
+      {isHidden ? <IconEye /> : <IconEyeOff />}
     </button>
   );
 };
