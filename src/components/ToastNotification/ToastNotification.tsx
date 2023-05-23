@@ -30,11 +30,11 @@ export const ToastNotification = ({
   title,
   description,
   actionTitle,
-  actionAltText,
-  positionVariant,
-  themeVariant,
-  swipeDirection,
-  openToast,
+  actionAltText = 'call to action',
+  positionVariant = 'right',
+  themeVariant = 'primary',
+  swipeDirection = 'left',
+  openToast = false,
   onClick,
   onClose
 }: ToastNotificationProps) => {
@@ -89,11 +89,4 @@ export const ToastNotification = ({
       <Toast.Viewport className={ToastViewport} data-variant={positionVariant} />
     </Toast.Provider>
   );
-};
-
-ToastNotification.defaultProps = {
-  positionVariant: 'right',
-  themeVariant: 'primary',
-  actionAltText: 'call to action',
-  openToast: false
 };
