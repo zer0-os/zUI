@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 
 import { Button } from '../Button';
 import { IconInfoCircle, IconXClose } from '../Icons';
@@ -26,7 +26,7 @@ export type ToastNotificationProps = Toast.ToastProviderProps & {
   onClose?: () => void;
 };
 
-export const ToastNotification: FC<ToastNotificationProps> = ({
+export const ToastNotification = ({
   title,
   description,
   actionTitle,
@@ -37,7 +37,7 @@ export const ToastNotification: FC<ToastNotificationProps> = ({
   openToast,
   onClick,
   onClose
-}) => {
+}: ToastNotificationProps) => {
   const timerRef = useRef(0);
 
   const [open, setOpen] = useState(false);
