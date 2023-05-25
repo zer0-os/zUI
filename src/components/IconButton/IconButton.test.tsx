@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { IconButton, IconButtonProperties } from '.';
-import { IconXClose } from '../Icons/icons/IconXClose';
+import { IconXClose } from '../Icons';
 
 let iconRender = jest.fn();
 jest.mock('../Icons/icons/IconXClose', () => {
