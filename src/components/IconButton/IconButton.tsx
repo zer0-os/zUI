@@ -34,7 +34,7 @@ const getSize = (size: IconButtonProperties['size']) => {
   return size;
 };
 
-export const IconButton: FC<IconButtonProperties> = ({
+export const IconButton = ({
   Icon,
   onClick,
   className,
@@ -45,7 +45,7 @@ export const IconButton: FC<IconButtonProperties> = ({
   color,
   isDisabled,
   type = 'button'
-}) => {
+}: IconButtonProperties) => {
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
     onClick(event);
