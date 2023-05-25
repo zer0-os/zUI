@@ -1,22 +1,21 @@
 import React, { ButtonHTMLAttributes, JSXElementConstructor, MouseEvent } from 'react';
 
-import classNames from 'classnames';
 import { IconProps } from '../Icons/Icons.types';
 
+import classNames from 'classnames';
 import './IconButton.scss';
 
 export interface IconButtonProperties {
-  className?: string;
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
-
   Icon: JSXElementConstructor<IconProps>;
-  label?: string;
-  size?: string | number | 'large' | 'small' | 'x-small';
-  isFilled?: boolean;
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  className?: string;
   color?: 'primary' | 'red' | 'greyscale';
   isDisabled?: boolean;
+  isFilled?: boolean;
+  label?: string;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  size?: string | number | 'large' | 'small' | 'x-small';
   type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  variant?: 'primary' | 'secondary' | 'tertiary';
 }
 
 const getSize = (size: IconButtonProperties['size']) => {
@@ -36,20 +35,20 @@ const getSize = (size: IconButtonProperties['size']) => {
 
 export const IconButton = ({
   Icon,
-  onClick,
   className,
-  label,
-  size,
-  isFilled,
-  variant,
   color,
   isDisabled,
-  type = 'button'
+  isFilled,
+  label,
+  onClick,
+  size,
+  type = 'button',
+  variant
 }: IconButtonProperties) => {
-  function handleClick(event: MouseEvent<HTMLButtonElement>) {
+  const handleOnClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     onClick(event);
-  }
+  };
 
   return (
     <button
@@ -59,8 +58,8 @@ export const IconButton = ({
         `zui-iconButton-variant-${variant}`,
         className
       )}
-      onClick={handleClick}
       disabled={isDisabled}
+      onClick={handleOnClick}
       type={type}
     >
       <Icon label={label} size={getSize(size)} isFilled={isFilled} />
