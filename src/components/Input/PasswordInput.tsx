@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 
-import { Input, InputProps } from './Input';
-import { IconEye, IconEyeOff } from '../../icons';
-
 import { IconButton } from '../IconButton';
+import { Input, InputProps } from './Input';
+import { IconEye, IconEyeOff } from '../Icons';
 
 export type PasswordInputProps = Omit<InputProps, 'type'>;
 
 export const PasswordInput = (props: PasswordInputProps) => {
   const [isHidden, setIsHidden] = useState(true);
 
-  function toggleVisiblity() {
+  const toggleVisiblity = () => {
     setIsHidden(!isHidden);
-  }
+  };
 
   return (
     <Input
-      {...props}
+      endEnhancer={<IconButton Icon={isHidden ? IconEye : IconEyeOff} onClick={toggleVisiblity} type={'button'} />}
       type={isHidden ? 'password' : 'text'}
-      endEnhancer={<IconButton type={'button'} onClick={toggleVisiblity} Icon={isHidden ? IconEye : IconEyeOff} />}
+      {...props}
     />
   );
 };
