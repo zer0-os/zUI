@@ -55,6 +55,18 @@ describe('IconButton', () => {
     expect(onClick).toHaveBeenCalledOnce();
   });
 
+  it('passes `type` to button', () => {
+    const { getByRole } = renderComponent({ type: 'submit' });
+
+    expect(getByRole('button')).toHaveAttribute('type', 'submit');
+  });
+
+  it('should default to `button` type', () => {
+    const { getByRole } = renderComponent();
+
+    expect(getByRole('button')).toHaveAttribute('type', 'button');
+  });
+
   it('prevents propagation of click event', () => {
     const onClick = jest.fn();
     const onOuterClick = jest.fn();
