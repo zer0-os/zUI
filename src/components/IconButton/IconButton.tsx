@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, FC, JSXElementConstructor, MouseEvent } from 'react';
+import React, { ButtonHTMLAttributes, JSXElementConstructor, MouseEvent } from 'react';
 
 import classNames from 'classnames';
 import { IconProps } from '../Icons/Icons.types';
