@@ -1,4 +1,4 @@
-import React, { FC, JSXElementConstructor } from 'react';
+import React, { ButtonHTMLAttributes, FC, JSXElementConstructor, MouseEvent } from 'react';
 
 import classNames from 'classnames';
 import { IconProps } from '../Icons/Icons.types';
@@ -7,7 +7,7 @@ import './IconButton.scss';
 
 export interface IconButtonProperties {
   className?: string;
-  onClick: () => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 
   Icon: JSXElementConstructor<IconProps>;
   label?: string;
@@ -16,6 +16,7 @@ export interface IconButtonProperties {
   variant?: 'primary' | 'secondary' | 'tertiary';
   color?: 'primary' | 'red' | 'greyscale';
   isDisabled?: boolean;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
 
 const getSize = (size: IconButtonProperties['size']) => {
@@ -42,11 +43,12 @@ export const IconButton: FC<IconButtonProperties> = ({
   isFilled,
   variant,
   color,
-  isDisabled
+  isDisabled,
+  type = 'button'
 }) => {
-  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
-    onClick();
+    onClick(event);
   }
 
   return (
@@ -59,6 +61,7 @@ export const IconButton: FC<IconButtonProperties> = ({
       )}
       onClick={handleClick}
       disabled={isDisabled}
+      type={type}
     >
       <Icon label={label} size={getSize(size)} isFilled={isFilled} />
     </button>
