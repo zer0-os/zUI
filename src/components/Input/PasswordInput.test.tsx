@@ -18,4 +18,10 @@ describe('<PasswordInput />', () => {
     button.click();
     expect(input.type).toBe('password');
   });
+
+  test('should set IconButton `type` to `button`', () => {
+    const { getByRole } = renderComponent({ value: '', onChange: () => null });
+    const button = getByRole('button') as HTMLButtonElement;
+    expect(button.type).toBe('button');
+  });
 });
