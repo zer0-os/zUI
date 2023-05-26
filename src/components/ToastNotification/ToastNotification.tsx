@@ -80,7 +80,7 @@ export const ToastNotification = ({
             {actionTitle}
           </Button>
         </Toast.Action>
-        <Toast.Close className={styles.ToastClose} asChild data-testid="toast-close-button">
+        <Toast.Close className={ToastClose} asChild data-testid="toast-close-button">
           <button onClick={handleOnClose}>
             <IconXClose size={24} />
           </button>
