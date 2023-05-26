@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { IconButton, IconButtonProperties } from '.';
-import { IconXClose } from '../Icons/icons/IconXClose';
+import { IconXClose } from '../Icons';
 
 let iconRender = jest.fn();
 jest.mock('../Icons/icons/IconXClose', () => {
@@ -53,6 +53,18 @@ describe('IconButton', () => {
     fireEvent.click(getByRole('button'));
 
     expect(onClick).toHaveBeenCalledOnce();
+  });
+
+  it('passes `type` to button', () => {
+    const { getByRole } = renderComponent({ type: 'submit' });
+
+    expect(getByRole('button')).toHaveAttribute('type', 'submit');
+  });
+
+  it('should default to `button` type', () => {
+    const { getByRole } = renderComponent();
+
+    expect(getByRole('button')).toHaveAttribute('type', 'button');
   });
 
   it('prevents propagation of click event', () => {
