@@ -1,4 +1,4 @@
-import React, { createElement, FC, useRef } from 'react';
+import React, { createElement, FC, ReactNode, useRef } from 'react';
 
 import { useButton } from '@react-aria/button';
 import classNames from 'classnames';
@@ -9,7 +9,7 @@ import { Spinner } from '../LoadingIndicator';
 
 export interface ButtonProps {
   className?: string;
-  children: string;
+  children: ReactNode | string;
   onPress?: () => void;
   onPressStart?: () => void;
   onPressEnd?: () => void;
