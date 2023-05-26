@@ -1,10 +1,5 @@
 @import '../../styles/theme';
 
-/* reset */
-button {
-  all: unset;
-}
-
 .ToastRoot {
   display: flex;
   flex-direction: row;
@@ -35,6 +30,9 @@ button {
   }
 
   .ToastClose {
+    // button reset
+    all: unset;
+
     display: flex;
     justify-content: center;
     align-items: center;
