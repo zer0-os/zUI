@@ -1,0 +1,40 @@
+.VideoContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > * {
+    border-radius: inherit;
+  }
+
+  .Controls {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: inherit;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+
+  &:hover .Controls {
+    opacity: 1;
+  }
+
+  .Control {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0 5px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

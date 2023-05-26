@@ -13,6 +13,7 @@
     "jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -24,14 +25,5 @@
     }
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "dist-storybook",
-    "build",
-    "src/**/*.stories.tsx",
-    "src/**/*.test.tsx",
-    "**/*.js",
-    "**.config.js"
-  ]
+  "exclude": ["node_modules", "dist", "dist-storybook", "build", "**/*.js", "**.config.js"]
 }

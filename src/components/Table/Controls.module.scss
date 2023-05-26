@@ -1,0 +1,11 @@
+.Container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  height: 2.5rem;
+
+  .Search {
+    flex: 1;
+  }
+}

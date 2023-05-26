@@ -1,51 +1,47 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { DropdownMenu } from './';
-import { StoryCard } from '../.storybook';
 
-const DROPDOWN_MENU_ITEMS = [
-  {
-    id: 'dropdown_nemu_1',
-    label: 'Dropdown Menu Item 1',
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onSelect: () => {}
-  },
-  {
-    id: 'dropdown_nemu_2',
-    label: 'Dropdown Menu Item 2',
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onSelect: () => {}
-  },
-  {
-    id: 'dropdown_nemu_3',
-    label: 'Dropdown Menu Item 3',
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onSelect: () => {}
-  }
-];
+import { IconArrowDownLeft } from '../Icons';
 
 export default {
-  title: 'Data Display/DropdownMenu',
+  title: 'Inputs/DropdownMenu',
   component: DropdownMenu
 } as ComponentMeta<typeof DropdownMenu>;
 
 const Template: ComponentStory<typeof DropdownMenu> = args => {
   return (
-    <StoryCard isContrast>
-      <DropdownMenu {...args} />
-    </StoryCard>
+    <DropdownMenu
+      {...args}
+      items={[
+        {
+          id: 'dropdown_menu_1',
+          label: 'Apple',
+          onSelect: () => console.log('you clicked Apple!')
+        },
+        {
+          id: 'dropdown_menu_2',
+          label: 'Orange',
+          onSelect: () => console.log('you clicked Orange!')
+        },
+        {
+          id: 'pear',
+          label: 'Pear',
+          onSelect: () => console.log('you clicked Pear!')
+        }
+      ]}
+    />
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  items: DROPDOWN_MENU_ITEMS
+export const DefaultTrigger = Template.bind({});
+
+export const TextTrigger = Template.bind({});
+TextTrigger.args = {
+  trigger: "I'm a dropdown trigger!"
 };
 
-export const Custom = Template.bind({});
-Custom.args = {
-  items: DROPDOWN_MENU_ITEMS,
-  trigger: 'Dropdown Menu Item',
-  side: 'top',
-  alignMenu: 'end'
+export const CustomTrigger = Template.bind({});
+CustomTrigger.args = {
+  trigger: <IconArrowDownLeft />
 };

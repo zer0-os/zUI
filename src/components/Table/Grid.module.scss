@@ -1,0 +1,9 @@
+.Grid {
+  display: grid;
+  width: 100%;
+  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(32%, 0.5fr));
+  grid-row-start: 1;
+  list-style: none;
+  grid-gap: 0.875rem 0.75rem;
+}

@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import StepBar from './StepBar';
+import { StepBar } from './StepBar';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StoryCard } from '../.storybook';
+
 import { Step } from './StepBar.types';
 
 export default {
-  title: 'StepBar',
+  title: 'Navigation/Step Bar',
   component: StepBar
 } as ComponentMeta<typeof StepBar>;
 
 export const Default: ComponentStory<typeof StepBar> = ({ currentStepId, steps }) => {
-  const [step, setStep] = useState(steps.find(x => x.id === currentStepId));
+  const [step, setStep] = useState(steps.find((x: Step) => x.id === currentStepId));
 
-  return (
-    <StoryCard isContrast>
-      <StepBar currentStepId={step?.id ?? ''} steps={steps} onChangeStep={(step: Step) => setStep(step)} />
-    </StoryCard>
-  );
+  return <StepBar currentStepId={step?.id ?? ''} steps={steps} onChangeStep={(step: Step) => setStep(step)} />;
 };
 
 Default.args = {

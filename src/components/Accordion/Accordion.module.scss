@@ -1,0 +1,170 @@
+@import '../../styles/theme';
+
+$group-border-radius: 0.5rem;
+
+.Accordion {
+  width: 100%;
+  color: $color-greyscale-12;
+
+  button,
+  h3 {
+    all: unset;
+  }
+
+  .Item {
+    overflow: hidden;
+    margin-top: 0.25rem;
+
+    &:first-child {
+      border-top-left-radius: $group-border-radius;
+      border-top-right-radius: $group-border-radius;
+      margin-top: 0;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: $group-border-radius;
+      border-bottom-right-radius: $group-border-radius;
+
+      .Content::before {
+        border-bottom-left-radius: $group-border-radius;
+        border-bottom-right-radius: $group-border-radius;
+      }
+    }
+
+    &[data-focus-on-key-press='true']:focus-within {
+      border-radius: 0.25rem;
+      outline-offset: 0.25rem;
+      outline: 0.0625rem solid $color-success-11;
+    }
+  }
+
+  .Trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 0.5rem 0 0.438rem;
+
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    background-color: transparent;
+    transition: 0.15s all ease;
+    border-bottom: 0.063rem solid $color-primary-7;
+
+    font-family: inherit;
+
+    &:hover {
+      background-color: $color-primary-2;
+      padding: 0.5rem 0 0.438rem;
+      cursor: pointer;
+      border-bottom: 0.063rem solid $color-primary-7;
+    }
+
+    &[data-state='open'] {
+      background-color: $color-primary-2;
+      padding: 0.5rem 1rem 0.438rem;
+
+      &:hover {
+        background-color: $color-primary-2;
+        padding: 0.5rem 1rem 0.438rem;
+      }
+
+      & > .Chevron {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:active {
+      background-color: $color-primary-2;
+      border-bottom: 0.063rem solid $color-primary-7;
+    }
+  }
+
+  &[data-contrast='high'] {
+    $hc-background: $color-primary-2;
+    $hc-trigger-border: $color-primary-5;
+    $hc-trigger-border-hover: $color-primary-8;
+
+    .Trigger {
+      background-color: $hc-background;
+      padding: 0.5rem 1rem 0.438rem;
+      border-bottom: 0.063rem solid $hc-trigger-border;
+
+      &:hover {
+        background-color: $hc-background;
+        border-bottom: 0.063rem solid $hc-trigger-border-hover;
+      }
+
+      &:active {
+        border-bottom: 0.063rem solid $hc-trigger-border;
+      }
+    }
+
+    .Content::before {
+      border: 1px solid $color-primary-6;
+    }
+  }
+
+  .Chevron {
+    color: $color-greyscale-12;
+    transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  }
+
+  .Content {
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    transition: height 300ms ease;
+    z-index: 0;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: calc(100% + 1px);
+      z-index: -1;
+      box-sizing: border-box;
+    }
+
+    .ContentText {
+      padding: 1rem;
+    }
+
+    &[data-state='open'] {
+      animation: slideDown 200ms cubic-bezier(0.87, 0, 0.13, 1);
+    }
+
+    &[data-state='closed'] {
+      animation: slideUp 200ms cubic-bezier(0.87, 0, 0.13, 1);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-collapsible-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-collapsible-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+}

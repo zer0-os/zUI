@@ -1,0 +1,140 @@
+@import '../../styles/theme';
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background: $color-primary-2;
+
+  border-radius: 0.5rem;
+
+  height: auto;
+
+  padding: 0;
+  border: none;
+
+  .Toggle {
+    position: relative;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    flex: 1; // All items the same size
+
+    font-size: 1rem;
+
+    height: 100%;
+    padding: 0.5rem 1rem;
+
+    color: white;
+
+    border: none;
+    outline: none; // disabling outline as we handle it custom below
+    cursor: pointer;
+
+    transition: background 0.1s ease, color 0.1s ease;
+
+    &:not(:first-child) {
+      border-left: 1px solid $color-primary-3;
+    }
+
+    &:first-child {
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    &:last-child {
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    svg {
+      transition: color 0.1s ease;
+    }
+
+    &[data-focus-visible-added] {
+      &::after {
+        content: ' ';
+        position: absolute;
+        top: -0.25rem;
+        left: -0.25rem;
+        width: calc(100% + 0.25rem + 0.25rem);
+        height: calc(100% + 0.25rem + 0.25rem);
+        border-radius: inherit;
+        outline: 1px solid #01f4cb;
+        z-index: 2;
+      }
+
+      color: $color-greyscale-12 !important;
+    }
+
+    /*
+         * Selected/not-selected states
+         */
+
+    &[data-state='on'] {
+      background: $color-primary-3;
+      color: $color-greyscale-12;
+
+      svg {
+        color: inherit !important;
+      }
+    }
+
+    &[data-state='off'] {
+      background: none;
+      color: $color-greyscale-11;
+
+      svg {
+        color: inherit !important;
+      }
+
+      &:hover {
+        color: $color-greyscale-12;
+      }
+    }
+
+    /*
+         * Disabled state
+         */
+
+    &[data-disabled] {
+      pointer-events: none;
+      cursor: not-allowed !important;
+      opacity: 0.5;
+
+      &:active {
+        &[data-state='on'] {
+          background: #8e4ec6;
+        }
+
+        &[data-state='off'] {
+          background: none !important;
+        }
+      }
+    }
+
+    /*
+         * Positioning for different data types
+         */
+
+    &[data-type='text'] {
+      span {
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &[data-type='icon'] {
+      display: grid;
+      align-items: center;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: $color-greyscale-12;
+      }
+    }
+  }
+}

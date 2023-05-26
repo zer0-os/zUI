@@ -17,6 +17,7 @@ export interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'negative' | 'text';
   isLoading?: boolean;
   isDisabled?: boolean;
+  isSubmit?: boolean;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -24,6 +25,7 @@ export const Button: FC<ButtonProps> = ({
   className,
   isLoading,
   isDisabled,
+  isSubmit,
   variant = 'primary',
   ...rest
 }) => {
@@ -33,11 +35,8 @@ export const Button: FC<ButtonProps> = ({
   const { buttonProps, isPressed } = useButton(
     {
       ...rest,
-      onPress: rest.onPress
-        ? () => {
-            if (!disabled) rest.onPress();
-          }
-        : undefined
+      type: isSubmit ? 'submit' : 'button',
+      isDisabled: disabled
     },
     ref ?? null
   );
@@ -54,7 +53,6 @@ export const Button: FC<ButtonProps> = ({
     },
     <>
       <div className="zui-button-content">{isLoading ? <Spinner className="zui-button-spinner" /> : children}</div>
-      <div className="zui-button-wash"></div>
     </>
   );
 };

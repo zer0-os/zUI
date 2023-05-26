@@ -1,37 +1,56 @@
-import { render } from '@testing-library/react';
 import React from 'react';
+import { render } from '@testing-library/react';
 
 import { Card, CardProps } from './';
+import { TextStackProps } from '../TextStack';
 
-const DEFAULT_PROPS: CardProps = {
-  title: 'Title Text',
-  value: '123',
-  bottomText: 'Bottom Text'
-};
+import styles from './Card.module.scss';
 
-jest.mock('../Skeleton', () => ({
-  Skeleton: () => <span>Skeleton</span>
+let mockTextStack = jest.fn();
+
+jest.mock('../TextStack', () => ({
+  TextStack: (props: TextStackProps) => {
+    mockTextStack(props);
+    return <div />;
+  }
 }));
 
-const renderComponent = (props?: CardProps) => render(<Card {...props} />);
+const DEFAULT_PROPS: CardProps = {
+  className: undefined,
+  label: '',
+  primaryText: '',
+  secondaryText: ''
+};
 
-test('should work with synchronous data', () => {
-  const { getByText } = renderComponent(DEFAULT_PROPS);
-  expect(getByText('Title Text')).toBeInTheDocument();
-  expect(getByText('123')).toBeInTheDocument();
-  expect(getByText('Bottom Text')).toBeInTheDocument();
-});
-
-test('should show skeleton when loading asynchronous data', () => {
-  const { getByText } = renderComponent({ ...DEFAULT_PROPS, value: { isLoading: true } });
-  expect(getByText('Skeleton')).toBeInTheDocument();
-});
-
-test('should show asynchronous value when data has loaded', () => {
-  const { getByText, queryByText } = renderComponent({
-    ...DEFAULT_PROPS,
-    value: { isLoading: false, text: 'Async Data' }
+describe('<Card />', () => {
+  test('should forward label to TextStack', () => {
+    render(<Card {...DEFAULT_PROPS} label={'mock label'} />);
+    expect(mockTextStack).toHaveBeenCalledWith(expect.objectContaining({ label: 'mock label' }));
   });
-  expect(queryByText('Skeleton')).toBeNull();
-  expect(getByText('Async Data')).toBeInTheDocument();
+
+  test('should forward primaryText to TextStack', () => {
+    render(<Card {...DEFAULT_PROPS} primaryText={'mock primary'} />);
+    expect(mockTextStack).toHaveBeenCalledWith(expect.objectContaining({ primaryText: 'mock primary' }));
+  });
+
+  test('should forward secondaryText to TextStack', () => {
+    render(<Card {...DEFAULT_PROPS} secondaryText={'mock secondary'} />);
+    expect(mockTextStack).toHaveBeenCalledWith(expect.objectContaining({ secondaryText: 'mock secondary' }));
+  });
+
+  test('should forward className to TextStack', () => {
+    render(<Card {...DEFAULT_PROPS} className={'mock-class'} />);
+
+    expect(mockTextStack).toHaveBeenCalledWith(
+      expect.objectContaining({ className: expect.stringContaining('mock-class') })
+    );
+  });
+
+  test('should pass Container class to TextStack', () => {
+    render(<Card {...DEFAULT_PROPS} />);
+
+    expect(mockTextStack).toHaveBeenCalledWith(
+      expect.objectContaining({ className: expect.stringContaining(styles.Container) })
+    );
+  });
 });

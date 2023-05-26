@@ -1,11 +1,44 @@
-import React, { ReactNode } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
-import classNames from 'classnames/bind';
-import Skeleton from 'react-loading-skeleton';
+import { AsyncTableComponent } from './types';
+import { useInfiniteScroll } from './useInfiniteScroll';
+import { useDebounce } from '../../lib/hooks/useDebounce';
+
+import { Grid } from './Grid';
+import { Table } from './Table';
+import { Column } from './Column';
+import { Controls } from './Controls';
+import { LoadingIndicator } from '../LoadingIndicator';
 
 import styles from './AsyncTable.module.scss';
 
-const cx = classNames.bind(styles);
+export interface SearchKey<T> {
+  key: keyof T;
+  name: string;
+}
+
+export interface AsyncTableProps<T> {
+  className?: string;
+  columns: Column[];
+  data?: T[];
+  gridComponent?: AsyncTableComponent<T>;
+  isLoading?: boolean;
+  isSingleColumnGrid?: boolean;
+  itemKey: keyof T;
+  loadingText?: string;
+  emptyText?: string;
+  rowComponent?: AsyncTableComponent<T>;
+  // @TODO: typings to prevent passing searchQuery if searchKey is undefined
+  searchKey?: SearchKey<T>;
+  showControls?: boolean;
+  isGridViewByDefault?: boolean;
+}
+
+const CONFIG = {
+  chunkSizeGrid: 6,
+  chunkSizeList: 10,
+  searchDebounceMilliseconds: 100
+};
 
 /**
  * NOTE:
@@ -21,95 +54,107 @@ const cx = classNames.bind(styles);
  * should be deferred to a row component, and the minimal
  * data for the row (i.e. data from the first query) should
  * be rendered first.
- *
- * @TODO: make sure row components enforce column alignments
- * @TODO: improve typings
- * @TODO: implement grid view
  */
-
-export interface Column {
-  id: string; // ID is required because header is optional
-  header?: string;
-  alignment: 'left' | 'right' | 'center';
-  className?: string;
-}
-
-export interface SearchKey<T> {
-  key: keyof T;
-  name: string;
-}
-
-export interface AsyncTableProps<T> {
-  // Data
-  data?: T[];
-  itemKey: keyof T;
-  columns: Column[];
-
-  // Display
-  isGridView?: boolean;
-  isLoading?: boolean;
-  numLoadingRows?: number;
-  rowHeight?: number;
-  loadingText?: string;
-  // @TODO: pick a better name for "options"
-  rowComponent: (data: T, options?: unknown) => ReactNode;
-  gridComponent: (data: T, options?: unknown) => ReactNode;
-
-  // Search
-  searchKey: SearchKey<T>;
-}
-
 export const AsyncTable = <T extends unknown>({
-  data,
-  // itemKey,
+  className,
   columns,
-  isGridView,
+  data,
+  gridComponent,
   isLoading,
-  numLoadingRows = 3,
-  rowHeight = 40,
-  rowComponent
-}: // gridComponent,
-// searchKey,
-AsyncTableProps<T>) => {
-  // @TODO: handle loading
+  isSingleColumnGrid = false,
+  loadingText,
+  emptyText,
+  rowComponent,
+  searchKey,
+  showControls = true,
+  isGridViewByDefault = true
+}: AsyncTableProps<T>) => {
+  const lastView = useRef<'grid' | 'list'>();
+  const [isGridView, setIsGridView] = useState<boolean>(isGridViewByDefault);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
-  if (isGridView) {
-    return <div>Grid View</div>;
+  const query = useDebounce(searchQuery, CONFIG.searchDebounceMilliseconds);
+
+  // Filter data based on search query
+  const filteredData = useMemo(() => {
+    if (!query || !searchKey) {
+      return data;
+    }
+    return data?.filter(item => {
+      const searchValue = item[searchKey.key]?.toString().toLowerCase();
+      return searchValue.includes(query.toLowerCase());
+    });
+  }, [data, query, searchKey]);
+
+  // Set up infinite scroll chunks
+  const { InfiniteScrollWrapper, chunkedComponents, resetChunk } = useInfiniteScroll({
+    items: filteredData ?? [],
+    chunkSize: isGridView ? CONFIG.chunkSizeGrid : CONFIG.chunkSizeList,
+    component: isGridView ? gridComponent : rowComponent
+  });
+
+  // Warn if dev didn't memoize rowComponent
+  useEffect(() => {
+    if (lastView.current === 'list' && !isGridView) {
+      console.warn('Detected unmemoized rowComponent!');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rowComponent]);
+
+  // Warn if dev didn't memoize gridComponent
+  useEffect(() => {
+    if (lastView.current === 'grid' && isGridView) {
+      console.warn('Detected unmemoized gridComponent!');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gridComponent]);
+
+  // Reset infinite scroll whenever user changes view
+  useEffect(() => {
+    lastView.current = 'grid';
+    resetChunk();
+  }, [isGridView, resetChunk]);
+
+  // Grid view doesn't render Skeletons when loading (yet)
+  if (isGridView && isLoading) {
+    return <LoadingIndicator className={styles.Loading} text={loadingText ?? 'Loading'} />;
+  }
+
+  const isEmpty = !query && !isLoading && !data?.length;
+  const isSearchEmpty = query && !isLoading && !filteredData.length;
+
+  // Show emptyText when there is no data
+  if (isEmpty) {
+    return <p className={styles.Empty}>{emptyText ?? 'No items to display.'}</p>;
   }
 
   return (
-    <table className={styles.Container}>
-      <thead>
-        <tr>
-          {columns.map((c: Column) => (
-            <th
-              className={cx(c.className, {
-                Left: c.alignment === 'left',
-                Center: c.alignment === 'center',
-                Right: c.alignment === 'right'
-              })}
-              key={`async-table-th-${c.id}`}
-            >
-              {isLoading ? <Skeleton /> : c.header}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {isLoading
-          ? Array(numLoadingRows)
-              .fill(0)
-              .map((_, numIndex) => (
-                <tr key={`async-table-tr-${numIndex}`}>
-                  {columns.map((c: Column) => (
-                    <td key={`async-table-tr-${numIndex}-td-${c.id}`}>
-                      <Skeleton width={'100%'} height={rowHeight} />
-                    </td>
-                  ))}
-                </tr>
-              ))
-          : data?.map(d => rowComponent(d))}
-      </tbody>
-    </table>
+    <>
+      {showControls && (
+        <Controls
+          canSwitchViews={Boolean(gridComponent) && Boolean(rowComponent)}
+          onSwitchViews={(isGridView: boolean) => setIsGridView(isGridView)}
+          isGridView={isGridView}
+          searchPlaceholder={searchKey?.name && `Search by ${searchKey?.name}`}
+          searchQuery={searchQuery}
+          onChangeSearchQuery={setSearchQuery}
+          isSearchable={Boolean(searchKey)}
+        />
+      )}
+
+      <InfiniteScrollWrapper className={className}>
+        {isGridView ? (
+          <Grid cards={chunkedComponents} isSingleColumnGrid={isSingleColumnGrid} />
+        ) : (
+          <Table rows={chunkedComponents} columns={columns} isLoading={isLoading} />
+        )}
+      </InfiniteScrollWrapper>
+
+      {isSearchEmpty && (
+        <p className={styles.Empty}>
+          No items match your search <strong>{query}</strong>.
+        </p>
+      )}
+    </>
   );
 };

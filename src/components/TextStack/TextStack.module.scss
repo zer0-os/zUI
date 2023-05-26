@@ -1,0 +1,25 @@
+@import '../../styles/theme';
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+
+  font-size: 0.75rem;
+
+  color: $color-greyscale-11;
+
+  .Primary {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: $color-greyscale-12;
+  }
+
+  > * {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../styles/theme';
+
+.Container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+
+  border-radius: 0.5rem;
+
+  &[data-variant='success'] {
+    color: $color-success-11;
+    background-color: $color-success-4;
+  }
+
+  &[data-variant='error'] {
+    color: $color-failure-11;
+    background-color: $color-failure-4;
+  }
+
+  &[data-variant='warning'] {
+    color: $color-warning-11;
+    background-color: $color-warning-4;
+  }
+
+  &[data-variant='info'] {
+    color: $color-primary-11;
+    background-color: $color-primary-4;
+  }
+}

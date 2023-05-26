@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { StepBar, Step, StepBarProps } from '.';
+import { StepBar, Step } from '.';
 
 const mockSteps: Step[] = [
   { id: 'step_1', title: 'Step 1' },
@@ -9,50 +9,38 @@ const mockSteps: Step[] = [
 ];
 const mockOnChangeStep = jest.fn();
 
-const renderComponent = (props: StepBarProps) => {
-  return render(<StepBar {...props} />);
-};
-
-test('should render 1st step', () => {
-  const { getByText } = renderComponent({ currentStepId: mockSteps[0].id, steps: mockSteps });
-  const step1 = getByText(mockSteps[0].title).parentNode;
-  expect(step1).toBeInTheDocument();
+beforeEach(() => {
+  jest.clearAllMocks();
 });
 
-test('should render 2nd step', () => {
-  const { getByText } = renderComponent({
-    currentStepId: mockSteps[1].id,
-    steps: mockSteps,
-    onChangeStep: mockOnChangeStep
+describe('<StepBar />', () => {
+  test('should render all steps', () => {
+    const { getByText } = render(<StepBar currentStepId={mockSteps[0].id} steps={mockSteps} />);
+    const step1 = getByText(mockSteps[0].title).parentNode;
+    const step2 = getByText(mockSteps[1].title).parentNode;
+    const step3 = getByText(mockSteps[2].title).parentNode;
+    expect(step1).toBeInTheDocument();
+    expect(step2).toBeInTheDocument();
+    expect(step3).toBeInTheDocument();
   });
-  const step1 = getByText(mockSteps[0].title).parentNode;
-  const step2 = getByText(mockSteps[1].title).parentNode;
-  expect(step1).toBeInTheDocument();
-  expect(step2).toBeInTheDocument();
 
-  fireEvent.click(step1);
+  describe('when clicking steps', () => {
+    test('should not be able to navigate forward in steps by clicking next steps', () => {
+      const { getByText } = render(
+        <StepBar currentStepId={mockSteps[0].id} steps={mockSteps} onChangeStep={mockOnChangeStep} />
+      );
+      fireEvent.click(getByText(mockSteps[1].title));
+      fireEvent.click(getByText(mockSteps[2].title));
+      expect(mockOnChangeStep).not.toHaveBeenCalled();
+    });
 
-  expect(mockOnChangeStep).toHaveBeenCalledWith(mockSteps[0]);
-});
-
-test('should render 3rd step', () => {
-  const { getByText } = renderComponent({
-    currentStepId: mockSteps[2].id,
-    steps: mockSteps,
-    onChangeStep: mockOnChangeStep
+    test('should be able to navigate backwards in steps by clicking a previous step', () => {
+      const { getByText } = render(
+        <StepBar currentStepId={mockSteps[2].id} steps={mockSteps} onChangeStep={mockOnChangeStep} />
+      );
+      fireEvent.click(getByText(mockSteps[1].title));
+      fireEvent.click(getByText(mockSteps[0].title));
+      expect(mockOnChangeStep).toHaveBeenCalledTimes(2);
+    });
   });
-  const step1 = getByText(mockSteps[0].title).parentNode;
-  const step2 = getByText(mockSteps[1].title).parentNode;
-  const step3 = getByText(mockSteps[2].title).parentNode;
-  expect(step1).toBeInTheDocument();
-  expect(step2).toBeInTheDocument();
-  expect(step3).toBeInTheDocument();
-
-  fireEvent.click(step2);
-
-  expect(mockOnChangeStep).toHaveBeenCalledWith(mockSteps[1]);
-
-  fireEvent.click(step1);
-
-  expect(mockOnChangeStep).toHaveBeenCalledWith(mockSteps[0]);
 });

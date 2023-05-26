@@ -1,0 +1,28 @@
+@import '../../../styles/typography';
+@import '../../../styles/theme';
+
+.Container {
+  padding: 1rem;
+  color: $color-greyscale-12;
+  background-color: unset;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border: none;
+  }
+
+  a {
+    color: $color-secondary-11;
+    text-decoration: none !important;
+    transition: text-shadow 0.1s ease-in-out;
+  }
+
+  pre {
+    color: $color-greyscale-12;
+    background: $color-greyscale-2;
+  }
+}

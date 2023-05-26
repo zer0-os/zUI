@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import '../../styles/theme';
 
 .Overlay {
   display: grid;
@@ -12,14 +12,18 @@
   overflow-y: auto;
   z-index: 10000;
 
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.85);
+
+  @supports (backdrop-filter: blur(5px)) {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+  }
 }
 
 .Content {
   min-width: 18.75rem; // 300px
   padding: 1.875rem; // 30px
   border-radius: 1rem;
-  border: 1px solid #{$grey-dark};
 
-  background: #{$almost-black};
+  background: $color-primary-2;
 }
