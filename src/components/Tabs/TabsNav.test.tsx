@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { cleanup, render, screen } from '@testing-library/react';
 import { TabsNav, TabNav } from '.';
+
 import styles from './Tabs.module.scss';
 
 const MOCK_TABS: TabNav[] = [
@@ -13,6 +15,7 @@ const DEFAULT_PROPS = { tabs: MOCK_TABS, location: MOCK_TABS[0].to };
 const mockLink = jest.fn();
 
 jest.mock('react-router-dom', () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Link: (props: any) => {
     mockLink(props);
     return (
@@ -32,22 +35,20 @@ describe('<TabsNav />', () => {
   describe('class names', () => {
     test('should apply Container class only to the container element', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
-      const tabNavContainer = container.getElementsByClassName(styles.Container);
 
-      expect(tabNavContainer.length).toBe(1);
+      expect(container.getElementsByClassName(styles.Container).length).toBe(1);
     });
 
     test('should apply List class only to the List element', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
-      const list = container.getElementsByClassName(styles.List);
 
-      expect(list.length).toBe(1);
+      expect(container.getElementsByClassName(styles.List).length).toBe(1);
     });
 
     test('should apply Tab class only to the Link elements', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} />);
-      const link = container.getElementsByClassName(styles.Tab);
-      expect(link.length).toBe(3);
+
+      expect(container.getElementsByClassName(styles.Tab).length).toBe(3);
     });
 
     test('should apply Selected class on default selected link', () => {
@@ -68,9 +69,8 @@ describe('<TabsNav />', () => {
 
     test('should not apply Selected class on any Link by default', () => {
       const { container } = render(<TabsNav {...DEFAULT_PROPS} location={undefined} />);
-      const selected = container.getElementsByClassName(styles.Selected);
 
-      expect(selected.length).toBe(0);
+      expect(container.getElementsByClassName(styles.Selected).length).toBe(0);
     });
   });
 
