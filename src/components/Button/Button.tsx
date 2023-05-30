@@ -18,6 +18,9 @@ export interface ButtonProps {
   isLoading?: boolean;
   isDisabled?: boolean;
   isSubmit?: boolean;
+
+  startEnhancer?: ReactNode;
+  endEnhancer?: ReactNode;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -27,6 +30,8 @@ export const Button: FC<ButtonProps> = ({
   isDisabled,
   isSubmit,
   variant = 'primary',
+  startEnhancer,
+  endEnhancer,
   ...rest
 }) => {
   const ref = useRef(null);
@@ -52,7 +57,11 @@ export const Button: FC<ButtonProps> = ({
       ...buttonProps
     },
     <>
-      <div className="zui-button-content">{isLoading ? <Spinner className="zui-button-spinner" /> : children}</div>
+      <div className="zui-button-content">
+        {startEnhancer}
+        {isLoading ? <Spinner className="zui-button-spinner" /> : children}
+        {endEnhancer}
+      </div>
     </>
   );
 };
