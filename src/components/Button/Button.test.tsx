@@ -97,3 +97,15 @@ test('should be type "submit" when isSubmit is true', () => {
   const button = getByRole('button');
   expect(button).toHaveAttribute('type', 'submit');
 });
+
+test('should apply startEnhancer', () => {
+  const { getByText } = renderComponent({ startEnhancer: <span>start enhancer</span> });
+  const startEnhancer = getByText('start enhancer');
+  expect(startEnhancer).toBeInTheDocument();
+});
+
+test('should apply endEnhancer', () => {
+  const { getByText } = renderComponent({ endEnhancer: <span>end enhancer</span> });
+  const endEnhancer = getByText('end enhancer');
+  expect(endEnhancer).toBeInTheDocument();
+});
