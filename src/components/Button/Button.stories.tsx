@@ -2,6 +2,8 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from './';
 
+import { IconUserPlus1 } from '../Icons';
+
 export default {
   title: 'Inputs/Button',
   component: Button
@@ -32,4 +34,14 @@ Disabled.args = {
 export const Loading = Template.bind({});
 Loading.args = {
   isLoading: true
+};
+
+export const StartEnhancer = Template.bind({});
+StartEnhancer.args = {
+  startEnhancer: <IconUserPlus1 />
+};
+
+export const EndEnhancer = Template.bind({});
+EndEnhancer.args = {
+  endEnhancer: <IconUserPlus1 />
 };
