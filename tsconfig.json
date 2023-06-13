@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./build",
     "baseUrl": "src",
     "emitDeclarationOnly": true,
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./build",
     "incremental": false,
     "noImplicitAny": true,
     "experimentalDecorators": true,
@@ -25,5 +25,5 @@
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "dist-storybook", "build", "**/*.js", "**.config.js"]
+  "exclude": ["node_modules", "dist", "dist-storybook", "build", "**/*.js", "**.config.js", "**/*.test.*", "**/*.stories.*"]
 }
