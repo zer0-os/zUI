@@ -24,7 +24,6 @@ const Template: Story = args => (
         flexDirection: 'column',
         gap: '24px',
         height: '200px',
-        width: '200px',
         padding: '0 1rem'
       }}
     >
