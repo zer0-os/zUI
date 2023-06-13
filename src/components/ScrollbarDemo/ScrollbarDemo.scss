@@ -1,0 +1,14 @@
+@import '../../styles/scrollbar';
+
+.scrollbar-demo-content {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  padding: 0 1rem;
+
+  &:hover {
+    overflow-y: scroll;
+  }
+
+  @include scrollbar();
+}
