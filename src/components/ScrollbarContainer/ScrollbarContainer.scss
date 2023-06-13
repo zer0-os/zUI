@@ -1,0 +1,15 @@
+@import '../../styles/scrollbar';
+
+.scrollbar-container {
+  overflow-y: scroll;
+
+  &[data-variant='on-hover'] {
+    overflow: hidden;
+
+    &:hover {
+      overflow-y: scroll;
+    }
+  }
+
+  @include scrollbar();
+}
