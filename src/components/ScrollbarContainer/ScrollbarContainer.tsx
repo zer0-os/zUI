@@ -2,7 +2,7 @@ import React from 'react';
 
 import './ScrollbarContainer.scss';
 
-interface ScrollbarContainerProps {
+export interface ScrollbarContainerProps {
   children: React.ReactNode;
   variant?: 'on-hover' | 'fixed';
 }
