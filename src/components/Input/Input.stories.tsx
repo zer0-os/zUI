@@ -64,3 +64,10 @@ Error.args = {
   error: true,
   alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
 };
+
+export const Search = Template.bind({});
+Search.args = {
+  placeholder: 'Search',
+  type: 'search',
+  size: 'small'
+};
