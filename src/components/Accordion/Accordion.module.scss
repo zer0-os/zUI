@@ -58,24 +58,16 @@ $group-border-radius: 0.5rem;
     font-family: inherit;
 
     &:hover {
-      background-color: $color-primary-2;
+      background-color: $color-primary-3;
       cursor: pointer;
     }
 
     &[data-state='open'] {
       background-color: $color-primary-3;
 
-      &:hover {
-        background-color: $color-primary-2;
-      }
-
       & > .Chevron {
         transform: rotate(180deg);
       }
-    }
-
-    &:active {
-      background-color: $color-primary-2;
     }
   }
 
