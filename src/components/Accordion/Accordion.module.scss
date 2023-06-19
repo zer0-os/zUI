@@ -33,8 +33,7 @@ $group-border-radius: 0.5rem;
 
     &[data-focus-on-key-press='true']:focus-within {
       border-radius: 0.25rem;
-      outline-offset: 0.25rem;
-      outline: 0.0625rem solid $color-success-11;
+      outline: 0.0625rem solid $color-secondary-11;
     }
   }
 
@@ -49,8 +48,8 @@ $group-border-radius: 0.5rem;
 
     padding: 0.5rem 1rem 0.438rem;
 
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 14px;
+    line-height: 17px;
 
     background-color: transparent;
     transition: 0.15s all ease;
