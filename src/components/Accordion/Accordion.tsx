@@ -33,7 +33,7 @@ export const Accordion = ({ items, contrast = 'high' }: AccordionProps) => {
                 onKeyDown={() => setFocusState(true)}
               >
                 {itm.title}
-                <IconChevronDown className={styles.Chevron} aria-hidden size={22} />
+                <IconChevronDown className={styles.Chevron} isFilled aria-hidden size={22} />
               </RadixAccordion.Trigger>
             </RadixAccordion.Header>
             <RadixAccordion.Content className={styles.Content}>
