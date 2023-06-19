@@ -33,8 +33,7 @@ $group-border-radius: 0.5rem;
 
     &[data-focus-on-key-press='true']:focus-within {
       border-radius: 0.25rem;
-      outline-offset: 0.25rem;
-      outline: 0.0625rem solid $color-success-11;
+      outline: 0.0625rem solid $color-secondary-11;
     }
   }
 
@@ -47,31 +46,27 @@ $group-border-radius: 0.5rem;
     width: 100%;
     box-sizing: border-box;
 
-    padding: 0.5rem 0 0.438rem;
+    padding: 0.5rem 1rem 0.438rem;
 
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 14px;
+    line-height: 17px;
 
     background-color: transparent;
     transition: 0.15s all ease;
-    border-bottom: 0.063rem solid $color-primary-7;
+    border-bottom: 0.063rem solid $color-greyscale-5;
 
     font-family: inherit;
 
     &:hover {
       background-color: $color-primary-2;
-      padding: 0.5rem 0 0.438rem;
       cursor: pointer;
-      border-bottom: 0.063rem solid $color-primary-7;
     }
 
     &[data-state='open'] {
-      background-color: $color-primary-2;
-      padding: 0.5rem 1rem 0.438rem;
+      background-color: $color-primary-3;
 
       &:hover {
         background-color: $color-primary-2;
-        padding: 0.5rem 1rem 0.438rem;
       }
 
       & > .Chevron {
@@ -81,7 +76,6 @@ $group-border-radius: 0.5rem;
 
     &:active {
       background-color: $color-primary-2;
-      border-bottom: 0.063rem solid $color-primary-7;
     }
   }
 
