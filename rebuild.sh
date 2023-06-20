@@ -12,8 +12,6 @@ rm -rf dist/*
 cp -rf dist_old/* dist/
 cp build/components.js dist/
 rm -r dist/components
-cp -r build/components dist/components
-
+mkdir dist/components
 # Temporarily bring back the old Icon build
-rm -r dist/components/Icons
 cp -r dist_old/components/Icons dist/components/Icons

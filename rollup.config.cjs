@@ -5,6 +5,9 @@
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
 const json = require('@rollup/plugin-json');
+
+const dts = require('rollup-plugin-dts').default;
+
 // const terser = require('@rollup/plugin-terser');
 // const cp = require('rollup-plugin-copy');
 
@@ -49,5 +52,12 @@ module.exports = [
       }
       console.warn(warning.message);
     }
-  }
+  },
+  {
+    // path to your declaration files root
+    input: './build/components/index.d.ts',
+    output: [{ file: './build/components.d.ts', format: 'es' }],
+    external: [/\.scss$/], // ignore .scss file
+    plugins: [dts()],
+  },
 ];
