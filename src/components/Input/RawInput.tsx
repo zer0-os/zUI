@@ -38,7 +38,7 @@ const Enhancer: FC<EnhancerProps> = ({ value }) => {
   );
 };
 
-export const Input = forwardRef<HTMLDivElement, InputProps>(
+export const RawInput = forwardRef<HTMLDivElement, InputProps>(
   (
     {
       alert,

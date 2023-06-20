@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Input, InputProps } from '../Input';
+import { InputProps } from '../Input/RawInput';
+import { Input } from '../..';
 import { IconSearchMd } from '../Icons';
 
 export interface SearchProps {

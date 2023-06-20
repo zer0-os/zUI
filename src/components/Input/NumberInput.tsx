@@ -6,7 +6,7 @@ import React, { forwardRef, useEffect, useState } from 'react';
 
 import { formatUnits, parseUnits } from 'ethers/lib/utils';
 
-import { Input, InputProps } from './Input';
+import { RawInput, InputProps } from './RawInput';
 
 export interface NumberInputProps extends InputProps {
   decimals?: number;
@@ -79,6 +79,6 @@ export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
       }
     };
 
-    return <Input type="number" ref={ref} value={inputValue} onChange={onInputChange} {...props} />;
+    return <RawInput type="number" ref={ref} value={inputValue} onChange={onInputChange} {...props} />;
   }
 );

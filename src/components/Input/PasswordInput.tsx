@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { IconButton } from '../IconButton';
-import { Input, InputProps } from './Input';
+import { RawInput, InputProps } from './RawInput';
 import { IconEye, IconEyeOff } from '../Icons';
 
 export type PasswordInputProps = Omit<InputProps, 'type'>;
@@ -14,7 +14,7 @@ export const PasswordInput = (props: PasswordInputProps) => {
   };
 
   return (
-    <Input
+    <RawInput
       endEnhancer={<IconButton Icon={isHidden ? IconEye : IconEyeOff} onClick={toggleVisiblity} type={'button'} />}
       type={isHidden ? 'password' : 'text'}
       {...props}
