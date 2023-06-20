@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 
-import { Button } from '../Button';
+import { Button } from '../..';
 import { IconInfoCircle, IconXClose } from '../Icons';
 
 import * as Toast from '@radix-ui/react-toast';

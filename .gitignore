@@ -2,6 +2,8 @@ node_modules/
 build/
 dist-storybook/
 dist/
+dist_old/
+build_old/
 .idea/
 
 .npmrc

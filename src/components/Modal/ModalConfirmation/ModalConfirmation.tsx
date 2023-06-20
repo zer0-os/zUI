@@ -1,7 +1,7 @@
 import React from 'react';
 import { DialogProps, Title as DialogTitle, Close as DialogClose } from '@radix-ui/react-dialog';
 import classNames from 'classnames';
-import { Button } from '../../Button';
+import { Button } from '../../..';
 import { Modal } from '../Modal';
 import { IconButton } from '../../IconButton';
 import { IconXClose } from '../../Icons';
