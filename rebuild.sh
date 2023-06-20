@@ -15,10 +15,23 @@ rm -r dist/components/Button
 cp -r build/components/Button dist/components/Button
 rm  -r dist/components/Input
 cp -r build/components/Input dist/components/Input
-
-#rm  dist/components/Input/PasswordInput*
-#cp -r build/components/Input/PasswordInput* dist/components/Input/
-#rm  dist/components/Input/NumberInput*
-#cp -r build/components/Input/NumberInput* dist/components/Input/
-#rm  dist/components/Input/index*
-#cp -r build/components/Input/index* dist/components/Input/
+rm  -r dist/components/Skeleton
+cp -r build/components/Skeleton dist/components/Skeleton
+rm  -r dist/components/SkeletonText
+cp -r build/components/SkeletonText dist/components/SkeletonText
+rm  -r dist/components/Image
+cp -r build/components/Image dist/components/Image
+rm  -r dist/components/Avatar
+cp -r build/components/Avatar dist/components/Avatar
+rm  -r dist/components/IconButton
+cp -r build/components/IconButton dist/components/IconButton
+rm  -r dist/components/Alert
+cp -r build/components/Alert dist/components/Alert
+rm -r dist/components/Modal
+cp -r build/components/Modal dist/components/Modal
+rm -r dist/components/Accordion
+cp -r build/components/Accordion dist/components/Accordion
+rm -r dist/components/Status
+cp -r build/components/Status dist/components/Status
+rm -r dist/components/ToastNotification
+cp -r build/components/ToastNotification dist/components/ToastNotification

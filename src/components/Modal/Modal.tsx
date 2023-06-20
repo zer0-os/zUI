@@ -9,7 +9,7 @@ import {
   Content as DialogContent
 } from '@radix-ui/react-dialog';
 
-import { Button } from '../..';
+import { Button } from '../Button';
 
 import styles from './Modal.module.scss';
 import classNames from 'classnames';
