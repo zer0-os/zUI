@@ -6,6 +6,7 @@ const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
 const json = require('@rollup/plugin-json');
 const terser = require('@rollup/plugin-terser');
+const cp = require('rollup-plugin-copy');
 
 const packageJson = require('./package.json');
 
@@ -33,6 +34,12 @@ module.exports = {
     image(),
     postcss({ extensions: ['.css', '.scss'] }),
     typescript(),
+    cp({
+        targets:
+            [
+                { src: "src/styles", dest: "build/" },
+            ]
+    }),
     terser()
   ],
   onwarn: function (warning) {
