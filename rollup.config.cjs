@@ -4,6 +4,7 @@
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
 const json = require('@rollup/plugin-json');
+const del = require('rollup-plugin-delete');
 
 const dts = require('rollup-plugin-dts').default;
 
@@ -88,6 +89,7 @@ const DEFAULT_FINISHING_PLUGINS = [
                 { src: 'package.json', dest: 'build/' }
             ]
     }),
+    del({targets: ['build/components', 'build/lib', 'build/utils']})
 ]
 
 //////////////////////
