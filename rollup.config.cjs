@@ -54,9 +54,42 @@ module.exports = [
     }
   },
   {
+    input: 'src/components/Icons/index.ts',
+    output: [
+      {
+        file: 'build/icons.js',
+        format: 'cjs',
+        sourcemap: true
+      },
+      {
+        file: 'build/icons.es.js',
+        format: 'esm',
+        sourcemap: true
+      }
+    ],
+    plugins: [
+      json(),
+      postcss({ extensions: ['.css', '.scss'] }),
+      typescript(),
+    ],
+    onwarn: function (warning) {
+      if (warning.code === 'THIS_IS_UNDEFINED') {
+        return;
+      }
+      console.warn(warning.message);
+    }
+  },
+  {
     // path to your declaration files root
     input: './build/components/index.d.ts',
     output: [{ file: './build/components.d.ts', format: 'es' }],
+    external: [/\.scss$/], // ignore .scss file
+    plugins: [dts()],
+  },
+  {
+    // path to your declaration files root
+    input: './build/components/icons/index.d.ts',
+    output: [{ file: './build/icons.d.ts', format: 'es' }],
     external: [/\.scss$/], // ignore .scss file
     plugins: [dts()],
   },

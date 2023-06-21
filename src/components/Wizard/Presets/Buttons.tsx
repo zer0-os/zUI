@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import { Button } from '../../..';
+import { Button } from '../../Button';
 
 import './Buttons.scss';
 

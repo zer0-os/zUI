@@ -11,7 +11,9 @@ yarn run rollup
 rm -rf dist/*
 cp -rf dist_old/* dist/
 cp build/components.js dist/
+cp build/icons.js dist/
 rm -r dist/components
 mkdir dist/components
+
 # Temporarily bring back the old Icon build
-cp -r dist_old/components/Icons dist/components/Icons
+# cp -r dist_old/components/Icons dist/components/Icons

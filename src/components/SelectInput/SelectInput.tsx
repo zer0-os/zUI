@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useState } from 'react';
 
 import { IconChevronDown } from '../Icons';
-import { Input } from '../..';
+import { Input } from '../Input';
 import { DropdownItem, DropdownMenu } from '../DropdownMenu';
 import { AlertProps } from '../Alert';
 
