@@ -107,17 +107,6 @@ module.exports = [
         output: [{file: './build/components.d.ts', format: 'es'}],
         ...DEFAULT_DECLARATION_OPTIONS
     },
-    // icons
-    {
-        input: 'src/components/Icons/index.ts',
-        output: getOutput('icons'),
-        ...DEFAULT_BUNDLE_OPTIONS
-    },
-    {
-        input: './build/components/Icons/index.d.ts',
-        output: [{file: './build/icons.d.ts', format: 'es'}],
-        ...DEFAULT_DECLARATION_OPTIONS
-    },
     // lib
     {
         input: 'src/lib/index.ts',
@@ -145,6 +134,21 @@ module.exports = [
         input: 'src/ZUIProvider.tsx',
         output: getOutput('ZUIProvider'),
         ...DEFAULT_BUNDLE_OPTIONS
+    },
+    // icons
+    {
+        input: 'src/index.ts', // intentionally no output file
+        plugins: [del({ targets: ['build/icons.*'] })]
+    },
+    {
+        input: 'src/components/Icons/index.ts',
+        output: getOutput('icons'),
+        ...DEFAULT_BUNDLE_OPTIONS
+    },
+    {
+        input: './build/components/Icons/index.d.ts',
+        output: [{file: './build/icons.d.ts', format: 'es'}],
+        ...DEFAULT_DECLARATION_OPTIONS
     },
     // Run plugins
     {
