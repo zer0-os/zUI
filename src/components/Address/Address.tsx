@@ -3,7 +3,7 @@ import React from 'react';
 import { AsyncText } from '../../lib/types';
 import { truncateAddress } from '../../utils';
 
-import { SkeletonText } from '../../components/SkeletonText';
+import { SkeletonText } from '../..';
 
 import classNames from 'classnames';
 import styles from './Address.module.scss';

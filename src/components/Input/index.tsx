@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Input as TextInput, InputProps as InputPropsComponent } from './Input';
+import { RawInput as TextInput, InputProps as InputPropsComponent } from './RawInput';
 import { NumberInput } from './NumberInput';
 import { PasswordInput } from './PasswordInput';
 
