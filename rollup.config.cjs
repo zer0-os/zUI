@@ -85,6 +85,7 @@ const DEFAULT_FINISHING_PLUGINS = [
         targets:
             [
                 { src: "src/styles", dest: "build/" },
+                { src: 'package.json', dest: 'build/' }
             ]
     }),
 ]
