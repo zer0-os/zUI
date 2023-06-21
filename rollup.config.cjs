@@ -110,7 +110,7 @@ module.exports = [
         ...DEFAULT_BUNDLE_OPTIONS
     },
     {
-        input: './build/components/icons/index.d.ts',
+        input: './build/components/Icons/index.d.ts',
         output: [{file: './build/icons.d.ts', format: 'es'}],
         ...DEFAULT_DECLARATION_OPTIONS
     },
