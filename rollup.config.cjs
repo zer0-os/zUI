@@ -67,12 +67,6 @@ const DEFAULT_PLUGINS = [
     // image(),
     postcss({extensions: ['.css', '.scss']}),
     typescript(),
-    // cp({
-    //     targets:
-    //         [
-    //             { src: "src/styles", dest: "build/" },
-    //         ]
-    // }),
     // terser()
 ]
 
@@ -85,6 +79,15 @@ const DEFAULT_BUNDLE_OPTIONS = {
     plugins: DEFAULT_PLUGINS,
     onwarn: onWarn
 }
+
+const DEFAULT_FINISHING_PLUGINS = [
+    cp({
+        targets:
+            [
+                { src: "src/styles", dest: "build/" },
+            ]
+    }),
+]
 
 //////////////////////
 // Configure Bundle //
@@ -142,4 +145,16 @@ module.exports = [
         output: getOutput('ZUIProvider'),
         ...DEFAULT_BUNDLE_OPTIONS
     },
+    // Run plugins
+    {
+        input: 'src/index.ts', // intentionally no output file
+        plugins: DEFAULT_FINISHING_PLUGINS,
+        onwarn: (warning) =>  {
+            if(warning.code === 'GOT_EMPTY_BUNDLE') {
+                return;
+            }
+            console.warn(warning.message);
+        }
+
+    }
 ];
