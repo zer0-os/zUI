@@ -6,14 +6,15 @@ set -u
 set -e
 set -o pipefail
 
-yarn run build
-yarn run rollup
-rm -rf dist/*
-cp -rf dist_old/* dist/
-cp build/components.js dist/
-cp build/icons.js dist/
-rm -r dist/components
+#yarn run build
+#yarn run rollup
+#rm -rf dist/*
+#cp -rf dist_old/* dist/
+#cp build/components.js dist/
+#cp build/icons.js dist/
+#rm -r dist/components
 # mkdir dist/components
+cp package.json dist/
 
 # Temporarily bring back the old Icon build
 # cp -r dist_old/components/Icons dist/components/Icons
