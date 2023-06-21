@@ -1,17 +1,9 @@
-// const peerDepsExternal = require('rollup-plugin-peer-deps-external');
-// const resolve = require('@rollup/plugin-node-resolve');
-// const image = require('@rollup/plugin-image');
-const typescript = require('@rollup/plugin-typescript');
-const postcss = require('rollup-plugin-postcss');
-const json = require('@rollup/plugin-json');
-const del = require('rollup-plugin-delete');
-
-const dts = require('rollup-plugin-dts').default;
-
-// const terser = require('@rollup/plugin-terser');
 const cp = require('rollup-plugin-copy');
-
-const packageJson = require('./package.json');
+const del = require('rollup-plugin-delete');
+const dts = require('rollup-plugin-dts').default;
+const json = require('@rollup/plugin-json');
+const postcss = require('rollup-plugin-postcss');
+const typescript = require('@rollup/plugin-typescript');
 
 console.log('Rollup config loaded!');
 
@@ -62,13 +54,9 @@ const getOutput = (dir) => {
 }
 
 const DEFAULT_PLUGINS = [
-    // peerDepsExternal(),
-    // resolve(),
     json(),
-    // image(),
     postcss({extensions: ['.css', '.scss']}),
     typescript(),
-    // terser()
 ]
 
 const DEFAULT_DECLARATION_OPTIONS = {
@@ -81,23 +69,14 @@ const DEFAULT_BUNDLE_OPTIONS = {
     onwarn: onWarn
 }
 
-const DEFAULT_FINISHING_PLUGINS = [
-    cp({
-        targets:
-            [
-                { src: "src/styles", dest: "build/" },
-                { src: 'package.json', dest: 'build/' }
-            ]
-    }),
-    del({targets: ['build/components', 'build/lib', 'build/utils']})
-]
-
 //////////////////////
 // Configure Bundle //
 //////////////////////
 
 module.exports = [
-    // components
+    ////////////////
+    // Components //
+    ////////////////
     {
         input: 'src/components/index.ts',
         output: getOutput('components'),
@@ -109,7 +88,9 @@ module.exports = [
         output: [{file: './build/components.d.ts', format: 'es'}],
         ...DEFAULT_DECLARATION_OPTIONS
     },
-    // lib
+    /////////
+    // Lib //
+    /////////
     {
         input: 'src/lib/index.ts',
         output: getOutput('lib'),
@@ -120,7 +101,9 @@ module.exports = [
         output: [{file: './build/lib.d.ts', format: 'es'}],
         ...DEFAULT_DECLARATION_OPTIONS
     },
-    // lib
+    ///////////
+    // Utils //
+    ///////////
     {
         input: 'src/utils/index.ts',
         output: getOutput('utils'),
@@ -131,16 +114,20 @@ module.exports = [
         output: [{file: './build/utils.d.ts', format: 'es'}],
         ...DEFAULT_DECLARATION_OPTIONS
     },
-    // ZUIProvider
+    //////////////////
+    // ZUI Provider //
+    //////////////////
     {
         input: 'src/ZUIProvider.tsx',
         output: getOutput('ZUIProvider'),
         ...DEFAULT_BUNDLE_OPTIONS
     },
-    // icons
+    ///////////
+    // Icons //
+    ///////////
     {
         input: 'src/index.ts', // intentionally no output file
-        plugins: [del({ targets: ['build/icons.*'] })]
+        plugins: [del({targets: ['build/icons.*']})]
     },
     {
         input: 'src/components/Icons/index.ts',
@@ -152,16 +139,22 @@ module.exports = [
         output: [{file: './build/icons.d.ts', format: 'es'}],
         ...DEFAULT_DECLARATION_OPTIONS
     },
-    // Run plugins
+    ///////////////////////
+    // Clean-up plug-ins //
+    ///////////////////////
     {
-        input: 'src/index.ts', // intentionally no output file
-        plugins: DEFAULT_FINISHING_PLUGINS,
-        onwarn: (warning) =>  {
-            if(warning.code === 'GOT_EMPTY_BUNDLE') {
-                return;
-            }
-            console.warn(warning.message);
-        }
-
+        input: 'src/index.ts',
+        plugins: [cp({
+            targets:
+                [
+                    {src: "src/styles", dest: "build/"},
+                    {src: 'package.json', dest: 'build/'}
+                ]
+        }),
+            del({
+                    targets: ['build/components', 'build/lib', 'build/utils']
+                }
+            )
+        ],
     }
 ];
