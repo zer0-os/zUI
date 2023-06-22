@@ -10,7 +10,17 @@
   &:focus-within {
     border-radius: 50%;
     outline-offset: 0.25rem;
-    outline: 0.0625rem solid $color-success-9;
+    outline: 0.0625rem solid $color-secondary-11;
+  }
+
+  &.Active {
+    border-radius: 50%;
+    outline-offset: 0.25rem;
+    outline: 0.0625rem solid $color-secondary-11;
+
+    &[data-type='square'] {
+      border-radius: 0.5rem;
+    }
   }
 
   .Root {
