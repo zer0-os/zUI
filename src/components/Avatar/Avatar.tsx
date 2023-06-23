@@ -1,11 +1,14 @@
 import React from 'react';
 
 import * as RadixAvatar from '@radix-ui/react-avatar';
+
+import { Status } from '../Status';
 import { IconCurrencyEthereum } from '../Icons';
 
 import { AVATAR_ICON_SIZE } from './AvatarIconSize.constants';
+
+import classNames from 'classnames';
 import styles from './Avatar.module.scss';
-import { Status } from '../Status';
 
 export interface AvatarProps {
   imageURL?: string;
@@ -14,6 +17,7 @@ export interface AvatarProps {
   userFriendlyName?: string;
   badgeContent?: string;
   statusType?: 'active' | 'idle' | 'busy' | 'offline' | 'unread';
+  isActive?: boolean;
 }
 
 export const Avatar = ({
@@ -22,12 +26,18 @@ export const Avatar = ({
   imageURL,
   userFriendlyName,
   statusType,
-  badgeContent
+  badgeContent,
+  isActive
 }: AvatarProps) => {
   const initials = userFriendlyName && getInitials(userFriendlyName);
 
   return (
-    <div className={styles.Avatar} data-type={type} data-size={size} tabIndex={0}>
+    <div
+      className={classNames(styles.Avatar, { [styles.isActive]: isActive })}
+      data-type={type}
+      data-size={size}
+      tabIndex={0}
+    >
       <RadixAvatar.Root className={styles.Root}>
         <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
         <RadixAvatar.Fallback className={styles.Fallback} delayMs={600}>

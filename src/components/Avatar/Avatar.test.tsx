@@ -28,6 +28,16 @@ describe('when using default props', () => {
     expect(container.firstChild).toHaveAttribute('data-type', 'circle');
   });
 
+  test('should be small size', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} size="small" />);
+    expect(container.firstChild).toHaveAttribute('data-size', 'small');
+  });
+
+  test('should be extra small size', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} size="extra small" />);
+    expect(container.firstChild).toHaveAttribute('data-size', 'extra small');
+  });
+
   test('should be square shape', () => {
     const { container } = render(<Avatar {...DEFAULT_PROPS} type="square" />);
     expect(container.firstChild).toHaveAttribute('data-type', 'square');
@@ -88,5 +98,12 @@ describe('when image and user name are not available', () => {
       const items = container.getElementsByClassName('DefaultIcon');
       expect(items.length).toBe(1);
     });
+  });
+});
+
+describe('when isActive is true', () => {
+  test('should apply the active class', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} isActive />);
+    expect(container.firstChild).toHaveClass('isActive');
   });
 });
