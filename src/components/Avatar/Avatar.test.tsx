@@ -104,6 +104,6 @@ describe('when image and user name are not available', () => {
 describe('when isActive is true', () => {
   test('should apply the active class', () => {
     const { container } = render(<Avatar {...DEFAULT_PROPS} isActive />);
-    expect(container.firstChild).toHaveClass('Active');
+    expect(container.firstChild).toHaveClass('isActive');
   });
 });

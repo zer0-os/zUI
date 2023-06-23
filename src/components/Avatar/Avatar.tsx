@@ -33,7 +33,7 @@ export const Avatar = ({
 
   return (
     <div
-      className={classNames(styles.Avatar, { [styles.Active]: isActive })}
+      className={classNames(styles.Avatar, { [styles.isActive]: isActive })}
       data-type={type}
       data-size={size}
       tabIndex={0}

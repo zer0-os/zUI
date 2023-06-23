@@ -7,13 +7,7 @@
   font-size: 0.875rem;
   line-height: 150%;
 
-  &:focus-within {
-    border-radius: 50%;
-    outline-offset: 0.25rem;
-    outline: 0.0625rem solid $color-secondary-11;
-  }
-
-  &.Active {
+  &.isActive {
     border-radius: 50%;
     outline-offset: 0.25rem;
     outline: 0.0625rem solid $color-secondary-11;
