@@ -1,28 +1,28 @@
 @import '../../styles/theme';
 
 @mixin path($color, $styles) {
-    svg {
-        path {
-            stroke: $color;
-        }
+  svg {
+    path {
+      stroke: $color;
     }
+  }
 }
 
 .SearchWrapper {
-    border-radius: 1000px !important; // make it pill shaped
+  border-radius: 1000px !important; // make it pill shaped
 }
 
 .SearchIcon {
-    &[data-is-searching] {
-        svg path {
-            stroke: $color-greyscale-12;
-        }
-    }
-
+  &[data-is-searching] {
     svg path {
-        stroke: $color-greyscale-11;
-        transition: stroke 0.1s ease-in-out;
+      stroke: $color-greyscale-12;
     }
+  }
 
-    padding-left: 8px;
+  svg path {
+    stroke: $color-greyscale-11;
+    transition: stroke 0.1s ease-in-out;
+  }
+
+  padding-left: 8px;
 }
