@@ -177,6 +177,7 @@ export * from './icons/IconEqual';
 export * from './icons/IconEqualNot';
 export * from './icons/IconEraser';
 export * from './icons/IconExpand1';
+export * from './icons/IconCollapse1';
 export * from './icons/IconExpand2';
 export * from './icons/IconExpand6';
 export * from './icons/IconEye';
