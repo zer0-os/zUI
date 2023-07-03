@@ -11,7 +11,7 @@ export default {
 
 const Template: ComponentStory<typeof DropdownMenu> = args => {
   return (
-    <div style={{ margin: '300px' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100%' }}>
       <DropdownMenu
         {...args}
         items={[
@@ -48,9 +48,8 @@ CustomTrigger.args = {
   trigger: <IconArrowDownLeft />
 };
 
-export const CustomeTriggerWithPointer = Template.bind({});
-CustomTrigger.args = {
-  trigger: <IconArrowDownLeft />,
+export const TriggerWithPointer = Template.bind({});
+TriggerWithPointer.args = {
   showPointer: true,
   alignMenu: 'center'
 };
