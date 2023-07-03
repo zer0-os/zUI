@@ -59,7 +59,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
       open,
       defaultOpen,
       onOpenChange,
-      showPointer = true
+      showPointer
     },
     ref
   ) => {
