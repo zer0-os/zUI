@@ -50,6 +50,6 @@ CustomTrigger.args = {
 
 export const TriggerWithPointer = Template.bind({});
 TriggerWithPointer.args = {
-  showPointer: true,
+  showArrow: true,
   alignMenu: 'center'
 };

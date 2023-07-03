@@ -159,8 +159,8 @@ describe('<DropdownMenu />', () => {
       expect(arrow).toBeNull();
     });
 
-    test('should render arrow if alignMenu is center and showPointer is true', () => {
-      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="center" showPointer={true} />);
+    test('should render arrow if alignMenu is center and showArrow is true', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="center" showArrow={true} />);
       const content = screen.getByTestId('content');
 
       const arrow = screen.getByTestId('arrow');
@@ -168,8 +168,8 @@ describe('<DropdownMenu />', () => {
       expect(arrow.parentElement).toBe(content);
     });
 
-    test('should not render arrow if alignMenu is not center even though showPointer is true', () => {
-      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="start" showPointer={true} />);
+    test('should not render arrow if alignMenu is not center even though showArrow is true', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="start" showArrow={true} />);
 
       const arrow = screen.queryByTestId('arrow');
       expect(arrow).toBeNull();

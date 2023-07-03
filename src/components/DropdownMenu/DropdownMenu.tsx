@@ -44,7 +44,7 @@ export interface DropdownMenuProps {
 
   /** Class to apply to the menu */
   menuClassName?: string;
-  showPointer?: boolean;
+  showArrow?: boolean;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
@@ -59,7 +59,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
       open,
       defaultOpen,
       onOpenChange,
-      showPointer
+      showArrow
     },
     ref
   ) => {
@@ -76,7 +76,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
           side={side}
           ref={ref}
         >
-          {alignMenu === 'center' && showPointer && <RadixUIDropdownMenuArrow className="zui-dropdown-pointer" />}
+          {alignMenu === 'center' && showArrow && <RadixUIDropdownMenuArrow className="zui-dropdown-arrow" />}
           {items.map(item => (
             <RadixUIDropdownMenuItem
               className={classNames('zui-dropdown-item', item.className)}
