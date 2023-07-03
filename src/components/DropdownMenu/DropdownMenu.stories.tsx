@@ -11,26 +11,28 @@ export default {
 
 const Template: ComponentStory<typeof DropdownMenu> = args => {
   return (
-    <DropdownMenu
-      {...args}
-      items={[
-        {
-          id: 'dropdown_menu_1',
-          label: 'Apple',
-          onSelect: () => console.log('you clicked Apple!')
-        },
-        {
-          id: 'dropdown_menu_2',
-          label: 'Orange',
-          onSelect: () => console.log('you clicked Orange!')
-        },
-        {
-          id: 'pear',
-          label: 'Pear',
-          onSelect: () => console.log('you clicked Pear!')
-        }
-      ]}
-    />
+    <div style={{ margin: '300px' }}>
+      <DropdownMenu
+        {...args}
+        items={[
+          {
+            id: 'dropdown_menu_1',
+            label: 'Apple',
+            onSelect: () => console.log('you clicked Apple!')
+          },
+          {
+            id: 'dropdown_menu_2',
+            label: 'Orange',
+            onSelect: () => console.log('you clicked Orange!')
+          },
+          {
+            id: 'pear',
+            label: 'Pear',
+            onSelect: () => console.log('you clicked Pear!')
+          }
+        ]}
+      />
+    </div>
   );
 };
 
@@ -44,4 +46,11 @@ TextTrigger.args = {
 export const CustomTrigger = Template.bind({});
 CustomTrigger.args = {
   trigger: <IconArrowDownLeft />
+};
+
+export const CustomeTriggerWithPointer = Template.bind({});
+CustomTrigger.args = {
+  trigger: <IconArrowDownLeft />,
+  showPointer: true,
+  alignMenu: 'center'
 };
