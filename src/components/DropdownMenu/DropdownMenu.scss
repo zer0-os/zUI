@@ -37,4 +37,10 @@
     user-select: none;
     cursor: pointer;
   }
+
+  .zui-dropdown-arrow {
+    fill: $color-primary-2;
+    height: 16px;
+    width: 32px;
+  }
 }

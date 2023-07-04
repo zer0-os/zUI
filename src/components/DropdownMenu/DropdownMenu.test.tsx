@@ -3,6 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 
 import { DropdownMenu, DropdownItem } from '.';
 import {
+  DropdownMenuArrowProps,
   DropdownMenuRootContentProps,
   DropdownMenuTriggerProps,
   DropdownMenuContentProps,
@@ -24,6 +25,7 @@ const mockRadixRoot = jest.fn();
 const mockRadixTrigger = jest.fn();
 const mockRadixContent = jest.fn();
 const mockRadixItem = jest.fn();
+const mockRadixArrow = jest.fn();
 
 jest.mock('@radix-ui/react-dropdown-menu', () => ({
   Root: (props: DropdownMenuRootContentProps) => {
@@ -49,6 +51,10 @@ jest.mock('@radix-ui/react-dropdown-menu', () => ({
   Item: (props: DropdownMenuItemProps) => {
     mockRadixItem(props);
     return <div className={'mock-item ' + props.className}>{props.children}</div>;
+  },
+  Arrow: (props: DropdownMenuArrowProps) => {
+    mockRadixArrow(props);
+    return <div data-testid="arrow">{props.children}</div>;
   }
 }));
 
@@ -142,6 +148,31 @@ describe('<DropdownMenu />', () => {
       render(<DropdownMenu {...DEFAULT_PROPS} open={true} defaultOpen={true} />);
 
       expect(mockRadixRoot).toBeCalledWith(expect.objectContaining({ open: true, defaultOpen: true }));
+    });
+  });
+
+  describe('dropdown arrow', () => {
+    test('should not render arrow by default', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} />);
+
+      const arrow = screen.queryByTestId('arrow');
+      expect(arrow).toBeNull();
+    });
+
+    test('should render arrow if alignMenu is center and showArrow is true', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="center" showArrow={true} />);
+      const content = screen.getByTestId('content');
+
+      const arrow = screen.getByTestId('arrow');
+      expect(arrow).not.toBeNull();
+      expect(arrow.parentElement).toBe(content);
+    });
+
+    test('should not render arrow if alignMenu is not center even though showArrow is true', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} alignMenu="start" showArrow={true} />);
+
+      const arrow = screen.queryByTestId('arrow');
+      expect(arrow).toBeNull();
     });
   });
 });
