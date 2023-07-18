@@ -58,3 +58,10 @@ OnlyAvatar.args = {
   userFriendlyName: 'Mic Brooklyn',
   imageURL: 'https://picsum.photos/200/300'
 };
+
+export const DisabledTabIndex = Template.bind({});
+DisabledTabIndex.args = {
+  userFriendlyName: 'Mic Brooklyn',
+  imageURL: 'https://picsum.photos/200/300',
+  tabIndex: -1
+};

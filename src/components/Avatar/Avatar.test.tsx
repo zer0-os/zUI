@@ -107,3 +107,17 @@ describe('when isActive is true', () => {
     expect(container.firstChild).toHaveClass('isActive');
   });
 });
+
+describe('when tabIndex is not specified (default value)', () => {
+  test('should have tabIndex attribute set to 0', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} />);
+    expect(container.firstChild).toHaveAttribute('tabIndex', '0');
+  });
+});
+
+describe('when tabIndex is set to -1', () => {
+  test('should have tabIndex attribute set to -1', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} tabIndex={-1} />);
+    expect(container.firstChild).toHaveAttribute('tabIndex', '-1');
+  });
+});
