@@ -18,6 +18,7 @@ export interface AvatarProps {
   badgeContent?: string;
   statusType?: 'active' | 'idle' | 'busy' | 'offline' | 'unread';
   isActive?: boolean;
+  tabIndex?: number;
 }
 
 export const Avatar = ({
@@ -27,7 +28,8 @@ export const Avatar = ({
   userFriendlyName,
   statusType,
   badgeContent,
-  isActive
+  isActive,
+  tabIndex = 0
 }: AvatarProps) => {
   const initials = userFriendlyName && getInitials(userFriendlyName);
 
@@ -36,7 +38,7 @@ export const Avatar = ({
       className={classNames(styles.Avatar, { [styles.isActive]: isActive })}
       data-type={type}
       data-size={size}
-      tabIndex={0}
+      tabIndex={tabIndex}
     >
       <RadixAvatar.Root className={styles.Root}>
         <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
