@@ -7,7 +7,7 @@
     "clean": "rimraf dist && npx mkdirp dist",
     "about:build": "echo 'Runs files through different tools to get a useable output package.'",
     "build": "npm-run-all clean check:* build:* export:*",
-    "build:scripts": "NODE_ENV=production babel --extensions \".ts,.tsx,.js,.jsx\" ./src --out-dir ./dist",
+    "build:scripts": "NODE_ENV=production babel --extensions \".ts,.tsx,.js,.jsx\" ./src --out-dir ./dist --ignore \"**/*.test.ts\",\"**/*.test.tsx\",\"**/*.stories.tsx\"",
     "build:styles": "sass src:dist",
     "about:watch": "echo 'Runs build scripts whenever a file is updated - use this when linking locally.'",
     "watch": "concurrently --kill-others --names \"babel,sass,package-json\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm run watch:scripts\" \"npm run watch:styles\" \"npm run watch:export:styles\" \"npm run watch:package-json\"",
