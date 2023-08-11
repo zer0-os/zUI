@@ -50,6 +50,12 @@ export const IconButton = ({
     onClick(event);
   };
 
+  const buttonSize = getSize(size);
+  const buttonStyle = {
+    width: buttonSize ? `${buttonSize}px` : undefined,
+    height: buttonSize ? `${buttonSize}px` : undefined
+  };
+
   return (
     <button
       className={classNames(
@@ -61,8 +67,9 @@ export const IconButton = ({
       disabled={isDisabled}
       onClick={handleOnClick}
       type={type}
+      style={buttonStyle}
     >
-      <Icon label={label} size={getSize(size)} isFilled={isFilled} />
+      <Icon label={label} size={buttonSize} isFilled={isFilled} />
     </button>
   );
 };

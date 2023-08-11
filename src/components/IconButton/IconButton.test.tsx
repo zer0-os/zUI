@@ -89,7 +89,7 @@ describe('IconButton', () => {
     expect(getByRole('button')).toHaveClass('zui-iconButton-variant-primary');
   });
 
-  it('renders large size', () => {
+  it('renders large size when "large" is passed in', () => {
     renderComponent({
       Icon: IconXClose,
       label: 'the-label',
@@ -104,7 +104,7 @@ describe('IconButton', () => {
     });
   });
 
-  it('renders small size', () => {
+  it('renders small size when "small" is passed in', () => {
     renderComponent({
       Icon: IconXClose,
       label: 'the-label',
@@ -119,7 +119,7 @@ describe('IconButton', () => {
     });
   });
 
-  it('renders x small size', () => {
+  it('renders x small size when "x-small" is passed in', () => {
     renderComponent({
       Icon: IconXClose,
       label: 'the-label',
@@ -130,6 +130,36 @@ describe('IconButton', () => {
     expect(iconRender).toHaveBeenLastCalledWith({
       label: 'the-label',
       size: 24,
+      isFilled: false
+    });
+  });
+
+  it('renders custom size when a number is passed in (custom smaller)', () => {
+    renderComponent({
+      Icon: IconXClose,
+      label: 'the-label',
+      size: 12,
+      isFilled: false
+    });
+
+    expect(iconRender).toHaveBeenLastCalledWith({
+      label: 'the-label',
+      size: 12,
+      isFilled: false
+    });
+  });
+
+  it('renders custom size when a number is passed in (custom larger) ', () => {
+    renderComponent({
+      Icon: IconXClose,
+      label: 'the-label',
+      size: 48,
+      isFilled: false
+    });
+
+    expect(iconRender).toHaveBeenLastCalledWith({
+      label: 'the-label',
+      size: 48,
       isFilled: false
     });
   });
