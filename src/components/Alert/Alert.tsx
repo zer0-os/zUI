@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { IconCheck, IconAlertCircle } from '../Icons';
+import { IconAlertCircle, IconCheck, IconInfoCircle } from '../Icons';
 
 import styles from './Alert.module.scss';
 import classNames from 'classnames';
@@ -16,16 +16,15 @@ export interface AlertProps {
 export const Alert = ({ className, variant, children }: AlertProps) => {
   return (
     <div className={classNames(styles.Container, className)} data-variant={variant}>
-      <Icon variant={variant} />
+      {IconVariant[variant]}
       <div>{children}</div>
     </div>
   );
 };
 
-interface IconProps {
-  variant: AlertVariant;
-}
-
-const Icon = ({ variant }: IconProps) => {
-  return variant === 'success' ? <IconCheck size={16} /> : <IconAlertCircle size={16} />;
+const IconVariant: Record<AlertVariant, ReactNode> = {
+  success: <IconCheck size={16} isFilled={true} />,
+  error: <IconAlertCircle size={16} isFilled={true} />,
+  warning: <IconAlertCircle size={16} isFilled={true} />,
+  info: <IconInfoCircle size={16} isFilled={true} />
 };
