@@ -99,4 +99,12 @@ describe('<ToastNotification />', () => {
       expect(toastRoot).not.toHaveAttribute('data-variant', notTheme);
     });
   });
+
+  test('should have correct class on ToastViewport', () => {
+    const customClass = 'my-custom-viewport-class';
+    render(<ToastNotification {...DEFAULT_PROPS} viewportClassName={customClass} />);
+    const viewport = screen.getByTestId('toast-viewport');
+    expect(viewport).toHaveClass('ToastViewport');
+    expect(viewport).toHaveClass(customClass);
+  });
 });
