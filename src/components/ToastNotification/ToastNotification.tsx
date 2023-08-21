@@ -5,6 +5,7 @@ import { IconInfoCircle, IconXClose } from '../Icons';
 
 import * as Toast from '@radix-ui/react-toast';
 
+import classNames from 'classnames';
 import styles from './ToastNotification.module.scss';
 
 type ToastPositionVariant = 'left' | 'right';
@@ -14,6 +15,7 @@ const { ToastRoot, ToastIcon, TextWrapper, ToastTitle, ToastDescription, ToastBu
   styles;
 
 export type ToastNotificationProps = Toast.ToastProviderProps & {
+  viewportClassName?: string;
   title: string;
   description: string;
   actionTitle?: string;
@@ -27,6 +29,7 @@ export type ToastNotificationProps = Toast.ToastProviderProps & {
 };
 
 export const ToastNotification = ({
+  viewportClassName,
   title,
   description,
   actionTitle,
@@ -85,13 +88,19 @@ export const ToastNotification = ({
         <Toast.Close
           className={ToastClose}
           data-no-action-button={!actionTitle}
-          asChild data-testid="toast-close-button">
+          asChild
+          data-testid="toast-close-button"
+        >
           <button onClick={handleOnClose}>
             <IconXClose size={24} />
           </button>
         </Toast.Close>
       </Toast.Root>
-      <Toast.Viewport className={ToastViewport} data-variant={positionVariant} />
+      <Toast.Viewport
+        data-testid="toast-viewport"
+        className={classNames(ToastViewport, viewportClassName)}
+        data-variant={positionVariant}
+      />
     </Toast.Provider>
   );
 };
