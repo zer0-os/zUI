@@ -10,7 +10,8 @@ const DEFAULT_PROPS: AlertProps = {
 
 jest.mock('../Icons', () => ({
   IconCheck: () => <div data-testid={'check'}>IconCheck</div>,
-  IconAlertCircle: () => <div data-testid={'alert'}>IconAlertCircle</div>
+  IconAlertCircle: () => <div data-testid={'alert'}>IconAlertCircle</div>,
+  IconInfoCircle: () => <div data-testid={'info'}>IconInfoCircle</div>
 }));
 
 describe('<Alert />', () => {
@@ -42,7 +43,7 @@ describe('<Alert />', () => {
 
     test('should render info icon when variant is info', () => {
       render(<Alert {...DEFAULT_PROPS} variant="info" />);
-      expect(screen.getByTestId('alert')).toBeInTheDocument();
+      expect(screen.getByTestId('info')).toBeInTheDocument();
     });
   });
 });
