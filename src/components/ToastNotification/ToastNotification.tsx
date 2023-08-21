@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import { Button } from '../Button';
 import { IconInfoCircle, IconXClose } from '../Icons';
@@ -16,6 +16,7 @@ const { ToastRoot, ToastIcon, TextWrapper, ToastTitle, ToastDescription, ToastBu
 
 export type ToastNotificationProps = Toast.ToastProviderProps & {
   viewportClassName?: string;
+  duration?: number;
   title: string;
   description: string;
   actionTitle?: string;
@@ -30,6 +31,7 @@ export type ToastNotificationProps = Toast.ToastProviderProps & {
 
 export const ToastNotification = ({
   viewportClassName,
+  duration = 10000,
   title,
   description,
   actionTitle,
@@ -41,8 +43,6 @@ export const ToastNotification = ({
   onClick,
   onClose
 }: ToastNotificationProps) => {
-  const timerRef = useRef(0);
-
   const [open, setOpen] = useState(false);
 
   const buttonVariant = themeVariant === 'error' ? 'negative' : 'primary';
@@ -54,12 +54,7 @@ export const ToastNotification = ({
 
   useEffect(() => {
     setOpen(openToast);
-    if (openToast) {
-      timerRef.current = window.setTimeout(handleOnClose, 100 * 10000);
-    }
-
-    return () => clearTimeout(timerRef.current);
-  }, [openToast, handleOnClose]);
+  }, [openToast]);
 
   return (
     <Toast.Provider swipeDirection={swipeDirection}>
@@ -70,6 +65,7 @@ export const ToastNotification = ({
         data-position={positionVariant}
         open={open}
         onOpenChange={handleOnClose}
+        duration={duration}
       >
         <div className={ToastIcon}>
           <IconInfoCircle />

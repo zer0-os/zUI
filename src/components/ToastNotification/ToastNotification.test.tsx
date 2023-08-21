@@ -6,6 +6,7 @@ const mockOnClick = jest.fn();
 const mockOnClose = jest.fn();
 
 const DEFAULT_PROPS: ToastNotificationProps = {
+  duration: 10000,
   title: 'Toast Notification Title',
   description: 'Toast Notification Description',
   actionTitle: 'Invite',
@@ -55,13 +56,45 @@ describe('<ToastNotification />', () => {
     expect(mockOnClose).toHaveBeenCalled();
   });
 
-  test('should close the toast automatically after 10 seconds', async () => {
+  test('should close the toast automatically after the default duration of 10 seconds', async () => {
     jest.useFakeTimers();
     render(<ToastNotification {...DEFAULT_PROPS} />);
+
+    expect(screen.getByText(DEFAULT_PROPS.title)).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(DEFAULT_PROPS.duration);
+    });
+
+    await waitFor(() => expect(screen.queryByText(DEFAULT_PROPS.title)).not.toBeInTheDocument());
+  });
+
+  test('should close the toast after a custom duration', async () => {
+    jest.useFakeTimers();
+    const customDuration = 5000; // 5 seconds
+    render(<ToastNotification {...DEFAULT_PROPS} duration={customDuration} />);
+
+    expect(screen.getByText(DEFAULT_PROPS.title)).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(customDuration);
+    });
+
+    await waitFor(() => expect(screen.queryByText(DEFAULT_PROPS.title)).not.toBeInTheDocument());
+  });
+
+  test('toast remains open if the custom duration has not elapsed', () => {
+    jest.useFakeTimers();
+    const customDuration = 15000; // 15 seconds
+    render(<ToastNotification {...DEFAULT_PROPS} duration={customDuration} />);
+
+    expect(screen.getByText(DEFAULT_PROPS.title)).toBeInTheDocument();
+
     act(() => {
       jest.advanceTimersByTime(10000);
     });
-    await waitFor(() => expect(screen.queryByText(DEFAULT_PROPS.title)).not.toBeInTheDocument());
+
+    expect(screen.getByText(DEFAULT_PROPS.title)).toBeInTheDocument();
   });
 
   test('should not render the toast when openToast is false', () => {
