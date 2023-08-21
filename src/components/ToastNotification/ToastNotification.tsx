@@ -16,7 +16,7 @@ const { ToastRoot, ToastIcon, TextWrapper, ToastTitle, ToastDescription, ToastBu
 export type ToastNotificationProps = Toast.ToastProviderProps & {
   title: string;
   description: string;
-  actionTitle: string;
+  actionTitle?: string;
   actionAltText: string;
   positionVariant?: ToastPositionVariant;
   themeVariant?: ToastThemeVariant;
@@ -52,7 +52,7 @@ export const ToastNotification = ({
   useEffect(() => {
     setOpen(openToast);
     if (openToast) {
-      timerRef.current = window.setTimeout(handleOnClose, 10000);
+      timerRef.current = window.setTimeout(handleOnClose, 100 * 10000);
     }
 
     return () => clearTimeout(timerRef.current);
@@ -75,12 +75,17 @@ export const ToastNotification = ({
           <Toast.Title className={ToastTitle}>{title}</Toast.Title>
           <Toast.Description className={ToastDescription}>{description}</Toast.Description>
         </div>
-        <Toast.Action onClick={onClick} asChild altText={actionAltText}>
-          <Button className={ToastButton} variant={buttonVariant}>
-            {actionTitle}
-          </Button>
-        </Toast.Action>
-        <Toast.Close className={ToastClose} asChild data-testid="toast-close-button">
+        {actionTitle && (
+          <Toast.Action onClick={onClick} asChild altText={actionAltText}>
+            <Button className={ToastButton} variant={buttonVariant}>
+              {actionTitle}
+            </Button>
+          </Toast.Action>
+        )}
+        <Toast.Close
+          className={ToastClose}
+          data-no-action-button={!actionTitle}
+          asChild data-testid="toast-close-button">
           <button onClick={handleOnClose}>
             <IconXClose size={24} />
           </button>

@@ -42,6 +42,10 @@
     &:hover {
       cursor: pointer;
     }
+
+    &[data-no-action-button="true"] {
+      border-left: none !important;
+    }
   }
 
   // primary variants
@@ -172,6 +176,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     transform: translateX(calc(100% - var(--viewport-padding)));
@@ -182,6 +187,7 @@
   from {
     transform: translateX(calc(100% + var(--viewport-padding)));
   }
+
   to {
     transform: translateX(0);
   }
@@ -191,6 +197,7 @@
   from {
     transform: translateX(var(--radix-toast-swipe-end-x));
   }
+
   to {
     transform: translateX(calc(100% + var(--viewport-padding)));
   }
@@ -200,6 +207,7 @@
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     transform: translateX(calc(-100% - var(--viewport-padding)));
@@ -210,6 +218,7 @@
   from {
     transform: translateX(calc(-100% - var(--viewport-padding)));
   }
+
   to {
     transform: translateX(0);
   }
@@ -219,6 +228,7 @@
   from {
     transform: translateX(var(--radix-toast-swipe-end-x));
   }
+
   to {
     transform: translateX(calc(-100% - var(--viewport-padding)));
   }
