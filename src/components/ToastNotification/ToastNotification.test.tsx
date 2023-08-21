@@ -36,6 +36,13 @@ describe('<ToastNotification />', () => {
     expect(screen.getByText(DEFAULT_PROPS.description)).toBeInTheDocument();
   });
 
+  test('should not show the action button if actionTitle is empty', () => {
+    const props = { ...DEFAULT_PROPS, actionTitle: '' };
+    render(<ToastNotification {...props} />);
+    const actionButton = screen.queryByText(DEFAULT_PROPS.actionTitle);
+    expect(actionButton).not.toBeInTheDocument();
+  });
+
   test('should call onClick when action button is clicked', () => {
     render(<ToastNotification {...DEFAULT_PROPS} />);
     fireEvent.click(screen.getByText(DEFAULT_PROPS.actionTitle));
