@@ -25,6 +25,7 @@ const Template: ComponentStory<typeof ToastNotification> = args => {
     <React.Fragment>
       <Modal trigger="Open Modal" open={isOpen} onOpenChange={setIsOpen}>
         <p>This is a modal. Close this modal to see a toast notification after 2 seconds.</p>
+        <p>Edit the duration attribute to increase/decrease the duration toast is visible</p>
         <button onClick={handleClose}>Close Modal</button>
       </Modal>
 
@@ -38,5 +39,6 @@ Default.args = {
   title: 'Toast Notification Title',
   description: 'Toast Notification Description',
   actionTitle: 'Invite',
-  swipeDirection: 'left'
+  swipeDirection: 'left',
+  duration: 10000
 };
