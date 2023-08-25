@@ -19,22 +19,30 @@ export interface IconButtonProperties {
 }
 
 const getSize = (size: IconButtonProperties['size'], forIcon = false): string | number | undefined => {
+  let baseSize: number | undefined;
+
   if (size && ['large', 'small', 'x-small'].includes(size.toString())) {
     switch (size) {
       case 'large':
-        return forIcon ? 32 : 40;
+        baseSize = 40;
+        break;
       case 'small':
-        return forIcon ? 24 : 32;
+        baseSize = 32;
+        break;
       case 'x-small':
-        return forIcon ? 16 : 24;
+        baseSize = 24;
+        break;
     }
+  } else if (typeof size === 'number') {
+    baseSize = size;
   }
 
-  if (typeof size === 'number') {
-    return forIcon ? size - 8 : size;
+  if (forIcon && baseSize !== undefined) {
+    const offset = baseSize <= 16 ? 4 : 8;
+    return baseSize - offset;
   }
 
-  return size;
+  return baseSize;
 };
 
 export const IconButton = ({
