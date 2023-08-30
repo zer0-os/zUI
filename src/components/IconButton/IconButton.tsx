@@ -18,19 +18,31 @@ export interface IconButtonProperties {
   variant?: 'primary' | 'secondary' | 'tertiary';
 }
 
-const getSize = (size: IconButtonProperties['size']) => {
+const getSize = (size: IconButtonProperties['size'], forIcon = false): string | number | undefined => {
+  let baseSize: number | undefined;
+
   if (size && ['large', 'small', 'x-small'].includes(size.toString())) {
     switch (size) {
       case 'large':
-        return 40;
+        baseSize = 40;
+        break;
       case 'small':
-        return 32;
+        baseSize = 32;
+        break;
       case 'x-small':
-        return 24;
+        baseSize = 24;
+        break;
     }
+  } else if (typeof size === 'number') {
+    baseSize = size;
   }
 
-  return size;
+  if (forIcon && baseSize !== undefined) {
+    const offset = baseSize <= 16 ? 4 : 8;
+    return baseSize - offset;
+  }
+
+  return baseSize;
 };
 
 export const IconButton = ({
@@ -51,6 +63,7 @@ export const IconButton = ({
   };
 
   const buttonSize = getSize(size);
+  const iconSize = getSize(size, true);
   const buttonStyle = {
     width: buttonSize ? `${buttonSize}px` : undefined,
     height: buttonSize ? `${buttonSize}px` : undefined
@@ -69,7 +82,7 @@ export const IconButton = ({
       type={type}
       style={buttonStyle}
     >
-      <Icon label={label} size={buttonSize} isFilled={isFilled} />
+      <Icon label={label} size={iconSize} isFilled={isFilled} />
     </button>
   );
 };
