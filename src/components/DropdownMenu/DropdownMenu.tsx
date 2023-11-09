@@ -7,7 +7,8 @@ import {
   Root as RadixUIDropdownMenuRoot,
   Trigger as RadixUIDropdownMenuTrigger,
   Content as RadixUIDropdownMenuContent,
-  Item as RadixUIDropdownMenuItem
+  Item as RadixUIDropdownMenuItem,
+  DropdownMenuPortal as RadixDropdownMenuPortal
 } from '@radix-ui/react-dropdown-menu';
 
 import './DropdownMenu.scss';
@@ -70,23 +71,25 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
         <RadixUIDropdownMenuTrigger className={classNames(className, 'zui-dropdown-trigger')}>
           {triggerElement}
         </RadixUIDropdownMenuTrigger>
-        <RadixUIDropdownMenuContent
-          className={classNames(menuClassName, 'zui-dropdown-menu')}
-          align={alignMenu}
-          side={side}
-          ref={ref}
-        >
-          {alignMenu === 'center' && showArrow && <RadixUIDropdownMenuArrow className="zui-dropdown-arrow" />}
-          {items.map(item => (
-            <RadixUIDropdownMenuItem
-              className={classNames('zui-dropdown-item', item.className)}
-              key={item.id}
-              onSelect={(event: Event) => item.onSelect(event)}
-            >
-              {item.label}
-            </RadixUIDropdownMenuItem>
-          ))}
-        </RadixUIDropdownMenuContent>
+        <RadixDropdownMenuPortal>
+          <RadixUIDropdownMenuContent
+            className={classNames(menuClassName, 'zui-dropdown-menu')}
+            align={alignMenu}
+            side={side}
+            ref={ref}
+          >
+            {alignMenu === 'center' && showArrow && <RadixUIDropdownMenuArrow className="zui-dropdown-arrow" />}
+            {items.map(item => (
+              <RadixUIDropdownMenuItem
+                className={classNames('zui-dropdown-item', item.className)}
+                key={item.id}
+                onSelect={(event: Event) => item.onSelect(event)}
+              >
+                {item.label}
+              </RadixUIDropdownMenuItem>
+            ))}
+          </RadixUIDropdownMenuContent>
+        </RadixDropdownMenuPortal>
       </RadixUIDropdownMenuRoot>
     );
   }

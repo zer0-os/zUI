@@ -55,6 +55,9 @@ jest.mock('@radix-ui/react-dropdown-menu', () => ({
   Arrow: (props: DropdownMenuArrowProps) => {
     mockRadixArrow(props);
     return <div data-testid="arrow">{props.children}</div>;
+  },
+  DropdownMenuPortal: (props: any) => {
+    return <div data-testid="portal">{props.children}</div>;
   }
 }));
 
@@ -70,11 +73,11 @@ describe('<DropdownMenu />', () => {
     const root = container.firstChild;
     const trigger = screen.getByTestId('trigger');
     const content = screen.getByTestId('content');
+    const portal = screen.getByTestId('portal');
 
-    // Check that trigger and content are children of root
     expect(root).toBe(screen.getByTestId('root'));
     expect(trigger.parentElement).toBe(root);
-    expect(content.parentElement).toBe(root);
+    expect(content.parentElement).toBe(portal);
 
     // Check that items are only rendered in the dropdown content
     const items = container.getElementsByClassName('mock-item');
