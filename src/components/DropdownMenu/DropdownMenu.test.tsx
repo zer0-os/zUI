@@ -4,10 +4,10 @@ import { cleanup, render, screen } from '@testing-library/react';
 import { DropdownMenu, DropdownItem } from '.';
 import {
   DropdownMenuArrowProps,
-  DropdownMenuRootContentProps,
   DropdownMenuTriggerProps,
   DropdownMenuContentProps,
-  DropdownMenuItemProps
+  DropdownMenuItemProps,
+  DropdownMenuProps
 } from '@radix-ui/react-dropdown-menu';
 
 const mockOnSelect = jest.fn();
@@ -28,7 +28,7 @@ const mockRadixItem = jest.fn();
 const mockRadixArrow = jest.fn();
 
 jest.mock('@radix-ui/react-dropdown-menu', () => ({
-  Root: (props: DropdownMenuRootContentProps) => {
+  Root: (props: DropdownMenuProps) => {
     mockRadixRoot(props);
     return <div data-testid="root">{props.children}</div>;
   },
