@@ -5,7 +5,7 @@ import { DropdownItem } from '../DropdownMenu';
 import {
   DropdownMenuContentProps,
   DropdownMenuItemProps,
-  DropdownMenuRootContentProps,
+  DropdownMenuProps,
   DropdownMenuTriggerProps
 } from '@radix-ui/react-dropdown-menu';
 
@@ -19,14 +19,12 @@ const MOCK_ITEMS: DropdownItem[] = [
 
 /* Mock Radix DropdownMenu primitives so we can skip testing them */
 
-const mockRadixRoot = jest.fn();
 const mockRadixTrigger = jest.fn();
 const mockRadixContent = jest.fn();
 const mockRadixItem = jest.fn();
 
 jest.mock('@radix-ui/react-dropdown-menu', () => ({
-  Root: (props: DropdownMenuRootContentProps) => {
-    mockRadixRoot(props);
+  Root: (props: DropdownMenuProps) => {
     return <div data-testid="root">{props.children}</div>;
   },
   Trigger: (props: DropdownMenuTriggerProps) => {

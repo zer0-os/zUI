@@ -114,7 +114,7 @@
     "@radix-ui/react-avatar": "^1.0.1",
     "@radix-ui/react-checkbox": "^1.0.1",
     "@radix-ui/react-dialog": "^0.1.7",
-    "@radix-ui/react-dropdown-menu": "^0.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slider": "^1.1.0",
     "@radix-ui/react-tabs": "^0.1.5",
     "@radix-ui/react-toast": "^1.1.3",
