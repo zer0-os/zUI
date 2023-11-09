@@ -46,6 +46,9 @@ jest.mock('@radix-ui/react-dropdown-menu', () => ({
   Item: (props: DropdownMenuItemProps) => {
     mockRadixItem(props);
     return <div className={'mock-item ' + props.className}>{props.children}</div>;
+  },
+  DropdownMenuPortal: (props: any) => {
+    return <div data-testid="portal">{props.children}</div>;
   }
 }));
 
