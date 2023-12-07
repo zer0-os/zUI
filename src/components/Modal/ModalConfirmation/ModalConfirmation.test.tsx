@@ -52,6 +52,18 @@ jest.mock('@radix-ui/react-dialog', () => ({
   }
 }));
 
+const buttonRender = jest.fn();
+jest.mock('../../Button', () => ({
+  Button: (props: any) => {
+    buttonRender(props['data-testid'], props);
+    return (
+      <div data-testid={props['data-testid']} onClick={props.onPress}>
+        {props.children}
+      </div>
+    );
+  }
+}));
+
 afterEach(() => {
   cleanup();
   jest.clearAllMocks();
@@ -85,9 +97,9 @@ test('should render cancel button', () => {
 });
 
 test('should render confirm button', () => {
-  renderComponent();
+  renderComponent({ confirmationLabel: 'confirm label' });
 
-  expect(screen.getByTestId('modal-confirm-button')).toBeInTheDocument();
+  expect(screen.getByTestId('modal-confirm-button')).toHaveTextContent('confirm label');
 });
 
 test('should call onCancel', () => {
@@ -108,4 +120,10 @@ test('should call onConfirm', () => {
   fireEvent.click(confirmButton);
 
   expect(onConfirm).toHaveBeenCalled();
+});
+
+test('should set the confirm button to loading when inProgress', () => {
+  renderComponent({ inProgress: true });
+
+  expect(buttonRender).toHaveBeenCalledWith('modal-confirm-button', expect.objectContaining({ isLoading: true }));
 });
