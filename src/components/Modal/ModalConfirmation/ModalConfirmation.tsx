@@ -13,6 +13,7 @@ export interface ModalConfirmationProps extends DialogProps {
   title: string;
   cancelLabel: string;
   confirmationLabel: string;
+  inProgress?: boolean;
   onCancel: () => void;
   onConfirm: () => void;
 }
@@ -23,6 +24,7 @@ export const ModalConfirmation: React.FC<ModalConfirmationProps> = ({
   title,
   cancelLabel,
   confirmationLabel,
+  inProgress,
   onCancel,
   onConfirm,
   ...rest
@@ -46,7 +48,7 @@ export const ModalConfirmation: React.FC<ModalConfirmationProps> = ({
           </Button>
         </DialogClose>
         <DialogClose asChild>
-          <Button variant="negative" onPress={onConfirm} data-testid="modal-confirm-button">
+          <Button variant="negative" onPress={onConfirm} data-testid="modal-confirm-button" isLoading={inProgress}>
             {confirmationLabel}
           </Button>
         </DialogClose>
