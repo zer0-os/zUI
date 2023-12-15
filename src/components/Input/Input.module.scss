@@ -82,6 +82,7 @@
       background: none;
       border: none;
       flex: 1;
+      width: 1px; // Force a width to allow flex to grow/shrink as necessary
       outline: none;
       padding: 0;
 
