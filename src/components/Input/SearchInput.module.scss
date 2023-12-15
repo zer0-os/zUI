@@ -13,16 +13,8 @@
 }
 
 .SearchIcon {
-  &[data-is-searching] {
-    svg path {
-      stroke: $color-greyscale-12;
-    }
-  }
-
   svg path {
     stroke: $color-greyscale-11;
     transition: stroke 0.1s ease-in-out;
   }
-
-  padding-left: 8px;
 }
