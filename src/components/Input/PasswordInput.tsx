@@ -15,7 +15,9 @@ export const PasswordInput = (props: PasswordInputProps) => {
 
   return (
     <Input
-      endEnhancer={<IconButton Icon={isHidden ? IconEye : IconEyeOff} onClick={toggleVisiblity} type={'button'} />}
+      endEnhancer={
+        <IconButton Icon={isHidden ? IconEye : IconEyeOff} onClick={toggleVisiblity} type={'button'} size={24} />
+      }
       type={isHidden ? 'password' : 'text'}
       {...props}
     />
