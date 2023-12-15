@@ -94,6 +94,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
             className={classNames(styles.Input, inputClassName)}
             data-testid="zui-input"
             onChange={handleOnChange}
+            data-size={size}
             ref={inputRef}
             value={value}
             disabled={isDisabled}

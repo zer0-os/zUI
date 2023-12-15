@@ -26,6 +26,11 @@ describe('<Input />', () => {
     expect(screen.getByTestId('zui-input-wrapper')).toHaveAttribute('data-size', 'large');
   });
 
+  test('should set size attribute on input', () => {
+    render(<Input {...DEFAULT_PROPS} />);
+    expect(screen.getByTestId('zui-input')).toHaveAttribute('data-size', 'large');
+  });
+
   test('should set status attribute to error on error', () => {
     render(<Input {...DEFAULT_PROPS} error={true} />);
     expect(screen.getByTestId('zui-input-wrapper')).toHaveAttribute('data-status', 'error');
