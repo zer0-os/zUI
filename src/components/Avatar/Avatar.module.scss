@@ -68,22 +68,6 @@
     font-size: 8px;
     line-height: 11px;
     color: $color-secondary-11;
-
-    &.isRaised {
-      @include glass-shadow-low;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: inherit;
-
-        @include glass-materials-raised;
-      }
-    }
   }
 
   .Image {

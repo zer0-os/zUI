@@ -55,18 +55,17 @@ export const Avatar = ({
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
       {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}
-      {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} isRaised={isRaised} />}
+      {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} />}
     </div>
   );
 };
 
 interface StatusBadgeTypeProps {
   badgeContent: AvatarProps['badgeContent'];
-  isRaised?: AvatarProps['isRaised'];
 }
 
-const AvatarBadge = ({ badgeContent, isRaised }: StatusBadgeTypeProps) => {
-  return <div className={classNames(styles.Badge, { [styles.isRaised]: isRaised })}> {badgeContent}</div>;
+const AvatarBadge = ({ badgeContent }: StatusBadgeTypeProps) => {
+  return <div className={styles.Badge}>{badgeContent}</div>;
 };
 
 /**
