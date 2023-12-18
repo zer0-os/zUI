@@ -98,11 +98,11 @@
 
   &[data-type='square'] {
     .Root {
-      border-radius: 0.5rem;
+      border-radius: 8px;
     }
 
     &:focus-within {
-      border-radius: 0.5rem;
+      border-radius: 8px;
     }
   }
 
@@ -121,17 +121,17 @@
   }
 
   &[data-size='small'] {
-    font-size: 0.625rem;
-    line-height: 0.75rem;
+    font-size: 10px;
+    line-height: 12px;
 
     .Root {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 24px;
+      height: 24px;
     }
 
     .Badge {
-      top: -0.625rem;
-      right: -0.625rem;
+      top: -8px;
+      left: 16px;
     }
 
     .Status {
@@ -141,17 +141,12 @@
   }
 
   &[data-size='medium'] {
-    font-size: 0.625rem;
-    line-height: 0.75rem;
+    font-size: 10px;
+    line-height: 12px;
 
     .Root {
       width: 2rem;
       height: 2rem;
-    }
-
-    .Badge {
-      top: -0.625rem;
-      right: -0.625rem;
     }
 
     .Status {
