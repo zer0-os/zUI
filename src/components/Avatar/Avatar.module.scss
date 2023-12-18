@@ -48,72 +48,24 @@
     height: 2.5rem;
   }
 
-  &[data-type='square'] {
-    .Root {
-      border-radius: 0.5rem;
-    }
-
-    &:focus-within {
-      border-radius: 0.5rem;
-    }
-  }
-
   .Badge {
-    position: absolute;
-    width: 1rem;
-    height: 1rem;
-    right: -0.375rem;
-    top: -0.375rem;
-    background: $color-primary-10;
-    border: 0.125rem solid $color-primary-1;
-    border-radius: 50%;
-    font-weight: 700;
-    font-size: 0.5rem;
-    line-height: 0.688rem;
-    color: $color-primary-1;
+    @include glass-materials-flat-thick;
+
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
-  }
+    position: absolute;
+    border-radius: 50%;
 
-  &[data-size='small'] {
-    font-size: 0.625rem;
-    line-height: 0.75rem;
+    width: 16px;
+    height: 16px;
+    top: -4px;
+    left: 28px;
 
-    .Root {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-
-    .Badge {
-      top: -0.625rem;
-      right: -0.625rem;
-    }
-  }
-
-  &[data-size='extra small'] {
-    font-size: 0.5rem;
-    line-height: 0.625rem;
-
-    .Root {
-      width: 1rem;
-      height: 1rem;
-    }
-  }
-
-  &[data-size='medium'] {
-    font-size: 0.625rem;
-    line-height: 0.75rem;
-
-    .Root {
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .Badge {
-      top: -0.625rem;
-      right: -0.625rem;
-    }
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 11px;
+    color: $color-secondary-11;
   }
 
   .Image {
@@ -142,5 +94,69 @@
 
   .DefaultIcon {
     color: $color-secondary-11;
+  }
+
+  &[data-type='square'] {
+    .Root {
+      border-radius: 0.5rem;
+    }
+
+    &:focus-within {
+      border-radius: 0.5rem;
+    }
+  }
+
+  // Sizes
+  &[data-size='extra small'] {
+    font-size: 8px;
+
+    .Root {
+      width: 16px;
+      height: 16px;
+    }
+
+    .Fallback {
+      line-height: 11px;
+    }
+  }
+
+  &[data-size='small'] {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+
+    .Root {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .Badge {
+      top: -0.625rem;
+      right: -0.625rem;
+    }
+
+    .Status {
+      top: 16px;
+      left: 16px;
+    }
+  }
+
+  &[data-size='medium'] {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+
+    .Root {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .Badge {
+      top: -0.625rem;
+      right: -0.625rem;
+    }
+
+    .Status {
+      top: 24px;
+      left: 24px;
+    }
   }
 }
