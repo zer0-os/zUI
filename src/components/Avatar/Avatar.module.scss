@@ -9,22 +9,7 @@
   line-height: 150%;
 
   border-radius: 9999px;
-
   @include glass-separator-primary;
-  @include glass-shadow-low;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    z-index: -1;
-
-    @include glass-materials-raised;
-  }
 
   &.isActive {
     border-radius: 50%;
@@ -33,6 +18,23 @@
 
     &[data-type='square'] {
       border-radius: 0.5rem;
+    }
+  }
+
+  &.isRaised {
+    @include glass-shadow-low;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      z-index: -1;
+
+      @include glass-materials-raised;
     }
   }
 
@@ -66,6 +68,22 @@
     font-size: 8px;
     line-height: 11px;
     color: $color-secondary-11;
+
+    &.isRaised {
+      @include glass-shadow-low;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+
+        @include glass-materials-raised;
+      }
+    }
   }
 
   .Image {

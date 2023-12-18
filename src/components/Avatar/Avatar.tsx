@@ -18,6 +18,7 @@ export interface AvatarProps {
   badgeContent?: string;
   statusType?: 'active' | 'idle' | 'busy' | 'offline' | 'unread';
   isActive?: boolean;
+  isRaised?: boolean;
   tabIndex?: number;
 }
 
@@ -29,13 +30,14 @@ export const Avatar = ({
   statusType,
   badgeContent,
   isActive,
+  isRaised,
   tabIndex = 0
 }: AvatarProps) => {
   const initials = userFriendlyName && getInitials(userFriendlyName);
 
   return (
     <div
-      className={classNames(styles.Avatar, { [styles.isActive]: isActive })}
+      className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised })}
       data-type={type}
       data-size={size}
       tabIndex={tabIndex}
@@ -53,17 +55,18 @@ export const Avatar = ({
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
       {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}
-      {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} />}
+      {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} isRaised={isRaised} />}
     </div>
   );
 };
 
 interface StatusBadgeTypeProps {
   badgeContent: AvatarProps['badgeContent'];
+  isRaised?: AvatarProps['isRaised'];
 }
 
-const AvatarBadge = ({ badgeContent }: StatusBadgeTypeProps) => {
-  return <div className={styles.Badge}> {badgeContent}</div>;
+const AvatarBadge = ({ badgeContent, isRaised }: StatusBadgeTypeProps) => {
+  return <div className={classNames(styles.Badge, { [styles.isRaised]: isRaised })}> {badgeContent}</div>;
 };
 
 /**
