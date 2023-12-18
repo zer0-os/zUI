@@ -65,7 +65,7 @@ interface StatusBadgeTypeProps {
 }
 
 const AvatarBadge = ({ badgeContent }: StatusBadgeTypeProps) => {
-  return <div className={styles.Badge}>{badgeContent}</div>;
+  return <div className={styles.Badge}> {badgeContent}</div>;
 };
 
 /**
