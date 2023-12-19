@@ -89,7 +89,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
                 key={item.id}
                 onSelect={(event: Event) => item.onSelect(event)}
               >
-                <div className="zui-dropdown-label">{item.label}</div>
+                {item.label}
               </RadixUIDropdownMenuItem>
             ))}
           </RadixUIDropdownMenuContent>
