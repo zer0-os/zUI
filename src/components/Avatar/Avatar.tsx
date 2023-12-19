@@ -18,6 +18,7 @@ export interface AvatarProps {
   badgeContent?: string;
   statusType?: 'active' | 'idle' | 'busy' | 'offline' | 'unread';
   isActive?: boolean;
+  isRaised?: boolean;
   tabIndex?: number;
 }
 
@@ -29,13 +30,14 @@ export const Avatar = ({
   statusType,
   badgeContent,
   isActive,
+  isRaised,
   tabIndex = 0
 }: AvatarProps) => {
   const initials = userFriendlyName && getInitials(userFriendlyName);
 
   return (
     <div
-      className={classNames(styles.Avatar, { [styles.isActive]: isActive })}
+      className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised })}
       data-type={type}
       data-size={size}
       tabIndex={tabIndex}

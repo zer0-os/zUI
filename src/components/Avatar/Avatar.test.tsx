@@ -108,6 +108,13 @@ describe('when isActive is true', () => {
   });
 });
 
+describe('when isRaised is true', () => {
+  test('should apply the Raised class', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} isRaised />);
+    expect(container.firstChild).toHaveClass('isRaised');
+  });
+});
+
 describe('when tabIndex is not specified (default value)', () => {
   test('should have tabIndex attribute set to 0', () => {
     const { container } = render(<Avatar {...DEFAULT_PROPS} />);
