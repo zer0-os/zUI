@@ -15,6 +15,8 @@ import './DropdownMenu.scss';
 
 import classNames from 'classnames';
 
+type SizeType = 'compact' | 'spacious';
+
 export interface DropdownItem {
   /** Unique ID to use in Array.map() */
   id: string;
@@ -46,6 +48,7 @@ export interface DropdownMenuProps {
   /** Class to apply to the menu */
   menuClassName?: string;
   showArrow?: boolean;
+  itemSize?: SizeType;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
@@ -60,7 +63,8 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
       open,
       defaultOpen,
       onOpenChange,
-      showArrow
+      showArrow,
+      itemSize = 'compact'
     },
     ref
   ) => {
@@ -81,7 +85,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
             {alignMenu === 'center' && showArrow && <RadixUIDropdownMenuArrow className="zui-dropdown-arrow" />}
             {items.map(item => (
               <RadixUIDropdownMenuItem
-                className={classNames('zui-dropdown-item', item.className)}
+                className={classNames('zui-dropdown-item', item.className, itemSize)}
                 key={item.id}
                 onSelect={(event: Event) => item.onSelect(event)}
               >
