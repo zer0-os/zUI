@@ -114,6 +114,24 @@ describe('<DropdownMenu />', () => {
       mockRadixItem.mock.lastCall[0].onSelect();
       expect(mockOnSelect).toBeCalledTimes(1);
     });
+
+    test('should apply the compact class to menu items if size is compact', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} itemSize="compact" />);
+
+      const items = screen.getAllByText(/Dropdown Item/);
+      items.forEach(item => {
+        expect(item).toHaveClass('compact');
+      });
+    });
+
+    test('should apply the spacious class to menu items if size is spacious', () => {
+      render(<DropdownMenu {...DEFAULT_PROPS} itemSize="spacious" />);
+
+      const items = screen.getAllByText(/Dropdown Item/);
+      items.forEach(item => {
+        expect(item).toHaveClass('spacious');
+      });
+    });
   });
 
   describe('dropdown trigger', () => {

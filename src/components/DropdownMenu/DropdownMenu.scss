@@ -14,11 +14,10 @@
   @include glass-materials-flat-thick;
   @include glass-shadows-and-blur;
 
-  width: 256px;
-  padding: 8px;
-
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
   border-radius: 8px;
 
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
@@ -26,8 +25,26 @@
   .zui-dropdown-item {
     @include glass-text-primary-color;
 
-    padding: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
     outline: none;
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+    align-self: stretch;
+
+    &.spacious {
+      padding: 16px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    &.compact {
+      padding: 8px 16px 8px 8px;
+      font-size: 14px;
+      line-height: 20px;
+    }
 
     &:hover {
       @include glass-state-hover-color;
@@ -36,10 +53,6 @@
     &:active {
       background: rgba(163, 162, 163, 0.1);
     }
-
-    border-radius: 8px;
-    user-select: none;
-    cursor: pointer;
   }
 
   .zui-dropdown-arrow {
