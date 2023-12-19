@@ -1,4 +1,5 @@
 @import '../../styles/theme';
+@import '../../styles/glass';
 
 .zui-dropdown-trigger {
   background: none;
@@ -10,36 +11,39 @@
 }
 
 .zui-dropdown-menu {
-  width: 16rem; // 256px
-  padding: 0.5rem;
+  @include glass-materials-flat-thick;
+  @include glass-shadows-and-blur;
 
-  background: $color-primary-2;
+  width: 256px;
+  padding: 8px;
+
   display: flex;
   flex-direction: column;
-  border-radius: 1rem;
-
-  // @note: replace hardcoding when we sort shadow variables
-  box-shadow: 5px 5px 20px 0px #46295c1c;
+  border-radius: 8px;
 
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 
   .zui-dropdown-item {
-    padding: 1rem;
+    @include glass-text-primary-color;
 
-    color: $color-greyscale-12;
+    padding: 16px;
     outline: none;
 
     &:hover {
-      background: $color-primary-4;
+      @include glass-state-hover-color;
     }
 
-    border-radius: 0.5rem;
+    &:active {
+      background: rgba(163, 162, 163, 0.1);
+    }
+
+    border-radius: 8px;
     user-select: none;
     cursor: pointer;
   }
 
   .zui-dropdown-arrow {
-    fill: $color-primary-2;
+    fill: rgba(10, 10, 10, 0.75);
     height: 16px;
     width: 32px;
   }

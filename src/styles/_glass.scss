@@ -22,6 +22,11 @@
   color: $color-greyscale-transparency-9;
 }
 
+// D/Glass/Ui State/Hover
+@mixin glass-state-hover-color {
+  background-color: rgba(253, 252, 253, 0.05);
+}
+
 // D/Glass/Materials/Raised
 @mixin glass-materials-raised {
   background: linear-gradient(
@@ -47,4 +52,12 @@
 // D/Glass/Materials/Flat/Thick
 @mixin glass-materials-flat-thick {
   background: rgba(10, 10, 10, 0.75);
+}
+
+/* D/Glass/Glass/Shadows & Blur */
+@mixin glass-shadows-and-blur {
+  box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.31), 10px 12px 16px 0px rgba(0, 0, 0, 0.27),
+    22px 27px 21px 0px rgba(0, 0, 0, 0.16), 39px 48px 25px 0px rgba(0, 0, 0, 0.05),
+    61px 75px 27px 0px rgba(0, 0, 0, 0.01), 0px 0px 8px 0px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(32px);
 }
