@@ -19,6 +19,8 @@
   align-items: flex-start;
   padding: 8px;
   border-radius: 8px;
+  min-width: 128px;
+  max-width: 256px;
 
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 
@@ -35,12 +37,14 @@
     align-self: stretch;
 
     &.spacious {
+      gap: 10px;
       padding: 16px;
       font-size: 16px;
       line-height: 24px;
     }
 
     &.compact {
+      gap: 8px;
       padding: 8px 16px 8px 8px;
       font-size: 14px;
       line-height: 20px;
@@ -53,6 +57,11 @@
     &:active {
       background: rgba(163, 162, 163, 0.1);
     }
+  }
+
+  .zui-dropdown-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .zui-dropdown-arrow {
