@@ -1,6 +1,9 @@
 @use '../../styles/theme' as theme;
+@import '../../styles/glass';
 
 .zui-iconButton {
+  @include glass-text-primary-color;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,8 +16,6 @@
   border: none;
   margin: 0px;
 
-  color: theme.$color-greyscale-12;
-
   &:hover {
     background-color: theme.$color-greyscale-transparency-3;
   }
@@ -26,6 +27,7 @@
 
     &.zui-iconButton-color-primary {
       color: theme.$color-black;
+
       &:hover:enabled {
         background-color: theme.$color-secondary-11;
         box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
@@ -51,6 +53,7 @@
       &:hover:enabled {
         box-shadow: 0px 0px 4px 0px theme.$color-error-transparency-9;
       }
+
       &:active:enabled {
         box-shadow: unset;
       }
@@ -78,10 +81,12 @@
 
     &.zui-iconButton-color-primary {
       color: theme.$color-secondary-11;
+
       &:hover:enabled {
         background-color: theme.$color-secondary-transparency-3;
         box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
       }
+
       &:active:enabled {
         border-color: theme.$color-secondary-11;
       }
@@ -118,10 +123,12 @@
   &-variant-tertiary {
     &.zui-iconButton-color-primary {
       color: theme.$color-secondary-11;
+
       &:hover:enabled {
         background-color: theme.$color-secondary-transparency-3;
         box-shadow: 0px 0px 4px 0px theme.$color-secondary-11;
       }
+
       &:active:enabled {
         background-color: theme.$color-secondary-transparency-2;
         box-shadow: none;
@@ -137,6 +144,7 @@
         box-shadow: 0px 0px 4px 0px rgba(theme.$color-error-transparency-3, 75%);
         border: 1px solid theme.$color-error-transparency-3;
       }
+
       &:active:enabled {
         background-color: rgba(theme.$color-error-transparency-2, 4.5%);
         box-shadow: none;
@@ -152,6 +160,7 @@
       &:hover:enabled {
         background-color: rgba(theme.$color-greyscale-transparency-4, 9%);
       }
+
       &:active:enabled {
         background-color: rgba(theme.$color-greyscale-transparency-3, 6%);
       }
