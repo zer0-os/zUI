@@ -1,5 +1,6 @@
 @use '../../styles/theme' as theme;
 @import '../../styles/glass';
+@import '../../styles/theme';
 
 .zui-iconButton {
   @include glass-text-primary-color;
