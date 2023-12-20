@@ -110,7 +110,7 @@ describe('IconButton', () => {
     });
 
     describe('Icon Sizes', () => {
-      it('has an offset of 8px for the icon when the value of the size attribute is greater than 16px', () => {
+      it('has an offset of 12px for the icon when the value of the size attribute is greater than 24px', () => {
         renderComponent({
           Icon: IconXClose,
           label: 'the-label',
@@ -120,7 +120,7 @@ describe('IconButton', () => {
 
         expect(iconRender).toHaveBeenLastCalledWith({
           label: 'the-label',
-          size: 50,
+          size: 46,
           isFilled: false
         });
       });
@@ -150,7 +150,7 @@ describe('IconButton', () => {
 
         expect(iconRender).toHaveBeenLastCalledWith({
           label: 'the-label',
-          size: 32, // 40 (button size) - 8 (offset) = 32 (icon size)
+          size: 28, // 40 (button size) - 12 (offset) = 28 (icon size)
           isFilled: false
         });
       });
@@ -165,7 +165,7 @@ describe('IconButton', () => {
 
         expect(iconRender).toHaveBeenLastCalledWith({
           label: 'the-label',
-          size: 24, // 32 (button size) - 8 (offset) = 24 (icon size)
+          size: 20, // 32 (button size) - 12 (offset) = 20 (icon size)
           isFilled: false
         });
       });
@@ -180,7 +180,7 @@ describe('IconButton', () => {
 
         expect(iconRender).toHaveBeenLastCalledWith({
           label: 'the-label',
-          size: 16, // 24 (button size) - 8 (offset) = 16 (icon size)
+          size: 14, // 24 (button size) - 10 (offset) = 14 (icon size)
           isFilled: false
         });
       });

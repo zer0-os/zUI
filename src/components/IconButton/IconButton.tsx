@@ -38,7 +38,15 @@ const getSize = (size: IconButtonProperties['size'], forIcon = false): string | 
   }
 
   if (forIcon && baseSize !== undefined) {
-    const offset = baseSize <= 16 ? 4 : 8;
+    let offset;
+    if (baseSize <= 16) {
+      offset = 4;
+    } else if (baseSize <= 24) {
+      offset = 10;
+    } else {
+      offset = 12;
+    }
+
     return baseSize - offset;
   }
 
