@@ -64,15 +64,50 @@
   backdrop-filter: blur(32px);
 }
 
-// TODO: remove @mixin glass-shadows-and-blur and use @mixin glass-shadows and separate blur instead
-// D/Glass/Glass/Shadows
-@mixin glass-shadows {
+@mixin glass-outer {
+  border-radius: 16px;
+  position: relative;
+  padding: 1px;
+
+  // D/Glass/Glass/Shadows
   box-shadow: 2px 3px 9px 0px rgba(0, 0, 0, 0.31), 10px 12px 16px 0px rgba(0, 0, 0, 0.27),
     22px 27px 21px 0px rgba(0, 0, 0, 0.16), 39px 48px 25px 0px rgba(0, 0, 0, 0.05),
-    61px 75px 27px 0px rgba(0, 0, 0, 0.01), 0px 0px 8px 0px rgba(255, 255, 255, 0.05) inset;
+    61px 75px 27px 0px rgba(0, 0, 0, 0.01);
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    pointer-events: none;
+
+    // Unfortunately, we can't have a gradient border with rounded corners.
+    // Our solution is to use a div with a full background and then mask out the inside
+    // of it so that you only see approximately 1 px of it
+
+    // D/Glass/Materials/Raised (Glass)/Stroke
+    background-image: linear-gradient(
+      153.33deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 24.43%,
+      rgba(255, 255, 255, 0.01) 79.12%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    mask: linear-gradient(black, black) center / 100% 100% no-repeat exclude,
+      radial-gradient(circle 16px at 17px 17px, black 99%, transparent),
+      radial-gradient(circle 16px at 17px calc(100% - 17px), black 99%, transparent),
+      radial-gradient(circle 16px at calc(100% - 17px) 17px, black 99%, transparent),
+      radial-gradient(circle 16px at calc(100% - 17px) calc(100% - 17px), black 99%, transparent),
+      linear-gradient(black, black) center / calc(100% - 2px) calc(100% - 26px) no-repeat,
+      linear-gradient(black, black) center / calc(100% - 26px) calc(100% - 2px) no-repeat;
+  }
 }
 
-// D/Glass/Materials/Raised (Glass)/Fill
-@mixin glass-materials-raised-glass-fill {
-  background: radial-gradient(273.54% 141.42% at 0% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+@mixin glass-inner {
+  border-radius: 16px;
+  overflow: hidden;
+
+  // D/Glass/Materials/Raised (Glass)/Fill
+  background: radial-gradient(273.54% 141.42% at 0% 0%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%),
+    rgba(10, 10, 10, 0.75);
 }
