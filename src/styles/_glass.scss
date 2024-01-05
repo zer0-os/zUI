@@ -64,6 +64,10 @@
   backdrop-filter: blur(32px);
 }
 
+// Unfortunately, we can't have a gradient border with rounded corners.
+// Our solution is to use a div with a full background and then mask out the inside
+// of it so that you only see approximately 1 px of it
+// Use this mixin on the outer div and then glass-inner on the inner div
 @mixin glass-outer {
   border-radius: 16px;
   position: relative;
@@ -80,10 +84,6 @@
     inset: 0;
     border-radius: 16px;
     pointer-events: none;
-
-    // Unfortunately, we can't have a gradient border with rounded corners.
-    // Our solution is to use a div with a full background and then mask out the inside
-    // of it so that you only see approximately 1 px of it
 
     // D/Glass/Materials/Raised (Glass)/Stroke
     background-image: linear-gradient(
