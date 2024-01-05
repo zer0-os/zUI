@@ -1,4 +1,5 @@
 @import '../../styles/theme';
+@import '../../styles/glass';
 
 .Overlay {
   display: grid;
@@ -20,10 +21,14 @@
   }
 }
 
-.Content {
-  min-width: 18.75rem; // 300px
-  padding: 1.875rem; // 30px
-  border-radius: 1rem;
+.ContentWrapper {
+  @include glass-outer;
+}
 
-  background: $color-primary-2;
+.Content {
+  @include glass-inner;
+
+  min-width: 300px;
+  padding: 24px;
+  outline: none;
 }
