@@ -104,5 +104,10 @@ test('should render Overlay and Content in Portal with correct nesting', () => {
 
   const overlay = getByTestId('overlay');
   expect(overlay.childElementCount).toBe(1);
-  expect(overlay.children[0].getAttribute('data-testid')).toContain('content');
+
+  // Verify that the first child of overlay is the contentWrapper
+  const contentWrapper = overlay.children[0];
+  expect(contentWrapper).toBeTruthy();
+
+  expect(contentWrapper.children[0].getAttribute('data-testid')).toContain('content');
 });
