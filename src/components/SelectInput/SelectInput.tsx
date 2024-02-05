@@ -19,6 +19,7 @@ export type SelectInputProps = {
   alert?: { variant: AlertProps['variant']; text: ReactNode };
   error?: boolean;
   itemSize: 'compact' | 'spacious';
+  menuClassName?: string;
 };
 
 export const SelectInput: FC<SelectInputProps> = ({
@@ -29,7 +30,8 @@ export const SelectInput: FC<SelectInputProps> = ({
   placeholder,
   alert,
   error = false,
-  itemSize = 'compact'
+  itemSize = 'compact',
+  menuClassName
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -61,7 +63,7 @@ export const SelectInput: FC<SelectInputProps> = ({
 
   return (
     <DropdownMenu
-      menuClassName={cx({ AlertOverlap: alert })}
+      menuClassName={menuClassName}
       trigger={trigger}
       items={items}
       open={isOpen}
