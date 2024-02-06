@@ -56,7 +56,8 @@ const DEFAULT_PROPS: SelectInputProps = {
   items: MOCK_ITEMS,
   label: 'Fruit',
   placeholder: 'Select fruit...',
-  value: ''
+  value: '',
+  itemSize: 'compact'
 };
 
 afterEach(() => {

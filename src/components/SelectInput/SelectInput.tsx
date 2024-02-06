@@ -18,6 +18,8 @@ export type SelectInputProps = {
   placeholder: string;
   alert?: { variant: AlertProps['variant']; text: ReactNode };
   error?: boolean;
+  itemSize: 'compact' | 'spacious';
+  menuClassName?: string;
 };
 
 export const SelectInput: FC<SelectInputProps> = ({
@@ -27,7 +29,9 @@ export const SelectInput: FC<SelectInputProps> = ({
   helperText,
   placeholder,
   alert,
-  error = false
+  error = false,
+  itemSize = 'compact',
+  menuClassName
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,17 +57,18 @@ export const SelectInput: FC<SelectInputProps> = ({
       error={error}
       endEnhancer={<IconChevronDown size={16} />}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onChange={() => {}}
+      onChange={() => { }}
     />
   );
 
   return (
     <DropdownMenu
-      menuClassName={cx({ AlertOverlap: alert })}
+      menuClassName={menuClassName}
       trigger={trigger}
       items={items}
       open={isOpen}
       onOpenChange={onOpenChange}
+      itemSize={itemSize}
     />
   );
 };
