@@ -52,7 +52,8 @@
     }
 
     &[data-status='error'] {
-      border-color: $color-failure-8;
+      border: 1px solid;
+      border-color: $color-failure-11;
 
       &:focus-within {
         border-color: $color-failure-9;
