@@ -1,4 +1,5 @@
 @import '../../styles/theme';
+@import '../../styles/glass';
 
 $group-border-radius: 0.5rem;
 
@@ -13,7 +14,7 @@ $group-border-radius: 0.5rem;
 
   .Item {
     overflow: hidden;
-    margin-top: 0.25rem;
+    margin-top: 16px;
 
     &:first-child {
       border-top-left-radius: $group-border-radius;
@@ -35,6 +36,10 @@ $group-border-radius: 0.5rem;
       border-radius: 0.25rem;
       outline: 0.0625rem solid $color-secondary-11;
     }
+
+    &[data-state='open'] {
+      @include glass-state-active-border;
+    }
   }
 
   .Trigger {
@@ -46,24 +51,27 @@ $group-border-radius: 0.5rem;
     width: 100%;
     box-sizing: border-box;
 
-    padding: 0.5rem 1rem 0.438rem;
+    padding: 8px 16px;
 
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    @include glass-text-primary-color;
 
     background-color: transparent;
     transition: 0.15s all ease;
-    border-bottom: 0.063rem solid $color-greyscale-5;
+    @include glass-separator;
 
     font-family: inherit;
+    border-radius: 8px;
 
     &:hover {
-      background-color: $color-primary-3;
       cursor: pointer;
+      @include glass-state-hover-color;
     }
 
     &[data-state='open'] {
-      background-color: $color-primary-3;
+      font-weight: 600;
 
       & > .Chevron {
         transform: rotate(180deg);
@@ -104,8 +112,11 @@ $group-border-radius: 0.5rem;
   .Content {
     position: relative;
     overflow: hidden;
-    font-size: 1rem;
-    line-height: 1.5rem;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    @include glass-text-primary-color;
 
     transition: height 300ms ease;
     z-index: 0;
