@@ -141,7 +141,8 @@ $group-border-radius: 0.5rem;
     }
 
     &[data-state='closed'] {
-      animation: slideUp 200ms cubic-bezier(0.87, 0, 0.13, 1);
+      animation: none;
+      //animation: slideUp 200ms cubic-bezier(0.87, 0, 0.13, 1);
     }
   }
 
