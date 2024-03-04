@@ -64,6 +64,17 @@
   backdrop-filter: blur(32px);
 }
 
+// D/Glass/Separator
+@mixin glass-separator {
+  border-bottom: 1px solid rgba(215, 215, 250, 0.03);
+}
+
+// D/Glass/Ui State/Active
+@mixin glass-state-active-border {
+  border-radius: 8px;
+  border: 1px solid rgba(163, 162, 163, 0.1);
+}
+
 // Unfortunately, we can't have a gradient border with rounded corners.
 // Our solution is to use a div with a full background and then mask out the inside
 // of it so that you only see approximately 1 px of it
