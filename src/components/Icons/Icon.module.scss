@@ -1,3 +1,7 @@
 .Container {
   background: none;
+
+  // radix uses position: absolute under the hood with nothing for it to be relative to.
+  // that causes the icon to be positioned in weird places that breaks overflow rules.
+  position: relative;
 }
