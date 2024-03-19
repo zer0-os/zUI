@@ -89,6 +89,8 @@
     22px 27px 21px 0px rgba(0, 0, 0, 0.16), 39px 48px 25px 0px rgba(0, 0, 0, 0.05),
     61px 75px 27px 0px rgba(0, 0, 0, 0.01);
 
+  backdrop-filter: blur(32px);
+
   &:before {
     content: '';
     position: absolute;
