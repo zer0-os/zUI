@@ -8,17 +8,18 @@
 @import '../../styles/animations';
 @import '../../styles/theme';
 @import '../../styles/typography';
+@import '../../styles/glass';
 
 // Set up variables
 .zui-button {
-  --zui-button-bg: #{$color-secondary-4};
+  --zui-button-bg: rgba(253, 252, 253, 0.05);
   --zui-button-bg-hover: #{$color-secondary-11};
   --zui-button-bg-active: #{$color-secondary-10};
   --zui-button-border-color: #{$color-secondary-11};
   --zui-button-border-color-hover: #{$color-primary-12};
   --zui-button-color: #{$color-secondary-11};
   --zui-button-color-hover: #{$color-black};
-  --zui-button-padding-sides: 1.563rem;
+  --zui-button-padding-sides: 8px;
 
   &[aria-disabled='true'] {
     --zui-button-bg: none;
@@ -47,6 +48,8 @@
 
 /* stylelint-disable no-duplicate-selectors */
 .zui-button {
+  @include glass-shadows-and-blur;
+
   position: relative;
   display: flex;
   justify-content: center;
@@ -68,15 +71,25 @@
   background: var(--zui-button-bg);
 
   &:hover {
-    background: var(--zui-button-bg-hover);
+    background: rgba(255, 255, 255, 0.1);
 
-    .zui-button-content {
-      color: var(--zui-button-color-hover);
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+      border-radius: 1000px;
+      transition: opacity #{$time-short} ease-in-out;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at center, var(--zui-button-bg-hover) 0%, rgba(1, 244, 203, 0) 65%);
     }
   }
 
   &-active {
-    background: var(--zui-button-bg-active) !important;
+    background: rgba(253, 252, 253, 0.05) !important;
   }
 
   cursor: pointer;
@@ -101,19 +114,23 @@
     transition: color #{$time-short} ease-in-out, text-shadow #{$time-short} ease-in-out;
   }
 
-  // Pseudo-element for borders
-  &:after {
-    content: ' ';
-    width: calc(100% - 4px);
-    height: 100%;
+  &::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-
+    right: 0;
+    bottom: 0;
     border-radius: inherit;
-    border-left: 2px solid var(--zui-button-border-color);
-    border-right: 2px solid var(--zui-button-border-color);
-    transition: border-color #{$time-short} ease-in-out;
+    z-index: -1;
+
+    background: linear-gradient(
+      167.33deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0) 24.43%,
+      rgba(255, 255, 255, 0.01) 79.12%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
   }
 
   // Disabled button
