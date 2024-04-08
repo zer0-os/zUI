@@ -8,6 +8,6 @@
 @import '../../styles/theme';
 
 .react-loading-skeleton {
-  --base-color: #{$color-primary-3};
-  --highlight-color: #{$color-primary-6};
+  --base-color: rgba(215, 215, 250, 0.03);
+  --highlight-color: rgba(163, 162, 163, 0.1);
 }
