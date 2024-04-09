@@ -109,3 +109,27 @@ test('should apply endEnhancer', () => {
   const endEnhancer = getByText('end enhancer');
   expect(endEnhancer).toBeInTheDocument();
 });
+
+test('startEnhancer should not appear when loading', () => {
+  const { queryByText } = renderComponent({
+    isLoading: true,
+    startEnhancer: <span>start enhancer</span>
+  });
+  const startEnhancer = queryByText('start enhancer');
+  expect(startEnhancer).toBeNull();
+});
+
+test('endEnhancer should not appear when loading', () => {
+  const { queryByText } = renderComponent({
+    isLoading: true,
+    endEnhancer: <span>end enhancer</span>
+  });
+  const endEnhancer = queryByText('end enhancer');
+  expect(endEnhancer).toBeNull();
+});
+
+test('should apply large size when specified', () => {
+  const { getByRole } = renderComponent({ size: 'large' });
+  const button = getByRole('button');
+  expect(button).toHaveClass('zui-button-large');
+});
