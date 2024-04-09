@@ -43,7 +43,7 @@ export const ModalConfirmation: React.FC<ModalConfirmationProps> = ({
 
       <div className={styles.FooterActions} data-testid="modal-actions">
         <DialogClose asChild>
-          <Button variant="text" onPress={onCancel} data-testid="modal-cancel-button">
+          <Button isTextButton onPress={onCancel} data-testid="modal-cancel-button">
             {cancelLabel}
           </Button>
         </DialogClose>

@@ -36,6 +36,7 @@
   }
 }
 
+/* stylelint-disable no-duplicate-selectors */
 .zui-button {
   @include glass-shadows-and-blur;
   position: relative;
@@ -178,3 +179,4 @@
     border-color: var(--zui-button-border-color) !important;
   }
 }
+/* stylelint-enable no-duplicate-selectors */
