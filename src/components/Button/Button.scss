@@ -11,7 +11,8 @@
 
 .zui-button {
   --button-bg-base: rgba(253, 252, 253, 0.05);
-  --button-bg-hover: rgba(255, 255, 255, 0.1);
+  --button-bg-hover: rgba(163, 162, 163, 0.1);
+  --button-bg-active: rgba(167, 163, 163, 0.05);
 
   --zui-button-border-color: #{$color-secondary-11};
   --zui-button-color: #{$color-secondary-11};
@@ -104,7 +105,7 @@
   &:active,
   &-secondary:active,
   &-negative:active {
-    background: var(--button-bg-base) !important;
+    background: var(--button-bg-active) !important;
   }
 
   &-text {
