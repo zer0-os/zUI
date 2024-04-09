@@ -14,13 +14,16 @@ export interface ButtonProps {
   onPressStart?: () => void;
   onPressEnd?: () => void;
 
-  variant?: 'primary' | 'secondary' | 'negative' | 'text';
+  variant?: 'primary' | 'secondary' | 'negative';
   isLoading?: boolean;
   isDisabled?: boolean;
   isSubmit?: boolean;
+  isTextButton?: boolean;
 
   startEnhancer?: ReactNode;
   endEnhancer?: ReactNode;
+
+  size?: 'small' | 'large';
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -32,6 +35,8 @@ export const Button: FC<ButtonProps> = ({
   variant = 'primary',
   startEnhancer,
   endEnhancer,
+  size = 'small',
+  isTextButton = false,
   ...rest
 }) => {
   const ref = useRef(null);
@@ -49,18 +54,23 @@ export const Button: FC<ButtonProps> = ({
   return createElement(
     'button',
     {
-      className: classNames(className, 'zui-button', `zui-button-${variant}`, {
-        'zui-button-active': isPressed
+      className: classNames(className, 'zui-button', `zui-button-${variant}`, `zui-button-${size}`, {
+        'zui-button-active': isPressed,
+        'zui-button-text': isTextButton
       }),
       ref,
       'aria-disabled': disabled,
       ...buttonProps
     },
     <>
-      <div className="zui-button-content">
-        {startEnhancer}
-        {isLoading ? <Spinner className="zui-button-spinner" /> : children}
-        {endEnhancer}
+      <div className={`zui-button-content-container zui-button-content-container-${size}`}>
+        {!isLoading && startEnhancer}
+        {isLoading ? (
+          <Spinner className="zui-button-spinner" />
+        ) : (
+          <div className={`zui-button-content zui-button-content-${size}`}>{children}</div>
+        )}
+        {!isLoading && endEnhancer}
       </div>
     </>
   );
