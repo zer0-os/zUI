@@ -14,10 +14,11 @@ export interface ButtonProps {
   onPressStart?: () => void;
   onPressEnd?: () => void;
 
-  variant?: 'primary' | 'secondary' | 'negative' | 'text';
+  variant?: 'primary' | 'secondary' | 'negative';
   isLoading?: boolean;
   isDisabled?: boolean;
   isSubmit?: boolean;
+  isTextButton?: boolean;
 
   startEnhancer?: ReactNode;
   endEnhancer?: ReactNode;
@@ -35,6 +36,7 @@ export const Button: FC<ButtonProps> = ({
   startEnhancer,
   endEnhancer,
   size = 'small',
+  isTextButton = false,
   ...rest
 }) => {
   const ref = useRef(null);
@@ -53,7 +55,8 @@ export const Button: FC<ButtonProps> = ({
     'button',
     {
       className: classNames(className, 'zui-button', `zui-button-${variant}`, `zui-button-${size}`, {
-        'zui-button-active': isPressed
+        'zui-button-active': isPressed,
+        'zui-button-text': isTextButton
       }),
       ref,
       'aria-disabled': disabled,

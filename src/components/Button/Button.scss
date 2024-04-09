@@ -30,11 +30,6 @@
     --zui-text-shadow-hover: 0px 0px 16px rgba(221, 50, 50, 0.75);
   }
 
-  &-text {
-    --zui-button-border-color: #{$color-secondary-11};
-    --zui-text-shadow-hover: 0px 0px 16px rgba(1, 250, 195, 0.75);
-  }
-
   &[aria-disabled='true'] {
     --zui-button-color: #{$color-greyscale-9};
     --zui-text-shadow-hover: none;
