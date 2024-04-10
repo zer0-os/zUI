@@ -28,6 +28,7 @@
   cursor: pointer;
   transition: color #{$time-short} ease-in-out, border-color #{$time-short} ease-in-out;
   color: var(--zui-button-color);
+  width: fit-content;
 
   --button-bg-base: rgba(253, 252, 253, 0.05);
   --button-bg-hover: rgba(163, 162, 163, 0.1);
