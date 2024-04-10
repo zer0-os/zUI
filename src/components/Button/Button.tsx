@@ -1,29 +1,46 @@
-import React, { createElement, FC, ReactNode, useRef } from 'react';
+import React, { createElement, FC, useRef } from 'react';
 
 import { useButton } from '@react-aria/button';
 import classNames from 'classnames';
+import { Spinner } from '../LoadingIndicator';
+import 'focus-visible';
 
 import './Button.scss';
-import 'focus-visible';
-import { Spinner } from '../LoadingIndicator';
+
+export enum Size {
+  Small = 'small',
+  Large = 'large'
+}
+
+export enum Variant {
+  Primary = 'primary',
+  Secondary = 'secondary'
+}
+
+export enum Color {
+  Highlight = 'highlight',
+  Red = 'red',
+  Greyscale = 'greyscale'
+}
 
 export interface ButtonProps {
   className?: string;
-  children: ReactNode | string;
-  onPress?: () => void;
-  onPressStart?: () => void;
-  onPressEnd?: () => void;
+  children: React.ReactNode | string;
 
-  variant?: 'primary' | 'secondary' | 'negative';
+  size?: Size;
+  variant?: Variant;
+  color?: Color;
+
   isLoading?: boolean;
   isDisabled?: boolean;
   isSubmit?: boolean;
-  isTextButton?: boolean;
 
-  startEnhancer?: ReactNode;
-  endEnhancer?: ReactNode;
+  startEnhancer?: React.ReactNode;
+  endEnhancer?: React.ReactNode;
 
-  size?: 'small' | 'large';
+  onPress?: () => void;
+  onPressStart?: () => void;
+  onPressEnd?: () => void;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -32,44 +49,50 @@ export const Button: FC<ButtonProps> = ({
   isLoading,
   isDisabled,
   isSubmit,
-  variant = 'primary',
+  variant = Variant.Primary,
+  color = Color.Highlight,
+  size = Size.Small,
   startEnhancer,
   endEnhancer,
-  size = 'small',
-  isTextButton = false,
   ...rest
 }) => {
   const ref = useRef(null);
-  const disabled = isDisabled || isLoading;
 
   const { buttonProps, isPressed } = useButton(
     {
       ...rest,
       type: isSubmit ? 'submit' : 'button',
-      isDisabled: disabled
+      isDisabled: isDisabled || isLoading
     },
     ref ?? null
+  );
+
+  const buttonClasses = classNames(
+    className,
+    'zui-button',
+    `zui-button-${size}`,
+    `zui-button-${variant}`,
+    `zui-button-${color}`,
+    {
+      'zui-button-active': isPressed,
+      'zui-button-loading': isLoading,
+      'zui-button-disabled': isDisabled
+    }
   );
 
   return createElement(
     'button',
     {
-      className: classNames(className, 'zui-button', `zui-button-${variant}`, `zui-button-${size}`, {
-        'zui-button-active': isPressed,
-        'zui-button-text': isTextButton
-      }),
+      className: buttonClasses,
       ref,
-      'aria-disabled': disabled,
       ...buttonProps
     },
     <>
-      <div className={`zui-button-content-container zui-button-content-container-${size}`}>
+      <div className="zui-button-content-container">
         {!isLoading && startEnhancer}
-        {isLoading ? (
-          <Spinner className="zui-button-spinner" />
-        ) : (
-          <div className={`zui-button-content zui-button-content-${size}`}>{children}</div>
-        )}
+        <div className={`zui-button-content-${size}`}>
+          {isLoading ? <Spinner className="zui-button-spinner" /> : children}
+        </div>
         {!isLoading && endEnhancer}
       </div>
     </>

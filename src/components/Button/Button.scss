@@ -1,7 +1,7 @@
-/**
- * @TODO: :active styling broken in Firefox
- *
- */
+// /**
+//  * @TODO: :active styling broken in Firefox
+//  *
+//  */
 
 @import '../../styles/borders';
 @import '../../styles/animations';
@@ -9,34 +9,7 @@
 @import '../../styles/typography';
 @import '../../styles/glass';
 
-.zui-button {
-  --button-bg-base: rgba(253, 252, 253, 0.05);
-  --button-bg-hover: rgba(163, 162, 163, 0.1);
-  --button-bg-active: rgba(167, 163, 163, 0.05);
-
-  --zui-button-border-color: #{$color-secondary-11};
-  --zui-button-color: #{$color-secondary-11};
-  --zui-text-shadow-hover: 0px 0px 16px rgba(1, 250, 195, 0.75);
-
-  &-secondary {
-    --zui-button-border-color: rgba(253, 253, 255, 0.93);
-    --zui-button-color: rgba(253, 253, 255, 0.93);
-    --zui-text-shadow-hover: 0px 0px 16px rgba(237, 237, 239, 0.75);
-  }
-
-  &-negative {
-    --zui-button-border-color: #{$color-failure-11};
-    --zui-button-color: #{$color-failure-11};
-    --zui-text-shadow-hover: 0px 0px 16px rgba(221, 50, 50, 0.75);
-  }
-
-  &[aria-disabled='true'] {
-    --zui-button-color: #{$color-greyscale-9};
-    --zui-text-shadow-hover: none;
-  }
-}
-
-/* stylelint-disable no-duplicate-selectors */
+// Default (Button Primary Variant)
 .zui-button {
   @include glass-shadows-and-blur;
   position: relative;
@@ -53,18 +26,12 @@
   text-overflow: ellipsis;
   text-transform: capitalize;
   cursor: pointer;
-
   transition: color #{$time-short} ease-in-out, border-color #{$time-short} ease-in-out;
+  color: var(--zui-button-color);
 
-  &-small {
-    height: 32px;
-    padding: 0 8px;
-  }
-
-  &-large {
-    height: 48px;
-    padding: 0 16px;
-  }
+  --button-bg-base: rgba(253, 252, 253, 0.05);
+  --button-bg-hover: rgba(163, 162, 163, 0.1);
+  --button-bg-active: rgba(167, 163, 163, 0.05);
 
   &::before {
     content: '';
@@ -84,99 +51,132 @@
     );
   }
 
-  &:hover,
-  &-secondary:hover,
-  &-negative:hover {
-    background: var(--button-bg-hover);
-    text-shadow: var(--zui-text-shadow-hover);
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 12px;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      opacity: 0.2;
-      border-radius: 1000px;
-      transition: opacity #{$time-short} ease-in-out;
-      transform: translateX(-50%);
-      background: radial-gradient(ellipse at center, var(--zui-button-color) 0%, rgba(1, 244, 203, 0) 65%);
-    }
-  }
-
-  &:active,
-  &-secondary:active,
-  &-negative:active {
-    background: var(--button-bg-active) !important;
-  }
-
-  &-text {
-    padding: 0;
-    background: none;
-    box-shadow: none;
-    backdrop-filter: none;
-
-    &:hover,
-    &:active {
-      background: none !important;
-      text-shadow: var(--zui-text-shadow-hover);
-      transition: text-shadow #{$time-short} ease-in-out;
-
-      &::after {
-        content: none;
-      }
-    }
-
-    &[aria-disabled='true'] {
-      &::before {
-        content: none;
-      }
-    }
-  }
-
-  &[aria-disabled='true'] {
-    opacity: 0.8;
-    pointer-events: none;
-  }
-
-  &-content-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--zui-button-color);
-    text-align: center;
-    font-weight: #{$font-weight-demi-bold};
-    z-index: 2;
-    transition: color #{$time-short} ease-in-out;
-
-    &-small {
-      font-size: #{$size-small};
-      line-height: 20px;
-    }
-
-    &-large {
-      font-size: #{$size-default};
-      line-height: 24px;
-    }
-  }
-
-  &-content {
-    &-small {
-      margin: 0 4px;
-    }
-
-    &-large {
-      margin: 0 8px;
-    }
-  }
-
   &:not(.focus-visible) {
     outline: none;
   }
+}
 
-  &-spinner {
-    border-color: var(--zui-button-border-color) !important;
+// Button Variant - Secondary (text button)
+.zui-button-secondary {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+
+  &::before {
+    background: none;
+  }
+
+  &:hover,
+  &:active {
+    background: none !important;
+    text-shadow: var(--zui-text-shadow-hover);
+    transition: text-shadow #{$time-short} ease-in-out;
+
+    &::after {
+      content: none !important;
+    }
   }
 }
-/* stylelint-enable no-duplicate-selectors */
+
+// Button Size Variants
+.zui-button-small {
+  height: 32px;
+  padding: 0 8px;
+  font-size: #{$size-small};
+  line-height: 20px;
+}
+
+.zui-button-large {
+  height: 48px;
+  padding: 0 16px;
+  font-size: #{$size-default};
+  line-height: 24px;
+}
+
+// Button Content Container
+.zui-button-content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--zui-button-color);
+  text-align: center;
+  font-weight: #{$font-weight-demi-bold};
+  z-index: 2;
+  transition: color #{$time-short} ease-in-out;
+}
+
+// Button Content Size Variants
+.zui-button-content-small {
+  margin: 0 4px;
+}
+
+.zui-button-content-large {
+  margin: 0 8px;
+}
+
+// Button Color Variants
+.zui-button-highlight {
+  --zui-button-color: #{$color-secondary-11};
+  --zui-text-shadow-hover: 0px 0px 16px rgba(1, 250, 195, 0.75);
+}
+
+.zui-button-red {
+  --zui-button-color: #{$color-failure-11};
+  --zui-text-shadow-hover: 0px 0px 16px rgba(221, 50, 50, 0.75);
+}
+
+.zui-button-greyscale {
+  --zui-button-color: #{$color-greyscale-transparency-12};
+  --zui-text-shadow-hover: 0px 0px 16px rgba(237, 237, 239, 0.75);
+}
+
+.zui-button-disabled {
+  --zui-button-color: #{$color-greyscale-transparency-9};
+  --zui-text-shadow-hover: none;
+}
+
+// Button State
+.zui-button:hover {
+  background: var(--button-bg-hover);
+  text-shadow: var(--zui-text-shadow-hover);
+
+  // Glow
+  &::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    border-radius: 1000px;
+    transition: opacity #{$time-short} ease-in-out;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, var(--zui-button-color) 0%, rgba(1, 244, 203, 0) 50%);
+  }
+}
+
+.zui-button:active {
+  background: var(--button-bg-active) !important;
+}
+
+.zui-button-disabled {
+  pointer-events: none;
+  background: none;
+  box-shadow: none;
+
+  &::before {
+    background: none;
+  }
+}
+
+.zui-button-loading {
+  pointer-events: none;
+  box-shadow: none;
+}
+
+// Spinner
+.zui-button-spinner {
+  border-color: var(--zui-button-color) !important;
+}
