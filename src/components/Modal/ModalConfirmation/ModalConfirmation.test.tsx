@@ -52,7 +52,6 @@ jest.mock('@radix-ui/react-dialog', () => ({
   }
 }));
 
-const buttonRender = jest.fn();
 jest.mock('../../Button', () => {
   const originalModule = jest.requireActual('../../Button');
   return {
