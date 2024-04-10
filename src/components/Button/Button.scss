@@ -131,11 +131,6 @@
   --zui-text-shadow-hover: 0px 0px 16px rgba(237, 237, 239, 0.75);
 }
 
-.zui-button-disabled {
-  --zui-button-color: #{$color-greyscale-transparency-9};
-  --zui-text-shadow-hover: none;
-}
-
 // Button State
 .zui-button:hover {
   background: var(--button-bg-hover);
@@ -162,6 +157,9 @@
 }
 
 .zui-button-disabled {
+  --zui-button-color: #{$color-greyscale-transparency-9};
+  --zui-text-shadow-hover: none;
+
   pointer-events: none;
   background: none;
   box-shadow: none;
