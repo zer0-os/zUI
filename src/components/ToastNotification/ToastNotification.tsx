@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 
-import { Button } from '../Button';
+import { Button, Color } from '../Button';
 import { IconInfoCircle, IconXClose } from '../Icons';
 
 import * as Toast from '@radix-ui/react-toast';
@@ -45,7 +45,7 @@ export const ToastNotification = ({
 }: ToastNotificationProps) => {
   const [open, setOpen] = useState(false);
 
-  const buttonVariant = themeVariant === 'error' ? 'negative' : 'primary';
+  const buttonVariant = themeVariant === 'error' ? Color.Red : Color.Highlight;
 
   const handleOnClose = useCallback(() => {
     setOpen(false);
@@ -76,7 +76,7 @@ export const ToastNotification = ({
         </div>
         {actionTitle && (
           <Toast.Action onClick={onClick} asChild altText={actionAltText}>
-            <Button className={ToastButton} variant={buttonVariant}>
+            <Button className={ToastButton} color={buttonVariant}>
               {actionTitle}
             </Button>
           </Toast.Action>
