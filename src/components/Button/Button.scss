@@ -164,6 +164,7 @@
   pointer-events: none;
   background: none;
   box-shadow: none;
+  backdrop-filter: none;
 
   &::before {
     background: none;
