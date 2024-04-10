@@ -1,7 +1,7 @@
 import React from 'react';
 import { DialogProps, Title as DialogTitle, Close as DialogClose } from '@radix-ui/react-dialog';
 import classNames from 'classnames';
-import { Button } from '../../Button';
+import { Button, Color, Variant } from '../../Button';
 import { Modal } from '../Modal';
 import { IconButton } from '../../IconButton';
 import { IconXClose } from '../../Icons';
@@ -43,12 +43,17 @@ export const ModalConfirmation: React.FC<ModalConfirmationProps> = ({
 
       <div className={styles.FooterActions} data-testid="modal-actions">
         <DialogClose asChild>
-          <Button isTextButton onPress={onCancel} data-testid="modal-cancel-button">
+          <Button
+            variant={Variant.Secondary}
+            color={Color.Greyscale}
+            onPress={onCancel}
+            data-testid="modal-cancel-button"
+          >
             {cancelLabel}
           </Button>
         </DialogClose>
         <DialogClose asChild>
-          <Button variant="negative" onPress={onConfirm} data-testid="modal-confirm-button" isLoading={inProgress}>
+          <Button color={Color.Red} onPress={onConfirm} data-testid="modal-confirm-button" isLoading={inProgress}>
             {confirmationLabel}
           </Button>
         </DialogClose>
