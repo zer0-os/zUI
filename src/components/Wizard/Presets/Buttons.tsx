@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import { Button } from '../../Button';
+import { Button, Color } from '../../Button';
 
 import './Buttons.scss';
 
@@ -27,7 +27,7 @@ export const Buttons = ({
 }: ButtonsProps) => (
   <div className={classNames('zui-wizard-buttons', className)}>
     {onClickSecondaryButton && (
-      <Button variant="negative" isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
+      <Button color={Color.Red} isDisabled={!isSecondaryButtonActive} onPress={onClickSecondaryButton}>
         {secondaryButtonText}
       </Button>
     )}
