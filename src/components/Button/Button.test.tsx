@@ -1,7 +1,7 @@
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import React from 'react';
 
-import { Button, ButtonProps } from './';
+import { Button, ButtonProps, Size, Variant } from './';
 
 const TEST_BUTTON_TEXT = 'test button';
 const TEST_CLASS_NAME = 'test-class-name';
@@ -81,7 +81,7 @@ test('should apply class from props', () => {
 });
 
 test('should apply variant class', () => {
-  const { getByRole } = renderComponent({ isDisabled: true, variant: 'secondary' });
+  const { getByRole } = renderComponent({ isDisabled: true, variant: Variant.Secondary });
   const button = getByRole('button');
   expect(button).toHaveClass('zui-button-secondary');
 });
@@ -129,7 +129,7 @@ test('endEnhancer should not appear when loading', () => {
 });
 
 test('should apply large size when specified', () => {
-  const { getByRole } = renderComponent({ size: 'large' });
+  const { getByRole } = renderComponent({ size: Size.Large });
   const button = getByRole('button');
   expect(button).toHaveClass('zui-button-large');
 });
