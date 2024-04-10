@@ -85,6 +85,8 @@ export const Button: FC<ButtonProps> = ({
     {
       className: buttonClasses,
       ref,
+      'aria-busy': isLoading,
+      'aria-disabled': isDisabled,
       ...buttonProps
     },
     <>
