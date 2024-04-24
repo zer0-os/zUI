@@ -62,19 +62,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const inputRef = useRef<HTMLInputElement>();
     // Allow overriding the type to be password only
     const trueType = type === 'password' ? 'password' : 'text';
 
-    const clickWrapper = useCallback(() => {
-      inputRef.current.focus();
-    }, [inputRef]);
-
-    const handleOnChange = useCallback(() => {
-      if (!isDisabled) {
-        onChange(inputRef.current.value);
-      }
-    }, [onChange, isDisabled]);
+    const handleOnChange = useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (!isDisabled) {
+          onChange(event.target.value);
+        }
+      },
+      [onChange, isDisabled]
+    );
 
     const status = error ? 'error' : undefined;
 
@@ -82,7 +80,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div data-disabled={isDisabled} className={classNames(className, styles.Container)}>
         <Labels className={helperTextClassName} label={label} helperText={helperText} />
         <div
-          onClick={clickWrapper}
           className={classNames(styles.Wrapper, wrapperClassName)}
           data-testid="zui-input-wrapper"
           data-size={size}
