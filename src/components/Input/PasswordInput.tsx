@@ -14,7 +14,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>((p
 
   return (
     <Input
-      ref={ref} // Forward the ref to the Input component
+      ref={ref}
       endEnhancer={
         <IconButton
           Icon={isHidden ? IconEye : IconEyeOff}
