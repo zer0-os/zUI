@@ -16,7 +16,7 @@ export interface NumberInputProps extends InputProps {
 /**
  * Number input, with optional BigNumber parsing.
  */
-export const NumberInput = forwardRef<HTMLDivElement, NumberInputProps>(
+export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
   ({ decimals = 18, value, isBigNumber, onChange, ...props }, ref) => {
     const [inputValue, setInputValue] = useState<string>('');
 

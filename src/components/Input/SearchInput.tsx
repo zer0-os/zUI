@@ -1,30 +1,23 @@
-import React from 'react';
-
+import React, { forwardRef } from 'react';
 import { IconSearchMd } from '../Icons';
 import { Input, InputProps } from './Input';
-
 import classNames from 'classnames';
 import styles from './SearchInput.module.scss';
 
-//////////////////
-// Search Input //
-//////////////////
-
 export type SearchInputProps = Omit<InputProps, 'type'>;
 
-export const SearchInput = ({ wrapperClassName, startEnhancer, ...props }: SearchInputProps) => {
+export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>((props, ref) => {
+  const { wrapperClassName, startEnhancer, ...rest } = props;
+
   return (
     <Input
+      ref={ref}
       wrapperClassName={classNames(styles.SearchWrapper, wrapperClassName)}
       startEnhancer={startEnhancer ?? <SearchEnhancer isSearching={Boolean(props.value)} />}
-      {...props}
+      {...rest}
     />
   );
-};
-
-/////////////////////
-// Search Enhancer //
-/////////////////////
+});
 
 interface SearchEnhancerProps {
   isSearching: boolean;

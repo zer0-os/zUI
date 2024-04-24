@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 
 import { Input as TextInput, InputProps as InputPropsComponent } from './Input';
 import { NumberInput } from './NumberInput';
@@ -7,15 +7,15 @@ import { SearchInput } from './SearchInput';
 
 export type InputProps = InputPropsComponent;
 
-export const Input: FC<InputPropsComponent> = props => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   switch (props.type) {
     case 'number':
-      return <NumberInput {...props} />;
+      return <NumberInput ref={ref} {...props} />;
     case 'password':
-      return <PasswordInput {...props} />;
+      return <PasswordInput ref={ref} {...props} />;
     case 'search':
-      return <SearchInput {...props} />;
+      return <SearchInput ref={ref} {...props} />;
     default:
-      return <TextInput {...props} />;
+      return <TextInput ref={ref} {...props} />;
   }
-};
+});

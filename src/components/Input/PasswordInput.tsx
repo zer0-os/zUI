@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-
+import React, { useState, forwardRef } from 'react';
 import { IconButton } from '../IconButton';
 import { Input, InputProps } from './Input';
 import { IconEye, IconEyeOff } from '../Icons';
 
 export type PasswordInputProps = Omit<InputProps, 'type'>;
 
-export const PasswordInput = (props: PasswordInputProps) => {
+export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>((props, ref) => {
   const [isHidden, setIsHidden] = useState(true);
 
-  const toggleVisiblity = () => {
+  const toggleVisibility = () => {
     setIsHidden(!isHidden);
   };
 
   return (
     <Input
+      ref={ref} // Forward the ref to the Input component
       endEnhancer={
         <IconButton
           Icon={isHidden ? IconEye : IconEyeOff}
-          onClick={toggleVisiblity}
+          onClick={toggleVisibility}
           type={'button'}
           size={props.size === 'large' ? 24 : 20}
         />
@@ -27,4 +27,4 @@ export const PasswordInput = (props: PasswordInputProps) => {
       {...props}
     />
   );
-};
+});

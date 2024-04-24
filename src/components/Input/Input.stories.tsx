@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from './';
 import { Button } from '../Button';
@@ -70,4 +70,87 @@ Search.args = {
   placeholder: 'Search',
   type: 'search',
   size: 'small'
+};
+
+const RefocusTemplate: ComponentStory<typeof Input> = args => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <Input ref={inputRef} {...args} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
+};
+
+export const Refocus = RefocusTemplate.bind({});
+Refocus.args = {
+  placeholder: 'Click button to refocus',
+  label: 'Refocus Input Example'
+};
+
+export const RefocusText = RefocusTemplate.bind({});
+RefocusText.args = {
+  label: 'NFT Name',
+  placeholder: 'Type NFT Name',
+  type: 'text'
+};
+
+export const RefocusNumber = RefocusTemplate.bind({});
+RefocusNumber.args = {
+  type: 'number',
+  label: 'Bid Amount (ETH)',
+  placeholder: 'Enter your bid amount'
+};
+
+export const RefocusPassword = RefocusTemplate.bind({});
+RefocusPassword.args = {
+  type: 'password',
+  label: 'Password',
+  placeholder: 'Enter your password'
+};
+
+export const RefocusSearch = RefocusTemplate.bind({});
+RefocusSearch.args = {
+  type: 'search',
+  label: 'Search',
+  placeholder: 'Search here',
+  size: 'small'
+};
+
+export const RefocusWithStartEnhancer = RefocusTemplate.bind({});
+RefocusWithStartEnhancer.args = {
+  placeholder: 'zNA',
+  startEnhancer: '0://',
+  label: 'zNA Address'
+};
+
+export const RefocusWithEndEnhancer = RefocusTemplate.bind({});
+RefocusWithEndEnhancer.args = {
+  placeholder: 'Token Address',
+  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
+  label: 'Token Address'
+};
+
+export const RefocusWithAlert = RefocusTemplate.bind({});
+RefocusWithAlert.args = {
+  placeholder: 'Token Address',
+  alert: { variant: 'success', text: 'Token address is valid!' },
+  label: 'Token Address',
+  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>
+};
+
+export const RefocusWithError = RefocusTemplate.bind({});
+RefocusWithError.args = {
+  value: 'zero.Domain',
+  label: 'Domain zNA',
+  placeholder: 'Domain zNA',
+  error: true,
+  alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
 };
