@@ -38,7 +38,7 @@ const Enhancer: FC<EnhancerProps> = ({ value }) => {
   );
 };
 
-export const Input = forwardRef<HTMLDivElement, InputProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       alert,
@@ -79,7 +79,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
     const status = error ? 'error' : undefined;
 
     return (
-      <div data-disabled={isDisabled} className={classNames(className, styles.Container)} ref={ref}>
+      <div data-disabled={isDisabled} className={classNames(className, styles.Container)}>
         <Labels className={helperTextClassName} label={label} helperText={helperText} />
         <div
           onClick={clickWrapper}
@@ -95,7 +95,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
             data-testid="zui-input"
             onChange={handleOnChange}
             data-size={size}
-            ref={inputRef}
+            ref={ref}
             value={value}
             disabled={isDisabled}
             type={trueType}
