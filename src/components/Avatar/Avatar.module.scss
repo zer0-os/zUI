@@ -88,6 +88,14 @@
     @include glass-text-primary-color;
   }
 
+  .DefaultIcon {
+    color: $color-secondary-11;
+
+    &.isGroup {
+      color: $color-greyscale-12;
+    }
+  }
+
   .Status {
     position: absolute;
     top: 32px;
