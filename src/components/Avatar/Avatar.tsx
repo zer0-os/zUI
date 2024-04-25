@@ -3,7 +3,7 @@ import React from 'react';
 import * as RadixAvatar from '@radix-ui/react-avatar';
 
 import { Status } from '../Status';
-import { IconCurrencyEthereum } from '../Icons';
+import { IconCurrencyEthereum, IconUsers1 } from '../Icons';
 
 import { AVATAR_ICON_SIZE } from './AvatarIconSize.constants';
 
@@ -20,6 +20,7 @@ export interface AvatarProps {
   isActive?: boolean;
   isRaised?: boolean;
   tabIndex?: number;
+  isGroup?: boolean;
 }
 
 export const Avatar = ({
@@ -31,9 +32,19 @@ export const Avatar = ({
   badgeContent,
   isActive,
   isRaised,
-  tabIndex = 0
+  tabIndex = 0,
+  isGroup = false
 }: AvatarProps) => {
-  const initials = userFriendlyName && getInitials(userFriendlyName);
+  const renderDefaultIcon = () => {
+    if (userFriendlyName) {
+      const initials = getInitials(userFriendlyName);
+      return <div>{initials}</div>;
+    } else if (isGroup) {
+      return <IconUsers1 size={AVATAR_ICON_SIZE[size]} />;
+    } else {
+      return <IconCurrencyEthereum size={AVATAR_ICON_SIZE[size]} />;
+    }
+  };
 
   return (
     <div
@@ -44,14 +55,8 @@ export const Avatar = ({
     >
       <RadixAvatar.Root className={styles.Root}>
         <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
-        <RadixAvatar.Fallback className={styles.Fallback} delayMs={600}>
-          {userFriendlyName ? (
-            <div> {initials} </div>
-          ) : (
-            <div className={styles.DefaultIcon}>
-              <IconCurrencyEthereum size={AVATAR_ICON_SIZE[size]} />
-            </div>
-          )}
+        <RadixAvatar.Fallback className={styles.Fallback}>
+          <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
       {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}

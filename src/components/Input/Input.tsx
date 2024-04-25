@@ -1,4 +1,4 @@
-import React, { createElement, FC, forwardRef, ReactNode, useCallback, useRef } from 'react';
+import React, { createElement, FC, forwardRef, ReactNode, useCallback } from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { AriaTextFieldProps } from '@react-types/textfield';
