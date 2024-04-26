@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as RadixAvatar from '@radix-ui/react-avatar';
 
@@ -35,6 +35,12 @@ export const Avatar = ({
   tabIndex = 0,
   isGroup = false
 }: AvatarProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   const renderDefaultIcon = () => {
     if (userFriendlyName) {
       const initials = getInitials(userFriendlyName);
@@ -48,15 +54,21 @@ export const Avatar = ({
 
   return (
     <div
-      className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised })}
+      className={classNames(styles.Avatar, {
+        [styles.isLoaded]: isLoaded,
+        [styles.isActive]: isActive,
+        [styles.isRaised]: isRaised
+      })}
       data-type={type}
       data-size={size}
       tabIndex={tabIndex}
     >
       <RadixAvatar.Root className={styles.Root}>
-        <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
+        <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" onLoad={() => setIsLoaded(true)} />
         <RadixAvatar.Fallback className={styles.Fallback}>
-          <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
+          {!imageURL && (
+            <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
+          )}
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
       {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}
