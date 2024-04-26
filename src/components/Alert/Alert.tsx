@@ -11,11 +11,12 @@ export interface AlertProps {
   className?: string;
   variant?: AlertVariant;
   children?: ReactNode;
+  isFilled?: boolean;
 }
 
-export const Alert = ({ className, variant, children }: AlertProps) => {
+export const Alert = ({ className, variant, children, isFilled = false }: AlertProps) => {
   return (
-    <div className={classNames(styles.Container, className)} data-variant={variant}>
+    <div className={classNames(styles.Container, { [styles.isFilled]: isFilled }, className)} data-variant={variant}>
       {IconVariant[variant]}
       <div>{children}</div>
     </div>
