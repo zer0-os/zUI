@@ -12,21 +12,17 @@
 
   &[data-variant='success'] {
     color: $color-success-11;
-    background-color: $color-success-4;
   }
 
   &[data-variant='error'] {
     color: $color-failure-11;
-    background-color: $color-failure-4;
   }
 
   &[data-variant='warning'] {
     color: $color-warning-11;
-    background-color: $color-warning-4;
   }
 
   &[data-variant='info'] {
     color: $color-primary-11;
-    background-color: $color-primary-4;
   }
 }
