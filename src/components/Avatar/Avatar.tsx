@@ -66,7 +66,7 @@ export const Avatar = ({
           alt="avatar"
           onLoad={handleImageLoaded}
         />
-        <RadixAvatar.Fallback className={classNames(styles.Fallback, { [styles.isLoaded]: isLoaded })}>
+        <RadixAvatar.Fallback className={classNames(styles.Fallback, { [styles.isLoaded]: isLoaded })} delayMs={500}>
           <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
