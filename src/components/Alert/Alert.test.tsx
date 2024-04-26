@@ -5,7 +5,8 @@ import { Alert, AlertProps } from './';
 
 const DEFAULT_PROPS: AlertProps = {
   children: '',
-  variant: 'success'
+  variant: 'success',
+  isFilled: false
 };
 
 jest.mock('../Icons', () => ({
@@ -23,6 +24,11 @@ describe('<Alert />', () => {
   test('should render children', () => {
     const { container } = render(<Alert {...DEFAULT_PROPS}>mock children</Alert>);
     expect(container.firstChild).toHaveTextContent('mock children');
+  });
+
+  test('should apply isFilled', () => {
+    const { container } = render(<Alert {...DEFAULT_PROPS} isFilled />);
+    expect(container.firstChild).toHaveClass('isFilled');
   });
 
   describe('icons', () => {

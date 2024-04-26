@@ -25,4 +25,22 @@
   &[data-variant='info'] {
     color: $color-primary-11;
   }
+
+  &.isFilled {
+    &[data-variant='success'] {
+      background-color: $color-success-4;
+    }
+
+    &[data-variant='error'] {
+      background-color: $color-failure-4;
+    }
+
+    &[data-variant='warning'] {
+      background-color: $color-warning-4;
+    }
+
+    &[data-variant='info'] {
+      background-color: $color-primary-4;
+    }
+  }
 }
