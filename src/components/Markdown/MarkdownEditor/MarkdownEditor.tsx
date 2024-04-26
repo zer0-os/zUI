@@ -52,7 +52,7 @@ export const MarkdownEditor: FC<MarkdownEditorProps> = ({ text = '', placeholder
         />
       </div>
       {errorText && (
-        <Alert variant={'error'} className={styles.ErrorMessage}>
+        <Alert variant={'error'} className={styles.ErrorMessage} isFilled>
           {errorText}
         </Alert>
       )}
