@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as RadixAvatar from '@radix-ui/react-avatar';
 
@@ -35,6 +35,12 @@ export const Avatar = ({
   tabIndex = 0,
   isGroup = false
 }: AvatarProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleImageLoaded = () => {
+    setIsLoaded(true);
+  };
+
   const renderDefaultIcon = () => {
     if (userFriendlyName) {
       const initials = getInitials(userFriendlyName);
@@ -54,8 +60,13 @@ export const Avatar = ({
       tabIndex={tabIndex}
     >
       <RadixAvatar.Root className={styles.Root}>
-        <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
-        <RadixAvatar.Fallback className={styles.Fallback}>
+        <RadixAvatar.Image
+          className={classNames(styles.Image, { [styles.isLoaded]: isLoaded })}
+          src={imageURL}
+          alt="avatar"
+          onLoad={handleImageLoaded}
+        />
+        <RadixAvatar.Fallback className={classNames(styles.Fallback, { [styles.isLoaded]: isLoaded })}>
           <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
