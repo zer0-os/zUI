@@ -101,7 +101,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {endEnhancer && <Enhancer value={endEnhancer} />}
         </div>
         {alert && (
-          <Alert className={alertClassName} variant={alert.variant}>
+          <Alert className={alertClassName} variant={alert.variant} isFilled>
             {alert.text}
           </Alert>
         )}
