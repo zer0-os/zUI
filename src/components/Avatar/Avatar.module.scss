@@ -9,9 +9,6 @@
   line-height: 150%;
 
   border-radius: 9999px;
-  opacity: 0.2;
-  transition: opacity 0.5s ease-in-out;
-  backdrop-filter: blur(10px);
 
   @include glass-separator-primary;
 
@@ -40,11 +37,6 @@
 
       @include glass-materials-raised;
     }
-  }
-
-  &.isLoaded {
-    opacity: 1;
-    backdrop-filter: none;
   }
 
   .Root {
@@ -84,6 +76,13 @@
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
+
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.isLoaded {
+      opacity: 1;
+    }
   }
 
   .Fallback {
@@ -95,7 +94,14 @@
     font-weight: 400;
     line-height: 21px;
 
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+
     @include glass-text-primary-color;
+
+    &.isLoaded {
+      opacity: 0;
+    }
   }
 
   .DefaultIcon {
