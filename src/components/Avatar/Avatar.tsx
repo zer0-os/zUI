@@ -55,11 +55,10 @@ export const Avatar = ({
     >
       <RadixAvatar.Root className={styles.Root}>
         <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
-        {!imageURL && (
-          <RadixAvatar.Fallback className={styles.Fallback}>
-            <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
-          </RadixAvatar.Fallback>
-        )}
+
+        <RadixAvatar.Fallback className={styles.Fallback}>
+          <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
+        </RadixAvatar.Fallback>
       </RadixAvatar.Root>
       {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}
       {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} />}
