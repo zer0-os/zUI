@@ -1,6 +1,15 @@
 @import '../../styles/theme';
 @import '../../styles/glass';
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .Avatar {
   position: relative;
   display: flex;
@@ -78,11 +87,7 @@
     border-radius: inherit;
 
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-
-    &.isLoaded {
-      opacity: 1;
-    }
+    animation: fadeIn 3s forwards;
   }
 
   .Fallback {
@@ -94,14 +99,8 @@
     font-weight: 400;
     line-height: 21px;
 
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-
-    @include glass-text-primary-color;
-
-    &.isLoaded {
-      opacity: 0;
-    }
+    opacity: 0;
+    animation: fadeIn 3s forwards;
   }
 
   .DefaultIcon {
