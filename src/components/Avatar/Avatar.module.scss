@@ -1,31 +1,19 @@
 @import '../../styles/theme';
 @import '../../styles/glass';
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .Avatar {
   position: relative;
   display: flex;
   cursor: pointer;
   font-size: 0.875rem;
   line-height: 150%;
-
   border-radius: 9999px;
-
   @include glass-separator-primary;
 
   &.isActive {
     border-radius: 50%;
     outline-offset: 0.25rem;
     outline: 0.0625rem solid $color-secondary-11;
-
     &[data-type='square'] {
       border-radius: 0.5rem;
     }
@@ -33,7 +21,6 @@
 
   &.isRaised {
     @include glass-shadow-low;
-
     &::before {
       content: '';
       position: absolute;
@@ -43,7 +30,6 @@
       bottom: 0;
       border-radius: inherit;
       z-index: -1;
-
       @include glass-materials-raised;
     }
   }
@@ -62,18 +48,15 @@
 
   .Badge {
     @include glass-materials-flat-thick;
-
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     border-radius: 50%;
-
     width: 16px;
     height: 16px;
     top: -4px;
     left: 28px;
-
     font-weight: 500;
     font-size: 8px;
     line-height: 11px;
@@ -85,9 +68,6 @@
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
-
-    opacity: 0;
-    animation: fadeIn 2s forwards;
   }
 
   .Fallback {
@@ -98,9 +78,7 @@
     height: 100%;
     font-weight: 400;
     line-height: 21px;
-
-    opacity: 0;
-    animation: fadeIn 2s forwards;
+    @include glass-text-primary-color;
   }
 
   .DefaultIcon {
@@ -121,21 +99,17 @@
     .Root {
       border-radius: 8px;
     }
-
     &:focus-within {
       border-radius: 8px;
     }
   }
 
-  // Sizes
   &[data-size='extra small'] {
     font-size: 8px;
-
     .Root {
       width: 16px;
       height: 16px;
     }
-
     .Fallback {
       line-height: 11px;
     }
@@ -144,17 +118,14 @@
   &[data-size='small'] {
     font-size: 10px;
     line-height: 12px;
-
     .Root {
       width: 24px;
       height: 24px;
     }
-
     .Badge {
       top: -8px;
       left: 16px;
     }
-
     .Status {
       top: 16px;
       left: 16px;
@@ -164,12 +135,10 @@
   &[data-size='medium'] {
     font-size: 10px;
     line-height: 12px;
-
     .Root {
       width: 2rem;
       height: 2rem;
     }
-
     .Status {
       top: 24px;
       left: 24px;

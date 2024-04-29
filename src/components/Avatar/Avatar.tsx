@@ -1,5 +1,4 @@
 import React from 'react';
-
 import * as RadixAvatar from '@radix-ui/react-avatar';
 
 import { Status } from '../Status';
