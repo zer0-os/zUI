@@ -11,7 +11,7 @@
   border-radius: 0.5rem;
 
   &[data-variant='success'] {
-    color: $color-success-11;
+    color: $color-secondary-11;
   }
 
   &[data-variant='error'] {
@@ -28,7 +28,7 @@
 
   &.isFilled {
     &[data-variant='success'] {
-      background-color: $color-success-4;
+      background-color: $color-secondary-4;
     }
 
     &[data-variant='error'] {
