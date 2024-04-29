@@ -8,12 +8,14 @@
   font-size: 0.875rem;
   line-height: 150%;
   border-radius: 9999px;
+
   @include glass-separator-primary;
 
   &.isActive {
     border-radius: 50%;
     outline-offset: 0.25rem;
     outline: 0.0625rem solid $color-secondary-11;
+
     &[data-type='square'] {
       border-radius: 0.5rem;
     }
@@ -30,6 +32,7 @@
       bottom: 0;
       border-radius: inherit;
       z-index: -1;
+
       @include glass-materials-raised;
     }
   }
@@ -48,6 +51,7 @@
 
   .Badge {
     @include glass-materials-flat-thick;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,6 +82,7 @@
     height: 100%;
     font-weight: 400;
     line-height: 21px;
+
     @include glass-text-primary-color;
   }
 
@@ -99,6 +104,7 @@
     .Root {
       border-radius: 8px;
     }
+
     &:focus-within {
       border-radius: 8px;
     }
@@ -106,10 +112,12 @@
 
   &[data-size='extra small'] {
     font-size: 8px;
+
     .Root {
       width: 16px;
       height: 16px;
     }
+
     .Fallback {
       line-height: 11px;
     }
@@ -118,14 +126,17 @@
   &[data-size='small'] {
     font-size: 10px;
     line-height: 12px;
+
     .Root {
       width: 24px;
       height: 24px;
     }
+
     .Badge {
       top: -8px;
       left: 16px;
     }
+
     .Status {
       top: 16px;
       left: 16px;
@@ -135,10 +146,12 @@
   &[data-size='medium'] {
     font-size: 10px;
     line-height: 12px;
+
     .Root {
       width: 2rem;
       height: 2rem;
     }
+
     .Status {
       top: 24px;
       left: 24px;
