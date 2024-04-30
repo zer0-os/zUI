@@ -13,38 +13,19 @@ export const Default = Template.bind({});
 Default.args = {
   statusType: 'active',
   badgeContent: '9+',
-  userFriendlyName: 'Mic Brooklyn',
-  imageURL: 'https://picsum.photos/200/300'
-};
-
-export const Square = Template.bind({});
-Square.args = {
-  type: 'square',
-  statusType: 'active',
-  badgeContent: '9+',
-  userFriendlyName: 'Mic Brooklyn',
   imageURL: 'https://picsum.photos/200/300'
 };
 
 export const OnlyStatus = Template.bind({});
 OnlyStatus.args = {
   statusType: 'active',
-  userFriendlyName: 'Mic Brooklyn',
   imageURL: 'https://picsum.photos/200/300'
 };
 
 export const onlyBadge = Template.bind({});
 onlyBadge.args = {
   badgeContent: '9+',
-  userFriendlyName: 'Mic Brooklyn',
   imageURL: 'https://picsum.photos/200/300'
-};
-
-export const Username = Template.bind({});
-Username.args = {
-  statusType: 'active',
-  badgeContent: '9+',
-  userFriendlyName: 'Mic Brooklyn'
 };
 
 export const Icon = Template.bind({});
@@ -55,13 +36,11 @@ Icon.args = {
 
 export const OnlyAvatar = Template.bind({});
 OnlyAvatar.args = {
-  userFriendlyName: 'Mic Brooklyn',
   imageURL: 'https://picsum.photos/200/300'
 };
 
 export const DisabledTabIndex = Template.bind({});
 DisabledTabIndex.args = {
-  userFriendlyName: 'Mic Brooklyn',
   imageURL: 'https://picsum.photos/200/300',
   tabIndex: -1
 };
