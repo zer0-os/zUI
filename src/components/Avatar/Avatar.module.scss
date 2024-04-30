@@ -78,7 +78,7 @@
     object-fit: cover;
     border-radius: inherit;
 
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1.5s ease-out;
   }
 
   .Fallback {
@@ -90,7 +90,7 @@
     font-weight: 400;
     line-height: 21px;
 
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1.5s ease-out;
 
     @include glass-text-primary-color;
   }
