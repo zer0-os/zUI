@@ -35,10 +35,7 @@ export const Avatar = ({
   isGroup = false
 }: AvatarProps) => {
   const renderDefaultIcon = () => {
-    if (userFriendlyName) {
-      const initials = getInitials(userFriendlyName);
-      return <div>{initials}</div>;
-    } else if (isGroup) {
+    if (isGroup) {
       return <IconUsers1 size={AVATAR_ICON_SIZE[size]} />;
     } else {
       return <IconCurrencyEthereum size={AVATAR_ICON_SIZE[size]} />;
@@ -55,7 +52,7 @@ export const Avatar = ({
       <RadixAvatar.Root className={styles.Root}>
         <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
 
-        <RadixAvatar.Fallback className={styles.Fallback}>
+        <RadixAvatar.Fallback className={styles.Fallback} delayMs={imageURL ? 500 : 0}>
           <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
         </RadixAvatar.Fallback>
       </RadixAvatar.Root>
