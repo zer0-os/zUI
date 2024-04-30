@@ -12,8 +12,6 @@ import styles from './Avatar.module.scss';
 export interface AvatarProps {
   imageURL?: string;
   size: 'extra small' | 'small' | 'regular' | 'medium';
-  type: 'circle' | 'square';
-  userFriendlyName?: string;
   badgeContent?: string;
   statusType?: 'active' | 'idle' | 'busy' | 'offline' | 'unread';
   isActive?: boolean;
@@ -23,10 +21,8 @@ export interface AvatarProps {
 }
 
 export const Avatar = ({
-  type = 'circle',
   size = 'regular',
   imageURL,
-  userFriendlyName,
   statusType,
   badgeContent,
   isActive,
@@ -45,7 +41,6 @@ export const Avatar = ({
   return (
     <div
       className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised })}
-      data-type={type}
       data-size={size}
       tabIndex={tabIndex}
     >
@@ -68,17 +63,4 @@ interface StatusBadgeTypeProps {
 
 const AvatarBadge = ({ badgeContent }: StatusBadgeTypeProps) => {
   return <div className={styles.Badge}> {badgeContent}</div>;
-};
-
-/**
- *
- * Used to fetch the first two letter of the name
- * @param userFriendlyName provided user name
- * @returns two chars from the string
- */
-const getInitials = (userFriendlyName: string): string => {
-  const userNameArray = userFriendlyName.split(' ');
-  let charFromName = userNameArray[0].substring(0, 1);
-  charFromName += userNameArray.length >= 2 ? userNameArray[1].substring(0, 1) : userNameArray[0].substring(1, 2);
-  return charFromName;
 };

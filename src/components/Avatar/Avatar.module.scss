@@ -24,10 +24,6 @@
     border-radius: 50%;
     outline-offset: 0.25rem;
     outline: 0.0625rem solid $color-secondary-11;
-
-    &[data-type='square'] {
-      border-radius: 0.5rem;
-    }
   }
 
   &.isRaised {
@@ -111,16 +107,6 @@
     position: absolute;
     top: 32px;
     left: 32px;
-  }
-
-  &[data-type='square'] {
-    .Root {
-      border-radius: 8px;
-    }
-
-    &:focus-within {
-      border-radius: 8px;
-    }
   }
 
   &[data-size='extra small'] {

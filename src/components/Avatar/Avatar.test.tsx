@@ -4,8 +4,7 @@ import { render, waitFor } from '@testing-library/react';
 import { Avatar, AvatarProps } from './';
 
 const DEFAULT_PROPS: AvatarProps = {
-  size: 'regular',
-  type: 'circle'
+  size: 'regular'
 };
 
 beforeEach(() => {
@@ -23,11 +22,6 @@ describe('when using default props', () => {
     expect(container.firstChild).toHaveAttribute('data-size', 'medium');
   });
 
-  test('should be circle shape', () => {
-    const { container } = render(<Avatar {...DEFAULT_PROPS} type="circle" />);
-    expect(container.firstChild).toHaveAttribute('data-type', 'circle');
-  });
-
   test('should be small size', () => {
     const { container } = render(<Avatar {...DEFAULT_PROPS} size="small" />);
     expect(container.firstChild).toHaveAttribute('data-size', 'small');
@@ -36,11 +30,6 @@ describe('when using default props', () => {
   test('should be extra small size', () => {
     const { container } = render(<Avatar {...DEFAULT_PROPS} size="extra small" />);
     expect(container.firstChild).toHaveAttribute('data-size', 'extra small');
-  });
-
-  test('should be square shape', () => {
-    const { container } = render(<Avatar {...DEFAULT_PROPS} type="square" />);
-    expect(container.firstChild).toHaveAttribute('data-type', 'square');
   });
 });
 
@@ -68,30 +57,7 @@ describe('when image is available', () => {
   });
 });
 
-describe('when image is not available and user friendly name is given', () => {
-  test('if "John" is given should show "Jo"', async () => {
-    const { getByText } = render(<Avatar {...DEFAULT_PROPS} userFriendlyName="John" />);
-    await waitFor(() => {
-      expect(getByText('Jo')).toBeInTheDocument();
-    });
-  });
-
-  test('if "John Smith" is given should show "JS"', async () => {
-    const { getByText } = render(<Avatar {...DEFAULT_PROPS} userFriendlyName="John Smith" />);
-    await waitFor(() => {
-      expect(getByText('JS')).toBeInTheDocument();
-    });
-  });
-
-  test('if "John Smith Appleseed" is given should show "JS"', async () => {
-    const { getByText } = render(<Avatar {...DEFAULT_PROPS} userFriendlyName="John Smith Appleseed" />);
-    await waitFor(() => {
-      expect(getByText('JS')).toBeInTheDocument();
-    });
-  });
-});
-
-describe('when image and user name are not available', () => {
+describe('when image is not available', () => {
   test('should render the icon', async () => {
     const { container } = render(<Avatar {...DEFAULT_PROPS} />);
     await waitFor(() => {
