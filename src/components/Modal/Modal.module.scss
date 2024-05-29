@@ -20,14 +20,3 @@
     backdrop-filter: blur(5px);
   }
 }
-
-.ContentWrapper {
-  @include glass-outer;
-}
-
-.Content {
-  @include glass-inner;
-
-  padding: 24px;
-  outline: none;
-}

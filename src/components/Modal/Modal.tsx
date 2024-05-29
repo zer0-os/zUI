@@ -12,7 +12,6 @@ import {
 import { Button } from '../Button';
 
 import styles from './Modal.module.scss';
-import classNames from 'classnames';
 
 export interface ModalProps extends DialogProps {
   className?: string;
@@ -29,9 +28,7 @@ export const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...r
       )}
       <DialogPortal>
         <DialogOverlay className={styles.Overlay}>
-          <div className={styles.ContentWrapper}>
-            <DialogContent className={classNames(className, styles.Content)}>{children}</DialogContent>
-          </div>
+          <DialogContent>{children}</DialogContent>
         </DialogOverlay>
       </DialogPortal>
     </DialogRoot>
