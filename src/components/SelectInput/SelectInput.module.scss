@@ -1,12 +1,19 @@
 @import '../../styles/colors';
 @import '../../styles/theme';
+@import '../../styles/glass';
 
 .InputContainer {
   min-width: 16rem;
   text-align: left;
 
+  .Wrapper {
+    border: 1px solid transparent;
+  }
+
   .WrapperOpen {
-    border: 1px solid $color-primary-9;
+    border: 1px solid $color-secondary-11;
+
+    @include glass-input-inset-active;
   }
 
   Input:hover,

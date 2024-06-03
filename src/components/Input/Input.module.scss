@@ -85,6 +85,9 @@
       width: 1px; // Force a width to allow flex to grow/shrink as necessary
       outline: none;
       padding: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &[data-size='small'] {
         font-size: $size-small;
