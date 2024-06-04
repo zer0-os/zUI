@@ -78,6 +78,7 @@ export * from './icons/IconCamera1';
 export * from './icons/IconCameraLens';
 export * from './icons/IconCameraOff';
 export * from './icons/IconCheck';
+export * from './icons/IconCheckDouble';
 export * from './icons/IconChevronDown';
 export * from './icons/IconChevronDownDouble';
 export * from './icons/IconChevronLeft';
