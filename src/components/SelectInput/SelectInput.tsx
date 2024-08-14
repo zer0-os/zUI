@@ -20,6 +20,7 @@ export type SelectInputProps = {
   error?: boolean;
   itemSize: 'compact' | 'spacious';
   menuClassName?: string;
+  menuWidth?: number;
 };
 
 export const SelectInput: FC<SelectInputProps> = ({
@@ -31,7 +32,8 @@ export const SelectInput: FC<SelectInputProps> = ({
   alert,
   error = false,
   itemSize = 'compact',
-  menuClassName
+  menuClassName,
+  menuWidth
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -57,7 +59,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       error={error}
       endEnhancer={<IconChevronDown size={16} />}
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onChange={() => { }}
+      onChange={() => {}}
     />
   );
 
@@ -69,6 +71,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       open={isOpen}
       onOpenChange={onOpenChange}
       itemSize={itemSize}
+      menuWidth={menuWidth}
     />
   );
 };

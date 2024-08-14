@@ -49,6 +49,7 @@ export interface DropdownMenuProps {
   menuClassName?: string;
   showArrow?: boolean;
   itemSize?: SizeType;
+  menuWidth?: number;
 }
 
 export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
@@ -64,7 +65,8 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
       defaultOpen,
       onOpenChange,
       showArrow,
-      itemSize = 'compact'
+      itemSize = 'compact',
+      menuWidth
     },
     ref
   ) => {
@@ -81,6 +83,7 @@ export const DropdownMenu = forwardRef<HTMLDivElement, DropdownMenuProps>(
             align={alignMenu}
             side={side}
             ref={ref}
+            style={{ width: menuWidth }}
           >
             {alignMenu === 'center' && showArrow && <RadixUIDropdownMenuArrow className="zui-dropdown-arrow" />}
             {items.map(item => (
