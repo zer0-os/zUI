@@ -9,9 +9,9 @@ export interface PostProps {
   options?: ReactNode;
 }
 
-export const Post = forwardRef<HTMLDivElement, PostProps>(({ actions, body, options, details }, ref) => {
+export const Post = forwardRef<HTMLDivElement, PostProps>(({ actions, body, className, options, details }, ref) => {
   return (
-    <Container ref={ref}>
+    <Container className={className} ref={ref}>
       <Header>
         <Details>{details}</Details>
         {options && <Options>{options}</Options>}
