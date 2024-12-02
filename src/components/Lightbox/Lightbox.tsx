@@ -36,53 +36,39 @@ export const Lightbox = ({ items, startingIndex = 0, onClose, provider }: Lightb
     if (!currentItem?.url) return;
 
     try {
-      const response = await fetch(currentItem.url);
-      const blob = await response.blob();
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
 
-      try {
-        await navigator.clipboard.write([
-          new ClipboardItem({
-            [blob.type]: blob
-          })
-        ]);
-        setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
-      } catch (writeError) {
-        // Fallback to canvas method
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = currentItem.url;
+      });
 
-        await new Promise((resolve, reject) => {
-          img.onload = resolve;
-          img.onerror = reject;
-          img.src = currentItem.url;
-        });
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
 
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Failed to get canvas context');
 
-        const ctx = canvas.getContext('2d');
-        if (!ctx) throw new Error('Failed to get canvas context');
+      ctx.drawImage(img, 0, 0);
 
-        ctx.drawImage(img, 0, 0);
-
-        canvas.toBlob(async blob => {
-          if (blob) {
-            try {
-              await navigator.clipboard.write([
-                new ClipboardItem({
-                  'image/png': blob
-                })
-              ]);
-              setIsCopied(true);
-              setTimeout(() => setIsCopied(false), 2000);
-            } catch (clipboardError) {
-              console.error('Failed to write to clipboard:', clipboardError);
-            }
+      canvas.toBlob(async blob => {
+        if (blob) {
+          try {
+            await navigator.clipboard.write([
+              new ClipboardItem({
+                'image/png': blob
+              })
+            ]);
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 2000);
+          } catch (clipboardError) {
+            console.error('Failed to write to clipboard:', clipboardError);
           }
-        }, 'image/png');
-      }
+        }
+      }, 'image/png');
     } catch (err) {
       console.error('Failed to copy image:', err);
     }
