@@ -12,6 +12,7 @@ export * from './DropdownMenu';
 export * from './IconButton';
 export * from './Image';
 export { Input } from './Input';
+export * from './Lightbox';
 export { LoadingIndicator } from './LoadingIndicator';
 export * from './Markdown';
 export * from './MediaInput';
