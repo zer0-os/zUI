@@ -432,6 +432,7 @@ export * from './icons/IconSignal2';
 export * from './icons/IconSkew';
 export * from './icons/IconSkipBack';
 export * from './icons/IconSkipForward';
+export * from './icons/IconSlashes';
 export * from './icons/IconSliders1';
 export * from './icons/IconSliders2';
 export * from './icons/IconSpacingHeight1';
