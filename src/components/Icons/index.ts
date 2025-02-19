@@ -254,6 +254,7 @@ export * from './icons/IconHeartHexagon';
 export * from './icons/IconHelpCircle';
 export * from './icons/IconHelpHexagon';
 export * from './icons/IconHexagon1';
+export * from './icons/IconHome';
 export * from './icons/IconHomeLine';
 export * from './icons/IconHourglass2';
 export * from './icons/IconImage1';
