@@ -436,6 +436,7 @@ export * from './icons/IconSkipForward';
 export * from './icons/IconSlashes';
 export * from './icons/IconSliders1';
 export * from './icons/IconSliders2';
+export * from './icons/IconSliders3';
 export * from './icons/IconSpacingHeight1';
 export * from './icons/IconSpacingWidth1';
 export * from './icons/IconSpeaker1';
