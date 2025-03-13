@@ -7,5 +7,8 @@ export type IconProps = {
   label?: string;
   color?: string;
   size?: string | number;
+  /**
+   * @deprecated 13 Mar 2025 - new zUI icons do not have a filled version.
+   */
   isFilled?: boolean;
 };
