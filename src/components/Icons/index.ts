@@ -223,6 +223,7 @@ export * from './icons/IconFolderQuestion';
 export * from './icons/IconFolderSearch';
 export * from './icons/IconFolderShield';
 export * from './icons/IconFolderX';
+export * from './icons/IconFourDots';
 export * from './icons/IconFramer';
 export * from './icons/IconGift1';
 export * from './icons/IconGitBranch1';
