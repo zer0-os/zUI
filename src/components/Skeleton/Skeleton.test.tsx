@@ -5,7 +5,7 @@ import { Skeleton, SkeletonProps } from './index';
 const mockSkeleton = jest.fn();
 
 jest.mock('react-loading-skeleton', () => {
-  return (props: any) => {
+  return (props: any): null => {
     mockSkeleton(props);
     return null;
   };

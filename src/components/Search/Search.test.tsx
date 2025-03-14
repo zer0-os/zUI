@@ -12,7 +12,7 @@ const DEFAULT_PROPS: SearchProps = {
 const mockInput = jest.fn();
 
 jest.mock('../Input', () => ({
-  Input: (props: any) => {
+  Input: (props: any): null => {
     mockInput(props);
     return null;
   }

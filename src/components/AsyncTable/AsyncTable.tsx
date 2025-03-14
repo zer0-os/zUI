@@ -98,7 +98,7 @@ export const AsyncTable = <T extends unknown>({
     if (lastView.current === 'list' && !isGridView) {
       console.warn('Detected unmemoized rowComponent!');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [rowComponent]);
 
   // Warn if dev didn't memoize gridComponent
@@ -106,7 +106,7 @@ export const AsyncTable = <T extends unknown>({
     if (lastView.current === 'grid' && isGridView) {
       console.warn('Detected unmemoized gridComponent!');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [gridComponent]);
 
   // Reset infinite scroll whenever user changes view

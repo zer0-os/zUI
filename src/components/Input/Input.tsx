@@ -1,6 +1,6 @@
 import React, { createElement, FC, forwardRef, ReactNode, useCallback } from 'react';
 
-// eslint-disable-next-line import/no-unresolved
+ 
 import { AriaTextFieldProps } from '@react-types/textfield';
 import { Alert, AlertProps } from '../Alert';
 
@@ -55,7 +55,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       onChange,
       helperText,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+       
       type, // note: intentionally pulling type out for now
       size = 'large',
       ...rest

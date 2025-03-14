@@ -46,7 +46,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
           onChange('');
         }
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+       
     }, [value]);
 
     /**

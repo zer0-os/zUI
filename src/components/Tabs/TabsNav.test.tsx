@@ -15,7 +15,7 @@ const DEFAULT_PROPS = { tabs: MOCK_TABS, location: MOCK_TABS[0].to };
 const mockLink = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   
   Link: (props: any) => {
     mockLink(props);
     return (

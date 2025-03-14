@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { CloseButton, CloseButtonProps } from './CloseButton';
 
 const DEFAULT_PROPS: CloseButtonProps = {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+   
   onClick: () => {},
   className: ''
 };
