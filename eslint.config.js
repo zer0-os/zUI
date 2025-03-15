@@ -22,28 +22,11 @@ const commonIgnores = [
   'jest.setup.ts',
   'babel.config.js',
   'lint-staged.config.js',
-  'webpack.config.js'
+  'webpack.config.js',
+  'eslint.config.js'
 ];
 
 module.exports = [
-  // Storybook component files need special handling
-  {
-    files: ['**/src/components/.storybook/**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true
-        },
-        ecmaVersion: 2022,
-        sourceType: 'module'
-      }
-    },
-    rules: {
-      'import/no-default-export': 'off',
-      '@typescript-eslint/no-unused-vars': 'off'
-    }
-  },
   {
     // Add ignores property to ignore common patterns
     ignores: commonIgnores,
@@ -78,10 +61,10 @@ module.exports = [
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
-      'import': importPlugin,
-      'jest': jestPlugin,
+      import: importPlugin,
+      jest: jestPlugin,
       'jsx-a11y': jsxA11yPlugin,
       'testing-library': testingLibraryPlugin
     },
@@ -105,9 +88,18 @@ module.exports = [
       'react/no-did-update-set-state': 0,
       'react/no-did-mount-set-state': 0,
       'no-unused-vars': 0,
-      '@typescript-eslint/no-unused-vars': [1, { args: 'none' }],
-      'camelcase': 0,
-      'quotes': 0,
+      '@typescript-eslint/no-unused-vars': [
+        1,
+        {
+          args: 'none',
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_'
+        }
+      ],
+      camelcase: 0,
+      quotes: 0,
       'no-confusing-arrow': 0,
       'no-extra-boolean-cast': 0,
       'spaced-comment': 0,
@@ -166,9 +158,27 @@ module.exports = [
       'prefer-const': 0
     }
   },
+  // Storybook component files need special handling
+  {
+    files: ['**/src/components/.storybook/**/*.{ts,tsx}'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        },
+        ecmaVersion: 2022,
+        sourceType: 'module'
+      }
+    },
+    rules: {
+      'import/no-default-export': 'off',
+      '@typescript-eslint/no-unused-vars': 'off'
+    }
+  },
   // Storybook files
   {
-    files: ['**/*.stories.tsx'],
+    files: ['**/*.stories.tsx', '**/.storybook/**'],
     rules: {
       'import/no-default-export': 'off'
     }
@@ -179,7 +189,14 @@ module.exports = [
     rules: {
       '@typescript-eslint/no-explicit-any': 'off'
     }
-  }
+  },
   // Note: Storybook component files in src/components/.storybook
   // are handled by a separate .eslintrc.json inside that directory
+  // .d.ts files
+  {
+    files: ['**/*.d.ts'],
+    rules: {
+      'import/no-default-export': 'off'
+    }
+  }
 ];
