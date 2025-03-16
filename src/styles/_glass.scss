@@ -13,15 +13,15 @@
 }
 
 @mixin glass-text-primary-color {
-  color: $color-greyscale-transparency-12;
+  color: theme.$color-greyscale-transparency-12;
 }
 
 @mixin glass-text-secondary-color {
-  color: $color-greyscale-transparency-11;
+  color: theme.$color-greyscale-transparency-11;
 }
 
 @mixin glass-text-tertiary-color {
-  color: $color-greyscale-transparency-9;
+  color: theme.$color-greyscale-transparency-9;
 }
 
 // D/Glass/Ui State/Hover

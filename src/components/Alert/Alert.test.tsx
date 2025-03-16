@@ -9,7 +9,7 @@ const DEFAULT_PROPS: AlertProps = {
   isFilled: false
 };
 
-jest.mock('../Icons', () => ({
+vi.mock('../Icons', () => ({
   IconCheck: () => <div data-testid={'check'}>IconCheck</div>,
   IconAlertCircle: () => <div data-testid={'alert'}>IconAlertCircle</div>,
   IconInfoCircle: () => <div data-testid={'info'}>IconInfoCircle</div>

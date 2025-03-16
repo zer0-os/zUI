@@ -2,12 +2,12 @@ import React from 'react';
 import { Slider, SliderProps } from './Slider';
 import { render, screen } from '@testing-library/react';
 
-const mockSliderRoot = jest.fn();
-const mockSliderRange = jest.fn();
-const mockSliderThumb = jest.fn();
-const mockSliderTrack = jest.fn();
+const mockSliderRoot = vi.fn();
+const mockSliderRange = vi.fn();
+const mockSliderThumb = vi.fn();
+const mockSliderTrack = vi.fn();
 
-jest.mock('@radix-ui/react-slider', () => ({
+vi.mock('@radix-ui/react-slider', () => ({
   Root: (props: any) => {
     mockSliderRoot(props);
     return (
@@ -51,7 +51,7 @@ const DEFAULT_PROPS: SliderProps = {
 };
 
 afterEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 test('should pass props to Radix Slider Root', () => {

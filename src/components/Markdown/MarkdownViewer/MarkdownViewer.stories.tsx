@@ -1,14 +1,13 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MarkdownViewer } from './MarkdownViewer';
 import { MARKDOWN_TEXT } from './MarkdownViewer.stories.constants';
 
 export default {
   title: 'Typography/MarkdownViewer',
   component: MarkdownViewer
-} as ComponentMeta<typeof MarkdownViewer>;
+} as Meta<typeof MarkdownViewer>;
 
-const Template: ComponentStory<typeof MarkdownViewer> = args => {
+const Template: StoryFn<typeof MarkdownViewer> = args => {
   return <MarkdownViewer {...args} />;
 };
 

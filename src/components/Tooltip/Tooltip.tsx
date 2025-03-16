@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
@@ -7,16 +7,16 @@ import './Tooltip.scss';
 
 export const BASE_CLASSNAME = `${CSS_PREFIX}-tooltip`;
 
-export type TooltipProps = {
-  open?: TooltipPrimitive.TooltipProps['open'];
-  defaultOpen?: TooltipPrimitive.TooltipProps['defaultOpen'];
-  onOpenChange?: TooltipPrimitive.TooltipProps['onOpenChange'];
-  side?: TooltipPrimitive.TooltipContentProps['side'];
-  align?: TooltipPrimitive.TooltipContentProps['align'];
-  content?: ReactNode;
-};
+export interface TooltipProps {
+  content: string;
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
+}
 
-export const Tooltip: FC<TooltipProps> = ({
+export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   open,
   defaultOpen,
   onOpenChange,

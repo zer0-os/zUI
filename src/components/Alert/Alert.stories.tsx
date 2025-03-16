@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Alert } from './';
 
 export default {
   title: 'Data Display/Alert',
   component: Alert
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
-const Template: ComponentStory<typeof Alert> = args => <Alert {...args} />;
+const Template: StoryFn<typeof Alert> = args => <Alert {...args} />;
 
 export const Success = Template.bind({});
 Success.args = {

@@ -2,9 +2,9 @@ import React from 'react';
 import { MaybeSkeletonText, SkeletonText } from './';
 import { render, screen } from '@testing-library/react';
 
-const mockSkeleton = jest.fn();
+const mockSkeleton = vi.fn();
 
-jest.mock('../Skeleton', () => ({
+vi.mock('../Skeleton', () => ({
   Skeleton: (props: any) => {
     mockSkeleton(props);
     return <div data-testid="mock-skeleton" />;

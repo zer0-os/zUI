@@ -4,7 +4,7 @@ import React from 'react';
 import { NumberInput, NumberInputProps } from './NumberInput';
 import { parseEther } from 'ethers/lib/utils';
 
-const mockOnChange = jest.fn();
+const mockOnChange = vi.fn();
 
 const renderComponent = (props: NumberInputProps) => render(<NumberInput {...props} />);
 

@@ -13,7 +13,7 @@ export interface BadgeProps {
 export const Badge = ({ className, content, variant, type }: BadgeProps) => {
   return (
     <div className={classnames(styles.Badge, className)} data-variant={variant} data-content-type={type}>
-      {type === 'number' && typeof content === 'number' && content > 9 ? '9+' : content}
+      {type === 'number' && Number(content) > 9 ? '9+' : content}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-@import '../../../styles/colors';
+@use '../../../styles/colors';
 
 .icon {
   padding: 16px 8px;
@@ -9,7 +9,7 @@
 .icons-story {
   &__table {
     font-size: 0.75rem;
-    color: $almost-black;
+    color: colors.$almost-black;
 
     &:not(:first-child) {
       margin-left: 1rem;
@@ -18,28 +18,28 @@
 
   &__table-row {
     &:first-child {
-      border-top: 1px solid $grey-lighter-3;
+      border-top: 1px solid colors.$grey-lighter-3;
     }
   }
 
   &__table-cell {
-    border-left: 1px solid $grey-lighter-3;
-    border-bottom: 1px solid $grey-lighter-3;
+    border-left: 1px solid colors.$grey-lighter-3;
+    border-bottom: 1px solid colors.$grey-lighter-3;
     padding: 0.5rem 1rem;
 
     &:not(:last-child) {
-      color: $grey;
+      color: colors.$grey;
     }
 
     &:last-child {
-      border-right: 1px solid $grey-lighter-3;
+      border-right: 1px solid colors.$grey-lighter-3;
     }
   }
 
   &__table-cell--is-header {
     @extend .icons-story__table-cell;
 
-    color: $almost-black !important;
-    background-color: $grey;
+    color: colors.$almost-black !important;
+    background-color: colors.$grey;
   }
 }

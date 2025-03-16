@@ -1,5 +1,4 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 
 import { PasswordInput, PasswordInputProps } from './PasswordInput';
 
@@ -12,10 +11,19 @@ describe('<PasswordInput />', () => {
     const input = getByDisplayValue('') as HTMLInputElement;
     const button = getByRole('button') as HTMLButtonElement;
 
+    // Initial state
     expect(input.type).toBe('password');
-    button.click();
+
+    // First toggle
+    await act(async () => {
+      fireEvent.click(button);
+    });
     expect(input.type).toBe('text');
-    button.click();
+
+    // Second toggle
+    await act(async () => {
+      fireEvent.click(button);
+    });
     expect(input.type).toBe('password');
   });
 

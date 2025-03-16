@@ -1,19 +1,19 @@
-@import '../../styles/colors';
-@import '../../styles/theme';
+@use '../../styles/colors';
+@use '../../styles/theme';
 
 .Container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
-  color: $color-greyscale-12 !important;
+  color: theme.$color-greyscale-12 !important;
 
   .Root {
     position: relative;
     display: flex;
     align-items: center;
     width: 18.75rem;
-    background-color: $color-primary-4;
+    background-color: theme.$color-primary-4;
     border-radius: 1rem;
     height: 1rem;
 
@@ -29,7 +29,7 @@
 
       .Range {
         position: absolute;
-        background-color: $color-secondary-9;
+        background-color: theme.$color-secondary-9;
         border-radius: 2rem;
         height: 1rem;
         top: -0.39rem;
@@ -45,8 +45,8 @@
       display: block;
       height: 1.5rem;
       width: 1.5rem;
-      background-color: $color-greyscale-12;
-      border: 0.125rem solid $color-secondary-9;
+      background-color: theme.$color-greyscale-12;
+      border: 0.125rem solid theme.$color-secondary-9;
       border-radius: 1rem;
       cursor: pointer;
       outline: none;
@@ -60,7 +60,7 @@
         width: calc(100% + 0.5rem);
         height: calc(100% + 0.5rem);
         border-radius: 100%;
-        border: 1px solid $color-secondary-9;
+        border: 1px solid theme.$color-secondary-9;
       }
 
       &[data-size='small'] {

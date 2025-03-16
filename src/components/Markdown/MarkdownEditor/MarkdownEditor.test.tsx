@@ -1,6 +1,6 @@
 import type { MarkdownEditorProps } from './MarkdownEditor.types';
 
-import React from 'react';
+import { describe, test, expect, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import { MDEditorProps } from '@uiw/react-md-editor';
 import { MarkdownEditor } from './MarkdownEditor';
@@ -16,11 +16,13 @@ const DEFAULT_PROPS: MarkdownEditorProps = {
   className: undefined
 };
 
-const mockMarkdownEditor = jest.fn();
+const mockMarkdownEditor = vi.fn();
 
-jest.mock('@uiw/react-md-editor', () => {
-  return (props: MDEditorProps) => <>{mockMarkdownEditor(props)}</>;
-});
+vi.mock('@uiw/react-md-editor', () => ({
+  default: (props: MDEditorProps) => {
+    return <>{mockMarkdownEditor(props)}</>;
+  }
+}));
 
 describe('<MarkdownEditor />', () => {
   test('should pass default properties MarkdownEditor', () => {

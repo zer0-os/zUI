@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { Actions, Body, Container, Details, Header, Options } from './components';
 
 export interface PostProps {

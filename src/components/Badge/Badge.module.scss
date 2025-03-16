@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@use '../../styles/colors';
 
 /* stylelint-disable no-duplicate-selectors */
 .Badge {
@@ -15,27 +15,27 @@
     --zui-badge-padding: 0rem;
   }
   &[data-variant='active'] {
-    --zui-badge-background: #{$green-9};
+    --zui-badge-background: #{colors.$green-9};
   }
 
   &[data-variant='idle'] {
-    --zui-badge-background: #{$orange-10};
+    --zui-badge-background: #{colors.$orange-10};
   }
 
   &[data-variant='busy'] {
-    --zui-badge-background: #{$red-10};
+    --zui-badge-background: #{colors.$red-10};
   }
 
   &[data-variant='offline'] {
-    --zui-badge-background: #{$grey-10};
+    --zui-badge-background: #{colors.$grey-10};
   }
 
   &[data-variant='unread'] {
-    --zui-badge-background: #{$purple-11};
+    --zui-badge-background: #{colors.$purple-11};
   }
 
   &[data-variant='error'] {
-    --zui-badge-background: #{$red-3};
+    --zui-badge-background: #{colors.$red-3};
   }
 }
 
@@ -56,7 +56,7 @@
   }
 
   &[data-variant='error'] {
-    color: $red-9;
-    outline: 0.125rem solid $red-1;
+    color: colors.$red-9;
+    outline: 0.125rem solid colors.$red-1;
   }
 }

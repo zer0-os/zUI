@@ -1,5 +1,4 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Tooltip } from './Tooltip';
 import { Button } from '../Button';
 
@@ -8,9 +7,9 @@ import './Tooltip.scss';
 export default {
   title: 'Data Display/Tooltip',
   component: Tooltip
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
-const Template: ComponentStory<typeof Tooltip> = args => (
+const Template: StoryFn<typeof Tooltip> = args => (
   <Tooltip {...args}>
     <Button>Click or Hover</Button>
   </Tooltip>

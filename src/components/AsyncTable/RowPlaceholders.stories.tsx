@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { RowPlaceholders } from './Placeholder';
 
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Table/RowPlaceholders',
   component: RowPlaceholders
-} as ComponentMeta<typeof RowPlaceholders>;
+} as Meta<typeof RowPlaceholders>;
 
-const Template: ComponentStory<typeof RowPlaceholders> = args => {
+const Template: StoryFn<typeof RowPlaceholders> = args => {
   return (
     <table>
       <tbody>

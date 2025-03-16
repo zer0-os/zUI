@@ -1,22 +1,19 @@
-import React, { createElement, FC, forwardRef, ReactNode, useCallback } from 'react';
+import React, { createElement, FC, forwardRef, ReactNode, useCallback, InputHTMLAttributes } from 'react';
 
- 
-import { AriaTextFieldProps } from '@react-types/textfield';
 import { Alert, AlertProps } from '../Alert';
 
 import classNames from 'classnames';
 
 import styles from './Input.module.scss';
 
-export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'value'> {
   className?: string;
   wrapperClassName?: string;
   inputClassName?: string;
   alertClassName?: string;
   helperTextClassName?: string;
   error?: boolean;
-  // @deprecated
-  success?: boolean;
+  success?: boolean; // @deprecated
   helperText?: string;
   startEnhancer?: ReactNode | string;
   endEnhancer?: ReactNode | string;
@@ -24,6 +21,8 @@ export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange
   onChange: (value: string) => void;
   size?: 'large' | 'small';
   alert?: { variant: AlertProps['variant']; text: ReactNode };
+  label?: string;
+  isDisabled?: boolean;
 }
 
 type EnhancerProps = {
@@ -55,7 +54,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       onChange,
       helperText,
-       
+
       type, // note: intentionally pulling type out for now
       size = 'large',
       ...rest

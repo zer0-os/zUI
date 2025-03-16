@@ -16,9 +16,9 @@ const DEFAULT_PROPS: AddressProps = {
   address: ''
 };
 
-const mockSkeletonText = jest.fn();
+const mockSkeletonText = vi.fn();
 
-jest.mock('../SkeletonText', () => ({
+vi.mock('../SkeletonText', () => ({
   SkeletonText: (props: SkeletonTextProps) => {
     mockSkeletonText(props);
     return mockAddress;

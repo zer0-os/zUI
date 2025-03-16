@@ -9,7 +9,7 @@ import {
   DropdownMenuTriggerProps
 } from '@radix-ui/react-dropdown-menu';
 
-const mockOnSelect = jest.fn();
+const mockOnSelect = vi.fn();
 
 const MOCK_ITEMS: DropdownItem[] = [
   { id: 'lemon', label: 'Lemon', className: 'lemon', onSelect: mockOnSelect },
@@ -19,11 +19,11 @@ const MOCK_ITEMS: DropdownItem[] = [
 
 /* Mock Radix DropdownMenu primitives so we can skip testing them */
 
-const mockRadixTrigger = jest.fn();
-const mockRadixContent = jest.fn();
-const mockRadixItem = jest.fn();
+const mockRadixTrigger = vi.fn();
+const mockRadixContent = vi.fn();
+const mockRadixItem = vi.fn();
 
-jest.mock('@radix-ui/react-dropdown-menu', () => ({
+vi.mock('@radix-ui/react-dropdown-menu', () => ({
   Root: (props: DropdownMenuProps) => {
     return <div data-testid="root">{props.children}</div>;
   },
@@ -62,7 +62,7 @@ const DEFAULT_PROPS: SelectInputProps = {
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<SelectInput />', () => {

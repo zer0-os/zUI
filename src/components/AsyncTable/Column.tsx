@@ -1,4 +1,4 @@
-import React, { createElement, ReactNode } from 'react';
+import { createElement, ReactNode } from 'react';
 
 import { startCase, toLower } from 'lodash';
 

@@ -76,7 +76,13 @@ export const Video = ({ className, src, poster, autoPlay, loop, onError }: Video
       />
 
       <div className={styles.Controls}>
-        <button data-testid="play-button" className={styles.Control} type="button" onClick={togglePlayPause}>
+        <button
+          data-testid="play-button"
+          className={styles.Control}
+          type="button"
+          onClick={togglePlayPause}
+          aria-label={isPlaying ? 'Pause video' : 'Play video'}
+        >
           {isPlaying ? (
             <IconGrid isFilled color="#ffffff" size={16} />
           ) : (
@@ -84,7 +90,13 @@ export const Video = ({ className, src, poster, autoPlay, loop, onError }: Video
           )}
         </button>
 
-        <button data-testid="mute-button" className={styles.Control} type="button" onClick={toggleMute}>
+        <button
+          data-testid="mute-button"
+          className={styles.Control}
+          type="button"
+          onClick={toggleMute}
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+        >
           {isMuted ? (
             <IconVolumeX isFilled color="#ffffff" size={16} />
           ) : (

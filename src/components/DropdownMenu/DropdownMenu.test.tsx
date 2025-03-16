@@ -10,7 +10,7 @@ import {
   DropdownMenuProps
 } from '@radix-ui/react-dropdown-menu';
 
-const mockOnSelect = jest.fn();
+const mockOnSelect = vi.fn();
 const MOCK_ITEMS: DropdownItem[] = [
   { id: 'dropdown_item_id_1', label: 'Dropdown Item 1', className: 'dropdown-item-1', onSelect: mockOnSelect },
   { id: 'dropdown_item_id_2', label: 'Dropdown Item 2', className: 'dropdown-item-2', onSelect: mockOnSelect },
@@ -21,13 +21,13 @@ const DEFAULT_PROPS = { items: MOCK_ITEMS };
 
 /* Mock Radix DropdownMenu primitives so we can skip testing them */
 
-const mockRadixRoot = jest.fn();
-const mockRadixTrigger = jest.fn();
-const mockRadixContent = jest.fn();
-const mockRadixItem = jest.fn();
-const mockRadixArrow = jest.fn();
+const mockRadixRoot = vi.fn();
+const mockRadixTrigger = vi.fn();
+const mockRadixContent = vi.fn();
+const mockRadixItem = vi.fn();
+const mockRadixArrow = vi.fn();
 
-jest.mock('@radix-ui/react-dropdown-menu', () => ({
+vi.mock('@radix-ui/react-dropdown-menu', () => ({
   Root: (props: DropdownMenuProps) => {
     mockRadixRoot(props);
     return <div data-testid="root">{props.children}</div>;
@@ -63,7 +63,7 @@ jest.mock('@radix-ui/react-dropdown-menu', () => ({
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<DropdownMenu />', () => {

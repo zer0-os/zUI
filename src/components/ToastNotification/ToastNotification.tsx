@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { Button, Color } from '../Button';
 import { IconInfoCircle, IconXClose } from '../Icons';
@@ -10,24 +10,26 @@ import styles from './ToastNotification.module.scss';
 
 type ToastPositionVariant = 'left' | 'right';
 type ToastThemeVariant = 'primary' | 'success' | 'error';
+export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 
 const { ToastRoot, ToastIcon, TextWrapper, ToastTitle, ToastDescription, ToastButton, ToastClose, ToastViewport } =
   styles;
 
-export type ToastNotificationProps = Toast.ToastProviderProps & {
+export interface ToastNotificationProps {
   viewportClassName?: string;
   duration?: number;
   title: string;
   description: string;
   actionTitle?: string;
-  actionAltText: string;
+  actionAltText?: string;
+  variant?: ToastVariant;
   positionVariant?: ToastPositionVariant;
   themeVariant?: ToastThemeVariant;
-  swipeDirection?: Toast.SwipeDirection;
+  swipeDirection?: 'up' | 'down' | 'left' | 'right';
   openToast?: boolean;
   onClick?: () => void;
   onClose?: () => void;
-};
+}
 
 export const ToastNotification = ({
   viewportClassName,

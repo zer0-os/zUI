@@ -1,9 +1,8 @@
 @use '../../styles/theme' as theme;
-@import '../../styles/glass';
-@import '../../styles/theme';
+@use '../../styles/glass';
 
 .zui-iconButton {
-  @include glass-text-primary-color;
+  @include glass.glass-text-primary-color;
 
   display: flex;
   align-items: center;

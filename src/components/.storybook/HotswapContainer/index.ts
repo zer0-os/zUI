@@ -1,1 +1,2 @@
-export { HotswapContainer, HotswapContainerProps } from './HotswapContainer';
+export { HotswapContainer } from './HotswapContainer';
+export type { HotswapContainerProps } from './HotswapContainer';

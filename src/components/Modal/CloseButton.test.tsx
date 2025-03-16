@@ -4,7 +4,6 @@ import { fireEvent, render } from '@testing-library/react';
 import { CloseButton, CloseButtonProps } from './CloseButton';
 
 const DEFAULT_PROPS: CloseButtonProps = {
-   
   onClick: () => {},
   className: ''
 };
@@ -18,7 +17,7 @@ describe('<CloseButton />', () => {
   });
 
   it('should pass onClick to button', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { container } = renderComponent({ onClick });
     fireEvent.click(container.querySelector('button'));
     expect(onClick).toHaveBeenCalled();

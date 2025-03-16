@@ -12,18 +12,18 @@
     "emitDecoratorMetadata": true,
     "jsx": "react-jsx",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "esnext",
-    "types": ["jest", "node", "@testing-library/jest-dom"],
-    "lib": ["es2017", "dom"],
+    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "node"],
+    "lib": ["es2022", "dom", "dom.iterable"],
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "vitest.config.ts", "src/test/setup.ts", ".storybook/**/*"],
   "exclude": ["node_modules", "dist", "dist-storybook", "build", "**/*.js", "**.config.js"]
 }

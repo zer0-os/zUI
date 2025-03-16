@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Video } from './Video';
 
 export default {
   title: 'Data Display/Video',
   component: Video
-} as ComponentMeta<typeof Video>;
+} as Meta<typeof Video>;
 
-const Template: ComponentStory<typeof Video> = args => <Video {...args} />;
+const Template: StoryFn<typeof Video> = args => <Video {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

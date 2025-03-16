@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Checkbox, CheckboxProps, StandardCheckboxProps, AdvancedCheckboxProps, ButtonLink, ExternalLink } from './';
 
-const mockOnChange = jest.fn();
-const triggerLink = jest.fn();
+const mockOnChange = vi.fn();
+const triggerLink = vi.fn();
 
 const DEFAULT_PROPS: CheckboxProps = {
   onChange: mockOnChange,
@@ -12,7 +12,7 @@ const DEFAULT_PROPS: CheckboxProps = {
 };
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('<Checkbox />', () => {

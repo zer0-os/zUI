@@ -7,10 +7,10 @@ const mockSteps: Step[] = [
   { id: 'step_2', title: 'Step 2' },
   { id: 'step_3', title: 'Step 3' }
 ];
-const mockOnChangeStep = jest.fn();
+const mockOnChangeStep = vi.fn();
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<StepBar />', () => {

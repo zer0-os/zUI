@@ -1,5 +1,5 @@
-@import '../../styles/theme';
-@import '../../styles/glass';
+@use '../../styles/theme';
+@use '../../styles/glass';
 
 .Container {
   display: flex;
@@ -12,36 +12,36 @@
   border-radius: 0.5rem;
 
   &[data-variant='success'] {
-    color: $color-secondary-11;
+    color: theme.$color-secondary-11;
   }
 
   &[data-variant='error'] {
-    color: $color-failure-11;
+    color: theme.$color-failure-11;
   }
 
   &[data-variant='warning'] {
-    color: $color-warning-11;
+    color: theme.$color-warning-11;
   }
 
   &[data-variant='info'] {
-    @include glass-text-secondary-color;
+    @include glass.glass-text-secondary-color;
   }
 
   &.isFilled {
     &[data-variant='success'] {
-      background-color: $color-secondary-4;
+      background-color: theme.$color-secondary-4;
     }
 
     &[data-variant='error'] {
-      background-color: $color-failure-4;
+      background-color: theme.$color-failure-4;
     }
 
     &[data-variant='warning'] {
-      background-color: $color-warning-4;
+      background-color: theme.$color-warning-4;
     }
 
     &[data-variant='info'] {
-      @include glass-state-active-background;
+      @include glass.glass-state-active-background;
     }
   }
 }

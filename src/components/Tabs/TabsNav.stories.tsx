@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { TabsNav } from '.';
 
 export default {
   title: 'Navigation/Tabs Nav',
   component: TabsNav
-} as ComponentMeta<typeof TabsNav>;
+} as Meta<typeof TabsNav>;
 
-const Template: ComponentStory<typeof TabsNav> = args => {
+const Template: StoryFn<typeof TabsNav> = args => {
   return <TabsNav {...args} />;
 };
 

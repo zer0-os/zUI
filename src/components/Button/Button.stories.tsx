@@ -1,15 +1,15 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button } from './';
+import { Meta, StoryFn } from '@storybook/react';
+import { Button } from './Button';
 
 import { IconUserPlus1 } from '../Icons';
 
 export default {
   title: 'Inputs/Button',
   component: Button
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = args => <Button {...args}>Button</Button>;
+const Template: StoryFn<typeof Button> = args => <Button {...args}>Button</Button>;
 
 export const Primary = Template.bind({});
 Primary.args = {

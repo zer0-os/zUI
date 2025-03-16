@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { Table, HeaderGroup, Header, Body, Cell } from '.';
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Table',
   component: Table
-} as ComponentMeta<typeof Table>;
+} as Meta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = args => {
+const Template: StoryFn<typeof Table> = args => {
   return (
     <Table {...args}>
       <HeaderGroup>

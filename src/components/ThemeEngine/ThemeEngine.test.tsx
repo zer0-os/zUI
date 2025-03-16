@@ -20,7 +20,7 @@ describe('theme-engine', () => {
   };
 
   it('sets css vars based on view mode', function () {
-    const setProperty = jest.fn();
+    const setProperty = vi.fn();
     const themes = {
       dark: {
         textColor: 'red',
@@ -43,7 +43,7 @@ describe('theme-engine', () => {
   });
 
   it('sets css vars based on updated view mode', function () {
-    const setProperty = jest.fn();
+    const setProperty = vi.fn();
     const themes = {
       dark: {
         textColor: 'red',

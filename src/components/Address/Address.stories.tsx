@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { Address } from '.';
 
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Address',
   component: Address
-} as ComponentMeta<typeof Address>;
+} as Meta<typeof Address>;
 
-const Template: ComponentStory<typeof Address> = args => {
+const Template: StoryFn<typeof Address> = args => {
   return <Address {...args} />;
 };
 

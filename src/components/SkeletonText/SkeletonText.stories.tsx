@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { SkeletonText } from './';
 
 export default {
   title: 'Typography/Skeleton Text',
   component: SkeletonText
-} as ComponentMeta<typeof SkeletonText>;
+} as Meta<typeof SkeletonText>;
 
-const Template: ComponentStory<typeof SkeletonText> = args => {
+const Template: StoryFn<typeof SkeletonText> = args => {
   return <SkeletonText skeletonOptions={{ width: 50 }} {...args} />;
 };
 

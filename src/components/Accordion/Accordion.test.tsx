@@ -14,7 +14,7 @@ const DEFAULT_PROPS: AccordionProps = {
 };
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('<Accordion />', () => {

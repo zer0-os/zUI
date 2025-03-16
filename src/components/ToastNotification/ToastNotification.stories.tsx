@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Fragment, useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { ToastNotification } from './ToastNotification';
 import { Modal } from '../Modal';
 
 export default {
   title: 'Data Display/Toast Notification',
   component: ToastNotification
-} as ComponentMeta<typeof ToastNotification>;
+} as Meta<typeof ToastNotification>;
 
-const Template: ComponentStory<typeof ToastNotification> = args => {
+const Template: StoryFn<typeof ToastNotification> = args => {
   const [isOpen, setIsOpen] = useState(false);
   const [openToast, setOpenToast] = useState(false);
 
@@ -22,7 +22,7 @@ const Template: ComponentStory<typeof ToastNotification> = args => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Modal trigger="Open Modal" open={isOpen} onOpenChange={setIsOpen}>
         <p>This is a modal. Close this modal to see a toast notification after 2 seconds.</p>
         <p>Edit the duration attribute to increase/decrease the duration toast is visible</p>
@@ -30,7 +30,7 @@ const Template: ComponentStory<typeof ToastNotification> = args => {
       </Modal>
 
       <ToastNotification {...args} openToast={openToast} onClick={handleToastClose} onClose={handleToastClose} />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

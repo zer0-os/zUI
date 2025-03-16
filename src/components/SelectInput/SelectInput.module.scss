@@ -1,6 +1,6 @@
-@import '../../styles/colors';
-@import '../../styles/theme';
-@import '../../styles/glass';
+@use '../../styles/colors';
+@use '../../styles/theme';
+@use '../../styles/glass';
 
 .InputContainer {
   min-width: 16rem;
@@ -11,9 +11,9 @@
   }
 
   .WrapperOpen {
-    border: 1px solid $color-secondary-11;
+    border: 1px solid theme.$color-secondary-11;
 
-    @include glass-input-inset-active;
+    @include glass.glass-input-inset-active;
   }
 
   Input:hover,

@@ -13,7 +13,7 @@ const DEFAULT_PROPS: TextStackProps = {
 
 const MOCK_SKELETON_ID = 'mock-skeleton';
 
-jest.mock('../Skeleton', () => ({
+vi.mock('../Skeleton', () => ({
   Skeleton: () => <div data-testid={MOCK_SKELETON_ID} />
 }));
 

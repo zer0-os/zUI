@@ -2,16 +2,15 @@
  * @TODO: assess coverage
  */
 
-import React from 'react';
 import { render } from '@testing-library/react';
+import { describe, test, expect, vi, beforeEach } from 'vitest';
 
 import { ToggleGroup, ToggleGroupProps } from './';
-import resetAllMocks = jest.resetAllMocks;
 
-const mockRoot = jest.fn();
-const mockItem = jest.fn();
+const mockRoot = vi.fn();
+const mockItem = vi.fn();
 
-jest.mock('@radix-ui/react-toggle-group', () => ({
+vi.mock('@radix-ui/react-toggle-group', () => ({
   Root: (props: any) => {
     mockRoot(props);
     return <div {...props}>{props.children}</div>;
@@ -35,7 +34,7 @@ const ICON_OPTIONS = [
   { key: '3', icon: <aside>Icon 3</aside> }
 ];
 
-const mockOnSelectionChange = jest.fn();
+const mockOnSelectionChange = vi.fn();
 
 const DEFAULT_PROPS_SINGLE: ToggleGroupProps = {
   options: LABEL_OPTIONS,
@@ -46,7 +45,7 @@ const DEFAULT_PROPS_SINGLE: ToggleGroupProps = {
 };
 
 beforeEach(() => {
-  resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('<ToggleGroup />', () => {

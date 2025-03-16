@@ -12,10 +12,9 @@ const MOCK_TABS: TabNav[] = [
 ];
 
 const DEFAULT_PROPS = { tabs: MOCK_TABS, location: MOCK_TABS[0].to };
-const mockLink = jest.fn();
+const mockLink = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-   
+vi.mock('react-router-dom', () => ({
   Link: (props: any) => {
     mockLink(props);
     return (
@@ -28,7 +27,7 @@ jest.mock('react-router-dom', () => ({
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<TabsNav />', () => {

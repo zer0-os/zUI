@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 import { SearchInput, SearchInputProps } from './SearchInput';
 import { InputProps } from './Input';
 
-let mockInput = jest.fn();
+let mockInput = vi.fn();
 
-jest.mock('./Input', () => ({
+vi.mock('./Input', () => ({
   Input: (props: InputProps) => {
     mockInput(props);
     return <div data-testid={'input'} />;
@@ -17,7 +17,7 @@ const renderComponent = (props: SearchInputProps) => render(<SearchInput {...pro
 
 describe('<SearchInput />', () => {
   it('should pass important props to Input', () => {
-    const mockOnChange = jest.fn();
+    const mockOnChange = vi.fn();
     const mockValue = 'mock-value';
     renderComponent({ value: mockValue, onChange: mockOnChange });
     expect(mockInput).toHaveBeenCalledWith(

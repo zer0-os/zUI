@@ -1,11 +1,10 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Accordion } from './';
 
 export default {
   title: 'Data Display/Accordion',
   component: Accordion
-} as ComponentMeta<typeof Accordion>;
+} as Meta<typeof Accordion>;
 
 const items = [
   {
@@ -38,7 +37,7 @@ const items = [
   }
 ];
 
-const Template: ComponentStory<typeof Accordion> = args => <Accordion {...args} items={args.items ?? items} />;
+const Template: StoryFn<typeof Accordion> = args => <Accordion {...args} items={args.items ?? items} />;
 
 export const LowContrast = Template.bind({});
 LowContrast.args = {

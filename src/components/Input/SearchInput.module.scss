@@ -1,4 +1,4 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 @mixin path($color, $styles) {
   svg {
@@ -14,7 +14,7 @@
 
 .SearchIcon {
   svg path {
-    stroke: $color-greyscale-11;
+    stroke: theme.$color-greyscale-11;
     transition: stroke 0.1s ease-in-out;
   }
 }

@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import { Status } from './';
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('<Status />', () => {

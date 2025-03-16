@@ -1,14 +1,14 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { SelectInput } from './SelectInput';
 
 export default {
   title: 'Inputs/SelectInput',
   component: SelectInput
-} as ComponentMeta<typeof SelectInput>;
+} as Meta<typeof SelectInput>;
 
-const Template: ComponentStory<typeof SelectInput> = args => {
-  const [selectedItem, setSelectedItem] = React.useState('');
+const Template: StoryFn<typeof SelectInput> = args => {
+  const [selectedItem, setSelectedItem] = useState('');
 
   const items = [
     {

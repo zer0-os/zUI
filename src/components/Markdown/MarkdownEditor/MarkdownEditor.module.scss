@@ -1,27 +1,27 @@
-@import '../../../styles/theme';
+@use '../../../styles/theme';
 
-@import '../../../styles/typography';
-@import '../../../styles/dimensions';
+@use '../../../styles/typography';
+@use '../../../styles/dimensions';
 
 /* stylelint-disable no-descending-specificity */
 .Container {
   .CustomTextToolbarButton {
     padding: 0.25rem 0.5rem !important;
-    font-size: $size-tiny !important;
+    font-size: typography.$size-tiny !important;
   }
 
   .Editor {
     border-radius: 1.5rem;
-    border: 1px solid $color-greyscale-7;
+    border: 1px solid theme.$color-greyscale-7;
     transition: border 0.1s ease;
 
     &:focus-within {
-      border-color: $color-primary-9;
+      border-color: theme.$color-primary-9;
     }
 
     :global(.w-md-editor) {
       min-height: 15rem;
-      color: $color-greyscale-12;
+      color: theme.$color-greyscale-12;
       background: none;
       border-radius: inherit;
       box-shadow: unset;
@@ -31,7 +31,7 @@
     }
 
     :global(.w-md-editor-toolbar) {
-      background: $color-primary-2;
+      background: theme.$color-primary-2;
       border: unset;
 
       > ul:first-child {
@@ -42,20 +42,20 @@
         height: 2.5rem !important;
         margin: auto 1.5rem;
 
-        @media only screen and (max-width: $breakpoint-mobile-l) {
+        @media only screen and (max-width: dimensions.$breakpoint-mobile-l) {
           margin: auto 0.75rem;
         }
 
         > li > button {
           height: 1.5rem;
-          color: $color-greyscale-12;
+          color: theme.$color-greyscale-12;
 
           > svg {
             width: 1.125rem;
             height: 1.125rem;
           }
 
-          @media only screen and (max-width: $breakpoint-mobile-l) {
+          @media only screen and (max-width: dimensions.$breakpoint-mobile-l) {
             height: 1.25rem;
           }
         }
@@ -64,7 +64,7 @@
           margin: 0 0.85rem !important;
           background-color: unset;
 
-          @media only screen and (max-width: $breakpoint-mobile-l) {
+          @media only screen and (max-width: dimensions.$breakpoint-mobile-l) {
             margin: 0 0.25rem !important;
           }
         }
@@ -77,23 +77,23 @@
 
     :global(.w-md-editor-content) {
       textarea {
-        font-size: $size-default;
+        font-size: typography.$size-default;
         line-height: 1.5rem;
 
         &::placeholder {
-          color: $color-greyscale-11;
+          color: theme.$color-greyscale-11;
         }
       }
     }
 
     :global(.w-md-editor-text-pre) {
       code {
-        font-size: $size-default !important;
+        font-size: typography.$size-default !important;
         line-height: 1.5rem !important;
-        color: $color-greyscale-11 !important;
+        color: theme.$color-greyscale-11 !important;
 
         span {
-          color: $color-greyscale-12 !important;
+          color: theme.$color-greyscale-12 !important;
         }
       }
     }
@@ -102,7 +102,7 @@
       margin-top: -1.5rem;
       width: 1.5rem;
       height: 1.5rem;
-      background-color: $color-greyscale-11;
+      background-color: theme.$color-greyscale-11;
       -webkit-mask-image: url('./assets/md-resize-bar.svg');
       mask-image: url('./assets/md-resize-bar.svg');
 
@@ -123,7 +123,7 @@
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: $color-greyscale-11;
+        background-color: theme.$color-greyscale-11;
         border-radius: 0.5rem;
       }
     }
@@ -131,12 +131,12 @@
 
   &[data-error] {
     .Editor {
-      border-color: $color-failure-8;
+      border-color: theme.$color-failure-8;
     }
 
     &:focus-within {
       .Editor {
-        border-color: $color-failure-9;
+        border-color: theme.$color-failure-9;
       }
     }
   }

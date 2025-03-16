@@ -1,6 +1,6 @@
-@import '../../styles/borders';
-@import '../../styles/colors';
-@import '../../styles/theme';
+@use '../../styles/borders';
+@use '../../styles/colors';
+@use '../../styles/theme';
 
 .zui-tooltip {
   &__trigger {
@@ -11,8 +11,8 @@
   &__content {
     padding: 1.5rem;
     max-width: 22rem;
-    background-color: $color-primary-3;
-    border-radius: $radius-primary;
+    background-color: theme.$color-primary-3;
+    border-radius: borders.$radius-primary;
 
     &[data-side='right'][data-align='end'] {
       border-bottom-left-radius: unset;
@@ -29,7 +29,7 @@
   }
 
   &__arrow {
-    fill: $color-primary-3;
+    fill: theme.$color-primary-3;
   }
 
   &__storycard {

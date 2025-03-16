@@ -1,9 +1,9 @@
-@import '../../styles/theme';
-@import '../../styles/glass';
+@use '../../styles/theme';
+@use '../../styles/glass';
 
 .zui-dropdown-trigger {
   background: none;
-  color: $color-primary-12;
+  color: theme.$color-primary-12;
   border: none;
   cursor: pointer;
   font-size: inherit;
@@ -11,8 +11,8 @@
 }
 
 .zui-dropdown-menu {
-  @include glass-materials-flat-thick;
-  @include glass-shadows-and-blur;
+  @include glass.glass-materials-flat-thick;
+  @include glass.glass-shadows-and-blur;
 
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
   transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 
   .zui-dropdown-item {
-    @include glass-text-primary-color;
+    @include glass.glass-text-primary-color;
 
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
     }
 
     &:hover {
-      @include glass-state-hover-color;
+      @include glass.glass-state-hover-color;
     }
 
     &:active {

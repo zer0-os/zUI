@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Input } from './';
+import { Meta, StoryFn } from '@storybook/react';
+import { Input } from './Input';
 import { Button } from '../Button';
 
 export default {
   title: 'Inputs/Input',
   component: Input
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = args => {
+const Template: StoryFn<typeof Input> = args => {
   const [value, setValue] = useState<string>('');
 
   return <Input {...args} value={value} onChange={setValue} />;
@@ -72,7 +72,7 @@ Search.args = {
   size: 'small'
 };
 
-const RefocusTemplate: ComponentStory<typeof Input> = args => {
+const RefocusTemplate: StoryFn<typeof Input> = args => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const focusInput = () => {

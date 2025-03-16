@@ -1,11 +1,11 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 .Container {
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  background: $color-primary-2;
+  background: theme.$color-primary-2;
 
   border-radius: 0.5rem;
 
@@ -35,7 +35,7 @@
     transition: background 0.1s ease, color 0.1s ease;
 
     &:not(:first-child) {
-      border-left: 1px solid $color-primary-3;
+      border-left: 1px solid theme.$color-primary-3;
     }
 
     &:first-child {
@@ -63,7 +63,7 @@
         z-index: 2;
       }
 
-      color: $color-greyscale-12 !important;
+      color: theme.$color-greyscale-12 !important;
     }
 
     /*
@@ -71,8 +71,8 @@
          */
 
     &[data-state='on'] {
-      background: $color-primary-3;
-      color: $color-greyscale-12;
+      background: theme.$color-primary-3;
+      color: theme.$color-greyscale-12;
 
       svg {
         color: inherit !important;
@@ -81,14 +81,14 @@
 
     &[data-state='off'] {
       background: none;
-      color: $color-greyscale-11;
+      color: theme.$color-greyscale-11;
 
       svg {
         color: inherit !important;
       }
 
       &:hover {
-        color: $color-greyscale-12;
+        color: theme.$color-greyscale-12;
       }
     }
 
@@ -133,7 +133,7 @@
       svg {
         width: 1.5rem;
         height: 1.5rem;
-        color: $color-greyscale-12;
+        color: theme.$color-greyscale-12;
       }
     }
   }

@@ -9,9 +9,9 @@ const DEFAULT_PROPS: ImageProps = {
 
 const DEFAULT_IMAGE_URL = 'https://picsum.photos/1/1';
 
-const mockSkeleton = jest.fn();
+const mockSkeleton = vi.fn();
 
-jest.mock('../Skeleton', () => ({
+vi.mock('../Skeleton', () => ({
   Skeleton: (props: any) => {
     mockSkeleton(props);
     return <div data-testid={'zui-image-skeleton'} />;
@@ -29,7 +29,7 @@ describe('<Image />', () => {
   });
 
   test('should pass onLoad to image', () => {
-    const onLoad = jest.fn();
+    const onLoad = vi.fn();
     render(<Image {...DEFAULT_PROPS} src={DEFAULT_IMAGE_URL} onLoad={onLoad} />);
     expect(onLoad).not.toHaveBeenCalled();
     const img = screen.getByTestId('zui-image-img');
@@ -38,7 +38,7 @@ describe('<Image />', () => {
   });
 
   test('should pass onError to image', () => {
-    const onError = jest.fn();
+    const onError = vi.fn();
     render(<Image {...DEFAULT_PROPS} src={DEFAULT_IMAGE_URL} onError={onError} />);
     const image = screen.getByTestId('zui-image-img');
     image.dispatchEvent(new Event('error'));

@@ -41,12 +41,11 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             }
             setInputValue(value);
           }
-        } catch (e) {
+        } catch (_e) {
           setInputValue('');
           onChange('');
         }
       }
-       
     }, [value]);
 
     /**
@@ -72,7 +71,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             onChange(value);
           }
           setInputValue(value);
-        } catch (e) {
+        } catch (_e) {
           // just catching to prevent state setting
           // if parseUnits throws
         }

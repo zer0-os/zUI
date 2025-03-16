@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { Member } from '.';
 
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Member',
   component: Member
-} as ComponentMeta<typeof Member>;
+} as Meta<typeof Member>;
 
-const Template: ComponentStory<typeof Member> = args => {
+const Template: StoryFn<typeof Member> = args => {
   return <Member {...args}>{args.children ?? 'John Smith'}</Member>;
 };
 

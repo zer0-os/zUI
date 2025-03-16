@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import './styles/main.scss';
 
-export const ZUIProvider: React.FC = ({ children }) => {
+interface ZUIProviderProps {}
+
+export const ZUIProvider: React.FC<PropsWithChildren<ZUIProviderProps>> = ({ children }) => {
   return <TooltipProvider>{children}</TooltipProvider>;
 };
