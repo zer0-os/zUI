@@ -60,8 +60,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    console.log('type', type);
-    console.log('endEnhancer', endEnhancer);
     // Allow overriding the type to be password only
     const trueType = type === 'password' ? 'password' : 'text';
 
