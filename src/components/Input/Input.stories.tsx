@@ -145,6 +145,60 @@ const RefocusTemplate: Story = args => {
   );
 };
 
+const RefocusTemplateNumber: Story = args => {
+  const [value, setValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <NumberInput ref={inputRef} {...args} value={value} onChange={setValue} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
+};
+
+const RefocusTemplatePassword: Story = args => {
+  const [value, setValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <PasswordInput ref={inputRef} {...args} value={value} onChange={setValue} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
+};
+
+const RefocusTemplateSearch: Story = args => {
+  const [value, setValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <SearchInput ref={inputRef} {...args} value={value} onChange={setValue} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
+};
+
 export const Refocus = {
   render: RefocusTemplate,
   args: {
@@ -163,7 +217,7 @@ export const RefocusText = {
 };
 
 export const RefocusNumber = {
-  render: RefocusTemplate,
+  render: RefocusTemplateNumber,
   args: {
     type: 'number',
     label: 'Bid Amount (ETH)',
@@ -172,7 +226,7 @@ export const RefocusNumber = {
 };
 
 export const RefocusPassword = {
-  render: RefocusTemplate,
+  render: RefocusTemplatePassword,
   args: {
     type: 'password',
     label: 'Password',
@@ -181,7 +235,7 @@ export const RefocusPassword = {
 };
 
 export const RefocusSearch = {
-  render: RefocusTemplate,
+  render: RefocusTemplateSearch,
   args: {
     type: 'search',
     label: 'Search',
