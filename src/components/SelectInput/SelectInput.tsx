@@ -58,7 +58,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       alert={alert}
       error={error}
       endEnhancer={<IconChevronDown size={16} />}
-       
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       onChange={() => {}}
     />
   );

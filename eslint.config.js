@@ -70,6 +70,7 @@ module.exports = [
     rules: {
       // General rules
       '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-empty-function': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'react/display-name': 0,
       'import/no-cycle': 2,
