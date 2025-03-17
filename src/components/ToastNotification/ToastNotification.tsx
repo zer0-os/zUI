@@ -10,26 +10,24 @@ import styles from './ToastNotification.module.scss';
 
 type ToastPositionVariant = 'left' | 'right';
 type ToastThemeVariant = 'primary' | 'success' | 'error';
-export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 
 const { ToastRoot, ToastIcon, TextWrapper, ToastTitle, ToastDescription, ToastButton, ToastClose, ToastViewport } =
   styles;
 
-export interface ToastNotificationProps {
+export type ToastNotificationProps = Toast.ToastProviderProps & {
   viewportClassName?: string;
   duration?: number;
   title: string;
   description: string;
   actionTitle?: string;
-  actionAltText?: string;
-  variant?: ToastVariant;
+  actionAltText: string;
   positionVariant?: ToastPositionVariant;
   themeVariant?: ToastThemeVariant;
-  swipeDirection?: 'up' | 'down' | 'left' | 'right';
+  swipeDirection?: Toast.ToastProviderProps['swipeDirection'];
   openToast?: boolean;
   onClick?: () => void;
   onClose?: () => void;
-}
+};
 
 export const ToastNotification = ({
   viewportClassName,
