@@ -1,19 +1,28 @@
 import { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { ToggleGroup } from './ToggleGroup';
-import type { LabelToggle } from './ToggleGroup.types';
+import { ToggleGroup } from './';
 
 import { IconArrowLeft, IconArrowDown, IconArrowDownRight } from '../Icons';
 
 export default {
-  title: 'Inputs/ToggleGroup',
+  title: 'Inputs/Toggle Group',
   component: ToggleGroup
 } as Meta<typeof ToggleGroup>;
 
-const DEFAULT_LABELS: LabelToggle[] = [
-  { key: 'left', label: 'Left' },
-  { key: 'down', label: 'Down' },
-  { key: 'down-right', label: 'Down Right' }
+const DEFAULT_LABELS = [
+  {
+    key: '1',
+    label: 'Kia ora koutou katoa'
+  },
+  {
+    key: '2',
+    label: 'Guten tag euch allen'
+  },
+  {
+    key: '3',
+    label: 'नमस्ते सभी को',
+    isDisabled: true
+  }
 ];
 
 const DEFAULT_ICONS = [
@@ -32,36 +41,16 @@ const DEFAULT_ICONS = [
   }
 ];
 
-const SingleSelectTemplate: StoryFn<typeof ToggleGroup> = args => {
-  const [selection, setSelection] = useState<string | undefined>(undefined);
+const SingleSelectTemplate: StoryFn = (args: any) => {
+  const [selection, setSelection] = useState<string | undefined>(args?.selection);
 
-  return (
-    <ToggleGroup
-      {...args}
-      options={DEFAULT_LABELS}
-      selectionType="single"
-      selection={selection}
-      onSelectionChange={setSelection}
-      isRequired={false}
-      variant="default"
-    />
-  );
+  return <ToggleGroup {...args} selectionType={'single'} selection={selection} onSelectionChange={setSelection} />;
 };
 
-const MultiSelectTemplate: StoryFn<typeof ToggleGroup> = args => {
-  const [selection, setSelection] = useState<string[]>([]);
+const MultiSelectTemplate: StoryFn = (args: any) => {
+  const [selection, setSelection] = useState<string[]>(args?.selection ?? []);
 
-  return (
-    <ToggleGroup
-      {...args}
-      options={DEFAULT_LABELS}
-      selectionType="multiple"
-      selection={selection}
-      onSelectionChange={setSelection}
-      isRequired={false}
-      variant="default"
-    />
-  );
+  return <ToggleGroup {...args} selectionType={'multiple'} selection={selection} onSelectionChange={setSelection} />;
 };
 
 export const Default = SingleSelectTemplate.bind({});
