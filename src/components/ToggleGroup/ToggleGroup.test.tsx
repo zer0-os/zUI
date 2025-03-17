@@ -88,6 +88,9 @@ describe('<ToggleGroup />', () => {
   test('should add disabled attribute to disabled options', () => {
     const options = LABEL_OPTIONS.map(l => ({ ...l, isDisabled: true }));
     render(<ToggleGroup {...DEFAULT_PROPS_SINGLE} options={options} />);
+    expect(mockItem).toHaveBeenNthCalledWith(1, expect.objectContaining({ disabled: true }));
+    expect(mockItem).toHaveBeenNthCalledWith(2, expect.objectContaining({ disabled: true }));
+    expect(mockItem).toHaveBeenNthCalledWith(3, expect.objectContaining({ disabled: true }));
   });
 
   describe('selection type', () => {

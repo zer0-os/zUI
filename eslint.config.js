@@ -5,7 +5,7 @@ const tsParser = require('@typescript-eslint/parser');
 const reactPlugin = require('eslint-plugin-react');
 const reactHooksPlugin = require('eslint-plugin-react-hooks');
 const importPlugin = require('eslint-plugin-import');
-const jestPlugin = require('eslint-plugin-jest');
+const vitestPlugin = require('eslint-plugin-vitest');
 const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
 const testingLibraryPlugin = require('eslint-plugin-testing-library');
 const path = require('path');
@@ -18,8 +18,7 @@ const commonIgnores = [
   '**/.git/**',
   '**/coverage/**',
   '**/build/**',
-  'jest.config.js',
-  'jest.setup.ts',
+  'vitest.config.ts',
   'babel.config.js',
   'lint-staged.config.js',
   'webpack.config.js',
@@ -38,7 +37,7 @@ module.exports = [
       globals: {
         ...globals.browser,
         ...globals.node,
-        ...globals.jest
+        ...globals.vitest
       },
       parser: tsParser,
       parserOptions: {
@@ -64,12 +63,13 @@ module.exports = [
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       import: importPlugin,
-      jest: jestPlugin,
+      vitest: vitestPlugin,
       'jsx-a11y': jsxA11yPlugin,
       'testing-library': testingLibraryPlugin
     },
     rules: {
       // General rules
+      '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'react/display-name': 0,
       'import/no-cycle': 2,
@@ -187,6 +187,7 @@ module.exports = [
   {
     files: ['**/*.test.tsx'],
     rules: {
+      ...vitestPlugin.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'off'
     }
   },

@@ -7,14 +7,14 @@ import 'react-image-lightbox/style.css';
 import styles from './Lightbox.module.scss';
 
 export interface LightboxProps {
-   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items: any[];
   startingIndex?: number;
   onClose?: () => void;
   provider: {
-     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fitWithinBox: (media: any) => any;
-     
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getSource: (options: { src: string; options: any }) => string;
   };
 }

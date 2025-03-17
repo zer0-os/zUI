@@ -78,7 +78,7 @@ describe('<NFT />', () => {
       expect(container.getElementsByClassName('Button').length).toBe(0);
     });
 
-    test('should render button ', () => {
+    test('should render button', () => {
       const { container } = render(<NFT {...DEFAULT_PROPS} button={mockButton} />);
 
       expect(container.getElementsByClassName('Button').length).toBe(1);
