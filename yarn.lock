@@ -2340,6 +2340,13 @@
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.28.0.tgz#7b4b5485b758228bdbe31ecae66ed07a29e2be4d"
   integrity sha512-9oMEYIDc3sk0G5rysnYvdNrkSg7B04yTKl50HHSZVbokeHpnU0yRmsDaWb9B/5RprcKj8XszEk5guBO8Sa/Q+Q==
 
+"@react-types/textfield@^3.12.0":
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@react-types/textfield/-/textfield-3.12.0.tgz#f9c8fe299c82df7066ea6dad0b2ede53a0453ea1"
+  integrity sha512-B0vzCIBUbYWrlFk+odVXrSmPYwds9G+G+HiOO/sJr4eZ4RYiIqnFbZ7qiWhWXaou7vi71iXVqKQ8mxA6bJwPEQ==
+  dependencies:
+    "@react-types/shared" "^3.28.0"
+
 "@remix-run/router@1.23.0":
   version "1.23.0"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.23.0.tgz#35390d0e7779626c026b11376da6789eb8389242"

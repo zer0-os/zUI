@@ -1,19 +1,21 @@
-import React, { createElement, FC, forwardRef, ReactNode, useCallback, InputHTMLAttributes } from 'react';
+import { ChangeEvent, createElement, FC, forwardRef, ReactNode, useCallback } from 'react';
 
+import { AriaTextFieldProps } from '@react-types/textfield';
 import { Alert, AlertProps } from '../Alert';
 
 import classNames from 'classnames';
 
 import styles from './Input.module.scss';
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'value'> {
+export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange' | 'spellCheck'> {
   className?: string;
   wrapperClassName?: string;
   inputClassName?: string;
   alertClassName?: string;
   helperTextClassName?: string;
   error?: boolean;
-  success?: boolean; // @deprecated
+  // @deprecated
+  success?: boolean;
   helperText?: string;
   startEnhancer?: ReactNode | string;
   endEnhancer?: ReactNode | string;
@@ -21,8 +23,6 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   onChange: (value: string) => void;
   size?: 'large' | 'small';
   alert?: { variant: AlertProps['variant']; text: ReactNode };
-  label?: string;
-  isDisabled?: boolean;
 }
 
 type EnhancerProps = {
@@ -54,18 +54,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       onChange,
       helperText,
-
       type, // note: intentionally pulling type out for now
       size = 'large',
       ...rest
     },
     ref
   ) => {
+    console.log('type', type);
+    console.log('endEnhancer', endEnhancer);
     // Allow overriding the type to be password only
     const trueType = type === 'password' ? 'password' : 'text';
 
     const handleOnChange = useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
+      (event: ChangeEvent<HTMLInputElement>) => {
         if (!isDisabled) {
           onChange(event.target.value);
         }
