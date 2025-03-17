@@ -181,6 +181,7 @@ module.exports = [
   {
     files: ['**/*.stories.tsx', '**/.storybook/**'],
     rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
       'import/no-default-export': 'off'
     }
   },
@@ -192,8 +193,6 @@ module.exports = [
       '@typescript-eslint/no-explicit-any': 'off'
     }
   },
-  // Note: Storybook component files in src/components/.storybook
-  // are handled by a separate .eslintrc.json inside that directory
   // .d.ts files
   {
     files: ['**/*.d.ts'],
