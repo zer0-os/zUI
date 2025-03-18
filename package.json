@@ -22,7 +22,7 @@
     "lint:scripts": "eslint --ext .ts,.tsx,.js,.jsx ./src --fix --max-warnings 1",
     "lint:styles": "stylelint -q ./**/*.{css,scss} --max-warnings 1",
     "publish:components": "cd ./dist && yarn publish",
-    "publish:storybook": "NODE_ENV=storybook-production build-storybook -o dist-storybook",
+    "publish:storybook": "NODE_ENV=storybook-production yarn build-storybook -o dist-storybook",
     "test": "vitest",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
