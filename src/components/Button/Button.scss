@@ -3,15 +3,15 @@
 //  *
 //  */
 
-@import '../../styles/borders';
-@import '../../styles/animations';
-@import '../../styles/theme';
-@import '../../styles/typography';
-@import '../../styles/glass';
+@use '../../styles/borders';
+@use '../../styles/animations';
+@use '../../styles/theme';
+@use '../../styles/typography';
+@use '../../styles/glass';
 
 // Default (Button Primary Variant)
 .zui-button {
-  @include glass-shadows-and-blur;
+  @include glass.glass-shadows-and-blur;
   position: relative;
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@
   text-overflow: ellipsis;
   text-transform: capitalize;
   cursor: pointer;
-  transition: color #{$time-short} ease-in-out, border-color #{$time-short} ease-in-out;
+  transition: color #{animations.$time-short} ease-in-out, border-color #{animations.$time-short} ease-in-out;
   color: var(--zui-button-color);
   width: fit-content;
 
@@ -72,7 +72,7 @@
   &:active {
     background: none !important;
     text-shadow: var(--zui-text-shadow-hover);
-    transition: text-shadow #{$time-short} ease-in-out;
+    transition: text-shadow #{animations.$time-short} ease-in-out;
 
     &::after {
       content: none !important;
@@ -84,14 +84,14 @@
 .zui-button-small {
   height: 32px;
   padding: 0 8px;
-  font-size: #{$size-small};
+  font-size: #{typography.$size-small};
   line-height: 20px;
 }
 
 .zui-button-large {
   height: 48px;
   padding: 0 16px;
-  font-size: #{$size-default};
+  font-size: #{typography.$size-default};
   line-height: 24px;
 }
 
@@ -102,9 +102,9 @@
   align-items: center;
   color: var(--zui-button-color);
   text-align: center;
-  font-weight: #{$font-weight-demi-bold};
+  font-weight: #{typography.$font-weight-demi-bold};
   z-index: 2;
-  transition: color #{$time-short} ease-in-out;
+  transition: color #{animations.$time-short} ease-in-out;
 }
 
 // Button Content Size Variants
@@ -118,17 +118,17 @@
 
 // Button Color Variants
 .zui-button-highlight {
-  --zui-button-color: #{$color-secondary-11};
+  --zui-button-color: #{theme.$color-secondary-11};
   --zui-text-shadow-hover: 0px 0px 16px rgba(1, 250, 195, 0.75);
 }
 
 .zui-button-red {
-  --zui-button-color: #{$color-failure-11};
+  --zui-button-color: #{theme.$color-failure-11};
   --zui-text-shadow-hover: 0px 0px 16px rgba(221, 50, 50, 0.75);
 }
 
 .zui-button-greyscale {
-  --zui-button-color: #{$color-greyscale-transparency-12};
+  --zui-button-color: #{theme.$color-greyscale-transparency-12};
   --zui-text-shadow-hover: 0px 0px 16px rgba(237, 237, 239, 0.75);
 }
 
@@ -147,7 +147,7 @@
     height: 100%;
     opacity: 0.2;
     border-radius: 1000px;
-    transition: opacity #{$time-short} ease-in-out;
+    transition: opacity #{animations.$time-short} ease-in-out;
     transform: translateX(-50%);
     background: radial-gradient(ellipse at center, var(--zui-button-color) 0%, rgba(1, 244, 203, 0) 50%);
   }
@@ -158,7 +158,7 @@
 }
 
 .zui-button-disabled {
-  --zui-button-color: #{$color-greyscale-transparency-9};
+  --zui-button-color: #{theme.$color-greyscale-transparency-9};
   --zui-text-shadow-hover: none;
 
   pointer-events: none;

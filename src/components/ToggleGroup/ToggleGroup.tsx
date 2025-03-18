@@ -57,7 +57,7 @@ const Option = ({ option, isGroupDisabled }: OptionProps) => {
 
   return (
     <RadixToggleGroup.Item
-      disabled={isGroupDisabled ?? option.isDisabled}
+      disabled={isGroupDisabled || option.isDisabled}
       className={classNames(styles.Toggle)}
       key={option.key}
       value={option.key}

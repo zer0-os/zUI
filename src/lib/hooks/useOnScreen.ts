@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, RefObject } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useOnScreen = (ref: any) => {
+export const useOnScreen = (ref: RefObject<HTMLElement>) => {
   const [isIntersecting, setIntersecting] = useState(false);
 
   const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
@@ -12,7 +11,6 @@ export const useOnScreen = (ref: any) => {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isIntersecting;

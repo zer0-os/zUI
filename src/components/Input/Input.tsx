@@ -1,6 +1,5 @@
-import React, { createElement, FC, forwardRef, ReactNode, useCallback } from 'react';
+import { ChangeEvent, createElement, FC, forwardRef, ReactNode, useCallback } from 'react';
 
-// eslint-disable-next-line import/no-unresolved
 import { AriaTextFieldProps } from '@react-types/textfield';
 import { Alert, AlertProps } from '../Alert';
 
@@ -8,7 +7,7 @@ import classNames from 'classnames';
 
 import styles from './Input.module.scss';
 
-export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange'> {
+export interface InputProps extends Omit<AriaTextFieldProps, 'value' | 'onChange' | 'spellCheck'> {
   className?: string;
   wrapperClassName?: string;
   inputClassName?: string;
@@ -55,7 +54,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       onChange,
       helperText,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       type, // note: intentionally pulling type out for now
       size = 'large',
       ...rest
@@ -66,7 +64,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const trueType = type === 'password' ? 'password' : 'text';
 
     const handleOnChange = useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
+      (event: ChangeEvent<HTMLInputElement>) => {
         if (!isDisabled) {
           onChange(event.target.value);
         }

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Lightbox } from './';
 
 export default {
   title: 'Media/Lightbox',
   component: Lightbox
-} as ComponentMeta<typeof Lightbox>;
+} as Meta<typeof Lightbox>;
 
 const mockProvider = {
   fitWithinBox: () => ({ width: 800, height: 600 }),
@@ -24,7 +24,7 @@ const mockItems = [
   { url: 'https://picsum.photos/800/600?random=3', type: 'image', name: 'image-3.jpg', mimetype: 'image/jpeg' }
 ];
 
-const Template: ComponentStory<typeof Lightbox> = args => {
+const Template: StoryFn<typeof Lightbox> = args => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

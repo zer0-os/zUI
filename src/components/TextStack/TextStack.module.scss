@@ -1,4 +1,4 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 .Container {
   display: flex;
@@ -8,12 +8,12 @@
 
   font-size: 0.75rem;
 
-  color: $color-greyscale-11;
+  color: theme.$color-greyscale-11;
 
   .Primary {
     font-size: 1.125rem;
     font-weight: bold;
-    color: $color-greyscale-12;
+    color: theme.$color-greyscale-12;
   }
 
   > * {

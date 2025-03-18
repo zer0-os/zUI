@@ -1,78 +1,134 @@
-import React, { useRef, useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Input } from './';
+import { useRef, useState } from 'react';
+import { Meta, StoryFn } from '@storybook/react';
+import { Input } from './Input';
 import { Button } from '../Button';
+import { NumberInput } from './NumberInput';
+import { PasswordInput } from './PasswordInput';
+import { SearchInput } from './SearchInput';
 
-export default {
+const meta: Meta<typeof Input> = {
   title: 'Inputs/Input',
   component: Input
-} as ComponentMeta<typeof Input>;
+};
 
-const Template: ComponentStory<typeof Input> = args => {
+export default meta;
+
+type Story = StoryFn<typeof Input>;
+
+const Template: Story = args => {
   const [value, setValue] = useState<string>('');
-
   return <Input {...args} value={value} onChange={setValue} />;
 };
 
-export const Text = Template.bind({});
-Text.args = { label: 'NFT Name', placeholder: 'NFT Name' };
-
-export const HelperText = Template.bind({});
-HelperText.args = {
-  label: 'NFT Name',
-  placeholder: 'NFT Name',
-  helperText: 'Some helper text here to help contextualize your input.'
+const TemplateNumber: Story = args => {
+  const [value, setValue] = useState<string>('');
+  return <NumberInput {...args} value={value} onChange={setValue} />;
 };
 
-export const Number = Template.bind({});
-Number.args = { type: 'number', label: 'Bid Amount (ETH)', placeholder: 'Bid Amount (ETH)' };
-
-export const Password = Template.bind({});
-Password.args = { type: 'password', label: 'Password', placeholder: 'Password' };
-
-export const Disabled = Template.bind({});
-Disabled.args = {
-  value: 'zero.Domain',
-  label: 'Domain zNA',
-  placeholder: 'Domain zNA',
-  isDisabled: true
+const TemplatePassword: Story = args => {
+  const [value, setValue] = useState<string>('');
+  return <PasswordInput {...args} value={value} onChange={setValue} />;
 };
 
-export const StartEnhancer = Template.bind({});
-StartEnhancer.args = { placeholder: 'zNA', startEnhancer: '0://' };
-
-export const EndEnhancer = Template.bind({});
-EndEnhancer.args = {
-  placeholder: 'Token Address',
-  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
-  label: 'Token Address'
+const TemplateSearch: Story = args => {
+  const [value, setValue] = useState<string>('');
+  return <SearchInput {...args} value={value} onChange={setValue} />;
 };
 
-export const Alert = Template.bind({});
-Alert.args = {
-  placeholder: 'Token Address',
-  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
-  label: 'Token Address',
-  alert: { variant: 'success', text: 'Token address is valid!' }
+export const Text = {
+  render: Template,
+  args: {
+    label: 'NFT Name',
+    placeholder: 'NFT Name'
+  }
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  value: 'zero.Domain',
-  label: 'Domain zNA',
-  placeholder: 'Domain zNA',
-  error: true,
-  alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
+export const HelperText = {
+  render: Template,
+  args: {
+    label: 'NFT Name',
+    placeholder: 'NFT Name',
+    helperText: 'Some helper text here to help contextualize your input.'
+  }
 };
 
-export const Search = Template.bind({});
-Search.args = {
-  placeholder: 'Search',
-  type: 'search',
-  size: 'small'
+export const Number = {
+  render: TemplateNumber,
+  args: {
+    type: 'number',
+    label: 'Bid Amount (ETH)',
+    placeholder: 'Bid Amount (ETH)'
+  }
 };
 
-const RefocusTemplate: ComponentStory<typeof Input> = args => {
+export const Password = {
+  render: TemplatePassword,
+  args: {
+    type: 'password',
+    label: 'Password',
+    placeholder: 'Password'
+  }
+};
+
+export const Disabled = {
+  render: Template,
+  args: {
+    value: 'zero.Domain',
+    label: 'Domain zNA',
+    placeholder: 'Domain zNA',
+    isDisabled: true
+  }
+};
+
+export const StartEnhancer = {
+  render: Template,
+  args: {
+    placeholder: 'zNA',
+    startEnhancer: '0://'
+  }
+};
+
+export const EndEnhancer = {
+  render: Template,
+  args: {
+    placeholder: 'Token Address',
+    endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
+    label: 'Token Address'
+  }
+};
+
+export const Alert = {
+  render: Template,
+  args: {
+    placeholder: 'Token Address',
+    endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
+    label: 'Token Address',
+    alert: { variant: 'success', text: 'Token address is valid!' }
+  }
+};
+
+export const Error = {
+  render: Template,
+  args: {
+    value: 'zero.Domain',
+    label: 'Domain zNA',
+    placeholder: 'Domain zNA',
+    error: true,
+    alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
+  }
+};
+
+export const Search = {
+  render: TemplateSearch,
+  args: {
+    placeholder: 'Search',
+    type: 'search',
+    size: 'small'
+  }
+};
+
+const RefocusTemplate: Story = args => {
+  const [value, setValue] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const focusInput = () => {
@@ -83,74 +139,146 @@ const RefocusTemplate: ComponentStory<typeof Input> = args => {
 
   return (
     <div>
-      <Input ref={inputRef} {...args} />
+      <Input ref={inputRef} {...args} value={value} onChange={setValue} />
       <Button onPress={focusInput}>Focus Input</Button>
     </div>
   );
 };
 
-export const Refocus = RefocusTemplate.bind({});
-Refocus.args = {
-  placeholder: 'Click button to refocus',
-  label: 'Refocus Input Example'
+const RefocusTemplateNumber: Story = args => {
+  const [value, setValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <NumberInput ref={inputRef} {...args} value={value} onChange={setValue} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
 };
 
-export const RefocusText = RefocusTemplate.bind({});
-RefocusText.args = {
-  label: 'NFT Name',
-  placeholder: 'Type NFT Name',
-  type: 'text'
+const RefocusTemplatePassword: Story = args => {
+  const [value, setValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <PasswordInput ref={inputRef} {...args} value={value} onChange={setValue} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
 };
 
-export const RefocusNumber = RefocusTemplate.bind({});
-RefocusNumber.args = {
-  type: 'number',
-  label: 'Bid Amount (ETH)',
-  placeholder: 'Enter your bid amount'
+const RefocusTemplateSearch: Story = args => {
+  const [value, setValue] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <SearchInput ref={inputRef} {...args} value={value} onChange={setValue} />
+      <Button onPress={focusInput}>Focus Input</Button>
+    </div>
+  );
 };
 
-export const RefocusPassword = RefocusTemplate.bind({});
-RefocusPassword.args = {
-  type: 'password',
-  label: 'Password',
-  placeholder: 'Enter your password'
+export const Refocus = {
+  render: RefocusTemplate,
+  args: {
+    placeholder: 'Click button to refocus',
+    label: 'Refocus Input Example'
+  }
 };
 
-export const RefocusSearch = RefocusTemplate.bind({});
-RefocusSearch.args = {
-  type: 'search',
-  label: 'Search',
-  placeholder: 'Search here',
-  size: 'small'
+export const RefocusText = {
+  render: RefocusTemplate,
+  args: {
+    label: 'NFT Name',
+    placeholder: 'Type NFT Name',
+    type: 'text'
+  }
 };
 
-export const RefocusWithStartEnhancer = RefocusTemplate.bind({});
-RefocusWithStartEnhancer.args = {
-  placeholder: 'zNA',
-  startEnhancer: '0://',
-  label: 'zNA Address'
+export const RefocusNumber = {
+  render: RefocusTemplateNumber,
+  args: {
+    type: 'number',
+    label: 'Bid Amount (ETH)',
+    placeholder: 'Enter your bid amount'
+  }
 };
 
-export const RefocusWithEndEnhancer = RefocusTemplate.bind({});
-RefocusWithEndEnhancer.args = {
-  placeholder: 'Token Address',
-  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
-  label: 'Token Address'
+export const RefocusPassword = {
+  render: RefocusTemplatePassword,
+  args: {
+    type: 'password',
+    label: 'Password',
+    placeholder: 'Enter your password'
+  }
 };
 
-export const RefocusWithAlert = RefocusTemplate.bind({});
-RefocusWithAlert.args = {
-  placeholder: 'Token Address',
-  alert: { variant: 'success', text: 'Token address is valid!' },
-  label: 'Token Address',
-  endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>
+export const RefocusSearch = {
+  render: RefocusTemplateSearch,
+  args: {
+    type: 'search',
+    label: 'Search',
+    placeholder: 'Search here',
+    size: 'small'
+  }
 };
 
-export const RefocusWithError = RefocusTemplate.bind({});
-RefocusWithError.args = {
-  value: 'zero.Domain',
-  label: 'Domain zNA',
-  placeholder: 'Domain zNA',
-  error: true,
-  alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
+export const RefocusWithStartEnhancer = {
+  render: RefocusTemplate,
+  args: {
+    placeholder: 'zNA',
+    startEnhancer: '0://',
+    label: 'zNA Address'
+  }
+};
+
+export const RefocusWithEndEnhancer = {
+  render: RefocusTemplate,
+  args: {
+    placeholder: 'Token Address',
+    endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>,
+    label: 'Token Address'
+  }
+};
+
+export const RefocusWithAlert = {
+  render: RefocusTemplate,
+  args: {
+    placeholder: 'Token Address',
+    alert: { variant: 'success', text: 'Token address is valid!' },
+    label: 'Token Address',
+    endEnhancer: <Button onPress={() => alert('Pressed button!')}>Check</Button>
+  }
+};
+
+export const RefocusWithError = {
+  render: RefocusTemplate,
+  args: {
+    value: 'zero.Domain',
+    label: 'Domain zNA',
+    placeholder: 'Domain zNA',
+    error: true,
+    alert: { variant: 'error', text: 'Domain zNAs must be lowercase.' }
+  }
 };

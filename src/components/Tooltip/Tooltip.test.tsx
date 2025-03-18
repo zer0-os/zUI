@@ -1,22 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import { test, expect, vi, afterEach } from 'vitest';
 import { render, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import { Tooltip, TooltipProps } from './Tooltip';
 
 // Prop mocks
 const TOOLTIP_TEXT = 'Mock content';
 const TRIGGER_TEXT = 'Mock trigger';
-const mockOnOpenChange = jest.fn();
+const mockOnOpenChange = vi.fn();
 
 // Radix mocks
-const mockRadixRoot = jest.fn();
-const mockRadixTrigger = jest.fn();
-const mockRadixContent = jest.fn();
-const mockRadixArrow = jest.fn();
+const mockRadixRoot = vi.fn();
+const mockRadixTrigger = vi.fn();
+const mockRadixContent = vi.fn();
+const mockRadixArrow = vi.fn();
 
-jest.mock('@radix-ui/react-tooltip', () => ({
+vi.mock('@radix-ui/react-tooltip', () => ({
+  Provider: (props: any) => props.children,
   Root: (props: any) => {
     mockRadixRoot(props);
     return <div data-testid="root">{props.children}</div>;
@@ -54,7 +53,7 @@ const renderComponent = (customProps: Partial<TooltipProps> = {}) => {
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 test('should pass props to Radix Root', () => {

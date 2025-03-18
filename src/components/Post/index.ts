@@ -1,3 +1,3 @@
-export { Post, PostProps } from './Post';
-export { Action, ActionProps } from './components/Action';
-export { Name, NameProps } from './components/Name';
+export { Post, type PostProps } from './Post';
+export { Action, type ActionProps } from './components/Action';
+export { Name, type NameProps } from './components/Name';

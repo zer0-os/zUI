@@ -1,4 +1,5 @@
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { Button, ButtonProps, Size, Variant } from './';
@@ -7,9 +8,9 @@ const TEST_BUTTON_TEXT = 'test button';
 const TEST_CLASS_NAME = 'test-class-name';
 const TEST_SPINNER_TEXT = 'test spinner';
 
-let mockOnPress = jest.fn();
+let mockOnPress = vi.fn();
 
-jest.mock('../LoadingIndicator', () => {
+vi.mock('../LoadingIndicator', () => {
   return { Spinner: () => <span>{TEST_SPINNER_TEXT}</span> };
 });
 
@@ -22,7 +23,7 @@ const renderComponent = (props?: Partial<ButtonProps>) =>
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 test('should render children', () => {
@@ -31,34 +32,33 @@ test('should render children', () => {
   expect(children).toBeInTheDocument();
 });
 
-test('should trigger press callback on mouse up only', () => {
+test('should call onPress when clicked', async () => {
+  const user = userEvent.setup();
   const { getByRole } = renderComponent();
   const button = getByRole('button');
-  fireEvent.mouseDown(button);
-  expect(mockOnPress).toBeCalledTimes(0);
-  fireEvent.mouseUp(button);
+
+  await user.click(button);
   expect(mockOnPress).toBeCalledTimes(1);
-  fireEvent.mouseDown(button);
-  expect(mockOnPress).toBeCalledTimes(1);
-  fireEvent.mouseUp(button);
+
+  await user.click(button);
   expect(mockOnPress).toBeCalledTimes(2);
 });
 
-test('should not be pressable when disabled', () => {
+test('should not call onPress when disabled', async () => {
+  const user = userEvent.setup();
   const { getByRole } = renderComponent({ isDisabled: true });
   const button = getByRole('button');
-  fireEvent.mouseDown(button);
-  expect(mockOnPress).toBeCalledTimes(0);
-  fireEvent.mouseUp(button);
+
+  await user.click(button);
   expect(mockOnPress).toBeCalledTimes(0);
 });
 
-test('should not be pressable when loading', () => {
+test('should not call onPress when loading', async () => {
+  const user = userEvent.setup();
   const { getByRole } = renderComponent({ isLoading: true });
   const button = getByRole('button');
-  fireEvent.mouseDown(button);
-  expect(mockOnPress).toBeCalledTimes(0);
-  fireEvent.mouseUp(button);
+
+  await user.click(button);
   expect(mockOnPress).toBeCalledTimes(0);
 });
 

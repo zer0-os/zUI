@@ -1,9 +1,9 @@
-export { Action, ActionProps } from './Action';
-export { Actions, ActionsProps } from './Actions';
-export { Body, BodyProps } from './Body';
-export { Container, ContainerProps } from './Container';
-export { Details, DetailsProps } from './Details';
-export { Header, HeaderProps } from './Header';
-export { Name, NameProps } from './Name';
-export { Options, OptionsProps } from './Options';
-export { Timestamp, TimestampProps } from './Timestamp';
+export { Action, type ActionProps } from './Action';
+export { Actions, type ActionsProps } from './Actions';
+export { Body, type BodyProps } from './Body';
+export { Container, type ContainerProps } from './Container';
+export { Details, type DetailsProps } from './Details';
+export { Header, type HeaderProps } from './Header';
+export { Name, type NameProps } from './Name';
+export { Options, type OptionsProps } from './Options';
+export { Timestamp, type TimestampProps } from './Timestamp';

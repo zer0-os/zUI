@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Modal } from './';
 
 export default {
   title: 'Data Display/Modal',
   component: Modal
-} as ComponentMeta<typeof Modal>;
+} as Meta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = args => {
+const Template: StoryFn<typeof Modal> = args => {
   return <Modal {...args}>Hello! This is a modal</Modal>;
 };
 

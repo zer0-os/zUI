@@ -4,8 +4,8 @@
  * @TODO: handle theme
  */
 
-@import '../../styles/colors';
-@import '../../styles/theme';
+@use '../../styles/colors';
+@use '../../styles/theme';
 
 .react-loading-skeleton {
   --base-color: rgba(215, 215, 250, 0.03);

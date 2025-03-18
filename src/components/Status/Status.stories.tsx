@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Status } from './';
 
 export default {
   title: 'Data Display/Status',
   component: Status
-} as ComponentMeta<typeof Status>;
+} as Meta<typeof Status>;
 
-const Template: ComponentStory<typeof Status> = args => <Status {...args} />;
+const Template: StoryFn<typeof Status> = args => <Status {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

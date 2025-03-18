@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MarkdownEditor } from './MarkdownEditor';
 
 export default {
   title: 'Inputs/MarkdownEditor',
   component: MarkdownEditor
-} as ComponentMeta<typeof MarkdownEditor>;
+} as Meta<typeof MarkdownEditor>;
 
-const Template: ComponentStory<typeof MarkdownEditor> = args => {
+const Template: StoryFn<typeof MarkdownEditor> = args => {
   const [value, setValue] = useState<string>();
   const isError = value === '';
 

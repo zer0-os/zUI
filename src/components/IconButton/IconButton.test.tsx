@@ -4,9 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 import { IconButton, IconButtonProperties } from '.';
 import { IconXClose } from '../Icons';
 
-let iconRender = jest.fn();
+let iconRender = vi.fn();
 
-jest.mock('../Icons/icons/IconXClose', () => {
+vi.mock('../Icons/icons/IconXClose', () => {
   return {
     IconXClose: (props: any) => {
       iconRender(props);
@@ -17,7 +17,7 @@ jest.mock('../Icons/icons/IconXClose', () => {
 
 describe('IconButton', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   const renderComponent = (props: Partial<IconButtonProperties> = {}) => {
@@ -42,7 +42,7 @@ describe('IconButton', () => {
     });
 
     it('fires onClick when the button is clicked', () => {
-      const onClick = jest.fn();
+      const onClick = vi.fn();
       const { getByRole } = renderComponent({ onClick });
 
       fireEvent.click(getByRole('button'));
@@ -60,8 +60,8 @@ describe('IconButton', () => {
     });
 
     it('prevents propagation of click event', () => {
-      const onClick = jest.fn();
-      const onOuterClick = jest.fn();
+      const onClick = vi.fn();
+      const onOuterClick = vi.fn();
 
       const { getByRole } = render(
         <div onClick={onOuterClick}>

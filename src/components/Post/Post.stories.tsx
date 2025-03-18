@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Action, Name, Timestamp } from './components';
 import { Post } from './';
 import { IconHeart, IconMessageSquare2, IconShare7 } from '../Icons';

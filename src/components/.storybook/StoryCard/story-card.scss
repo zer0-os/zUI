@@ -1,4 +1,4 @@
-@import '../../../styles/theme';
+@use '../../../styles/theme' as theme;
 
 .story_card {
   position: relative;
@@ -10,7 +10,7 @@
 
   &__title {
     margin: 0 0 0.5rem 0;
-    color: $color-primary-12;
+    color: theme.$color-primary-12;
   }
 
   &__content {
@@ -19,7 +19,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    background-color: $color-primary-1;
+    background-color: theme.$color-primary-1;
 
     & > * {
       margin: 1rem;

@@ -1,15 +1,13 @@
-import React from 'react';
-
 import { GridPlaceholders } from './Placeholder';
 
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 export default {
   title: 'Data Display/Table/GridPlaceholders',
   component: GridPlaceholders
-} as ComponentMeta<typeof GridPlaceholders>;
+} as Meta<typeof GridPlaceholders>;
 
-const Template: ComponentStory<typeof GridPlaceholders> = args => {
+const Template: StoryFn<typeof GridPlaceholders> = args => {
   return (
     <div>
       <GridPlaceholders {...args} />

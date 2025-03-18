@@ -1,12 +1,12 @@
-@import '../../styles/typography';
-@import '../../styles/animations';
-@import '../../styles/colors';
-@import '../../styles/theme';
+@use '../../styles/typography';
+@use '../../styles/animations';
+@use '../../styles/colors';
+@use '../../styles/theme';
 
 .StepBar {
   position: relative;
   width: 100%;
-  font-size: #{$size-tiny};
+  font-size: #{typography.$size-tiny};
   text-align: center;
 
   display: flex;
@@ -20,19 +20,19 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    border-bottom: 1px solid $color-primary-4;
+    border-bottom: 1px solid theme.$color-primary-4;
   }
 
   .Step {
-    transition: opacity #{$time-long} ease-in-out;
+    transition: opacity #{animations.$time-long} ease-in-out;
     z-index: 2;
     flex: 1;
     padding: 0.5rem 2rem;
 
-    color: $color-greyscale-11;
+    color: theme.$color-greyscale-11;
 
     &[data-selected] {
-      color: $color-greyscale-12;
+      color: theme.$color-greyscale-12;
     }
 
     // if its not data-selected or data-disabled, then it's clickable
@@ -45,7 +45,7 @@
     position: absolute;
     top: calc(100% - 1px);
 
-    border-bottom: 1px solid $color-primary-9;
+    border-bottom: 1px solid theme.$color-primary-9;
     transition: all 0.2s ease-in-out;
   }
 }

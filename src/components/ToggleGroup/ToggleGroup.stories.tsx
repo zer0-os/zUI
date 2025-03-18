@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import { ToggleGroup } from './';
 
 import { IconArrowLeft, IconArrowDown, IconArrowDownRight } from '../Icons';
@@ -8,7 +7,7 @@ import { IconArrowLeft, IconArrowDown, IconArrowDownRight } from '../Icons';
 export default {
   title: 'Inputs/Toggle Group',
   component: ToggleGroup
-} as ComponentMeta<typeof ToggleGroup>;
+} as Meta<typeof ToggleGroup>;
 
 const DEFAULT_LABELS = [
   {
@@ -42,13 +41,13 @@ const DEFAULT_ICONS = [
   }
 ];
 
-const SingleSelectTemplate: ComponentStory<any> = args => {
+const SingleSelectTemplate: StoryFn = (args: any) => {
   const [selection, setSelection] = useState<string | undefined>(args?.selection);
 
   return <ToggleGroup {...args} selectionType={'single'} selection={selection} onSelectionChange={setSelection} />;
 };
 
-const MultiSelectTemplate: ComponentStory<any> = args => {
+const MultiSelectTemplate: StoryFn = (args: any) => {
   const [selection, setSelection] = useState<string[]>(args?.selection ?? []);
 
   return <ToggleGroup {...args} selectionType={'multiple'} selection={selection} onSelectionChange={setSelection} />;

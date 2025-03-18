@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.7.0
+  node: circleci/node@5.1.0
 
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:14.17.5
+    - image: cimg/node:22.14
 
 jobs:
   build:

@@ -1,4 +1,4 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 .Container {
   display: flex;
@@ -20,11 +20,11 @@
 
       transition: color 200ms ease;
 
-      color: $color-greyscale-transparency-10;
+      color: theme.$color-greyscale-transparency-10;
 
       &[data-state='active'],
       &.Selected {
-        color: $color-greyscale-12;
+        color: theme.$color-greyscale-12;
       }
 
       &[data-state='inactive']:not(.Selected) {

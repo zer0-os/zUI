@@ -1,6 +1,5 @@
-import React from 'react';
+import { test, expect, vi, afterEach } from 'vitest';
 import { cleanup, render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import { ModalConfirmation, ModalConfirmationProps } from './ModalConfirmation';
 
@@ -8,20 +7,20 @@ const DEFAULT_PROPS: ModalConfirmationProps = {
   title: 'title',
   cancelLabel: 'cancel label',
   confirmationLabel: 'confirmation label',
-  onCancel: jest.fn(),
-  onConfirm: jest.fn()
+  onCancel: vi.fn(),
+  onConfirm: vi.fn()
 };
 
-const mockRadixOverlay = jest.fn();
-const mockRadixRoot = jest.fn();
-const mockRadixPortal = jest.fn();
-const mockRadixTrigger = jest.fn();
-const mockRadixContent = jest.fn();
-const mockRadixClose = jest.fn();
-const mockRadixTitle = jest.fn();
+const mockRadixOverlay = vi.fn();
+const mockRadixRoot = vi.fn();
+const mockRadixPortal = vi.fn();
+const mockRadixTrigger = vi.fn();
+const mockRadixContent = vi.fn();
+const mockRadixClose = vi.fn();
+const mockRadixTitle = vi.fn();
 
 /* Mock Radix Dialog primitives so we can skip testing them */
-jest.mock('@radix-ui/react-dialog', () => ({
+vi.mock('@radix-ui/react-dialog', () => ({
   Overlay: (props: any) => {
     mockRadixOverlay(props);
     return <div data-testid="overlay">{props.children}</div>;
@@ -52,11 +51,11 @@ jest.mock('@radix-ui/react-dialog', () => ({
   }
 }));
 
-jest.mock('../../Button', () => {
-  const originalModule = jest.requireActual('../../Button');
+vi.mock('../../Button', async () => {
+  const originalModule = await vi.importActual<typeof import('../../Button')>('../../Button');
   return {
     ...originalModule,
-    buttonRender: jest.fn(props => (
+    buttonRender: vi.fn(props => (
       <div {...props} data-testid={props['data-testid']}>
         {props.children}
       </div>
@@ -66,7 +65,7 @@ jest.mock('../../Button', () => {
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 const renderComponent = (props?: Partial<ModalConfirmationProps>) =>
@@ -103,7 +102,7 @@ test('should render confirm button', () => {
 });
 
 test('should call onCancel', () => {
-  const onCancel = jest.fn();
+  const onCancel = vi.fn();
   renderComponent({ onCancel });
 
   const cancelButton = screen.getByTestId('modal-cancel-button');
@@ -113,7 +112,7 @@ test('should call onCancel', () => {
 });
 
 test('should call onConfirm', () => {
-  const onConfirm = jest.fn();
+  const onConfirm = vi.fn();
   renderComponent({ onConfirm });
 
   const confirmButton = screen.getByTestId('modal-confirm-button');

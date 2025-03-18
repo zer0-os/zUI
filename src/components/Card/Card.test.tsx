@@ -6,9 +6,9 @@ import { TextStackProps } from '../TextStack';
 
 import styles from './Card.module.scss';
 
-let mockTextStack = jest.fn();
+let mockTextStack = vi.fn();
 
-jest.mock('../TextStack', () => ({
+vi.mock('../TextStack', () => ({
   TextStack: (props: TextStackProps) => {
     mockTextStack(props);
     return <div />;

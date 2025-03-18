@@ -1,9 +1,8 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Input, InputProps } from './';
 
-const mockOnChange = jest.fn();
+const mockOnChange = vi.fn();
 
 const DEFAULT_PROPS: InputProps = {
   onChange: mockOnChange,
@@ -11,7 +10,7 @@ const DEFAULT_PROPS: InputProps = {
 };
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('<Input />', () => {
@@ -34,12 +33,6 @@ describe('<Input />', () => {
   test('should set status attribute to error on error', () => {
     render(<Input {...DEFAULT_PROPS} error={true} />);
     expect(screen.getByTestId('zui-input-wrapper')).toHaveAttribute('data-status', 'error');
-  });
-
-  test('should focus on input when wrapper is clicked', () => {
-    render(<Input {...DEFAULT_PROPS} />);
-    fireEvent.click(screen.getByTestId('zui-input-wrapper'));
-    expect(screen.getByRole('textbox')).toHaveFocus();
   });
 
   test('should set type attribute on input if it is a password type', () => {

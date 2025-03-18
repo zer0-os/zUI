@@ -1,5 +1,5 @@
-@import '../../styles/theme';
-@import '../../styles/glass';
+@use '../../styles/theme';
+@use '../../styles/glass';
 
 @keyframes fadeIn {
   0% {
@@ -18,16 +18,16 @@
   line-height: 150%;
   border-radius: 9999px;
 
-  @include glass-separator-primary;
+  @include glass.glass-separator-primary;
 
   &.isActive {
     border-radius: 50%;
     outline-offset: 0.25rem;
-    outline: 0.0625rem solid $color-secondary-11;
+    outline: 0.0625rem solid theme.$color-secondary-11;
   }
 
   &.isRaised {
-    @include glass-shadow-low;
+    @include glass.glass-shadow-low;
     &::before {
       content: '';
       position: absolute;
@@ -38,7 +38,7 @@
       border-radius: inherit;
       z-index: -1;
 
-      @include glass-materials-raised;
+      @include glass.glass-materials-raised;
     }
   }
 
@@ -55,7 +55,7 @@
   }
 
   .Badge {
-    @include glass-materials-flat-thick;
+    @include glass.glass-materials-flat-thick;
 
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@
     font-weight: 500;
     font-size: 8px;
     line-height: 11px;
-    color: $color-secondary-11;
+    color: theme.$color-secondary-11;
   }
 
   .Image {
@@ -92,14 +92,14 @@
 
     animation: fadeIn 1.5s ease-out;
 
-    @include glass-text-primary-color;
+    @include glass.glass-text-primary-color;
   }
 
   .DefaultIcon {
-    color: $color-secondary-11;
+    color: theme.$color-secondary-11;
 
     &.isGroup {
-      color: $color-greyscale-12;
+      color: theme.$color-greyscale-12;
     }
   }
 

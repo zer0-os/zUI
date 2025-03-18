@@ -1,15 +1,15 @@
-import React from 'react';
+import { describe, it, expect, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import { Skeleton, SkeletonProps } from './index';
 
-const mockSkeleton = jest.fn();
+const mockSkeleton = vi.fn();
 
-jest.mock('react-loading-skeleton', () => {
-  return (props: any) => {
+vi.mock('react-loading-skeleton', () => ({
+  default: (props: any): null => {
     mockSkeleton(props);
     return null;
-  };
-});
+  }
+}));
 
 const defaultProps: SkeletonProps = {
   width: 100,

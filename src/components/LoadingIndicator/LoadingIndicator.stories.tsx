@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { LoadingIndicator } from './';
 
 export default {
   title: 'Data Display/Loader/Loading Indicator',
   component: LoadingIndicator
-} as ComponentMeta<typeof LoadingIndicator>;
+} as Meta<typeof LoadingIndicator>;
 
-const Template: ComponentStory<typeof LoadingIndicator> = args => <LoadingIndicator {...args} />;
+const Template: StoryFn<typeof LoadingIndicator> = args => <LoadingIndicator {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -4,18 +4,18 @@ import { render, screen } from '@testing-library/react';
 import { GridCard } from './GridCard';
 import { AspectRatioProps } from '@radix-ui/react-aspect-ratio';
 
-const mockAspectRatio = jest.fn();
+const mockAspectRatio = vi.fn();
 
-jest.mock('@radix-ui/react-aspect-ratio', () => ({
+vi.mock('@radix-ui/react-aspect-ratio', () => ({
   Root: (props: AspectRatioProps) => {
     mockAspectRatio(props);
     return <div data-testid="mock-aspect-ratio">{props.children}</div>;
   }
 }));
 
-const mockImage = jest.fn();
+const mockImage = vi.fn();
 
-jest.mock('../Image', () => ({
+vi.mock('../Image', () => ({
   Image: (props: any) => {
     mockImage(props);
     return <div data-testid="mock-image" />;
@@ -30,7 +30,7 @@ const DEFAULT_PROPS = {
 };
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<GridCard />', () => {

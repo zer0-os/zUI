@@ -7,7 +7,7 @@ const mockLoadingMessage = 'Mock Loading Message';
 const mockHeader = 'Mock Header';
 const mockConfirmation = 'Mock Confirmation';
 
-const mockOnClickPrimaryButton = jest.fn();
+const mockOnClickPrimaryButton = vi.fn();
 
 test('should render wizard container', () => {
   const { getByText } = render(<Wizard.Container>{mockContainer}</Wizard.Container>);
@@ -34,4 +34,12 @@ test('should render wizard confirmation', () => {
   );
   const confirmation = getByText(mockConfirmation);
   expect(confirmation).toBeInTheDocument();
+});
+
+describe('Wizard', () => {
+  test('should render container', () => {
+    const { getByText } = render(<Wizard.Container header="Test Header">{mockContainer}</Wizard.Container>);
+
+    expect(getByText(mockContainer)).toBeInTheDocument();
+  });
 });

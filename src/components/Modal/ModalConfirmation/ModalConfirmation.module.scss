@@ -1,5 +1,5 @@
-@import '../../../styles/colors';
-@import '../../../styles/typography';
+@use '../../../styles/colors';
+@use '../../../styles/typography';
 
 .WiderContent {
   min-width: 37.64rem;
@@ -8,13 +8,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid $grey-dark;
+    border-bottom: 1px solid colors.$grey-dark;
 
     margin-bottom: 2.476rem;
 
     .Title {
       font-size: 1.48rem;
-      font-weight: $font-weight-bold;
+      font-weight: typography.$font-weight-bold;
     }
 
     .CloseIcon {

@@ -1,29 +1,29 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 /* stylelint-disable no-duplicate-selectors */
 .Checkbox {
   --zui-checkbox-cursor: pointer;
-  --zui-checkbox-border: 0.0625rem solid #{$color-secondary-11};
-  --zui-checkbox-check-color: #{$color-primary-1};
-  --zui-checkbox-check-background: rgba(#{$color-secondary-11}, 0.3);
-  --zui-checkbox-check-box-shadow: 0 0 0.25rem 0.03rem #{$color-secondary-transparency-9};
-  --zui-checkbox-label-color: #{$color-primary-12};
-  --zui-checkbox-link-color: #{$color-secondary-11};
+  --zui-checkbox-border: 0.0625rem solid #{theme.$color-secondary-11};
+  --zui-checkbox-check-color: #{theme.$color-primary-1};
+  --zui-checkbox-check-background: rgba(#{theme.$color-secondary-11}, 0.3);
+  --zui-checkbox-check-box-shadow: 0 0 0.25rem 0.03rem #{theme.$color-secondary-transparency-9};
+  --zui-checkbox-label-color: #{theme.$color-primary-12};
+  --zui-checkbox-link-color: #{theme.$color-secondary-11};
 
   &[data-variant='advanced'] {
-    --zui-checkbox-background: #{$color-primary-3};
-    --zui-checkbox-label-color: #{$color-greyscale-12};
-    --zui-checkbox-check-color: #{$color-primary-3};
+    --zui-checkbox-background: #{theme.$color-primary-3};
+    --zui-checkbox-label-color: #{theme.$color-greyscale-12};
+    --zui-checkbox-check-color: #{theme.$color-primary-3};
   }
 
   &[data-disabled='true'] {
     --zui-checkbox-cursor: not-allowed;
-    --zui-checkbox-border: 0.0625rem solid #{$color-greyscale-9};
+    --zui-checkbox-border: 0.0625rem solid #{theme.$color-greyscale-9};
     --zui-checkbox-check-box-shadow: none;
-    --zui-checkbox-label-color: #{$color-greyscale-11};
-    --zui-checkbox-link-color: #{$color-greyscale-9};
-    --zui-checkbox-background: #{$color-greyscale-3};
-    --zui-checkbox-check-background: #{$color-greyscale-12};
+    --zui-checkbox-label-color: #{theme.$color-greyscale-11};
+    --zui-checkbox-link-color: #{theme.$color-greyscale-9};
+    --zui-checkbox-background: #{theme.$color-greyscale-3};
+    --zui-checkbox-check-background: #{theme.$color-greyscale-12};
   }
 }
 
@@ -34,7 +34,7 @@
 
   &:focus-within {
     border-radius: 0.5rem;
-    outline: 0.0625rem solid $color-success-11;
+    outline: 0.0625rem solid theme.$color-success-11;
   }
 
   &:hover {
@@ -71,7 +71,7 @@
 
   &[data-checked='true'] {
     .CheckboxRoot {
-      background-color: $color-secondary-11;
+      background-color: theme.$color-secondary-11;
     }
   }
 
@@ -110,13 +110,13 @@
     padding: 1rem;
 
     &[data-checked='true'] {
-      border: 0.0625rem solid $color-secondary-11;
+      border: 0.0625rem solid theme.$color-secondary-11;
       padding-right: 0.9375rem;
     }
 
     &:focus-within {
       outline-offset: 0.25rem;
-      outline: 0.0625rem solid $color-secondary-11;
+      outline: 0.0625rem solid theme.$color-secondary-11;
     }
 
     .Label {
@@ -161,7 +161,7 @@
 
   &[data-disabled='true'] {
     .CheckboxRoot {
-      background: $color-greyscale-11;
+      background: theme.$color-greyscale-11;
     }
   }
 }

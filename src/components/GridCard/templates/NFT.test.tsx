@@ -1,22 +1,20 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { NFT, NFTProps } from './NFT';
 import { TextStackProps } from '../../TextStack';
 import { ButtonProps } from '../../Button';
 
-const mockTextStack = jest.fn();
+const mockTextStack = vi.fn();
 
-jest.mock('../../TextStack', () => ({
+vi.mock('../../TextStack', () => ({
   TextStack: (props: TextStackProps) => {
     mockTextStack(props);
     return <div />;
   }
 }));
 
-const mockButton = jest.fn();
-
-jest.mock('../../Button', () => ({
+const mockButton = vi.fn();
+vi.mock('../../Button', () => ({
   Button: (props: ButtonProps) => {
     mockButton(props);
     return <div>Mock Button</div>;
@@ -33,7 +31,7 @@ const DEFAULT_PROPS: NFTProps = {
 };
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<NFT />', () => {
@@ -80,7 +78,7 @@ describe('<NFT />', () => {
       expect(container.getElementsByClassName('Button').length).toBe(0);
     });
 
-    test('should render button ', () => {
+    test('should render button', () => {
       const { container } = render(<NFT {...DEFAULT_PROPS} button={mockButton} />);
 
       expect(container.getElementsByClassName('Button').length).toBe(1);

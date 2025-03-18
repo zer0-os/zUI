@@ -1,6 +1,6 @@
-@import '../../styles/theme';
-@import '../../styles/typography';
-@import '../../styles/glass';
+@use '../../styles/theme';
+@use '../../styles/typography';
+@use '../../styles/glass';
 
 .Container {
   display: flex;
@@ -14,11 +14,11 @@
     gap: 0.25rem;
 
     .Label {
-      color: $color-greyscale-12;
+      color: theme.$color-greyscale-12;
     }
 
     .Helper {
-      color: $color-greyscale-11;
+      color: theme.$color-greyscale-11;
       font-size: 0.875rem; // 14px
       padding: 0;
       margin: 0;
@@ -26,7 +26,7 @@
   }
 
   .Wrapper {
-    @include glass-input-inset-default;
+    @include glass.glass-input-inset-default;
 
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@
     transition: border-color 0.1s ease;
 
     &:focus-within {
-      @include glass-input-inset-active;
+      @include glass.glass-input-inset-active;
     }
 
     &[data-size='small'] {
@@ -52,17 +52,17 @@
     }
 
     &[data-status='error'] {
-      border: 1px solid $color-failure-11;
+      border: 1px solid theme.$color-failure-11;
 
       &:focus-within {
-        border-color: $color-failure-9;
+        border-color: theme.$color-failure-9;
       }
     }
 
     &[data-disabled] {
-      border-color: $color-greyscale-6;
-      background: $color-greyscale-2;
-      color: $color-greyscale-11;
+      border-color: theme.$color-greyscale-6;
+      background: theme.$color-greyscale-2;
+      color: theme.$color-greyscale-11;
 
       cursor: not-allowed;
 
@@ -78,7 +78,7 @@
     }
 
     .Input {
-      @include glass-text-primary-color;
+      @include glass.glass-text-primary-color;
       background: none;
       border: none;
       flex: 1;
@@ -90,13 +90,13 @@
       text-overflow: ellipsis;
 
       &[data-size='small'] {
-        font-size: $size-small;
+        font-size: typography.$size-small;
         font-weight: 400;
         line-height: 20px;
       }
 
       &[data-size='large'] {
-        font-size: $size-default;
+        font-size: typography.$size-default;
         font-weight: 400;
         line-height: 24px;
         max-height: 24px;
@@ -104,7 +104,7 @@
 
       &:-webkit-autofill {
         transition: background 500000s ease-in-out 0s;
-        -webkit-text-fill-color: $color-greyscale-12 !important;
+        -webkit-text-fill-color: theme.$color-greyscale-12 !important;
       }
     }
   }

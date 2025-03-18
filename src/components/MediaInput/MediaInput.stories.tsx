@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { MediaInput } from './MediaInput';
 
 import { MediaType } from './MediaInput.types';
@@ -7,9 +7,9 @@ import { MediaType } from './MediaInput.types';
 export default {
   title: 'Inputs/MediaInput',
   component: MediaInput
-} as ComponentMeta<typeof MediaInput>;
+} as Meta<typeof MediaInput>;
 
-const Template: ComponentStory<typeof MediaInput> = args => {
+const Template: StoryFn<typeof MediaInput> = args => {
   const [mediaType, setMediaType] = useState(args.mediaType);
   const [previewUrl, setPreviewUrl] = useState(args.previewUrl);
 

@@ -9,7 +9,7 @@ const initialProps: MediaInputProps = {
   mediaType: undefined,
   previewUrl: '',
   hasError: false,
-  onChange: jest.fn()
+  onChange: vi.fn()
 };
 
 test('should render choose media text and not render preview component when previewUrl empty', () => {
@@ -97,8 +97,8 @@ test('should not apply uploaded className when empty previewUrl', () => {
 });
 
 test('should call onChange on successful file upload', async () => {
-  global.URL.createObjectURL = jest.fn();
-  const mockOnChange = jest.fn();
+  global.URL.createObjectURL = vi.fn();
+  const mockOnChange = vi.fn();
 
   const { getByTestId } = renderComponent({
     ...initialProps,

@@ -1,6 +1,6 @@
 import type { MarkdownViewerProps } from './MarkdownViewer.types';
 
-import React from 'react';
+import { describe, test, expect, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import { MarkdownPreviewProps } from '@uiw/react-markdown-preview';
 import { MarkdownViewer } from './MarkdownViewer';
@@ -13,16 +13,23 @@ const DEFAULT_PROPS: MarkdownViewerProps = {
   text: ''
 };
 
-const mockMarkdownViewer = jest.fn();
+const mockMarkdownViewer = vi.fn();
 
-jest.mock('@uiw/react-md-editor', () => ({
-  Markdown: (props: MarkdownPreviewProps) => {
-    return <>{mockMarkdownViewer(props)}</>;
+vi.mock('@uiw/react-md-editor', () => ({
+  default: {
+    Markdown: (props: MarkdownPreviewProps) => {
+      return <>{mockMarkdownViewer(props)}</>;
+    }
   }
 }));
 
-jest.mock('remark-emoji', () => jest.fn());
-jest.mock('remark-gemoji', () => jest.fn());
+vi.mock('remark-emoji', () => ({
+  default: vi.fn()
+}));
+
+vi.mock('remark-gemoji', () => ({
+  default: vi.fn()
+}));
 
 describe('<MarkdownViewer />', () => {
   test('should pass default properties MarkdownViewer', () => {

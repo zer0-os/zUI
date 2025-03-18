@@ -1,10 +1,10 @@
-@import '../../../styles/animations';
-@import '../../../styles/theme';
+@use '../../../styles/animations';
+@use '../../../styles/theme';
 
 .ArrowLink {
   position: relative;
 
-  color: $color-secondary-11;
+  color: theme.$color-secondary-11;
 
   .ArrowContainer {
     position: absolute;
@@ -12,7 +12,7 @@
     top: 0;
     height: 100%;
     width: 0.75rem;
-    transition: margin-left #{$time-medium} ease-in-out;
+    transition: margin-left #{animations.$time-medium} ease-in-out;
 
     .Arrow {
       height: 1px;
@@ -20,7 +20,7 @@
       position: absolute;
       left: 0;
       top: 50%;
-      background: $color-secondary-11;
+      background: theme.$color-secondary-11;
 
       &::after,
       &::before {

@@ -1,4 +1,5 @@
 import { EscapeManager } from './useEscapeManager';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 describe('EscapeManager', () => {
   let escapeManager: EscapeManager;
@@ -12,7 +13,7 @@ describe('EscapeManager', () => {
   };
 
   it('calls handler on escape press', () => {
-    const handler = jest.fn();
+    const handler = vi.fn();
     escapeManager.register(handler);
 
     document.dispatchEvent(createKeydownEvent('Escape'));
@@ -21,7 +22,7 @@ describe('EscapeManager', () => {
   });
 
   it('calls nothing if unregistered', () => {
-    const handler = jest.fn();
+    const handler = vi.fn();
     escapeManager.register(handler);
     escapeManager.unregister();
 
@@ -31,8 +32,8 @@ describe('EscapeManager', () => {
   });
 
   it('calls only most recently registered callback', () => {
-    const firstHandler = jest.fn();
-    const secondHandler = jest.fn();
+    const firstHandler = vi.fn();
+    const secondHandler = vi.fn();
 
     escapeManager.register(firstHandler);
     escapeManager.register(secondHandler);
@@ -44,8 +45,8 @@ describe('EscapeManager', () => {
   });
 
   it('unregisters only most recently registered callback', () => {
-    const firstHandler = jest.fn();
-    const secondHandler = jest.fn();
+    const firstHandler = vi.fn();
+    const secondHandler = vi.fn();
 
     escapeManager.register(firstHandler);
     escapeManager.register(secondHandler);
@@ -58,8 +59,8 @@ describe('EscapeManager', () => {
   });
 
   it('removes event listener when last handler is unregistered', () => {
-    const handler = jest.fn();
-    const removeEventListenerSpy = jest.spyOn(document, 'removeEventListener');
+    const handler = vi.fn();
+    const removeEventListenerSpy = vi.spyOn(document, 'removeEventListener');
 
     escapeManager.register(handler);
     escapeManager.unregister();
@@ -68,9 +69,9 @@ describe('EscapeManager', () => {
   });
 
   it('adds event listener only once for multiple registrations', () => {
-    const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
-    const handler1 = jest.fn();
-    const handler2 = jest.fn();
+    const addEventListenerSpy = vi.spyOn(document, 'addEventListener');
+    const handler1 = vi.fn();
+    const handler2 = vi.fn();
 
     escapeManager.register(handler1);
     escapeManager.register(handler2);

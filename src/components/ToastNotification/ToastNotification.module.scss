@@ -1,4 +1,4 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 .ToastRoot {
   display: flex;
@@ -25,7 +25,7 @@
     .ToastDescription {
       font-size: 0.75rem;
       line-height: 0.908rem;
-      color: $color-greyscale-12;
+      color: theme.$color-greyscale-12;
     }
   }
 
@@ -50,61 +50,61 @@
 
   // primary variants
   &[data-variant='primary'] {
-    background: $color-primary-2;
-    border: 1px solid $color-primary-6;
+    background: theme.$color-primary-2;
+    border: 1px solid theme.$color-primary-6;
 
     .ToastIcon {
-      color: $color-primary-11;
+      color: theme.$color-primary-11;
     }
 
     .ToastTitle {
-      color: $color-greyscale-12;
+      color: theme.$color-greyscale-12;
     }
 
     .ToastClose {
-      border-left: 1px solid $color-primary-6;
+      border-left: 1px solid theme.$color-primary-6;
     }
   }
 
   // success variants
   &[data-variant='success'] {
-    background: $color-success-3;
-    border: 1px solid $color-success-6;
+    background: theme.$color-success-3;
+    border: 1px solid theme.$color-success-6;
 
     .ToastIcon {
-      color: $color-success-11;
+      color: theme.$color-success-11;
     }
 
     .ToastTitle {
-      color: $color-success-11;
+      color: theme.$color-success-11;
     }
 
     .ToastClose {
-      border-left: 1px solid $color-success-6;
+      border-left: 1px solid theme.$color-success-6;
     }
   }
 
   // error variants
   &[data-variant='error'] {
-    background: $color-failure-3;
-    border: 1px solid $color-failure-6;
+    background: theme.$color-failure-3;
+    border: 1px solid theme.$color-failure-6;
 
     .ToastIcon {
-      color: $color-failure-11;
+      color: theme.$color-failure-11;
     }
 
     .ToastTitle {
-      color: $color-failure-11;
+      color: theme.$color-failure-11;
     }
 
     .ToastClose {
-      border-left: 1px solid $color-failure-6;
+      border-left: 1px solid theme.$color-failure-6;
     }
 
     .ToastButton {
       &:first-of-type {
         div {
-          color: $color-failure-11;
+          color: theme.$color-failure-11;
         }
       }
     }

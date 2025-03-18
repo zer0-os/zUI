@@ -1,5 +1,5 @@
-@import '../../styles/typography';
-@import '../../styles/theme';
+@use '../../styles/typography';
+@use '../../styles/theme';
 
 $gutter: 16px;
 
@@ -20,8 +20,8 @@ $gutter: 16px;
     }
 
     h1 {
-      font-size: #{$size-large};
-      font-weight: #{$font-weight-bold};
+      font-size: #{typography.$size-large};
+      font-weight: #{typography.$font-weight-bold};
     }
 
     h2 {
@@ -34,7 +34,7 @@ $gutter: 16px;
       margin-top: 1.5rem;
       margin-bottom: 0;
       height: 1px;
-      background-color: $color-primary-4;
+      background-color: theme.$color-primary-4;
       border: none;
     }
 

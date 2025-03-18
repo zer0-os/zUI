@@ -18,7 +18,7 @@ describe('<CloseButton />', () => {
   });
 
   it('should pass onClick to button', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { container } = renderComponent({ onClick });
     fireEvent.click(container.querySelector('button'));
     expect(onClick).toHaveBeenCalled();

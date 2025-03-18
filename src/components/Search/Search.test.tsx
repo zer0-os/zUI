@@ -3,23 +3,23 @@ import { render } from '@testing-library/react';
 
 import { Search, SearchProps } from './';
 
-const mockOnQueryStringChange = jest.fn();
+const mockOnQueryStringChange = vi.fn();
 
 const DEFAULT_PROPS: SearchProps = {
   onQueryStringChange: mockOnQueryStringChange
 };
 
-const mockInput = jest.fn();
+const mockInput = vi.fn();
 
-jest.mock('../Input', () => ({
-  Input: (props: any) => {
+vi.mock('../Input', () => ({
+  Input: (props: any): null => {
     mockInput(props);
     return null;
   }
 }));
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('<Search />', () => {

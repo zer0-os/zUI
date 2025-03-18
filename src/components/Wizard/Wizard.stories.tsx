@@ -1,19 +1,21 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Wizard } from './';
+import type { Meta, StoryFn } from '@storybook/react';
+import { Wizard } from './Wizard';
+import type { WizardProps, HeaderProps } from './Wizard';
+import type { LoadingProps } from './Presets/Loading';
+import type { ConfirmationProps } from './Presets/Confirmation';
 
 export default {
   title: 'Data Display/Wizard',
   component: Wizard.Container
-} as ComponentMeta<typeof Wizard.Container>;
+} as Meta<typeof Wizard.Container>;
 
-export const Container: ComponentStory<typeof Wizard.Container> = args => (
+export const Container: StoryFn<typeof Wizard.Container> = (args: WizardProps) => (
   <Wizard.Container {...args}>
     <p style={{ textAlign: 'center' }}>You can put any content in this container, and it will apply Wizard styling!</p>
   </Wizard.Container>
 );
 
-export const Loading: ComponentStory<typeof Wizard.Loading> = args => (
+export const Loading: StoryFn<typeof Wizard.Loading> = (args: LoadingProps) => (
   <Wizard.Container>
     <Wizard.Loading {...args} />
   </Wizard.Container>
@@ -23,7 +25,7 @@ Loading.args = {
   message: 'Loading...'
 };
 
-export const Header: ComponentStory<typeof Wizard.Header> = args => (
+export const Header: StoryFn<typeof Wizard.Header> = (args: HeaderProps) => (
   <Wizard.Container>
     <Wizard.Header {...args} />
   </Wizard.Container>
@@ -36,7 +38,7 @@ Header.args = {
   sectionDivider: true
 };
 
-export const Confirmation: ComponentStory<typeof Wizard.Confirmation> = args => (
+export const Confirmation: StoryFn<typeof Wizard.Confirmation> = (args: ConfirmationProps) => (
   <Wizard.Container>
     <Wizard.Confirmation {...args} />
   </Wizard.Container>

@@ -1,5 +1,4 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Badge } from './';
 import { StoryCard } from '../.storybook';
 import { IconArrowUpRight } from '../Icons';
@@ -7,9 +6,9 @@ import { IconArrowUpRight } from '../Icons';
 export default {
   title: 'Data Display/Badge',
   component: Badge
-} as ComponentMeta<typeof Badge>;
+} as Meta<typeof Badge>;
 
-const Template: ComponentStory<typeof Badge> = args => (
+const Template: StoryFn<typeof Badge> = args => (
   <StoryCard isContrast>
     <Badge {...args} />
   </StoryCard>

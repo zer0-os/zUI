@@ -5,7 +5,7 @@ import { Badge } from './';
 import { IconArrowUpRight } from '../Icons';
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('Badge', () => {

@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { TextStack } from './';
 
 export default {
   title: 'Typography/Text Detail',
   component: TextStack
-} as ComponentMeta<typeof TextStack>;
+} as Meta<typeof TextStack>;
 
-const Template: ComponentStory<typeof TextStack> = args => {
+const Template: StoryFn<typeof TextStack> = args => {
   return <TextStack {...args} />;
 };
 

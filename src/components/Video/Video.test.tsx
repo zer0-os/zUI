@@ -9,10 +9,19 @@ const DEFAULT_PROPS: VideoProps = {
   loop: false
 };
 
-const mockPlay = jest.spyOn(window.HTMLMediaElement.prototype, 'play').mockImplementation(() => Promise.resolve());
+const mockPlay = vi.fn().mockImplementation(() => Promise.resolve());
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
+  // Reset the mock implementation for each test
+  Object.defineProperty(HTMLMediaElement.prototype, 'play', {
+    writable: true,
+    value: mockPlay
+  });
+  Object.defineProperty(HTMLMediaElement.prototype, 'paused', {
+    writable: true,
+    value: true
+  });
 });
 
 describe('<Video />', () => {
@@ -28,9 +37,18 @@ describe('<Video />', () => {
   });
 
   test('should start playing video when play button is clicked', () => {
-    render(<Video {...DEFAULT_PROPS} />);
-    fireEvent.click(screen.getByTestId('play-button'));
+    const { container } = render(<Video {...DEFAULT_PROPS} />);
+    const video = container.querySelector('video');
+
+    expect(video?.paused).toBe(true);
+    const playButton = screen.getByTestId('play-button');
+    expect(playButton.querySelector('svg')).toBeInTheDocument();
+
+    fireEvent.click(playButton);
+
     expect(mockPlay).toHaveBeenCalled();
+    expect(playButton.querySelector('svg')).toBeInTheDocument();
+    expect(playButton).toHaveAttribute('aria-label', 'Pause video');
   });
 
   test('should be muted by default and unmute when clicked', () => {
@@ -48,7 +66,7 @@ describe('<Video />', () => {
   });
 
   test('should call onError when video encounters an error', () => {
-    const onError = jest.fn();
+    const onError = vi.fn();
     render(<Video {...DEFAULT_PROPS} onError={onError} />);
     fireEvent.error(screen.getByTestId('video-element'));
     expect(onError).toHaveBeenCalled();

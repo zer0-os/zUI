@@ -1,9 +1,9 @@
-@import '../../styles/typography';
-@import '../../styles/theme';
+@use '../../styles/typography';
+@use '../../styles/theme';
 
 .zui-loading-indicator {
   display: flex;
-  color: $color-greyscale-12;
+  color: theme.$color-greyscale-12;
 
   &-bottom,
   &-top {
@@ -36,7 +36,7 @@
   }
 
   &-text {
-    font-size: #{$size-default};
+    font-size: #{typography.$size-default};
     padding: 0;
     text-align: center;
   }

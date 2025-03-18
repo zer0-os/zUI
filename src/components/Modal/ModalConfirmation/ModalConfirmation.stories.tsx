@@ -1,14 +1,13 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { ModalConfirmation } from './ModalConfirmation';
 import { StoryCard } from '../../.storybook';
 
 export default {
   title: 'Data Display/Modal',
   component: ModalConfirmation
-} as ComponentMeta<typeof ModalConfirmation>;
+} as Meta<typeof ModalConfirmation>;
 
-const Template: ComponentStory<typeof ModalConfirmation> = args => {
+const Template: StoryFn<typeof ModalConfirmation> = args => {
   return (
     <StoryCard isContrast>
       <ModalConfirmation {...args} />

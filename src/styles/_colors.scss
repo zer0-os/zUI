@@ -1,3 +1,4 @@
+@use "sass:color";
 // Black
 $black: #000000;
 $almost-black: #0a0a0a;
@@ -101,13 +102,13 @@ $prussian-blue-lighter: #00d1ff;
 $background-primary: $almost-black;
 $background-alt: $purple-dark;
 $background-alt-50: $bunting-op;
-$background-50: transparentize($background-primary, 0.5);
+$background-50: color.adjust($background-primary, $alpha: -0.5);
 
 // Text
 $text-primary: $white;
 $text-glow-white: 0px 0px 10px rgba(255, 255, 255, 0.7);
-$text-glow-primary: 0px 0px 24px transparentize($purple-100, 0.6), 0px 0px 12px transparentize($purple-100, 0.6),
-  0px 0px 6px transparentize($purple-100, 0.6);
+$text-glow-primary: 0px 0px 24px color.adjust($purple-100, $alpha: -0.6), 0px 0px 12px color.adjust($purple-100, $alpha: -0.6),
+  0px 0px 6px color.adjust($purple-100, $alpha: -0.6);
 
 // Gradient Colours
 $azure: linear-gradient(90deg, $dodger-blue 0%, $blue 100%);

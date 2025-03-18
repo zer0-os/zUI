@@ -1,20 +1,19 @@
-import React from 'react';
+import { test, expect, vi, afterEach } from 'vitest';
 import { cleanup, getByRole, render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import { Modal, ModalProps } from '.';
 
 const MOCK_TRIGGER = 'Mock Trigger';
 const DEFAULT_PROPS = { trigger: MOCK_TRIGGER };
 
-const mockRadixOverlay = jest.fn();
-const mockRadixRoot = jest.fn();
-const mockRadixPortal = jest.fn();
-const mockRadixTrigger = jest.fn();
-const mockRadixContent = jest.fn();
+const mockRadixOverlay = vi.fn();
+const mockRadixRoot = vi.fn();
+const mockRadixPortal = vi.fn();
+const mockRadixTrigger = vi.fn();
+const mockRadixContent = vi.fn();
 
 /* Mock Radix Dialog primitives so we can skip testing them */
-jest.mock('@radix-ui/react-dialog', () => ({
+vi.mock('@radix-ui/react-dialog', () => ({
   Overlay: (props: any) => {
     mockRadixOverlay(props);
     return <div data-testid="overlay">{props.children}</div>;
@@ -39,7 +38,7 @@ jest.mock('@radix-ui/react-dialog', () => ({
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 const renderComponent = (props?: ModalProps) => render(<Modal {...DEFAULT_PROPS} {...props} />);

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import { FC, ReactNode, PropsWithChildren } from 'react';
 
 // Style Imports
 import classNames from 'classnames';
@@ -20,11 +20,16 @@ export interface HeaderProps {
 }
 
 export interface WizardProps extends HeaderProps {
-  children: React.ReactNode;
   className?: string;
 }
 
-const Header: FC<HeaderProps> = ({ children, header, headerInfo, subHeader, sectionDivider = true }) => (
+const Header: FC<PropsWithChildren<HeaderProps>> = ({
+  children,
+  header,
+  headerInfo,
+  subHeader,
+  sectionDivider = true
+}) => (
   <div className={classNames('zui-wizard-header')}>
     <div className="zui-wizard-header-container">
       <h1>{header}</h1>
@@ -36,7 +41,7 @@ const Header: FC<HeaderProps> = ({ children, header, headerInfo, subHeader, sect
   </div>
 );
 
-const Container: FC<WizardProps> = ({ children, className, ...headerProps }) => (
+const Container: FC<PropsWithChildren<WizardProps>> = ({ children, className, ...headerProps }) => (
   <div className={classNames('zui-wizard', className)}>
     {/* Header */}
     {headerProps.header && <Header {...headerProps} />}

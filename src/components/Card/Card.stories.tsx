@@ -1,13 +1,12 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Card } from '.';
 
 export default {
   title: 'Data Display/Cards/Card',
   component: Card
-} as ComponentMeta<typeof Card>;
+} as Meta<typeof Card>;
 
-const Template: ComponentStory<typeof Card> = args => <Card {...args} />;
+const Template: StoryFn<typeof Card> = args => <Card {...args} />;
 
 export const Loading = Template.bind({});
 Loading.args = {

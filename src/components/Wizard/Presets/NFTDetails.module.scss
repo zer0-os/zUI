@@ -1,6 +1,6 @@
-@import '../../../styles/dimensions';
-@import '../../../styles/colors';
-@import '../../../styles/typography';
+@use '../../../styles/dimensions';
+@use '../../../styles/colors';
+@use '../../../styles/typography';
 
 $width: 640px;
 $gutter: 16px;
@@ -29,12 +29,12 @@ $gutter: 16px;
     padding: 0;
 
     h1 {
-      font-size: #{$size-large};
-      font-weight: #{$font-weight-bold};
+      font-size: #{typography.$size-large};
+      font-weight: #{typography.$font-weight-bold};
     }
 
     h2 {
-      color: #{$blue};
+      color: #{colors.$blue};
       margin-top: 4px;
     }
 
@@ -43,7 +43,7 @@ $gutter: 16px;
     }
 
     // Tablet Breakpoint
-    @media only screen and (min-width: #{$breakpoint-tablet-xs}) {
+    @media only screen and (min-width: #{dimensions.$breakpoint-tablet-xs}) {
       > * {
         margin-top: 16px;
       }
@@ -57,7 +57,7 @@ $gutter: 16px;
 
   .DetailComponent {
     span {
-      color: #{$grey-lighter-2};
+      color: #{colors.$grey-lighter-2};
     }
 
     .Bid {
@@ -66,7 +66,7 @@ $gutter: 16px;
   }
 
   .MemberLabel {
-    font-size: #{$size-tiny};
-    color: #{$grey-lighter-2};
+    font-size: #{typography.$size-tiny};
+    color: #{colors.$grey-lighter-2};
   }
 }

@@ -1,7 +1,7 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 .Container {
-  color: $color-greyscale-12;
+  color: theme.$color-greyscale-12;
 }
 
 .AsyncAddress {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { Button, Color } from '../Button';
 import { IconInfoCircle, IconXClose } from '../Icons';
@@ -23,7 +23,7 @@ export type ToastNotificationProps = Toast.ToastProviderProps & {
   actionAltText: string;
   positionVariant?: ToastPositionVariant;
   themeVariant?: ToastThemeVariant;
-  swipeDirection?: Toast.SwipeDirection;
+  swipeDirection?: Toast.ToastProviderProps['swipeDirection'];
   openToast?: boolean;
   onClick?: () => void;
   onClose?: () => void;

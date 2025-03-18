@@ -1,4 +1,4 @@
-import React from 'react';
+import { describe, test, vi, beforeEach, expect } from 'vitest';
 import { render, waitFor } from '@testing-library/react';
 
 import { Avatar, AvatarProps } from './';
@@ -8,7 +8,7 @@ const DEFAULT_PROPS: AvatarProps = {
 };
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  vi.resetAllMocks();
 });
 
 describe('when using default props', () => {

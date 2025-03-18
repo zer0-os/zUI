@@ -1,6 +1,5 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, PropsWithChildren, ReactNode } from 'react';
 
-import React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import { CSS_PREFIX } from '../constants';
 import './Tooltip.scss';
@@ -16,7 +15,7 @@ export type TooltipProps = {
   content?: ReactNode;
 };
 
-export const Tooltip: FC<TooltipProps> = ({
+export const Tooltip: FC<PropsWithChildren<TooltipProps>> = ({
   open,
   defaultOpen,
   onOpenChange,

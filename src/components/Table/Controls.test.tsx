@@ -3,10 +3,11 @@ import { render } from '@testing-library/react';
 
 import { View, ViewToggle, ViewToggleProps } from './Controls';
 import { IconGrid1, IconRows3 } from '../Icons';
+import styles from './Controls.module.scss';
 
-let mockToggleView = jest.fn();
+let mockToggleView = vi.fn();
 
-jest.mock('../ToggleGroup', () => ({
+vi.mock('../ToggleGroup', () => ({
   ToggleGroup: (props: any) => {
     mockToggleView(props);
     return <div data-testid="mock-toggle">Mock Toggle Group</div>;
@@ -14,7 +15,7 @@ jest.mock('../ToggleGroup', () => ({
 }));
 
 const DEFAULT_PROPS: ViewToggleProps = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   view: View.GRID
 };
 
@@ -25,10 +26,17 @@ const renderViewToggle = (props?: Partial<ViewToggleProps>) => {
 
 describe('<ViewToggle />', () => {
   describe('when forwarding props to ToggleGroup', () => {
-    renderViewToggle({ view: View.GRID });
+    beforeEach(() => {
+      mockToggleView.mockClear();
+      renderViewToggle({ view: View.GRID });
+    });
 
     test('should pass Toggle className to ToggleGroup', () => {
-      expect(mockToggleView).toHaveBeenCalledWith(expect.objectContaining({ className: 'Toggle' }));
+      expect(mockToggleView).toHaveBeenCalledWith(
+        expect.objectContaining({
+          className: expect.stringContaining(styles.Toggle)
+        })
+      );
     });
 
     test('should be selectionType="single"', () => {

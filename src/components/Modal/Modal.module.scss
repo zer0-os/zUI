@@ -1,5 +1,5 @@
-@import '../../styles/theme';
-@import '../../styles/glass';
+@use '../../styles/theme';
+@use '../../styles/glass';
 
 .Overlay {
   display: grid;
@@ -22,11 +22,11 @@
 }
 
 .ContentWrapper {
-  @include glass-outer;
+  @include glass.glass-outer;
 }
 
 .Content {
-  @include glass-inner;
+  @include glass.glass-inner;
 
   padding: 24px;
   outline: none;

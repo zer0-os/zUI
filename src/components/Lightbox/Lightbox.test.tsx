@@ -2,9 +2,9 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Lightbox, LightboxProps } from './Lightbox';
 
-const mockReactImageLightbox = jest.fn();
+const mockReactImageLightbox = vi.fn();
 
-jest.mock('react-image-lightbox', () => ({
+vi.mock('react-image-lightbox', () => ({
   __esModule: true,
   default: (props: any) => {
     mockReactImageLightbox(props);
@@ -26,19 +26,19 @@ const mockItems = [
 ];
 
 const mockProvider = {
-  fitWithinBox: jest.fn(() => ({ crop: 'fill', height: 123 })),
-  getSource: jest.fn(({ src }) => `http://res.cloudinary.com/test/image/upload/${src}`)
+  fitWithinBox: vi.fn(() => ({ crop: 'fill', height: 123 })),
+  getSource: vi.fn(({ src }: { src: string }) => `http://res.cloudinary.com/test/image/upload/${src}`)
 };
 
 const DEFAULT_PROPS: LightboxProps = {
   items: mockItems,
   provider: mockProvider,
   startingIndex: 0,
-  onClose: jest.fn()
+  onClose: vi.fn()
 };
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('<Lightbox />', () => {
@@ -134,7 +134,7 @@ describe('<Lightbox />', () => {
   });
 
   test('should call onClose when close is requested', () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     const { getByText } = render(<Lightbox {...DEFAULT_PROPS} onClose={onClose} />);
 
     fireEvent.click(getByText('Close'));

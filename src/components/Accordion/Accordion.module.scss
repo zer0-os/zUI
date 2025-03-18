@@ -1,11 +1,11 @@
-@import '../../styles/theme';
-@import '../../styles/glass';
+@use '../../styles/theme';
+@use '../../styles/glass';
 
 $group-border-radius: 0.5rem;
 
 .Accordion {
   width: 100%;
-  color: $color-greyscale-12;
+  color: theme.$color-greyscale-12;
 
   button,
   h3 {
@@ -34,11 +34,11 @@ $group-border-radius: 0.5rem;
 
     &[data-focus-on-key-press='true']:focus-within {
       border-radius: 0.25rem;
-      outline: 0.0625rem solid $color-secondary-11;
+      outline: 0.0625rem solid theme.$color-secondary-11;
     }
 
     &[data-state='open'] {
-      @include glass-state-active-border;
+      @include glass.glass-state-active-border;
     }
   }
 
@@ -56,18 +56,18 @@ $group-border-radius: 0.5rem;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    @include glass-text-primary-color;
+    @include glass.glass-text-primary-color;
 
     background-color: transparent;
     transition: 0.15s all ease;
-    @include glass-separator;
+    @include glass.glass-separator;
 
     font-family: inherit;
     border-radius: 8px;
 
     &:hover {
       cursor: pointer;
-      @include glass-state-hover-color;
+      @include glass.glass-state-hover-color;
     }
 
     &[data-state='open'] {
@@ -80,9 +80,9 @@ $group-border-radius: 0.5rem;
   }
 
   &[data-contrast='high'] {
-    $hc-background: $color-primary-2;
-    $hc-trigger-border: $color-primary-5;
-    $hc-trigger-border-hover: $color-primary-8;
+    $hc-background: theme.$color-primary-2;
+    $hc-trigger-border: theme.$color-primary-5;
+    $hc-trigger-border-hover: theme.$color-primary-8;
 
     .Trigger {
       background-color: $hc-background;
@@ -100,12 +100,12 @@ $group-border-radius: 0.5rem;
     }
 
     .Content::before {
-      border: 1px solid $color-primary-6;
+      border: 1px solid theme.$color-primary-6;
     }
   }
 
   .Chevron {
-    color: $color-greyscale-12;
+    color: theme.$color-greyscale-12;
     transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
   }
 
@@ -116,7 +116,7 @@ $group-border-radius: 0.5rem;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    @include glass-text-primary-color;
+    @include glass.glass-text-primary-color;
 
     transition: height 300ms ease;
     z-index: 0;

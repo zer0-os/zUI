@@ -1,10 +1,10 @@
-@import '../../styles/theme';
+@use '../../styles/theme';
 
 .Spinner {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border-top: 2px solid $color-secondary-9;
+  border-top: 2px solid theme.$color-secondary-9;
   animation: spin 1s linear infinite;
 }
 

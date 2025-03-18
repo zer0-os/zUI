@@ -1,5 +1,4 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { GridCard } from './';
 import { NFT } from './templates/NFT';
 import { Button } from '../../components/Button';
@@ -8,11 +7,11 @@ import { HotswapContainer } from '../.storybook';
 export default {
   title: 'Data Display/Cards/Grid Card',
   component: GridCard
-} as ComponentMeta<typeof GridCard>;
+} as Meta<typeof GridCard>;
 
 const CustomButton = <Button onPress={() => alert('Clicked')}>Custom</Button>;
 
-const Template: ComponentStory<typeof GridCard> = args => {
+const Template: StoryFn<typeof GridCard> = args => {
   return (
     <GridCard
       {...args}
