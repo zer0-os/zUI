@@ -8,7 +8,7 @@ import { DEFAULT_LABEL, DEFAULT_COLOR, DEFAULT_SIZE } from '../Icons.constants';
 import styles from '../Icon.module.scss';
 import classNames from 'classnames';
 
-export const IconCircle = ({
+export const IconPause = ({
   className,
   label = DEFAULT_LABEL,
   color = DEFAULT_COLOR,
@@ -19,9 +19,11 @@ export const IconCircle = ({
       <AccessibleIcon.Root label={label}>
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M12.0001 3.41666C7.25964 3.41666 3.41675 7.25955 3.41675 12C3.41675 16.7404 7.25964 20.5833 12.0001 20.5833C16.7405 20.5833 20.5834 16.7404 20.5834 12C20.5834 7.25955 16.7405 3.41666 12.0001 3.41666ZM1.91675 12C1.91675 6.43112 6.43121 1.91666 12.0001 1.91666C17.569 1.91666 22.0834 6.43112 22.0834 12C22.0834 17.5689 17.569 22.0833 12.0001 22.0833C6.43121 22.0833 1.91675 17.5689 1.91675 12Z"
+            d="M6.6665 5C6.6665 4.44772 7.11422 4 7.6665 4H8.33317C8.88545 4 9.33317 4.44772 9.33317 5V19C9.33317 19.5523 8.88546 20 8.33317 20H7.6665C7.11422 20 6.6665 19.5523 6.6665 19V5Z"
+            fill={color}
+          />
+          <path
+            d="M14.6665 5C14.6665 4.44772 15.1142 4 15.6665 4H16.3332C16.8855 4 17.3332 4.44772 17.3332 5V19C17.3332 19.5523 16.8855 20 16.3332 20H15.6665C15.1142 20 14.6665 19.5523 14.6665 19V5Z"
             fill={color}
           />
         </svg>

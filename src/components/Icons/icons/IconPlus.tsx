@@ -12,24 +12,19 @@ export const IconPlus = ({
   className,
   label = DEFAULT_LABEL,
   color = DEFAULT_COLOR,
-  size = DEFAULT_SIZE,
-  isFilled = false
+  size = DEFAULT_SIZE
 }: IconProps) => {
   return (
     <div style={{ height: size, width: size }} className={classNames(className, styles.Container)}>
       <AccessibleIcon.Root label={label}>
-        {isFilled ? (
-          <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5Z"
-              fill={color}
-            />
-          </svg>
-        ) : (
-          <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19M5 12H19" stroke={color} strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        )}
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M12 4.25C12.4142 4.25 12.75 4.58579 12.75 5V11.25H19C19.4142 11.25 19.75 11.5858 19.75 12C19.75 12.4142 19.4142 12.75 19 12.75H12.75V19C12.75 19.4142 12.4142 19.75 12 19.75C11.5858 19.75 11.25 19.4142 11.25 19V12.75H5C4.58579 12.75 4.25 12.4142 4.25 12C4.25 11.5858 4.58579 11.25 5 11.25H11.25V5C11.25 4.58579 11.5858 4.25 12 4.25Z"
+            fill={color}
+          />
+        </svg>
       </AccessibleIcon.Root>
     </div>
   );

@@ -8,7 +8,7 @@ import { DEFAULT_LABEL, DEFAULT_COLOR, DEFAULT_SIZE } from '../Icons.constants';
 import styles from '../Icon.module.scss';
 import classNames from 'classnames';
 
-export const IconStickerSquare = ({
+export const IconCamera = ({
   className,
   label = DEFAULT_LABEL,
   color = DEFAULT_COLOR,
