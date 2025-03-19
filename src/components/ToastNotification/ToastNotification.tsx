@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import { Button, Color } from '../Button';
 import { IconInfoCircle, IconXClose } from '../Icons';
