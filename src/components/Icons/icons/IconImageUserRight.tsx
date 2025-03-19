@@ -1,5 +1,3 @@
-import React from 'react';
-
 import * as AccessibleIcon from '@radix-ui/react-accessible-icon';
 
 import { IconProps } from '../Icons.types';
