@@ -35,6 +35,7 @@ export * from './icons/IconArrowsUp';
 export * from './icons/IconArrowUp';
 export * from './icons/IconArrowUpLeft';
 export * from './icons/IconArrowUpRight';
+export * from './icons/IconAura';
 export * from './icons/IconAsterisk1';
 export * from './icons/IconAsterisk2';
 export * from './icons/IconAtom1';
