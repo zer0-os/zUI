@@ -6,8 +6,11 @@ import {
   Root as DialogRoot,
   Portal as DialogPortal,
   Trigger as DialogTrigger,
-  Content as DialogContent
+  Content as DialogContent,
+  Title as DialogTitle,
+  Description as DialogDescription
 } from '@radix-ui/react-dialog';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 import { Button } from '../Button';
 
@@ -30,7 +33,20 @@ export const Modal: React.FC<ModalProps> = ({ className, children, trigger, ...r
       <DialogPortal>
         <DialogOverlay className={styles.Overlay}>
           <div className={styles.ContentWrapper}>
-            <DialogContent className={classNames(className, styles.Content)}>{children}</DialogContent>
+            <DialogContent className={classNames(className, styles.Content)}>
+              {/* 
+              Visually hidden title and description required by Radix UI for accessibility 
+              This is a workaround to avoid the title and description being visible in the modal
+              */}
+              <VisuallyHidden asChild>
+                <DialogTitle>Modal</DialogTitle>
+              </VisuallyHidden>
+              <VisuallyHidden asChild>
+                <DialogDescription>This is a modal dialog</DialogDescription>
+              </VisuallyHidden>
+
+              {children}
+            </DialogContent>
           </div>
         </DialogOverlay>
       </DialogPortal>
