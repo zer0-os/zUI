@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import styles from './Avatar.module.scss';
 
 export interface AvatarProps {
+  className?: string;
   imageURL?: string;
   size: 'extra small' | 'small' | 'regular' | 'medium';
   badgeContent?: string;
@@ -21,6 +22,7 @@ export interface AvatarProps {
 }
 
 export const Avatar = ({
+  className,
   size = 'regular',
   imageURL,
   statusType,
@@ -40,7 +42,7 @@ export const Avatar = ({
 
   return (
     <div
-      className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised })}
+      className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised }, className)}
       data-size={size}
       tabIndex={tabIndex}
     >

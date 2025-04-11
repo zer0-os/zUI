@@ -94,3 +94,10 @@ describe('when tabIndex is set to -1', () => {
     expect(container.firstChild).toHaveAttribute('tabIndex', '-1');
   });
 });
+
+describe('when className is provided', () => {
+  test('should apply the custom className', () => {
+    const { container } = render(<Avatar {...DEFAULT_PROPS} className="custom-class" />);
+    expect(container.firstChild).toHaveClass('custom-class');
+  });
+});
