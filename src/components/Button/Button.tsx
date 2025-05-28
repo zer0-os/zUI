@@ -23,7 +23,7 @@ export enum Color {
   Greyscale = 'greyscale'
 }
 
-export interface ButtonProps {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   className?: string;
   children: React.ReactNode | string;
 
@@ -90,11 +90,9 @@ export const Button: FC<ButtonProps> = ({
       ...buttonProps
     },
     <>
-      <div className="zui-button-content-container">
+      <div className={`zui-button-content-container zui-button-content-${size}`}>
         {!isLoading && startEnhancer}
-        <div className={`zui-button-content-${size}`}>
-          {isLoading ? <Spinner className="zui-button-spinner" /> : children}
-        </div>
+        {isLoading ? <Spinner className="zui-button-spinner" /> : children}
         {!isLoading && endEnhancer}
       </div>
     </>
