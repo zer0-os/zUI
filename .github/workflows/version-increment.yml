@@ -65,5 +65,5 @@ jobs:
 
             Automated version increment via GitHub Actions.
           branch: ${{ steps.version.outputs.branch_name }}
-          base: main
+          base: master
           delete-branch: true
