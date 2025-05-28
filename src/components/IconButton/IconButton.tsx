@@ -1,11 +1,11 @@
-import React, { ButtonHTMLAttributes, JSXElementConstructor, MouseEvent } from 'react';
+import React, { ButtonHTMLAttributes, HTMLAttributes, JSXElementConstructor, MouseEvent } from 'react';
 
 import { IconProps } from '../Icons/Icons.types';
 
 import classNames from 'classnames';
 import './IconButton.scss';
 
-export interface IconButtonProperties {
+export interface IconButtonProperties extends HTMLAttributes<HTMLButtonElement> {
   Icon: JSXElementConstructor<IconProps>;
   className?: string;
   color?: 'primary' | 'red' | 'greyscale';
@@ -55,7 +55,8 @@ export const IconButton = ({
   onClick,
   size,
   type = 'button',
-  variant
+  variant,
+  ...rest
 }: IconButtonProperties) => {
   const handleOnClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -81,6 +82,7 @@ export const IconButton = ({
       onClick={handleOnClick}
       type={type}
       style={buttonStyle}
+      {...rest}
     >
       <Icon label={label} size={iconSize} isFilled={isFilled} />
     </button>
