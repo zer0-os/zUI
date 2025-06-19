@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { Status } from '../Status';
 import { IconCurrencyEthereum, IconUsers1 } from '../Icons';
@@ -47,6 +47,12 @@ export const Avatar = memo(
     const handleLoad = () => {
       setRenderFallback(false);
     };
+
+    useEffect(() => {
+      if (imageURL) {
+        setRenderFallback(false);
+      }
+    }, [imageURL]);
 
     return (
       <div
