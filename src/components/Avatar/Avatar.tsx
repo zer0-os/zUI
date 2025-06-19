@@ -1,5 +1,4 @@
-import React from 'react';
-import * as RadixAvatar from '@radix-ui/react-avatar';
+import React, { memo, useState } from 'react';
 
 import { Status } from '../Status';
 import { IconCurrencyEthereum, IconUsers1 } from '../Icons';
@@ -21,43 +20,57 @@ export interface AvatarProps {
   isGroup?: boolean;
 }
 
-export const Avatar = ({
-  className,
-  size = 'regular',
-  imageURL,
-  statusType,
-  badgeContent,
-  isActive,
-  isRaised,
-  tabIndex = 0,
-  isGroup = false
-}: AvatarProps) => {
-  const renderDefaultIcon = () => {
-    if (isGroup) {
-      return <IconUsers1 size={AVATAR_ICON_SIZE[size]} />;
-    } else {
-      return <IconCurrencyEthereum size={AVATAR_ICON_SIZE[size]} />;
-    }
-  };
+export const Avatar = memo(
+  ({
+    className,
+    size = 'regular',
+    imageURL,
+    statusType,
+    badgeContent,
+    isActive,
+    isRaised,
+    tabIndex = 0,
+    isGroup = false
+  }: AvatarProps) => {
+    const renderDefaultIcon = () => {
+      if (isGroup) {
+        return <IconUsers1 size={AVATAR_ICON_SIZE[size]} />;
+      } else {
+        return <IconCurrencyEthereum size={AVATAR_ICON_SIZE[size]} />;
+      }
+    };
 
-  return (
-    <div
-      className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised }, className)}
-      data-size={size}
-      tabIndex={tabIndex}
-    >
-      <RadixAvatar.Root className={styles.Root}>
-        <RadixAvatar.Image className={styles.Image} src={imageURL} alt="avatar" />
+    const [renderFallback, setRenderFallback] = useState(!imageURL);
+    const handleError = () => {
+      setRenderFallback(true);
+    };
+    const handleLoad = () => {
+      setRenderFallback(false);
+    };
 
-        <RadixAvatar.Fallback className={styles.Fallback} delayMs={imageURL ? 500 : 0}>
-          <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
-        </RadixAvatar.Fallback>
-      </RadixAvatar.Root>
-      {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}
-      {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} />}
-    </div>
-  );
-};
+    return (
+      <div
+        className={classNames(styles.Avatar, { [styles.isActive]: isActive, [styles.isRaised]: isRaised }, className)}
+        data-size={size}
+        tabIndex={tabIndex}
+      >
+        <div className={styles.Root}>
+          {renderFallback ? (
+            <span className={styles.Fallback}>
+              <div className={classNames(styles.DefaultIcon, { [styles.isGroup]: isGroup })}>{renderDefaultIcon()}</div>
+            </span>
+          ) : (
+            <img className={styles.Image} src={imageURL} alt="" onError={handleError} onLoad={handleLoad} />
+          )}
+        </div>
+        {size != 'extra small' && statusType && <Status className={styles.Status} type={statusType} />}
+        {size != 'extra small' && badgeContent && <AvatarBadge badgeContent={badgeContent} />}
+      </div>
+    );
+  }
+);
+
+Avatar.displayName = 'Avatar';
 
 interface StatusBadgeTypeProps {
   badgeContent: AvatarProps['badgeContent'];

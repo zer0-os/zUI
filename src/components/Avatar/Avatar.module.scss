@@ -68,6 +68,16 @@
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: theme.$color-secondary-11;
+    }
   }
 
   .Fallback {
