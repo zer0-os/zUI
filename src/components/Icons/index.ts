@@ -556,5 +556,6 @@ export * from './icons/IconWorld';
 export * from './icons/IconXClose';
 export * from './icons/IconZap';
 export * from './icons/IconZapOff';
+export * from './icons/IconZeroProVerified';
 export * from './icons/IconZoomIn';
 export * from './icons/IconZoomOut';
