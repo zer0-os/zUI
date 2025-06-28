@@ -1,11 +1,15 @@
 @use '../../styles/theme';
 
 .Spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  border-top: 2px solid theme.$color-secondary-9;
-  animation: spin 1s linear infinite;
+  min-width: 24px;
+  min-height: 24px;
+  animation: spin 1.3s linear infinite;
 }
 
 @keyframes spin {

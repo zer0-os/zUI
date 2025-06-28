@@ -1,10 +1,14 @@
 import React from 'react';
 
-import './Spinner.scss';
-import classNames from 'classnames';
+import { IconLoading2 } from '../../icons';
 
-export type SpinnerProps = React.HTMLAttributes<HTMLDivElement>;
+import classNames from 'classnames';
+import styles from './Spinner.module.scss';
+
+export type SpinnerProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>;
 
 export const Spinner = ({ className, ...props }: SpinnerProps) => (
-  <div className={classNames('zui-spinner', className)} {...props}></div>
+  <div className={classNames(styles.Spinner, className)} {...props}>
+    <IconLoading2 size={16} color="var(--color-greyscale-transparency-12)" />
+  </div>
 );
