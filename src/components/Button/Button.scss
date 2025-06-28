@@ -19,7 +19,7 @@
   max-width: 100%;
   margin: 0;
   border-width: 0;
-  border-radius: 1000px;
+  border-radius: 8px;
   background: var(--button-bg-base);
   white-space: nowrap;
   overflow: hidden;
@@ -162,13 +162,6 @@
   --zui-text-shadow-hover: none;
 
   pointer-events: none;
-  background: none;
-  box-shadow: none;
-  backdrop-filter: none;
-
-  &::before {
-    background: none;
-  }
 }
 
 .zui-button-loading {
