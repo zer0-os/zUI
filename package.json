@@ -1,6 +1,6 @@
 {
   "name": "@zero-tech/zui",
-  "version": "1.30.0",
+  "version": "1.31.0",
   "description": "Zero UI React Component Library",
   "scripts": {
     "about:clean": "echo 'Removes any existing build folders.'",
