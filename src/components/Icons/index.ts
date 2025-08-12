@@ -44,6 +44,7 @@ export * from './icons/IconAttachment';
 export * from './icons/IconAttachment1';
 export * from './icons/IconAward2';
 export * from './icons/IconBank';
+export * from './icons/IconBarChart';
 export * from './icons/IconBankNote3';
 export * from './icons/IconBell';
 export * from './icons/IconBell1';
